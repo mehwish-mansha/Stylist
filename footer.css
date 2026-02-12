@@ -65,7 +65,15 @@ body{
     border-radius: 15px;
     margin-right: 10px;
     background-color: var(--sec-bg-color);
+     caret-color: var(--background-color);
 
+}
+
+.footer-mail-area input:focus{
+    outline: none; 
+    border: 1px solid var(--sec-text-color); 
+    background-color: transparent;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 
 
@@ -74,6 +82,14 @@ body{
   color: var(--background-color); 
   font-size: 1.2em;
   opacity: 0.5; 
+}
+
+.footer-mail-area input:not(:placeholder-shown){
+    background-color: transparent;
+    color: var(--background-color);
+    font-size: 18px;
+    font-family: "Inconsolata", sans-serif;
+    
 }
 
 

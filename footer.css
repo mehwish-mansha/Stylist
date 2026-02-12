@@ -1,0 +1,188 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box; 
+}
+
+:root{
+    --background-color: #fcfcfc;
+    --sec-bg-color: #8b7355;
+    --text-color: #d4a373;
+    --sec-text-color: #2f3e46;
+}
+
+body{
+    background: var(--sec-bg-color);
+    color: var(--background-color);
+}
+
+.footer-container{
+    display: flex;
+    padding: 50px;
+    width: 100%;
+    font-family: "Incolsola", sans-serif;
+}
+
+
+
+.footer-left{
+    width: 40%;
+}
+
+.footer-title{
+    font-family: "Merriweather", sans-serif;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+
+.footer-para{
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-family: "Inconsolata", sans-serif;
+}
+
+.footer-content h4{
+    font-family: 22px;
+    font-family: "Inconsolata", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+}
+
+.footer-mail-area{
+    margin-bottom: 26px;
+    display: flex;
+    align-items: center;
+}
+
+
+.footer-mail-area input{
+    width: 70%;
+    height: 40px;
+    border: 1px solid var(--sec-text-color);
+    padding: 12px;
+    border-radius: 15px;
+    margin-right: 10px;
+    background-color: var(--sec-bg-color);
+
+}
+
+
+.footer-mail-area input::placeholder {
+    padding: 5px;
+  color: var(--background-color); 
+  font-size: 1.2em;
+  opacity: 0.5; 
+}
+
+
+.footer-mail-area button{
+    width: 25%;
+    height: 40px;
+    border: none;
+    background: var(--background-color);
+    color: var(--sec-bg-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.footer-mail-area i{
+    background-color: var(--sec-text-color);
+    color: var(--background-color);
+    border-radius: 15px;
+    margin-left: 5px;       
+    width: 60px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-mail-area i:hover{
+    background-color: var(--sec-bg-color);
+    border: 1px solid var(--sec-text-color);
+    cursor: pointer;
+}
+
+
+
+
+.footer-contact-section{
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 26px;
+    width: 60%;
+}
+
+.contact-icon{
+    color: var(--sec-text-color);
+}
+
+.contact-info{
+    margin: 0px 0px 4px 12px;
+}
+
+.footer-right{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 0px 0px 20px;
+}
+
+.footer-right ul{
+    list-style: none;
+    line-height: 2.5rem;
+}
+
+.footer-right a{
+    text-decoration: none;
+    color: var(--background-color);
+    font-family: "Inconsolata", sans-serif;
+    
+}
+
+.footer-right a:hover{
+    color: var(--sec-text-color);
+    transition: all .3s ease;
+}
+
+.footer-socials{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 50px;
+    border-top: 1px solid rgba(47, 62, 70, 0.5);
+}
+
+.footer-socials ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-socials li{
+    margin-right: 10px;
+}
+
+.footer-socials a{
+    text-decoration: none;
+    color: var(--sec-text-color);
+    font-size: 18px;
+    border: 1px solid var(--sec-text-color);
+    border-radius: 50%;
+    padding: 4px;
+}
+
+.footer-socials a:hover{
+    color: var(--background-color);
+    background-color: var(--sec-text-color);
+    transition: all .3s ease;
+}
+
+.footer-socials p{
+    color: var(--sec-text-color);
+    font-size: 16px;
+    font-family: "Inconsolata", sans-serif;
+    margin-top: 10px;
+}

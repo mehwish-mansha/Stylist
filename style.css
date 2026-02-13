@@ -1,82 +1,214 @@
-
-
-
 *{
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
 }
 
-
-body{
-    background-color: var(--background-color);
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: var(--text-color);
-    scroll-behavior: smooth;
-}
-
-
-
-:root{
+:root {
     --background-color: #fcfcfc;
     --sec-bg-color: #8b7355;
     --text-color: #d4a373;
     --sec-text-color: #2f3e46;
-    --heading-font: "Playfair Display", serif;
-    --para-font: "DM sans", sans-serif;
 }
 
-/* Navbar Css */
 
-.navbar{
-    background-color: var(--background-color);
-    color: var(--sec-text-color);
-    padding-top: 6px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0,0,0,0.6);
+}
+
+
+.hero-section {
     width: 100%;
-    border-bottom: rgba(47, 62, 70, 0.1) 1px solid;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 15px 20px -4px;
+    height: 40rem; 
+    overflow: hidden;
+    position: relative;
+}
+
+.slider-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.slider {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative; 
+}
+
+.slide {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40rem; 
+    opacity: 0; 
+    transition: opacity 0.5s ease;
+    z-index: 0;
+}
+
+.slide.active {
+    opacity: 1;
+    z-index: 1;
 }
 
 
-.navbar a{
-    color: var(--sec-text-color);
-    text-decoration: none;
-    padding: 10px;
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.nav-item{
-   text-align: center;
+.slide-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    color: white;
+    text-align: center;
+    transition: all 0.7s ease;
+    z-index: 2; 
+    opacity: 0;
 }
 
-
-
-
-.nav-item h3{
-    font-size: 18px;
-    letter-spacing: 2px;
-    padding-left: 6px;
-    font-family: var(--heading-font);
-}
-
-
-.nav-item li{
-    list-style: none;
-
-}
-
-.nav-icon{
-    font-size: 20px;
+.slide.active .slide-content {
+    transform: translate(-50%, -50%);
+    opacity: 1;
 }
 
 
-.nav-content{
+.slide-content h1 {
+    color: var(--background-color);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-family: "Merriweather", sans-serif;
+}
+
+.slide-content p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    font-family: "Inconsolata", sans-serif;
+}
+
+.slide-buttons {
     display: flex;
+    gap: 1rem;
+    justify-content: center;
 }
 
-/* Footer css */
+.btn-primary,
+.btn-secondary {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    font-family: "Inconsolata", sans-serif;
+
+}
+
+.btn-primary {
+    background-color: hsl(0, 0%, 100%);
+    color: black;
+}
 
 
+.btn-primary:hover {
+    background-color: hsl(0, 0%, 90%);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+/* Slider dots */
+.slider-nav {
+    display: flex;
+    column-gap: 1rem;
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.slider-nav a {
+    height: 0.5rem;
+    width: 0.5rem;
+    border-radius: 50%;
+    background-color: hsl(0, 0%, 80%);
+    opacity: 0.75;
+    transition: opacity 0.3s ease;
+}
+
+.slider-nav a:hover {
+    opacity: 1;
+}
+
+/* Scroll */
+:root {
+    --height: 50px;
+    --width: 120px;
+    --quantity: 10;
+}
+
+.scroll-slider {
+    margin: 20px;
+    width: 100%;
+    height: 50px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    position: relative;
+    mask-image: linear-gradient(
+        to right,
+        transparent,
+        #000 10% 80%,
+        transparent
+    );
+}
+
+.scroll-slider .list {
+    display: flex;
+    width: max-content;
+    height: 100%;
+    animation: scroll 20s linear infinite;
+    will-change: transform;
+}
+
+.scroll-slider .item {
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: "Inconsolata", sans-serif;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.scroll-slider:hover .list {
+    animation-play-state: paused;
+}

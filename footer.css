@@ -1,7 +1,7 @@
 :root {
     --background-color: #fcfcfc;
-    --sec-bg-color: #8b7355;
-    --text-color: #d4a373;
+    --sec-bg-color: #3b1d23;
+    --text-color: #75555b;
     --sec-text-color: #2f3e46;
 }
 
@@ -13,18 +13,15 @@
     font-family: "Inconsolata", sans-serif;
 }
 
-body {
-    background: var(--sec-bg-color);
-    color: var(--background-color);
-}
-
 /* Footer Container */
 .footer-container {
+ background: var(--sec-bg-color);
+ color: var(--background-color);
   display: flex;
   flex-wrap: wrap;
   gap: 50px;
-  padding: 50px 0;
-  width: 90%;        
+  padding: 50px;
+  width: 100%;        
   margin: 0 auto;    
   max-width: 1400px; 
 }
@@ -78,7 +75,7 @@ body {
     flex: 1;
     padding: 12px 15px;
     border-radius: 12px;
-    border: 1px solid var(--sec-text-color);
+    border: 1px solid var(--text-color);
     background-color: rgba(255, 255, 255, 0.1);
     color: var(--background-color);
     font-size: 16px;
@@ -97,7 +94,7 @@ body {
 
 .footer-mail-area button {
     background: var(--sec-bg-color);
-    border: 1px solid var(--sec-text-color);
+    border: 1px solid var(--text-color);
     border-radius: 12px;
     padding: 0 18px;
     display: flex;
@@ -114,7 +111,7 @@ body {
 }
 
 .footer-mail-area button:hover {
-    background-color: rgba(252, 252, 252, 0.1);
+    background-color: rgba(252, 252, 252, 0.2);
     border: 1px solid var(--text-color);
 }
 
@@ -127,7 +124,7 @@ body {
 }
 
 .contact-icon {
-    color: var(--sec-text-color);
+    color: var(--text-color);
 }
 
 .contact-info {
@@ -165,12 +162,13 @@ body {
 
 /* Socials */
 .footer-socials {
+ background: var(--sec-bg-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 0;         
+  padding: 30px 50px;         
   border-top: 1px solid rgba(255,255,255,0.2);
-  width: 90%;             
+  width: 100%;             
   margin: 0 auto;  
   flex-wrap: wrap;
   gap: 15px;
@@ -202,6 +200,10 @@ body {
     background-color: var(--text-color);
     color: var(--background-color);
     transform: translateY(-4px);
+}
+
+.footer-socials p{
+    color: var(--background-color);
 }
 
 /* Responsive */

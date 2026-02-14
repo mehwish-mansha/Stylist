@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us | Stylist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inconsolata:wght@200..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Pixelify+Sans:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
+
+
+    <!-- Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./collections/About.css">
+</head>
+<body>
+
+    <!--Navbar-->
+    <div id="nav-container"></div>
+
+<!-- HERO SECTION -->
+<section class="about-hero">
+    <div class="hero-content">
+        <h1>Redefining Fashion. Personalizing Style.</h1>
+        <p>Where modern fashion meets your unique personality.</p>
+        <a href="collection.html" class="btn">Explore Collection</a>
+    </div>
+</section>
+
+<section class="about-section">
+    <div class="container">
+        <div class="about-grid">
+            <div>
+                <h2>Our Story</h2>
+                <p>
+                    After fashion moved online, personal styling was left behind. 
+                    We created a platform that connects you with professional stylists 
+                    to help you discover outfits that match your personality, lifestyle, 
+                    and occasion.
+                </p>
+            </div>
+            <div>
+                <img src="images/about.jpg" alt="Fashion styling">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="mission-vision">
+    <div class="container">
+        <div class="mv-grid">
+            <div class="card">
+                <h3>Our Mission</h3>
+                <p>To make professional fashion styling accessible and effortless for everyone.</p>
+            </div>
+            <div class="card">
+                <h3>Our Vision</h3>
+                <p>To redefine digital fashion experiences through personalization and innovation.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="about-section">
+    <div class="container">
+        <h2 class="center">Why Choose Us</h2>
+        <div class="features-grid">
+            <div class="feature"> Personalized Recommendations</div>
+            <div class="feature"> Professional Stylists</div>
+            <div class="feature"> Trend-Based Collections</div>
+            <div class="feature"> Secure Shopping</div>
+        </div>
+    </div>
+</section>
+
+<section class="stats">
+    <div class="container stats-grid">
+        <div>
+            <h2>5000+</h2>
+            <p>Happy Clients</p>
+        </div>
+        <div>
+            <h2>150+</h2>
+            <p>Expert Stylists</p>
+        </div>
+        <div>
+            <h2>10K+</h2>
+            <p>Orders Delivered</p>
+        </div>
+    </div>
+</section>
+
+<section class="cta">
+    <h2>Ready to Upgrade Your Style?</h2>
+    <a href="stylists.html" class="btn">Meet Our Stylists</a>
+</section>
+
+    <!--Footer Section-->
+    <div id="footer-container"></div>
+
+    <!-- jquery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
+
+    <script>
+
+        // Navbar and Footer
+
+        $(function () {
+
+            $("#nav-container").load("nav.html", function () {
+                initNavbar();
+            });
+
+            $("#footer-container").load("footer.html");
+
+        });
+
+
+    </script>
+
+</body>
+</html>

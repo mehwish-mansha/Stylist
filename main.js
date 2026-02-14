@@ -1,40 +1,105 @@
-const hamburger = document.getElementById("hamburger");
-const navLinks = document.getElementById("navLinks");
-const closeBtn = document.getElementById("closeBtn");
+// Navbar scroll
 
-hamburger.addEventListener("click", () => {
-    navLinks.classList.add("active");
+window.addEventListener("scroll", function() {
+    const navbar = document.querySelector(".nav-container");
+    const maxScroll = 200; 
+    let scroll = window.scrollY;
+
+    let alpha = Math.max(1 - scroll / maxScroll, 0.9);
+
+    navbar.style.backgroundColor = `rgba(255, 255, 255, ${alpha})`;
 });
 
-closeBtn.addEventListener("click", () => {
-    navLinks.classList.remove("active");
-});
+function initNavbar() {
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("navLinks");
+    const closeBtn = document.getElementById("closeBtn");
 
+    if (!hamburger || !navLinks || !closeBtn) return;
 
+    // Open sidebar
+    hamburger.addEventListener("click", () => {
+        navLinks.classList.add("active");
+        document.body.style.overflow = "hidden"; // prevent background scroll
+    });
 
-const dropdowns = document.querySelectorAll(".dropdown");
+    // Close sidebar using close button
+    closeBtn.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+        document.body.style.overflow = "";
+    });
 
-dropdowns.forEach(dropdown => {
-    const header = dropdown.querySelector(".dropdown-header");
-    const submenu = dropdown.querySelector(".submenu");
-    const icon = header.querySelector("i");
+    // Close sidebar when clicking outside
+    document.addEventListener("click", (event) => {
+        const isClickInside = navLinks.contains(event.target) || hamburger.contains(event.target);
 
-    header.addEventListener("click", () => {
-        // Close all other dropdowns
-        dropdowns.forEach(other => {
-            if (other !== dropdown) {
-                const otherMenu = other.querySelector(".submenu");
-                const otherIcon = other.querySelector(".dropdown-header i");
+        if (!isClickInside) {
+            navLinks.classList.remove("active");
+            document.body.style.overflow = "";
+        }
+    });
 
-                otherMenu.classList.remove("active");
-                otherIcon.classList.remove("rotate");
-            }
+    // Dropdowns
+    const dropdowns = document.querySelectorAll(".dropdown");
+
+    dropdowns.forEach(dropdown => {
+        const header = dropdown.querySelector(".dropdown-header");
+        const submenu = dropdown.querySelector(".submenu");
+        const icon = header.querySelector("i");
+
+        header.addEventListener("click", () => {
+            // Close other dropdowns
+            dropdowns.forEach(other => {
+                if (other !== dropdown) {
+                    other.querySelector(".submenu").classList.remove("active");
+                    other.querySelector(".dropdown-header i").classList.remove("rotate");
+                }
+            });
+
+            // Toggle this dropdown
+            submenu.classList.toggle("active");
+            icon.classList.toggle("rotate");
         });
+    });
+}
 
-        // Toggle the clicked dropdown
-        submenu.classList.toggle("active");
-        icon.classList.toggle("rotate");
+
+// Collection Area
+
+$(document).ready(function() {
+    const $slider = $(".collection-grid");
+    const $cards = $(".collection-item");
+    const $next = $(".next-btn");
+    const $prev = $(".prev-btn");
+    const visibleCards = 4; 
+    let currentIndex = 0;
+
+    function getCardWidth() {
+        return $cards.outerWidth(true); 
+    }
+
+    function maxIndex() {
+        return $cards.length - visibleCards;
+    }
+
+    $next.on("click", function() {
+        if (currentIndex < maxIndex()) {
+            currentIndex++;
+            $slider.css("transform", `translateX(-${getCardWidth() * currentIndex}px)`);
+        }
+    });
+
+    $prev.on("click", function() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            $slider.css("transform", `translateX(-${getCardWidth() * currentIndex}px)`);
+        }
+    });
+
+    $(window).on("resize", function() {
+        $slider.css("transform", `translateX(-${getCardWidth() * currentIndex}px)`);
     });
 });
+
 
 

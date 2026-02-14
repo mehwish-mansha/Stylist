@@ -5,10 +5,17 @@
 }
 
 .nav-container {
-    background: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 1); 
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
 }
+
+
 
 .nav-wrapper {
     display: flex;
@@ -19,9 +26,9 @@
 }
 
 .logo span {
-    font-family: 'Arizonia', cursive;
+    font-family: 'Arizonia', sans-serif;
     font-size: 32px;
-    color: #000;
+    color: #3b1d23;
 }
 
 
@@ -57,7 +64,6 @@
 
 /* Side Menu */
 .nav-links {
-    list-style: none;
     position: fixed;
     top: 0;
     left: -100%;
@@ -68,11 +74,12 @@
     transition: 0.4s ease;
     box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
     overflow-y: scroll;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
     display: flex;
     flex-direction: column;
+    z-index: 99999;   /* VERY HIGH */
+    list-style: none;
 }
+
 
 .nav-links::-webkit-scrollbar {
     width: 8px;
@@ -128,22 +135,23 @@
     transform: rotate(90deg);
 }
 
-/* Slide In */
 .nav-links.active {
     left: 0;
 }
 
-/* Button */
+
 .nav-btn {
     padding: 8px 15px;
     border: 2px solid black;
     background: white;
     cursor: pointer;
+    font-size: 1rem;
 }
 
 .nav-btn:hover {
     background: black;
     color: white;
+    transition: all 0.3s ease;
 }
 
 
@@ -171,7 +179,24 @@
     text-decoration: none;
     color: black;
     font-size: 15px;
+    position: relative;
 }
+
+.submenu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 1px;
+    background: #3b1d23;
+    transition: 0.5s ease;
+}
+
+.submenu a:hover::after {
+    width: 100%;
+}
+
 
 /* Active */
 .submenu.active {
@@ -180,11 +205,12 @@
 
 .dropdown-header i {
     transition: 0.3s ease;
+    opacity: .5;
 }
 
 .dropdown-header i.rotate {
     transform: rotate(45deg);
-    /* turns + into x style */
+    opacity: 1;
 }
 
 

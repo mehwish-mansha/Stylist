@@ -1,8 +1,8 @@
 // Navbar scroll
 
-window.addEventListener("scroll", function() {
+window.addEventListener("scroll", function () {
     const navbar = document.querySelector(".nav-container");
-    const maxScroll = 200; 
+    const maxScroll = 200;
     let scroll = window.scrollY;
 
     let alpha = Math.max(1 - scroll / maxScroll, 0.9);
@@ -66,39 +66,86 @@ function initNavbar() {
 
 // Collection Area
 
-$(document).ready(function() {
+$(document).ready(function () {
     const $slider = $(".collection-grid");
     const $cards = $(".collection-item");
     const $next = $(".next-btn");
     const $prev = $(".prev-btn");
-    const visibleCards = 4; 
+    const visibleCards = 4;
     let currentIndex = 0;
 
     function getCardWidth() {
-        return $cards.outerWidth(true); 
+        return $cards.outerWidth(true);
     }
 
     function maxIndex() {
         return $cards.length - visibleCards;
     }
 
-    $next.on("click", function() {
+    $next.on("click", function () {
         if (currentIndex < maxIndex()) {
             currentIndex++;
             $slider.css("transform", `translateX(-${getCardWidth() * currentIndex}px)`);
         }
     });
 
-    $prev.on("click", function() {
+    $prev.on("click", function () {
         if (currentIndex > 0) {
             currentIndex--;
             $slider.css("transform", `translateX(-${getCardWidth() * currentIndex}px)`);
         }
     });
 
-    $(window).on("resize", function() {
+    $(window).on("resize", function () {
         $slider.css("transform", `translateX(-${getCardWidth() * currentIndex}px)`);
     });
+});
+
+
+// About Section Stats
+const counters = document.querySelectorAll(".counter");
+
+const speed = 200;
+
+const startCounting = (counter) => {
+    const target = +counter.getAttribute("data-target");
+    let count = 0;
+
+    const increment = target / speed;
+
+    const updateCount = () => {
+        count += increment;
+
+        if (count < target) {
+            counter.innerText = Math.floor(count);
+            requestAnimationFrame(updateCount);
+        } else {
+            if (target >= 1000) {
+                counter.innerText = (target / 1000) + "K+";
+            } else {
+                counter.innerText = target + "+";
+            }
+        }
+    };
+
+    updateCount();
+};
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+            entry.target.innerText = "0"; 
+            startCounting(entry.target);
+        }
+
+    });
+}, {
+    threshold: 0.5
+});
+
+counters.forEach(counter => {
+    observer.observe(counter);
 });
 
 

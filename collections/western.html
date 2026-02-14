@@ -21,8 +21,12 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <title>Western Collection | Stylist</title>
+    <link rel="stylesheet" href="../nav.css">
+    <link rel="stylesheet" href="../footer.css">
 </head>
 <body>
+    <h1>Western Collection</h1>
+
 
     <!--Navbar Section-->
 
@@ -37,6 +41,7 @@
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+        <script src="../main.js"></script>
 
 
 
@@ -46,11 +51,11 @@
 
         $(function () {
 
-            $("#nav-container").load("nav.html", function () {
+            $("#nav-container").load("../nav.html", function () {
                 initNavbar();
             });
 
-            $("#footer-container").load("footer.html");
+            $("#footer-container").load("../footer.html");
 
         });
         </script>

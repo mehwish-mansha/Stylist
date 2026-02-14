@@ -21,12 +21,23 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <title>Winter Collection | Stylist</title>
+    <link rel="stylesheet" href="../nav.css">
+    <link rel="stylesheet" href="../footer.css">
+
+    <style>
+        h1{
+            padding:4rem;
+        }
+    </style>
 </head>
 <body>
+    
 
     <!--Navbar Section-->
 
     <div id="nav-container"></div>
+
+    <h1>Winter Collection</h1>
 
         <!--Footer Section-->
     <div id="footer-container"></div>
@@ -38,6 +49,10 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
+        <script src="../main.js"></script>
+
+
+
 
 
     <script>
@@ -46,11 +61,11 @@
 
         $(function () {
 
-            $("#nav-container").load("nav.html", function () {
+            $("#nav-container").load("../nav.html", function () {
                 initNavbar();
             });
 
-            $("#footer-container").load("footer.html");
+            $("#footer-container").load("../footer.html");
 
         });
         </script>

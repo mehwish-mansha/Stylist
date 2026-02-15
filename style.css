@@ -513,7 +513,7 @@ html, body {
 /* Navigation buttons */
 .next-btn, .prev-btn {
     position: absolute;
-    top: 46%; 
+    top: 40%; 
     padding: 10px 14px;
     border: none;
     border-radius: 8px;

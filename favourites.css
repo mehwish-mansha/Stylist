@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background-color: #fcfcfc;
+    --sec-bg-color: #3b1d23;
+    --text-color: #75555b;
+}
+
+body {
+    font-family: 'Inconsolata', sans-serif;
+    background: #f2f1ef;
+    color: #222;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0,0,0,0.6);
+}
+
+/* HEADER */
+
+.fav-header {
+    text-align: center;
+    padding: 100px 20px 60px;
+}
+
+.fav-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.fav-header p {
+    color: #666;
+    font-size: 16px;
+}
+
+/* FAV SECTION */
+
+.fav-section {
+    padding: 0 10% 100px;
+}
+
+.fav-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* ITEM CARD */
+
+.fav-item {
+    display: flex;
+    background: #eae9e7;
+    padding: 20px;
+    gap: 25px;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.fav-item:hover {
+    transform: translateY(-3px);
+}
+
+/* IMAGE */
+
+.fav-item img {
+    width: 180px;
+    height: 220px;
+    object-fit: cover;
+}
+
+/* DETAILS */
+
+.fav-details {
+    flex: 1;
+}
+
+.fav-details h3 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 5px;
+}
+
+.category {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* BUTTONS */
+
+.fav-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.move-btn {
+    padding: 10px 18px;
+    background: var(--sec-bg-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.move-btn:hover {
+    background: #2a1217;
+}
+
+.remove-btn {
+    padding: 10px 18px;
+    background: transparent;
+    border: 1px solid #aaa;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.remove-btn:hover {
+    border-color: var(--sec-bg-color);
+    color: var(--sec-bg-color);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+    .fav-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .fav-item img {
+        width: 100%;
+        height: 300px;
+    }
+
+    .fav-actions {
+        justify-content: center;
+    }
+}

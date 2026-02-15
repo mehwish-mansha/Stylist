@@ -36,7 +36,7 @@
             <div class="logo">
                 <!-- Dress icon as inline SVG -->
                 <!-- <img src="./assets/logo/dress.png" alt=""> -->
-                <a href="index.html"><span>Stylist</span></a>
+                <a href="/index.html"><span>Stylist</span></a>
             </div>
 
             <!-- Right Icons -->
@@ -45,9 +45,12 @@
                     <i class="fa-solid fa-magnifying-glass search-icon"></i>
                     <input type="text" placeholder="Search" name="search" id="search-input">
                 </div>
-                <a href="login.html"><i class="fa-regular fa-user"></i></a>
-                <i class="fa-regular fa-heart"></i>
-                <i class="fa-solid fa-cart-shopping"></i>
+                <a href="/login.html"><i class="fa-regular fa-user"></i></a>
+                <a href="/favourites.html"><i class="fa-regular fa-heart"></i></a>
+                <div class="cart-icon">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                </div>
+
             </div>
 
 
@@ -61,7 +64,7 @@
                 <i class="fa-solid fa-xmark"></i>
             </div>
 
-            <li><a href="index.html">HOME</a></li>
+            <li><a href="/index.html">HOME</a></li>
             <li><a href="/About.html">ABOUT</a></li>
             <li class="dropdown">
 
@@ -102,16 +105,132 @@
             <li><a href="/contact.html"><button class="nav-btn">BOOK AN APPOINTMENT</button></a></li>
 
             <div class="sidebar-social">
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/mehwishh_m" target="_blank"><i
+                        class="fa-brands fa-instagram"></i></a>
+
+                <a href="https://www.facebook.com/people/Meh-Wish/pfbid0dqYHV2nweqRJ2JhrvAJZTwp574oLaqDqLnrxs3wFZiQeiCPYxBT9qqJ89XrsJtFul/?mibextid=ZbWKwL"
+                    target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+
                 <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://www.linkedin.com/in/mehwish-mansha75/" target="_blank"><i
+                        class="fa-brands fa-linkedin-in"></i></a>
+
                 <a href="https://github.com/mehwish-mansha" target="_blank"><i class="fa-brands fa-github"></i></a>
             </div>
 
         </ul>
 
     </nav>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay"></div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <span class="close-cart">&times;</span>
+        </div>
+
+        <div class="cart-item">
+            <img src="./assets/carousel/pexels4.jpg" alt="Dress">
+
+            <div class="cart-item-details">
+                <h4 class="dress-name">Luxury Silk Gown</h4>
+                <p class="collection-name">Collection: Bridal Couture</p>
+                <p class="dress-code">Code: BR-2026-01</p>
+
+                <div class="cart-bottom">
+                    <div class="quantity-box">
+                        <button class="qty-minus">−</button>
+                        <span class="qty-value">1</span>
+                        <button class="qty-plus">+</button>
+                    </div>
+
+                    <p class="price" data-price="120">$120</p>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="cart-item">
+            <img src="./assets/carousel/slide2.jpg" alt="Dress">
+
+            <div class="cart-item-details">
+                <h4 class="dress-name">Elegant Summer Dress</h4>
+                <p class="collection-name">Collection: Summer Wear</p>
+                <p class="dress-code">Code: SM-2026-05</p>
+
+                <div class="cart-bottom">
+                    <div class="quantity-box">
+                        <button class="qty-minus">−</button>
+                        <span class="qty-value">1</span>
+                        <button class="qty-plus">+</button>
+                    </div>
+
+                    <p class="price" data-price="90">$90.00</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cart-item">
+            <img src="./assets/carousel/pexels4.jpg" alt="Dress">
+
+            <div class="cart-item-details">
+                <h4 class="dress-name">Luxury Silk Gown</h4>
+                <p class="collection-name">Collection: Bridal Couture</p>
+                <p class="dress-code">Code: BR-2026-01</p>
+
+                <div class="cart-bottom">
+                    <div class="quantity-box">
+                        <button class="qty-minus">−</button>
+                        <span class="qty-value">1</span>
+                        <button class="qty-plus">+</button>
+                    </div>
+
+                    <p class="price" data-price="120">$120</p>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="cart-item">
+            <img src="./assets/carousel/pexels4.jpg" alt="Dress">
+
+            <div class="cart-item-details">
+                <h4 class="dress-name">Luxury Silk Gown</h4>
+                <p class="collection-name">Collection: Bridal Couture</p>
+                <p class="dress-code">Code: BR-2026-01</p>
+
+                <div class="cart-bottom">
+                    <div class="quantity-box">
+                        <button class="qty-minus">−</button>
+                        <span class="qty-value">1</span>
+                        <button class="qty-plus">+</button>
+                    </div>
+
+                    <p class="price" data-price="120">$120</p>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span>$120</span>
+            </div>
+            <button class="checkout-btn">Checkout</button>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
 
@@ -146,6 +265,64 @@
             });
 
         });
+
+        // ====== CART TOGGLE MENU ======
+        const cartIcon = document.querySelector(".cart-icon");
+        const cartSidebar = document.querySelector(".cart-sidebar");
+        const cartOverlay = document.querySelector(".cart-overlay");
+        const closeCart = document.querySelector(".close-cart");
+
+        function openCart() {
+            cartSidebar.classList.add("active");
+            cartOverlay.classList.add("active");
+            document.body.classList.add("cart-open");  // lock scroll
+        }
+
+        function closeCartSidebar() {
+            cartSidebar.classList.remove("active");
+            cartOverlay.classList.remove("active");
+            document.body.classList.remove("cart-open");  // unlock scroll
+        }
+
+        cartIcon.addEventListener("click", openCart);
+        closeCart.addEventListener("click", closeCartSidebar);
+        cartOverlay.addEventListener("click", closeCartSidebar);
+
+        // ====== QUANTITY + PRICE LOGIC ======
+        document.addEventListener("click", function (e) {
+            if (e.target.classList.contains("qty-plus") || e.target.classList.contains("qty-minus")) {
+
+                const cartItem = e.target.closest(".cart-item");
+                const qtyElement = cartItem.querySelector(".qty-value");
+                const priceElement = cartItem.querySelector(".price");
+
+                let quantity = parseInt(qtyElement.textContent);
+                const basePrice = parseFloat(priceElement.dataset.price);
+
+                if (e.target.classList.contains("qty-plus")) quantity++;
+                if (e.target.classList.contains("qty-minus") && quantity > 1) quantity--;
+
+                qtyElement.textContent = quantity;
+                priceElement.textContent = "$" + (basePrice * quantity).toFixed(2);
+
+                updateCartTotal();
+            }
+        });
+
+        // ====== UPDATE TOTAL ======
+        function updateCartTotal() {
+            let total = 0;
+            document.querySelectorAll(".cart-item").forEach(item => {
+                const priceText = item.querySelector(".price").textContent.replace("$", "");
+                total += parseFloat(priceText);
+            });
+            const totalElement = document.querySelector(".cart-total span:last-child");
+            if (totalElement) totalElement.textContent = "$" + total.toFixed(2);
+        }
+
+        // Initial total on page load
+        updateCartTotal();
+
 
     </script>
 

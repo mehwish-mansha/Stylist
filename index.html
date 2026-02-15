@@ -44,7 +44,7 @@
                         <h1>New Arrivals</h1>
                         <p>Discover the latest trends for this season</p>
                         <div class="slide-buttons">
-                             <a href="#stylist-section"><button class="btn-primary">Meet our Stylists</button></a>
+                            <a href="#stylist-section"><button class="btn-primary">Meet our Stylists</button></a>
                             <a href="#collection-section"><button class="btn-secondary">Browse Collection</button></a>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                         <h1>Exclusive Collection</h1>
                         <p>Limited edition pieces for fashion enthusiasts</p>
                         <div class="slide-buttons">
-                             <a href="#stylist-section"><button class="btn-primary">Meet our Stylists</button></a>
+                            <a href="#stylist-section"><button class="btn-primary">Meet our Stylists</button></a>
                             <a href="#collection-section"><button class="btn-secondary">Browse Collection</button></a>
                         </div>
                     </div>
@@ -124,7 +124,7 @@
             <div class="stylist-grid">
 
                 <!-- Card 1 -->
-                <div class="stylist-card">
+                <div class="stylist-card" data-stylist="Maria.b">
                     <img src="./assets/Stylists/stylist 1.webp" alt="Maria.B.">
                     <div class="stylist-overlay">
                         <span class="category">BRIDAL AND WEDDING</span>
@@ -134,31 +134,31 @@
                 </div>
 
                 <!-- Card 2 -->
-                <div class="stylist-card">
-                    <img src="./assets/Stylists/stylist3.jfif" alt="Marcus Chen">
+                <div class="stylist-card" data-stylist="Zara Shahid">
+                    <img src="./assets/Stylists/stylist2.jfif" alt="Zara Shahid">
                     <div class="stylist-overlay">
-                        <span class="category">STREETWEAR & CASUAL</span>
-                        <h3>Marcus Chen</h3>
+                        <span class="category">LUXURY PRET</span>
+                        <h3>Zara Shahid</h3>
                         <p class="rating"><span><i class="fa-solid fa-star"></i></span> 4.7 · 8 yrs</p>
                     </div>
                 </div>
 
                 <!-- Card 3 -->
-                <div class="stylist-card">
-                    <img src="./assets/Stylists/stylist3.jfif" alt="Isabelle Moreau">
+                <div class="stylist-card" data-stylist="hania">
+                    <img src="./assets/Stylists/stylist3.jfif" alt="Hania Mirza">
                     <div class="stylist-overlay">
-                        <span class="category">FORMAL & EVENING WEAR</span>
-                        <h3>Isabelle Moreau</h3>
+                        <span class="category">COUTURE & FORMAL</span>
+                        <h3>Hania Mirza Couture</h3>
                         <p class="rating"><span><i class="fa-solid fa-star"></i></span> 4.8 · 15 yrs</p>
                     </div>
                 </div>
 
                 <!-- Card 4 -->
-                <div class="stylist-card">
-                    <img src="./assets/Stylists/stylist3.jfif" alt="Kai Nakamura">
+                <div class="stylist-card" data-stylist="sofia">
+                    <img src="./assets/Stylists/stylist4.jfif" alt="Sofia Laurent">
                     <div class="stylist-overlay">
-                        <span class="category">MINIMALIST & MODERN</span>
-                        <h3>Kai Nakamura</h3>
+                        <span class="category">CONTEMPORARY WESTERN</span>
+                        <h3>Sofia Laurent</h3>
                         <p class="rating"><span><i class="fa-solid fa-star"></i></span> 4.6 · 10 yrs</p>
                     </div>
                 </div>
@@ -173,109 +173,153 @@
 
     </section>
 
-    <!-- Collection Section -->
-    <section id="collection-section" class="collection">
+    
+
+    <section class="slider-section">
         <div class="collection-container">
             <div class="collection-header">
                 <p class="collection-subtitle">OUR COLLECTIONS</p>
                 <h2 class="collection-title">Explore By Category</h2>
             </div>
+            <div class="slider-container">
+                <div class="slider-wrapper">
+                    <!-- <button id="prev-slide" class="slide-button material-symbols-rounded">
+                    chevron_left
+                </button> -->
+                    <button id="prev-slide" class="slide-button"><i
+                            class=" next-slide fa-solid fa-chevron-left"></i></button>
+                    <ul class="image-list">
+                        <div class="collection-item">
+                            <img class="image-item" src="assets/collection/Eid.webp" alt="img-7" />
 
-            <div class="collection-slider-wrapper">
-                <!-- Collection Grid -->
-                <div class="collection-grid">
-                    <div class="collection-item">
-                        <img src="./assets/carousel/slide1.jpg" alt="Bridal & Wedding">
+                            <div class="category-static">Eid Exclusive</div>
 
-                        <div class="category-static">Summer Wear</div>
-
-                        <div class="collection-overlay">
-                            <a href="/collections/summer.html" class="overlay-link">
-                                <span class="category-hover">Summer Wear</span>
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </a>
+                            <div class="collection-overlay">
+                                <a href="/collections/Ramadan.html" class="overlay-link">
+                                    <span class="category-hover">See Collection</span>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="collection-item">
-                        <img src="./assets/carousel/slide2.jpg" alt="Streetwear">
-
-                        <div class="category-static">Winter Collection</div>
-
-                        <div class="collection-overlay">
-                            <a href="/collections/winter.html" class="overlay-link">
-                                <span class="category-hover">Winter Collection</span>
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </a>
+                        <div class="collection-item">
+                            <img class="image-item" src="assets/collection/summer.webp" alt="img-7" />
+                            
+                            <div class="category-static"> Summer Collection</div>
+                            
+                            <div class="collection-overlay">
+                                <a href="/collections/summer.html" class="overlay-link">
+                                    <span class="category-hover">See Collection</span>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="collection-item">
-                        <img src="./assets/carousel/slide3.jpg" alt="Formal">
-
-                        <div class="category-static">Western Exclusive</div>
-
-                        <div class="collection-overlay">
-                            <a href="/collections/western.html" class="overlay-link">
-                                <span class="category-hover">Western Exclusive</span>
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </a>
+                        <div class="collection-item">
+                            <img class="image-item" src="assets/collection/winter.webp" alt="img-7" />
+                            
+                            <div class="category-static">Winter Collection</div>
+                            
+                            <div class="collection-overlay">
+                                <a href="/collections/winter.html" class="overlay-link">
+                                    <span class="category-hover">See Collection</span>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="collection-item">
-                        <img src="./assets/carousel/slide1.jpg" alt="Minimalist">
-
-                        <div class="category-static">Modest Attire</div>
-
-                        <div class="collection-overlay">
-                            <a href="/collections/Ramadan.html" class="overlay-link">
-                                <span class="category-hover">Modest Attire</span>
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </a>
+                        <div class="collection-item">
+                            <img class="image-item" src="assets/collection/west.webp" alt="img-7" />
+                            
+                            <div class="category-static">Western Collection</div>
+                            
+                            <div class="collection-overlay">
+                                <a href="/collections/western.html" class="overlay-link">
+                                    <span class="category-hover">See Collection</span>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="collection-item">
-                        <img src="./assets/carousel/slide2.jpg" alt="Bohemian">
-
-                        <div class="category-static">Bridal Wear</div>
-
-                        <div class="collection-overlay">
-                            <a href="/collections/bridal.html" class="overlay-link">
-                                <span class="category-hover">Bridal Wear</span>
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </a>
+                        <div class="collection-item">
+                            <img class="image-item" src="assets/collection/Bridal2.jpg" alt="img-7" />
+                            
+                            <div class="category-static">Bridal Couture</div>
+                            
+                            <div class="collection-overlay">
+                                <a href="/collections/bridal.html" class="overlay-link">
+                                    <span class="category-hover">See Collection</span>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="collection-item">
-                        <img src="./assets/carousel/slide3.jpg" alt="Luxury">
-
-                        <div class="category-static">Luxury & Designer</div>
-
-                        <div class="collection-overlay">
-                            <a href="/stylists.html" class="overlay-link">
-                                <span class="category-hover">Luxury & Designer</span>
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </a>
+                        <div class="collection-item">
+                            <img class="image-item" src="assets/collection/luxury13.jpg" alt="img-7" />
+                            
+                            <div class="category-static">Luxury & Designer</div>
+                            
+                            <div class="collection-overlay">
+                                <a href="/stylists.html" class="overlay-link">
+                                    <span class="category-hover">See Collection</span>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                        <div class="collection-item">
+                            <img class="image-item" src="assets/collection/men1.jfif" alt="img-7" />
+                            
+                            <div class="category-static">Mens Collection</div>
+                            
+                            <div class="collection-overlay">
+                                <a href="/collection.html/mens.html" class="overlay-link">
+                                    <span class="category-hover">See Collection</span>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="collection-item">
+                            <img class="image-item" src="assets/collection/kids.webp" alt="img-7" />
+                            
+                            <div class="category-static">Kids Special</div>
+                            
+                            <div class="collection-overlay">
+                                <a href="/collection.html/kids.html" class="overlay-link">
+                                    <span class="category-hover">See Collection</span>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="collection-item">
+                            <img class="image-item" src="assets/collection/modest.webp" alt="img-7" />
 
+                            <div class="category-static">Ramadan Exclusives</div>
+
+                            <div class="collection-overlay">
+                                <a href="/collections/Ramadan.html" class="overlay-link">
+                                    <span class="category-hover">See Collection</span>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+
+
+                    </ul>
+                    <!-- <button id="next-slide" class="slide-button material-symbols-rounded">
+                chevron_right
+            </button> -->
+
+                    <button id="next-slide" class="slide-button"><i
+                            class=" next-slide fa-solid fa-chevron-right"></i></button>
                 </div>
-
-                <!-- Collection Navigation -->
-                <div class="collection-nav">
-                    <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                <div class="slider-scrollbar">
+                    <div class="scrollbar-track">
+                        <div class="scrollbar-thumb"></div>
+                    </div>
                 </div>
-
                 <div class="collection-btn">
                     <a href="/Collection.html" id="collection-btn">
                         Browse Collections <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
                     </a>
                 </div>
             </div>
+
     </section>
 
 
@@ -350,8 +394,141 @@
 
 
 
+        // slides
 
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const imageList = document.querySelector(".image-list");
+            const prevBtn = document.getElementById("prev-slide");
+            const nextBtn = document.getElementById("next-slide");
+            const sliderScrollbar = document.querySelector(".slider-scrollbar");
+            const scrollbarThumb = document.querySelector(".scrollbar-thumb");
+
+            const gap = 18;
+            const visibleCards = 2;
+
+            function getCardWidth() {
+                const card = document.querySelector(".collection-item");
+                return card.offsetWidth + gap;
+            }
+
+            function getScrollAmount() {
+                return getCardWidth() * visibleCards;
+            }
+
+            function getMaxScroll() {
+                return imageList.scrollWidth - imageList.clientWidth;
+            }
+
+            /* =====================
+               UPDATE THUMB WIDTH
+            ====================== */
+            function updateThumbWidth() {
+                const ratio = imageList.clientWidth / imageList.scrollWidth;
+                scrollbarThumb.style.width =
+                    sliderScrollbar.clientWidth * ratio + "px";
+            }
+
+            /* =====================
+               UPDATE THUMB POSITION
+            ====================== */
+            function updateThumbPosition() {
+                const maxScroll = getMaxScroll();
+                const maxThumbMove =
+                    sliderScrollbar.clientWidth - scrollbarThumb.offsetWidth;
+
+                const thumbLeft =
+                    (imageList.scrollLeft / maxScroll) * maxThumbMove;
+
+                scrollbarThumb.style.left = thumbLeft + "px";
+            }
+
+            /* =====================
+               UPDATE BUTTONS
+            ====================== */
+            function updateButtons() {
+                const maxScroll = getMaxScroll();
+
+                prevBtn.style.display = imageList.scrollLeft <= 0 ? "none" : "flex";
+                nextBtn.style.display =
+                    imageList.scrollLeft >= maxScroll - 5 ? "none" : "flex";
+            }
+
+            /* =====================
+               BUTTON CLICK
+            ====================== */
+            nextBtn.addEventListener("click", () => {
+                imageList.scrollBy({
+                    left: getScrollAmount(),
+                    behavior: "smooth"
+                });
+            });
+
+            prevBtn.addEventListener("click", () => {
+                imageList.scrollBy({
+                    left: -getScrollAmount(),
+                    behavior: "smooth"
+                });
+            });
+
+            /* =====================
+               SCROLL EVENT
+            ====================== */
+            imageList.addEventListener("scroll", () => {
+                updateThumbPosition();
+                updateButtons();
+            });
+
+            /* =====================
+               DRAG SCROLLBAR
+            ====================== */
+            scrollbarThumb.addEventListener("mousedown", function (e) {
+
+                const startX = e.clientX;
+                const startLeft = scrollbarThumb.offsetLeft;
+                const maxThumbMove =
+                    sliderScrollbar.clientWidth - scrollbarThumb.offsetWidth;
+
+                function onMouseMove(e) {
+                    let newLeft = startLeft + (e.clientX - startX);
+
+                    newLeft = Math.max(0, Math.min(maxThumbMove, newLeft));
+
+                    const scrollRatio = newLeft / maxThumbMove;
+                    imageList.scrollLeft = scrollRatio * getMaxScroll();
+
+                    scrollbarThumb.style.left = newLeft + "px";
+                }
+
+                function onMouseUp() {
+                    document.removeEventListener("mousemove", onMouseMove);
+                    document.removeEventListener("mouseup", onMouseUp);
+                }
+
+                document.addEventListener("mousemove", onMouseMove);
+                document.addEventListener("mouseup", onMouseUp);
+            });
+
+            /* =====================
+               INIT
+            ====================== */
+            updateThumbWidth();
+            updateThumbPosition();
+            updateButtons();
+
+            window.addEventListener("resize", () => {
+                updateThumbWidth();
+                updateThumbPosition();
+            });
+
+        });
+
+
+
+        
     </script>
+
+
 
 
     <script src="main.js"></script>

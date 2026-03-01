@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Press | Stylist</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --accent-color: #a65252;
+            --text-dark: #3b1d23;
+            --text-light: #666;
+            --border-color: #f0f0f0;
+            --bg-cream: #fdfaf9;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            margin: 0;
+            background: #fff;
+            color: var(--text-dark);
+        }
+
+        /* Hero Section */
+        .press-hero {
+            padding: 160px 10% 80px;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 0.8rem;
+            letter-spacing: 5px;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .press-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 40px;
+        }
+
+        /* Logo Bar */
+        .press-logos {
+            padding: 40px 10%;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            filter: grayscale(1);
+            opacity: 0.6;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .press-logos span {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* Press Grid */
+        .press-grid {
+            padding: 100px 10%;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .press-card {
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s ease;
+        }
+
+        .press-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .press-image {
+            width: 100%;
+            aspect-ratio: 4/5;
+            background: var(--bg-cream);
+            margin-bottom: 20px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .press-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .press-card .date {
+            font-size: 0.75rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .press-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .press-card .source {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        /* Media Kit Section */
+        .media-kit-section {
+            background: var(--bg-cream);
+            padding: 100px 10%;
+            text-align: center;
+        }
+
+        .media-kit-box {
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid #f0e6e3;
+            padding: 60px;
+            background: #fff;
+            border-radius: 4px;
+        }
+
+
+        /* Premium CTA Box */
+        .faq-footer-cta {
+            text-align: center;
+            margin: 100px auto 40px;
+            padding: 80px 40px;
+            background: var(--bg-cream);
+            border: 1px solid #f0e6e3;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .faq-footer-cta h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            margin-top: 20px;
+            display: inline-block;
+            padding: 18px 45px;
+            background: var(--text-dark);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(59, 29, 35, 0.1);
+        }
+
+        .cta-button:hover {
+            background: rgb(59, 29, 35, 0.9);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(166, 82, 82, 0.2);
+        }
+
+
+        @media (max-width: 768px) {
+            .press-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .media-kit-box {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="nav-container"></div>
+
+    <section class="press-hero">
+        <span class="section-subtitle">Stylist in the News</span>
+        <h1>Media & Press</h1>
+        <p style="max-width: 600px; margin: 0 auto; color: var(--text-light); line-height: 1.8;">
+            Discover our latest features, editorial mentions, and brand updates as we redefine the digital styling
+            landscape.
+        </p>
+    </section>
+
+    <div class="press-logos">
+        <span>VOGUE</span>
+        <span>Harper's BAZAAR</span>
+        <span>ELLE</span>
+        <span>Vanity Fair</span>
+        <span>WWD</span>
+    </div>
+
+    <section class="press-grid">
+        <a href="#" class="press-card">
+            <div class="press-image">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80"
+                    alt="Press 1">
+            </div>
+            <span class="date">Feb 2026</span>
+            <h3>The Future of Bespoke: How AI is Personalizing the Runway</h3>
+            <p class="source">Featured in Vogue Business</p>
+        </a>
+
+        <a href="#" class="press-card">
+            <div class="press-image">
+                <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=800&q=80"
+                    alt="Press 2">
+            </div>
+            <span class="date">Jan 2026</span>
+            <h3>10 Styling Services That Are Actually Worth the Investment</h3>
+            <p class="source">Featured in Harper's Bazaar</p>
+        </a>
+
+        <a href="#" class="press-card">
+            <div class="press-image">
+                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80"
+                    alt="Press 3">
+            </div>
+            <span class="date">Dec 2025</span>
+            <h3>Meet the Concierge Redefining Luxury from a Laptop</h3>
+            <p class="source">Featured in Elle Magazine</p>
+        </a>
+    </section>
+
+    <section class="media-kit-section">
+        <div class="media-kit-box">
+            <span class="section-subtitle">Press Assets</span>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin: 15px 0;">Media Kit 2026</h2>
+            <p style="color: var(--text-light);">Download our high-resolution brand assets, executive bios, and company
+                backgrounder for your upcoming feature.</p>
+            <a href="#" class="cta-button">
+                <i class="fa-solid fa-download" style="margin-right: 10px;"></i>
+                Download Assets (42MB)
+            </a>
+        </div>
+    </section>
+
+    <div class="faq-footer-cta">
+        <h3>Media Inquiries</h3>
+        <p>For interview requests, exclusive quotes, or high-res imagery, please contact our PR department.</p>
+        <br>
+        <a href="mailto:press@stylist.com" class="cta-button">Email PR Team</a>
+    </div>
+
+    <div id="footer-container"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("#nav-container").load("nav.html");
+            $("#footer-container").load("footer.html");
+        });
+    </script>
+</body>
+
+</html>

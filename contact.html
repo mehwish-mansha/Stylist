@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/assets/logo/dress.png" type="image/x-icon">
+
 
     <!-- Google Fonts -->
 
@@ -112,6 +114,8 @@
         </iframe>
     </section>
 
+    <div id="toast" class="toast"></div>
+
 
 
 
@@ -131,20 +135,53 @@
 
 
 
-    <script>
-
-        // Navbar and Footer
-
-        $(function () {
-
-            $("#nav-container").load("nav.html", function () {
-                initNavbar();
-            });
-
-            $("#footer-container").load("footer.html");
-
+ <script>
+    // Navbar and Footer Load
+    $(function () {
+        $("#nav-container").load("nav.html", function () {
+            initNavbar();
+            initNavFeatures();
         });
-    </script>
+        $("#footer-container").load("footer.html");
+    });
+
+    // --- Toast Notification Function ---
+    function showToast(message, type = "success") {
+        const $toast = $("#toast");
+        
+        // Remove existing classes and add new ones
+        $toast.removeClass("show success error").addClass("show " + type);
+        $toast.text(message);
+        
+        // Hide after 3 seconds
+        setTimeout(function() {
+            $toast.removeClass("show");
+        }, 3000);
+    }
+
+    // --- Form Submission Logic ---
+    $(document).ready(function () {
+        $(".contact-form form").submit(function (e) {
+            e.preventDefault(); // Stop page refresh
+
+            // Basic validation
+            const firstName = $(this).find('input[placeholder="Mehwish"]').val();
+            const email = $(this).find('input[type="email"]').val();
+            const message = $(this).find('textarea').val();
+
+            if (firstName && email && message) {
+                // Success Scenario
+                showToast("Message sent! We'll get back to you soon.", "success");
+                
+                // Clear the form
+                this.reset();
+            } else {
+                // Error Scenario (if fields are missing)
+                showToast("Please fill in all fields before sending.", "error");
+            }
+        });
+    });
+</script>
 </body>
 
 </html>

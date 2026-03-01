@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stylist</title>
+    <link rel="shortcut icon" href="/assets/logo/dress.png" type="image/x-icon">
 
     <!-- Google Fonts -->
 
@@ -29,6 +30,24 @@
 </head>
 
 <body>
+
+
+    <div id="preloader">
+    <div class="loader-content">
+        <div class="hanger-container">
+            <svg class="hanger-svg" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path class="draw-path" d="M50 10C50 10 50 2 58 2C66 2 66 10 60 12L50 15L5 45H95L50 15Z" stroke="#3b1d23" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <div class="loader-text-wrapper">
+            <p class="loader-text">Stylist</p>
+            <div class="loading-bar"></div>
+        </div>
+    </div>
+</div>
+
+
+
     <div id="nav-container"></div>
 
 
@@ -38,7 +57,7 @@
         <div class="slider-wrapper">
             <div class="slider">
                 <div id="slide-1" class="slide active">
-                    <img src="./assets/carousel/pexels4.jpg" alt="hero image">
+                    <img src="./assets/carousel/carousel.jpg" alt="hero image">
                     <div class="slide-content">
                         <p>Personal Styling, Reimagined</p>
                         <h1>New Arrivals</h1>
@@ -50,7 +69,7 @@
                     </div>
                 </div>
                 <div id="slide-2" class="slide">
-                    <img src="./assets/carousel/pexels5.jpg" alt="hero image">
+                    <img src="./assets/carousel/pexels4.jpg" alt="hero image">
                     <div class="slide-content">
                         <p>Personal Styling, Reimagined</p>
                         <h1>Stylish & Modern</h1>
@@ -62,7 +81,7 @@
                     </div>
                 </div>
                 <div id="slide-3" class="slide">
-                    <img src="./assets/carousel/pexels6.jpg" alt="hero image">
+                    <img src="./assets/carousel/hero-western.webp" alt="hero image">
                     <div class="slide-content">
                         <p>Personal Styling, Reimagined</p>
                         <h1>Exclusive Collection</h1>
@@ -82,34 +101,44 @@
         </div>
     </section>
 
+    <section class="how-it-works">
+    <div class="hiw-container">
+        <div class="hiw-header">
+            <p class="section-subtitle">THE PROCESS</p>
+            <h2 class="section-title">How It Works</h2>
+        </div>
 
-    <div class="scroll-slider">
-        <div class="list">
-            <!-- First Set -->
-            <div class="item">Chic</div>
-            <div class="item-dot">·</div>
-            <div class="item">Minimal</div>
-            <div class="item-dot">·</div>
-            <div class="item">Modern</div>
-            <div class="item-dot">·</div>
-            <div class="item">Sleek</div>
-            <div class="item-dot">·</div>
-            <div class="item">Classic</div>
-            <div class="item-dot">·</div>
+        <div class="hiw-grid">
+            <div class="hiw-step">
+                <div class="hiw-icon">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span class="step-number">01</span>
+                </div>
+                <h3>Book a Session</h3>
+                <p>Schedule a one-on-one consultation with your preferred stylist to discuss your goals and body type.</p>
+            </div>
 
-            <!-- Duplicate Set -->
-            <div class="item">Trendy</div>
-            <div class="item-dot">·</div>
-            <div class="item">Elegant</div>
-            <div class="item-dot">·</div>
-            <div class="item">Bold</div>
-            <div class="item-dot">·</div>
-            <div class="item">Fresh</div>
-            <div class="item-dot">·</div>
-            <div class="item">Vogue</div>
-            <div class="item-dot">·</div>
+            <div class="hiw-step">
+                <div class="hiw-icon">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <span class="step-number">02</span>
+                </div>
+                <h3>Get Curated</h3>
+                <p>Receive a personalized digital lookbook featuring pieces handpicked specifically for your style profile.</p>
+            </div>
+
+            <div class="hiw-step">
+                <div class="hiw-icon">
+                    <i class="fa-solid fa-shirt"></i>
+                    <span class="step-number">03</span>
+                </div>
+                <h3>Own Your Style</h3>
+                <p>Try on your new wardrobe with confidence. We help you mix and match for every occasion.</p>
+            </div>
         </div>
     </div>
+</section>
+
 
     <!-- Featured Stylists -->
     <section id="stylist-section" class="stylist">
@@ -174,8 +203,37 @@
     </section>
 
     
+    <div class="scroll-slider">
+        <div class="list">
+            <!-- First Set -->
+            <div class="item">Chic</div>
+            <div class="item-dot">·</div>
+            <div class="item">Minimal</div>
+            <div class="item-dot">·</div>
+            <div class="item">Modern</div>
+            <div class="item-dot">·</div>
+            <div class="item">Sleek</div>
+            <div class="item-dot">·</div>
+            <div class="item">Classic</div>
+            <div class="item-dot">·</div>
 
-    <section class="slider-section">
+            <!-- Duplicate Set -->
+            <div class="item">Trendy</div>
+            <div class="item-dot">·</div>
+            <div class="item">Elegant</div>
+            <div class="item-dot">·</div>
+            <div class="item">Bold</div>
+            <div class="item-dot">·</div>
+            <div class="item">Fresh</div>
+            <div class="item-dot">·</div>
+            <div class="item">Vogue</div>
+            <div class="item-dot">·</div>
+        </div>
+    </div>
+
+    
+
+    <section class="slider-section" id="collection-section">
         <div class="collection-container">
             <div class="collection-header">
                 <p class="collection-subtitle">OUR COLLECTIONS</p>
@@ -323,6 +381,71 @@
     </section>
 
 
+    <section class="testimonials">
+    <div class="testi-container">
+        <p class="section-subtitle">VOICES OF STYLE</p>
+        <h2 class="section-title">Client Transformations</h2>
+        
+        <div class="testi-grid">
+            <div class="testi-card">
+                <div class="quote-icon">“</div>
+                <p class="testi-text">I never knew how much a professional stylist could change my confidence. Maria helped me find pieces that truly represent who I am.</p>
+                <div class="client-info">
+                    <img src="https://ui-avatars.com/api/?name=Sarah+J&background=random" alt="Client">
+                    <div>
+                        <h4>Sarah Jenkins</h4>
+                        <span>Bridal Client</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testi-card">
+                <div class="quote-icon">“</div>
+                <p class="testi-text">The digital lookbook was a game changer. It made getting ready for my corporate events effortless and stylish.</p>
+                <div class="client-info">
+                    <img src="https://ui-avatars.com/api/?name=Ahmed+K&background=random" alt="Client">
+                    <div>
+                        <h4>Ahmed Khan</h4>
+                        <span>Executive Styling</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features">
+    <div class="features-grid">
+        <div class="feature-item">
+            <i class="fa-solid fa-gem"></i>
+            <h4>Curated Excellence</h4>
+            <p>Only the finest fabrics and trendsetting designs.</p>
+        </div>
+        <div class="feature-item">
+            <i class="fa-solid fa-leaf"></i>
+            <h4>Sustainable Fashion</h4>
+            <p>Eco-conscious choices for a better planet.</p>
+        </div>
+        <div class="feature-item">
+            <i class="fa-solid fa-truck-fast"></i>
+            <h4>Express Fitting</h4>
+            <p>Fast delivery and seamless alteration services.</p>
+        </div>
+    </div>
+</section>
+
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2>Ready to Elevate Your Style?</h2>
+            <p>Book a personalized styling session with our expert stylists today and transform your wardrobe.</p>
+            <a href="/contact.html"><button class="btn-primary">Book an Appointment</button></a>
+        </div>
+    </section>
+
+
+    
+
+
 
     <!--Footer Section-->
     <div id="footer-container"></div>
@@ -344,11 +467,31 @@
 
             $("#nav-container").load("nav.html", function () {
                 initNavbar();
+                initNavFeatures();
             });
 
             $("#footer-container").load("footer.html");
 
         });
+
+        // Loader
+
+        window.addEventListener('load', function() {
+    const loader = document.getElementById('preloader');
+    
+    // 1. Ensure the user sees the animation for at least 1.5 seconds
+    // 2. Add the slide-up class
+    setTimeout(() => {
+        loader.classList.add('fade-out');
+        
+        // 3. Completely remove from DOM after the transition ends
+        setTimeout(() => {
+            loader.style.display = 'none';
+            // Enable scrolling once loader is gone
+            document.body.style.overflow = 'auto';
+        }, 800); // Matches the 0.8s CSS transition
+    }, 1500); 
+});
 
 
 

@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./assets/logo/Favicon.png" type="image/x-icon">
-    <title>Sample Navbar</title>
+    <title>Navbar | Stylist</title>
+
+    <link rel="shortcut icon" href="/assets/logo/dress.png" type="image/x-icon">
+
 
 
     <!-- External Css -->
@@ -41,10 +44,10 @@
 
             <!-- Right Icons -->
             <div class="nav-icons">
-                <div class="nav-search">
+                <!-- <div class="nav-search">
                     <i class="fa-solid fa-magnifying-glass search-icon"></i>
                     <input type="text" placeholder="Search" name="search" id="search-input">
-                </div>
+                </div> -->
                 <a href="/login.html"><i class="fa-regular fa-user"></i></a>
                 <a href="/favourites.html"><i class="fa-regular fa-heart"></i></a>
                 <div class="cart-icon">
@@ -57,6 +60,8 @@
         </div>
 
         <!-- Hidden Menu -->
+
+        <div class="nav-overlay" id="navOverlay"></div>
         <ul class="nav-links" id="navLinks">
 
             <!-- Close Button -->
@@ -74,11 +79,13 @@
                 </div>
 
                 <ul class="submenu">
-                    <li><a href="#">Personal Stylist</a></li>
-                    <li><a href="#">Bridal Stylist</a></li>
-                    <li><a href="#">Celebrity Stylist</a></li>
-                    <li><a href="#">Fashion Consultant</a></li>
-                    <li><a href="#">Virtual Styling</a></li>
+                    <li><a href="/stylists.html">Maria. B.</a></li>
+                    <li><a href="/stylists.html">Zara Shahid</a></li>
+                    <li><a href="/stylists.html">Hassan Sheheyar Yasin </a></li>
+                    <li><a href="/stylists.html">Hania Mirza Couture</a></li>
+                    <li><a href="/stylists.html">Sofia Laurent</a></li>
+                    <li><a href="/stylists.html">Ali Khan</a></li>
+
 
                 </ul>
 
@@ -224,7 +231,7 @@
                 <span>Total:</span>
                 <span>$120</span>
             </div>
-            <button class="checkout-btn">Checkout</button>
+            <a href="chechout.html"><button class="checkout-btn">Checkout</button></a>
         </div>
     </div>
 
@@ -233,101 +240,11 @@
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
 
 
 
-    <script>
-        $(document).ready(function () {
-
-            // Toggle search bar expansion
-            $(".search-icon").click(function () {
-                $(".nav-search").toggleClass("active");
-                const $input = $("#search-input");
-
-                if ($(".nav-search").hasClass("active")) {
-                    $input.focus();
-                    $(".page-content").addClass("page-blur"); // blur content
-                } else {
-                    $input.val("");
-                    $(".page-content").removeClass("page-blur");
-                }
-            });
-
-            // Keep blur while typing
-            $("#search-input").on("focus input", function () {
-                $(".page-content").addClass("page-blur");
-            });
-
-            // Remove blur when search loses focus & empty
-            $("#search-input").on("blur", function () {
-                if ($(this).val() === "") {
-                    $(".page-content").removeClass("page-blur");
-                    $(".nav-search").removeClass("active");
-                }
-            });
-
-        });
-
-        // ====== CART TOGGLE MENU ======
-        const cartIcon = document.querySelector(".cart-icon");
-        const cartSidebar = document.querySelector(".cart-sidebar");
-        const cartOverlay = document.querySelector(".cart-overlay");
-        const closeCart = document.querySelector(".close-cart");
-
-        function openCart() {
-            cartSidebar.classList.add("active");
-            cartOverlay.classList.add("active");
-            document.body.classList.add("cart-open");  // lock scroll
-        }
-
-        function closeCartSidebar() {
-            cartSidebar.classList.remove("active");
-            cartOverlay.classList.remove("active");
-            document.body.classList.remove("cart-open");  // unlock scroll
-        }
-
-        cartIcon.addEventListener("click", openCart);
-        closeCart.addEventListener("click", closeCartSidebar);
-        cartOverlay.addEventListener("click", closeCartSidebar);
-
-        // ====== QUANTITY + PRICE LOGIC ======
-        document.addEventListener("click", function (e) {
-            if (e.target.classList.contains("qty-plus") || e.target.classList.contains("qty-minus")) {
-
-                const cartItem = e.target.closest(".cart-item");
-                const qtyElement = cartItem.querySelector(".qty-value");
-                const priceElement = cartItem.querySelector(".price");
-
-                let quantity = parseInt(qtyElement.textContent);
-                const basePrice = parseFloat(priceElement.dataset.price);
-
-                if (e.target.classList.contains("qty-plus")) quantity++;
-                if (e.target.classList.contains("qty-minus") && quantity > 1) quantity--;
-
-                qtyElement.textContent = quantity;
-                priceElement.textContent = "$" + (basePrice * quantity).toFixed(2);
-
-                updateCartTotal();
-            }
-        });
-
-        // ====== UPDATE TOTAL ======
-        function updateCartTotal() {
-            let total = 0;
-            document.querySelectorAll(".cart-item").forEach(item => {
-                const priceText = item.querySelector(".price").textContent.replace("$", "");
-                total += parseFloat(priceText);
-            });
-            const totalElement = document.querySelector(".cart-total span:last-child");
-            if (totalElement) totalElement.textContent = "$" + total.toFixed(2);
-        }
-
-        // Initial total on page load
-        updateCartTotal();
-
-
-    </script>
-
+    
 
 
 

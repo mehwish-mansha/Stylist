@@ -1,261 +1,400 @@
-// Navbar Scroll Affect
-$("#nav-container").load("/nav.html", function () {
+/**
+ * STYLISTS GLOBAL DATA
+ * Defined outside of $(document).ready so it is accessible globally 
+ * (necessary for your Comparison page to function).
+ */
+const stylistData = {
+    "Maria.b": {
+        name: "Maria B.",
+        category: "Bridal and Wedding",
+        rating: "4.9 · 27 yrs",
+        photo: "./assets/Stylists/stylist 1.webp",
+        bio: "Expert in bridal elegance and wedding couture. 27 years of experience styling brides.",
+        collections: [
+            { title: "Bridal Elegance 1", img: "./assets/collection/Bridal1.jpg", price: "$2,800", fabric: "French Lace" },
+            { title: "Bridal Elegance 2", img: "./assets/collection/Bridal2.jpg", price: "$3,200", fabric: "Silk" },
+            { title: "Bridal Elegance 3", img: "./assets/collection/Bridal3.jpg", price: "$2,500", fabric: "Chiffon" },
+            { title: "Bridal Elegance 4", img: "./assets/collection/Bridal4.webp", price: "$4,000", fabric: "Organza" },
+            { title: "Bridal Elegance 5", img: "./assets/collection/Bridal5.jpg", price: "$3,500", fabric: "Tulle" },
+            { title: "Bridal Elegance 6", img: "./assets/collection/Bridal6.webp", price: "$3,800", fabric: "Satin" },
+            { title: "Bridal Elegance 7", img: "./assets/collection/Bridal7.jpg", price: "$4,500", fabric: "Georgette" },
+            { title: "Bridal Elegance 8", img: "./assets/collection/Bridal8.jpg", price: "$5,000", fabric: "Velvet" },
+            { title: "Bridal Elegance 9", img: "./assets/collection/Bridal9.jpg", price: "$4,200", fabric: "Crepe" },
+            { title: "Bridal Elegance 10", img: "./assets/collection/Bridal10.webp", price: "$3,900", fabric: "Lace" }
 
-    $(window).on("scroll", function () {
+        ]
+    },
+    "Zara Shahid": {
+        name: "Zara Shahid",
+        category: "Luxury Pret",
+        rating: "4.7 · 8 yrs",
+        photo: "./assets/Stylists/stylist4.webp",
+        bio: "Luxury pret designer with 8 years of experience creating elegant ready-to-wear pieces.",
+        collections: [
+            { title: "Luxury Line 1", img: "./assets/collection/luxury1.webp", price: "$450", fabric: "Raw Silk" },
+            { title: "Luxury Line 2", img: "./assets/collection/luxury2.webp", price: "$600", fabric: "Velvet" },
+            { title: "Luxury Line 3", img: "./assets/collection/luxury3.webp", price: "$350", fabric: "Cotton" },
+            { title: "Luxury Line 4", img: "./assets/collection/luxury4.jpg", price: "$500", fabric: "Linen" },
+            { title: "Luxury Line 5", img: "./assets/collection/luxury5.webp", price: "$550", fabric: "Silk" },
+            { title: "Luxury Line 6", img: "./assets/collection/luxury6.jpg", price: "$400", fabric: "Chiffon" },
+            { title: "Luxury Line 7", img: "./assets/collection/luxury7.jpg", price: "$450", fabric: "Georgette" },
+            { title: "Luxury Line 8", img: "./assets/collection/luxury8.webp", price: "$500", fabric: "Organza" },
+            { title: "Luxury Line 9", img: "./assets/collection/luxury9.webp", price: "$550", fabric: "Satin" },
+            { title: "Luxury Line 10", img: "./assets/collection/luxury10.webp", price: "$600", fabric: "Crepe" },
+            { title: "Luxury Line 11", img: "./assets/collection/luxury11.jpg", price: "$650", fabric: "Tulle" },
+            { title: "Luxury Line 12", img: "./assets/collection/luxury12.webp", price: "$700", fabric: "Lace" },
+            { title: "Luxury Line 13", img: "./assets/collection/luxury13.jpg", price: "$750", fabric: "Raw Silk" },
+            { title: "Luxury Line 14", img: "./assets/collection/luxury14.webp", price: "$800", fabric: "Velvet" }
+            
 
-        let scroll = $(this).scrollTop();
-        let maxScroll = 400;
+        ]
+    },
+    "hania": {
+        name: "Hania Mirza Couture",
+        category: "Couture & Formal",
+        rating: "4.8 · 15 yrs",
+        photo: "./assets/Stylists/stylist3.jfif",
+        bio: "Specializing in high-end couture and intricate formal wear for over 15 years.",
+        collections: [
+            { title: "Couture Gold 1", img: "./assets/collection/hania1.jpg", price: "$1,200", fabric: "Net" },
+            { title: "Couture Gold 2", img: "./assets/collection/hania2.jpg", price: "$1,500", fabric: "Mysuri" },
+            { title: "Couture Gold 3", img: "./assets/collection/hania3.jpg", price: "$900", fabric: "Organza" },
+            { title: "Couture Gold 4", img: "./assets/collection/hania4.jpg", price: "$2,000", fabric: "Handwoven Silk" },
+            { title: "Couture Gold 5", img: "./assets/collection/hania5.jpg", price: "$1,800", fabric: "Chiffon" },
+            { title: "Couture Gold 6", img: "./assets/collection/hania6.jpg", price: "$1,600", fabric: "Georgette" }
+        ]
+    },
+    "sofia": {
+        name: "Sofia Laurent",
+        category: "Contemporary Western",
+        rating: "4.6 · 10 yrs",
+        photo: "./assets/Stylists/stylist4.jfif",
+        bio: "Modern aesthetics meeting western silhouettes for the contemporary woman.",
+        collections: [
+            { title: "Modernist 1", img: "./assets/collection/sofia1.jpg", price: "$300", fabric: "Crepe" },
+            { title: "Modernist 2", img: "./assets/collection/sofia2.webp", price: "$450", fabric: "Tweed" },
+            { title: "Modernist 3", img: "./assets/collection/sofia3.webp", price: "$280", fabric: "Cotton Poplin" },
+            { title: "Modernist 4", img: "./assets/collection/sofia4.webp", price: "$350", fabric: "Linen" },
+            { title: "Modernist 5", img: "./assets/collection/sofia5.webp", price: "$400", fabric: "Silk Blend" },
+            { title: "Modernist 6", img: "./assets/collection/sodia6.webp", price: "$320", fabric: "Denim" }
+        ]
+    },
+    "ali": {
+        name: "Ali Khan",
+        category: "Men's Formal",
+        rating: "4.5 · 12 yrs",
+        photo: "./assets/Stylists/stylist4.webp",
+        bio: "Master tailor and designer focusing on sharp, bespoke men's formal attire.",
+        collections: [
+            { title: "Heritage Suit 1", img: "./assets/collection/ali1.webp", price: "$800", fabric: "Italian Wool" },
+            { title: "Heritage Suit 2", img: "./assets/collection/ali2.webp", price: "$1,100", fabric: "Cashmere Blend" },
+            { title: "Heritage Suit 3", img: "./assets/collection/ali3.webp", price: "$650", fabric: "Linen" }
+        ]
+    },
+    "amina": {
+        name: "Amina Qureshi",
+        category: "Bridal Accessories",
+        rating: "4.8 · 9 yrs",
+        photo: "./assets/Stylists/stylist6.jpg",
+        bio: "Crafting the final touches that complete every bride's dream look.",
+        collections: [
+            { title: "Ethereal Veil 1", img: "./assets/collection/amina1.jpg", price: "$200", fabric: "Soft Tulle" },
+            { title: "Ethereal Veil 2", img: "./assets/collection/amina2.webp", price: "$500", fabric: "Embroidered Net" },
+            { title: "Ethereal Veil 3", img: "./assets/collection/amina3.webp", price: "$350", fabric: "Lace" },
+            { title: "Ethereal Veil 4", img: "./assets/collection/amina4.jpg", price: "$400", fabric: "Silk" },
+            { title: "Ethereal Veil 5", img: "./assets/collection/amina5.webp", price: "$450", fabric: "Organza" },
+                { title: "Ethereal Veil 6", img: "./assets/collection/amina6.webp", price: "$300", fabric: "Chiffon" },
+                { title: "Ethereal Veil 7", img: "./assets/collection/amina7.webp", price: "$250", fabric: "Georgette" },
+                { title: "Ethereal Veil 8", img: "./assets/collection/amina8.jpg", price: "$400", fabric: "Velvet" },
+                { title: "Ethereal Veil 9", img: "./assets/collection/amina9.jpg", price: "$350", fabric: "Satin" },
+                { title: "Ethereal Veil 10", img: "./assets/collection/amina10.jpg", price: "$450", fabric: "Tulle" },
+                { title: "Ethereal Veil 11", img: "./assets/collection/amina11.webp", price: "$500", fabric: "Lace" },
+                { title: "Ethereal Veil 12", img: "./assets/collection/amina12.jpg", price: "$300", fabric: "Silk" }
+        ]
+    },
+    "karim": {
+        name: "Karim Ali",
+        category: "Street Style",
+        rating: "4.6 · 7 yrs",
+        photo: "./assets/Stylists/stylist7.webp",
+        bio: "Innovative urban fashion that blends comfort with high-street trends.",
+        collections: [
+            { title: "Urban Pulse 1", img: "./assets/collection/karim1.webp", price: "$150", fabric: "Denim" },
+            { title: "Urban Pulse 2", img: "./assets/collection/karim2.webp", price: "$120", fabric: "Heavy Jersey" },
+            { title: "Urban Pulse 3", img: "./assets/collection/karim3.webp", price: "$100", fabric: "Canvas" },
+            { title: "Urban Pulse 4", img: "./assets/collection/karim4.webp", price: "$130", fabric: "Corduroy" }
+        ]
+    },
+    "leila": {
+        name: "Leila Noor",
+        category: "Evening Wear",
+        rating: "4.9 · 11 yrs",
+        photo: "./assets/Stylists/stylist8.jpg",
+        bio: "Creating breathtaking evening gowns for red carpets and gala events.",
+        collections: [
+            { title: "Midnight Glow 1", img: "./assets/collection/leila1.webp", price: "$1,800", fabric: "Sequined Satin" },
+            { title: "Midnight Glow 2", img: "./assets/collection/leila2.webp", price: "$2,200", fabric: "Velvet" },
+            { title: "Midnight Glow 3", img: "./assets/collection/leila3.webp", price: "$1,600", fabric: "Chiffon Overlay" },
+            { title: "Midnight Glow 4", img: "./assets/collection/leila4.webp", price: "$2,500", fabric: "Silk" },
+        ]
+    }
+};
 
-        let alpha = 1 - (scroll / maxScroll) * 0.4;
-        alpha = Math.max(alpha, 0.9);
-
-        $(".nav-container").css("background-color",
-            "rgba(255,255,255," + alpha + ")"
-        );
-
-    });
-
+$(document).ready(function () {
+    initNavbarScroll();
+    initNavbarToggle();
+    initNavFeatures();
+    initCartCalculations(); // <--- ADD THIS
+    initCounters();
+    initCollectionSlider();
+    initStylistProfileSystem();
 });
 
+// ================= 1. Navigation Logic =================
 
-
-// ================= Navbar & Sidebar =================
-function initNavbar() {
-    const hamburger = document.getElementById("hamburger");
-    const navLinks = document.getElementById("navLinks");
-    const closeBtn = document.getElementById("closeBtn");
-
-    if (!hamburger || !navLinks || !closeBtn) return;
-
-    hamburger.addEventListener("click", () => {
-        navLinks.classList.add("active");
-        document.body.style.overflow = "hidden";
-    });
-
-    closeBtn.addEventListener("click", () => {
-        navLinks.classList.remove("active");
-        document.body.style.overflow = "";
-    });
-
-    document.addEventListener("click", (event) => {
-        if (!navLinks.contains(event.target) && !hamburger.contains(event.target)) {
-            navLinks.classList.remove("active");
-            document.body.style.overflow = "";
-        }
-    });
-
-    // Dropdowns (only one open at a time)
-    const dropdowns = document.querySelectorAll(".dropdown");
-    dropdowns.forEach(dropdown => {
-        const header = dropdown.querySelector(".dropdown-header");
-        const submenu = dropdown.querySelector(".submenu");
-        const icon = header.querySelector("i");
-
-        header.addEventListener("click", () => {
-            dropdowns.forEach(other => {
-                if (other !== dropdown) {
-                    other.querySelector(".submenu").classList.remove("active");
-                    other.querySelector(".dropdown-header i").classList.remove("rotate");
-                }
+function initNavbarScroll() {
+    // Load the navbar only if the container exists
+    if ($("#nav-container").length) {
+        $("#nav-container").load("/nav.html", function () {
+            // Once loaded, we can check scroll behavior
+            $(window).on("scroll", function () {
+                let scroll = $(this).scrollTop();
+                let alpha = Math.max(1 - (scroll / 400) * 0.1, 0.9);
+                $(".nav-container").css("background-color", `rgba(255,255,255,${alpha})`);
             });
-            submenu.classList.toggle("active");
-            icon.classList.toggle("rotate");
         });
-    });
+    }
 }
 
-// ================= Collection Slider =================
-$(document).ready(function () {
-    const $slider = $(".collection-grid");
-    const $cards = $(".collection-item");
-    const $next = $(".next-btn");
-    const $prev = $(".prev-btn");
-    let visibleCards = $(window).width() < 992 ? 2 : 4;
-    let currentIndex = 0;
+function initNavbarToggle() {
+    let scrollPosition = 0;
 
-    function getCardWidth() {
-        return $cards.outerWidth(true);
-    }
+    // 1. OPEN SIDEBAR (Delegated to document so it's universal)
+    $(document).on("click", "#hamburger", function (e) {
+        e.preventDefault();
+        scrollPosition = window.scrollY;
 
-    function maxIndex() {
-        return Math.max(0, $cards.length - visibleCards);
-    }
-
-    $next.on("click", function () {
-        if (currentIndex < maxIndex()) {
-            currentIndex++;
-            $slider.css("transform", `translateX(-${getCardWidth() * currentIndex}px)`);
-        }
+        // Lock body and show menu
+        $("body").addClass("nav-open").css("top", `-${scrollPosition}px`);
+        $("#navLinks").addClass("active");
+        $("#navOverlay").addClass("active");
     });
 
-    $prev.on("click", function () {
-        if (currentIndex > 0) {
-            currentIndex--;
-            $slider.css("transform", `translateX(-${getCardWidth() * currentIndex}px)`);
-        }
-    });
+    // 2. CLOSE SIDEBAR
+    const closeSidebar = () => {
+        if (!$("#navLinks").hasClass("active")) return;
 
-    $(window).on("resize", function () {
-        visibleCards = $(window).width() < 992 ? 2 : 4;
-        $slider.css("transform", `translateX(-${getCardWidth() * currentIndex}px)`);
-    });
-});
+        $("body").removeClass("nav-open").css("top", "");
+        window.scrollTo(0, scrollPosition);
 
-// ================= About Section Counters =================
-const counters = document.querySelectorAll(".counter");
-const speed = 200;
-
-function startCounting(counter) {
-    const target = +counter.getAttribute("data-target");
-    let count = 0;
-    const increment = target / speed;
-
-    function updateCount() {
-        count += increment;
-        if (count < target) {
-            counter.innerText = Math.floor(count);
-            requestAnimationFrame(updateCount);
-        } else {
-            if (target >= 1000) {
-                counter.innerText = Math.floor(target / 1000) + "K+";
-            } else {
-                counter.innerText = target + "+";
-            }
-        }
-    }
-    updateCount();
-}
-
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.innerText = "0";
-            startCounting(entry.target);
-        }
-    });
-}, { threshold: 0.5 });
-
-counters.forEach(counter => observer.observe(counter));
-
-// ================= Stylist Profile =================
-$(document).ready(function () {
-    const stylistData = {
-        "Maria.b": {
-            name: "Maria B.",
-            category: "Bridal and Wedding",
-            rating: "4.9 · 27 yrs",
-            photo: "./assets/Stylists/stylist 1.webp",
-            bio: "Expert in bridal elegance and wedding couture. 27 years of experience styling brides.",
-            collections: [
-                { title: "Bridal Elegance", img: "./assets/collection/Bridal1.jpg" },
-                { title: "Bridal Elegance", img: "./assets/collection/Bridal2.jpg" },
-                { title: "Bridal Elegance", img: "./assets/collection/Bridal3.jpg" },
-                { title: "Bridal Elegance", img: "./assets/collection/Bridal4.webp" },
-                { title: "Bridal Elegance", img: "./assets/collection/Bridal5.jpg" },
-                { title: "Bridal Elegance", img: "./assets/collection/Bridal6.webp" },
-                { title: "Bridal Elegance", img: "./assets/collection/Bridal7.jpg" },
-                { title: "Bridal Elegance", img: "./assets/collection/Bridal8.jpg" },
-                { title: "Bridal Elegance", img: "./assets/collection/Bridal9.jpg" },
-                { title: "Bridal Elegance", img: "./assets/collection/Bridal10.webp" },
-            ]
-        },
-        "Zara Shahid": {
-            name: "Zara Shahid",
-            category: "Luxury Pret",
-            rating: "4.7 · 8 yrs",
-            photo: "./assets/Stylists/stylist2.jfif",
-            bio: "Luxury pret designer with 8 years of experience creating elegant ready-to-wear pieces.",
-            collections: [
-                { title: "Luxury Line", img: "./assets/collection/luxury1.webp" },
-                { title: "Luxury Line", img: "./assets/collection/luxury2.webp" },
-                { title: "Luxury Line", img: "./assets/collection/luxury3.webp" },
-                { title: "Luxury Line", img: "./assets/collection/luxury4.jpg" },
-                { title: "Luxury Line", img: "./assets/collection/luxury5.webp" },
-                { title: "Luxury Line", img: "./assets/collection/luxury6.jpg" },
-                { title: "Luxury Line", img: "./assets/collection/luxury7.jpg" },
-                { title: "Luxury Line", img: "./assets/collection/luxury8.webp" },
-                { title: "Luxury Line", img: "./assets/collection/luxury9.webp" },
-                { title: "Luxury Line", img: "./assets/collection/luxury10.webp" },
-                { title: "Luxury Line", img: "./assets/collection/luxury11.jpg" },
-                { title: "Luxury Line", img: "./assets/collection/luxury12.webp" },
-                { title: "Luxury Line", img: "./assets/collection/luxury13.jpg" },
-                { title: "Luxury Line", img: "./assets/collection/luxury14.webp" }]
-        }
-        // 10 more stylists
+        $("#navLinks").removeClass("active");
+        $("#navOverlay").removeClass("active");
     };
 
-    function showStylistProfile(data) {
-        $("#profile-photo").attr("src", data.photo);
-        $("#profile-name").text(data.name);
-        $("#profile-category").text(data.category);
-        $("#profile-rating").html('<span><i class="fa-solid fa-star"></i></span> ' + data.rating);
-        $("#profile-bio").text(data.bio);
-        $(".stylist-collection-heading").text(`${data.name}'s Collections`);
+    $(document).on("click", "#closeBtn, #navOverlay, .nav-links a", closeSidebar);
 
-        $("#profile-collections").empty();
-        data.collections.forEach(col => {
-            $("#profile-collections").append(`
-                <div class="collection-item">
-                    <img src="${col.img}" alt="${col.title}">
-                    <div class="collection-overlay">
-                        <div class="overlay-left">
-                            <span>View Details</span>
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </div>
-                        <div class="overlay-right">
-                            <i class="fa-regular fa-eye"></i>
-                            <i class="fa-regular fa-heart"></i>
-                        </div>
-                    </div>
-                    <div class="collection-details">
-                        <h4>${col.title}</h4>
-                        <p>$350</p>
-                    </div>
-                </div>
-            `);
+    // 3. DROPDOWN LOGIC (Universal)
+    $(document).on("click", ".dropdown-header", function () {
+        const $submenu = $(this).next(".submenu");
+        const $icon = $(this).find("i");
+
+        // Close other submenus
+        $(".submenu").not($submenu).removeClass("active");
+        $(".dropdown-header i").not($icon).removeClass("rotate");
+
+        // Toggle current
+        $submenu.toggleClass("active");
+        $icon.toggleClass("rotate");
+    });
+}
+
+
+function initNavFeatures() {
+    // 1. SEARCH TOGGLE (Opening/Closing the bar)
+    $(document).on("click", ".search-icon", function () {
+        $(".nav-search").toggleClass("active");
+        const $input = $("#search-input");
+
+        if ($(".nav-search").hasClass("active")) {
+            $input.focus();
+            $(".page-content").addClass("page-blur");
+        } else {
+            $input.val("");
+            $(".page-content").removeClass("page-blur");
+            $(".main-stylist-card").show(); // Reset visibility when closed
+        }
+    });
+
+    // 2. REAL-TIME SEARCH FILTER
+    // This looks at the text inside your Stylist cards and filters them as you type
+    $(document).on("input", "#search-input", function () {
+        const value = $(this).val().toLowerCase();
+
+        $(".main-stylist-card").filter(function () {
+            // Searches the name (h3) and category (p) inside each card
+            const name = $(this).find("h3").text().toLowerCase();
+            const category = $(this).find("p").text().toLowerCase();
+
+            // Toggle visibility: show if matches, hide if not
+            $(this).toggle(name.indexOf(value) > -1 || category.indexOf(value) > -1);
         });
+    });
 
+    // 3. CART SIDEBAR LOGIC (Preserved from your code)
+    let scrollPos = 0;
+    const toggleCart = (open) => {
+        if (open) {
+            scrollPos = window.scrollY;
+            $("body").addClass("cart-open").css("top", `-${scrollPos}px`);
+            $(".cart-sidebar, .cart-overlay").addClass("active");
+        } else {
+            $("body").removeClass("cart-open").css("top", "");
+            window.scrollTo(0, scrollPos);
+            $(".cart-sidebar, .cart-overlay").removeClass("active");
+        }
+    };
+
+    $(document).on("click", ".cart-icon", () => toggleCart(true));
+    $(document).on("click", ".close-cart, .cart-overlay", () => toggleCart(false));
+}
+
+
+function initCartCalculations() {
+    // 1. Quantity Increase
+    $(document).on("click", ".qty-plus", function () {
+        let $qtySpan = $(this).siblings(".qty-value");
+        let currentQty = parseInt($qtySpan.text());
+        $qtySpan.text(currentQty + 1);
+        updateCartTotals($(this).closest(".cart-item"));
+    });
+
+    // 2. Quantity Decrease
+    $(document).on("click", ".qty-minus", function () {
+        let $qtySpan = $(this).siblings(".qty-value");
+        let currentQty = parseInt($qtySpan.text());
+        if (currentQty > 1) {
+            $qtySpan.text(currentQty - 1);
+            updateCartTotals($(this).closest(".cart-item"));
+        }
+    });
+
+    // 3. Remove Item Logic (The "X" or closing icon you mentioned)
+    $(document).on("click", ".remove-item", function () {
+        $(this).closest(".cart-item").fadeOut(300, function () {
+            $(this).remove();
+            calculateGrandTotal();
+        });
+    });
+
+    function updateCartTotals($item) {
+        let qty = parseInt($item.find(".qty-value").text());
+        let basePrice = parseFloat($item.find(".price").data("price"));
+        let newPrice = (qty * basePrice).toFixed(2);
+
+        $item.find(".price").text(`$${newPrice}`);
+        calculateGrandTotal();
     }
 
-    $(".stylist-card").on("click", function () {
-        const key = $(this).data("stylist");
-        if (!stylistData[key]) return;
+    function calculateGrandTotal() {
+        let total = 0;
+        $(".cart-item .price").each(function () {
+            let val = parseFloat($(this).text().replace('$', ''));
+            total += val;
+        });
+        $(".cart-total span:last-child").text(`$${total.toFixed(2)}`);
+    }
+}
 
-        localStorage.setItem("selectedStylist", key);
-        showStylistProfile(stylistData[key]);
+// ================= 2. Stylist Profile System =================
 
-        $(".stylist, .stylist-testimonials, .booking-section").hide();
+function initWishlistToCartLogic() {
+    $(document).on('click', '.move-btn', function() {
+        const $favItem = $(this).closest('.fav-item');
+        
+        const itemData = {
+            name: $favItem.find('h3').text(),
+            price: $favItem.find('.price').text().replace('$', '').trim(),
+            img: $favItem.find('img').attr('src')
+        };
 
-        $("#stylist-profile").fadeIn();
+        const cartItemHTML = `
+            <div class="cart-item">
+                <img src="${itemData.img}">
+                <div class="cart-item-details">
+                    <h4 class="dress-name">${itemData.name}</h4>
+                    <div class="cart-bottom">
+                        <div class="quantity-box">
+                            <button class="qty-minus">−</button>
+                            <span class="qty-value">1</span>
+                            <button class="qty-plus">+</button>
+                        </div>
+                        <p class="price" data-price="${itemData.price}">$${itemData.price}</p>
+                        <i class="fa-solid fa-trash remove-item"></i>
+                    </div>
+                </div>
+            </div>`;
 
-        $("html, body").animate({ scrollTop: 0 }, 500);
+        $('.cart-sidebar .cart-items-container').append(cartItemHTML);
+        $favItem.fadeOut();
+        calculateGrandTotal(); // Updates the bottom total immediately
 
-        const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + "?stylist=" + encodeURIComponent(key);
-        window.history.replaceState({ path: newUrl }, "", newUrl);
+        // Toggle Sections
+        $(".stylist, .stylist-testimonials, .booking-section, .slider-section").fadeOut(300, () => {
+            $("#stylist-profile").fadeIn();
+            $("html, body").animate({ scrollTop: 0 }, 500);
+        });
+
+        // Update URL
+        const cleanUrl = `${window.location.pathname}?stylist=${encodeURIComponent(key)}`;
+        window.history.pushState({ path: cleanUrl }, "", cleanUrl);
     });
 
+    // Back Button
     $("#back-to-stylists").on("click", function () {
-        $(".stylist, .stylist-testimonials, .booking-section, .slider-section").fadeIn();
-        $("#stylist-profile").hide();
-        $("html, body").animate({ scrollTop: 0 }, 500);
-        localStorage.removeItem("selectedStylist");
-        window.history.replaceState({}, "", window.location.pathname);
+        $("#stylist-profile").fadeOut(300, () => {
+            $(".stylist, .stylist-testimonials, .booking-section, .slider-section").fadeIn();
+            window.history.pushState({}, "", window.location.pathname);
+        });
+    });
+}
+
+// ================= 3. UI Utilities =================
+
+function initCounters() {
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const $this = $(entry.target);
+                const target = parseInt($this.data("target"));
+                $({ count: 0 }).animate({ count: target }, {
+                    duration: 2000,
+                    easing: "swing",
+                    step: function () {
+                        $this.text(Math.floor(this.count));
+                    },
+                    complete: function () {
+                        $this.text(target >= 1000 ? Math.floor(target / 1000) + "K+" : target + "+");
+                    }
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll(".counter").forEach(c => observer.observe(c));
+}
+
+function initCollectionSlider() {
+    const $slider = $(".collection-grid");
+    if (!$slider.length) return;
+
+    $(".next-btn").on("click", () => {
+        const scrollAmount = $(".collection-item").outerWidth(true);
+        $slider.animate({ scrollLeft: $slider.scrollLeft() + scrollAmount }, 400);
     });
 
-    //stylist profile reload ----------
-    // if (window.location.pathname.includes("stylists.html")) {
-
-    //     let savedStylist = localStorage.getItem("selectedStylist");
-    //     const urlParams = new URLSearchParams(window.location.search);
-    //     const queryStylist = urlParams.get("stylist");
-
-    //     if (queryStylist && stylistData[queryStylist]) savedStylist = queryStylist;
-
-    //     if (savedStylist && stylistData[savedStylist]) {
-    //         showStylistProfile(stylistData[savedStylist]);
-    //         $(".stylist, .stylist-testimonials, .booking-section").hide();
-    //         $("#stylist-profile").show();
-    //     }
-    // }
-
-});
+    $(".prev-btn").on("click", () => {
+        const scrollAmount = $(".collection-item").outerWidth(true);
+        $slider.animate({ scrollLeft: $slider.scrollLeft() - scrollAmount }, 400);
+    });
+}

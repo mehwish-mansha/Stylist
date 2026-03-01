@@ -218,10 +218,47 @@
     }
 
     .footer-mail-area {
-        flex-direction: column;
+        flex-direction: center;
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        
+
     }
 
     .footer-mail-area button {
-        width: 100%;
+        padding: 14px !important;
     }
+}
+
+/* ================= TOP SUBSCRIBE NOTIFICATION ================= */
+
+.top-notification {
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--sec-bg-color);
+    color: var(--background-color);
+    padding: 14px 30px;
+    border-radius: 50px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: top 0.5s ease;
+    z-index: 9999;
+}
+
+.top-notification.show {
+    top: 20px;
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+}
+
+.notification-content i {
+    font-size: 18px;
+    color: #4BB543; /* success green */
 }

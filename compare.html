@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compare | Stylist</title>
+
+    <link rel="shortcut icon" href="/assets/logo/dress.png" type="image/x-icon">
+
     <!-- Google Fonts -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,46 +24,153 @@
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-            <link rel="stylesheet" href="/nav.css">
+    <link rel="stylesheet" href="/nav.css">
     <link rel="stylesheet" href="/footer.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
-<body>
-    <!-- Navbar -->
 
+<body>
     <div id="nav-container"></div>
 
+    <section class="compare-section">
+        <div class="compare-container">
+            <p class="section-subtitle">SIDE BY SIDE</p>
+            <h2 class="section-title">Compare Products</h2>
+            <p>Select up to 4 products to compare.</p>
 
-        <!--Footer Section-->
+            <div id="compare-empty-state" class="compare-empty">
+                <p>No products selected yet.</p><br>
+                <button class="btn-primary" id="open-selector-btn">+ ADD PRODUCTS</button>
+            </div>
+
+            <div id="compare-table-container" style="display:none;">
+                <table class="compare-table">
+                    <thead>
+                        <tr id="compare-header-row">
+                            <th style="width: 200px;">FEATURE</th>
+                        </tr>
+                    </thead>
+                    <tbody id="compare-body"></tbody>
+                </table>
+                <div style="text-align: center; margin-top: 30px;">
+                    <button class="btn-primary" id="reselect-btn">Change Selection</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 28px;">Select Products</h3>
+            <div id="modal-product-grid" class="modal-grid"></div>
+            <div style="text-align: right;">
+                <button id="confirm-selection" class="btn-primary">Compare Selected</button>
+            </div>
+        </div>
+    </div>
+
     <div id="footer-container"></div>
 
-
-    <!-- jquery-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-        <script src="/main.js"></script>
-
-
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/main.js"></script>
 
     <script>
-
-        // Navbar and Footer
-
         $(function () {
-
-            $("#nav-container").load("nav.html", function () {
-                initNavbar();
-            });
-
+            $("#nav-container").load("nav.html");
             $("#footer-container").load("footer.html");
 
+            // Function to populate the modal with items from stylistData
+            function populateModal() {
+                const grid = $('#modal-product-grid');
+                grid.empty();
+                
+                if (typeof stylistData === 'undefined') {
+                    console.error("stylistData is not defined. Check main.js");
+                    return;
+                }
+
+                Object.keys(stylistData).forEach(key => {
+                    const stylist = stylistData[key];
+                    stylist.collections.forEach((prod, index) => {
+                        grid.append(`
+                            <div class="selectable-card" 
+                                 data-name="${prod.title}" 
+                                 data-img="${prod.img}" 
+                                 data-price="${prod.price || '$2,800'}" 
+                                 data-fabric="${prod.fabric || 'French Lace & Silk'}" 
+                                 data-sizes="S, M, L"
+                                 data-stylist="${stylist.name}">
+                                <img src="${prod.img}" alt="${prod.title}">
+                                <div style="font-weight:bold; margin-top:5px;">${prod.title}</div>
+                                <div style="font-size:12px; color:#888;">${stylist.name}</div>
+                            </div>
+                        `);
+                    });
+                });
+            }
+
+            $('#open-selector-btn, #reselect-btn').on('click', function() {
+                populateModal();
+                $('#product-modal').fadeIn();
+            });
+
+            $(document).on('click', '.selectable-card', function() {
+                $(this).toggleClass('selected');
+                if ($('.selectable-card.selected').length > 4) {
+                    $(this).removeClass('selected');
+                    alert("Maximum 4 products allowed.");
+                }
+            });
+
+            $('#confirm-selection').on('click', function() {
+                const selected = $('.selectable-card.selected');
+                if (selected.length === 0) {
+                    alert("Please select at least one product.");
+                    return;
+                }
+
+                $('#compare-empty-state').hide();
+                $('#compare-table-container').show();
+                $('#product-modal').fadeOut();
+
+                renderTable(selected);
+            });
+
+            function renderTable(elements) {
+                let headHtml = '<th>FEATURE</th>';
+                let imgRow = '<td></td>'; 
+                let priceRow = '<td>PRICE</td>';
+                let fabricRow = '<td>FABRIC</td>';
+                let sizeRow = '<td>SIZES</td>';
+                let collectionRow = '<td>COLLECTION</td>';
+                let stylistRow = '<td>STYLIST</td>';
+
+                elements.each(function() {
+                    const d = $(this).data();
+                    headHtml += `<th class="product-title-cell">${d.name}</th>`;
+                    imgRow += `<td><div class="compare-product-card"><img src="${d.img}"></div></td>`;
+                    priceRow += `<td style="text-align:center;">${d.price}</td>`;
+                    fabricRow += `<td style="text-align:center;">${d.fabric}</td>`;
+                    sizeRow += `<td style="text-align:center;">${d.sizes}</td>`;
+                    collectionRow += `<td style="text-align:center;">Wedding</td>`; 
+                    stylistRow += `<td style="text-align:center;">${d.stylist}</td>`;
+                });
+
+                $('#compare-header-row').html(headHtml);
+                $('#compare-body').html(`
+                    <tr>${imgRow}</tr>
+                    <tr>${priceRow}</tr>
+                    <tr>${fabricRow}</tr>
+                    <tr>${sizeRow}</tr>
+                    <tr>${collectionRow}</tr>
+                    <tr>${stylistRow}</tr>
+                `);
+            }
+
+            $('.close-modal').on('click', () => $('#product-modal').fadeOut());
         });
-
-
     </script>
-    
 </body>
+
 </html>

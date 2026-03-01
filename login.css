@@ -47,7 +47,7 @@ body {
 .auth-container {
     width: 400px;
     background: #eae9e7;
-    padding: 30px 50px;
+    padding: 30px;
 }
 
 .auth-header h2 {
@@ -76,6 +76,7 @@ body {
 .input-group {
     position: relative;
     margin-bottom: 20px;
+
 }
 
 .input-group input {
@@ -98,6 +99,7 @@ body {
     pointer-events: none;
     padding: 0 5px;
     transition: all 0.3s ease;
+    pointer-events: none
 }
 
 .input-group input:focus + label,
@@ -107,6 +109,7 @@ body {
     color: #3b1d23;
     backdrop-filter: blur(4px);
     padding: 0 6px;
+    z-index: 10;
 }
 
 .password-group {
@@ -141,10 +144,16 @@ body {
 
 .error-msg {
     display: block;
-    font-size: 12px;
     color: red;
     margin-top: 4px;
     min-height: 16px;
+    position: absolute;
+    bottom: -20px; /* Sits below the input box */
+    left: 5px;
+    font-size: 11px;
+    line-height: 1;
+    white-space: nowrap; /* Keeps it on one line if possible */
+    pointer-events: none;
 }
 
 .btn {
@@ -176,3 +185,57 @@ body {
     text-decoration: underline;
 }
 
+/* Ensure the input group is the reference point */
+.input-group.floating {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+/* Position the eye icon */
+.login-toggle-password, 
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 28px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 10;
+    color: #666;
+}
+
+/* Add padding to input so text doesn't overlap the icon */
+.input-group.floating input {
+    padding-right: 40px !important;
+}
+
+
+.toast {
+    position: fixed;
+    top: 30px; /* Slightly lower to clear any top padding */
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    background-color: #3b1d23;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    
+    /* Crucial changes here */
+    visibility: hidden; 
+    opacity: 0;
+    z-index: 99999 !important; /* Forces it to the very front */
+    transition: transform 0.4s ease, opacity 0.4s ease, visibility 0.4s;
+}
+
+.toast.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.toast.success {
+    border-left: 5px solid #4CAF50;
+}

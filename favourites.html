@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wishlist | Stylist</title>
+
+    <link rel="shortcut icon" href="/assets/logo/dress.png" type="image/x-icon">
+
     <!-- Google Fonts -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -111,11 +114,55 @@
 
             $("#nav-container").load("nav.html", function () {
                 initNavbar();
+                 initNavFeatures();
             });
 
             $("#footer-container").load("footer.html");
 
         });
+
+        $(document).ready(function() {
+    // 1. Remove Item Logic
+    $('.fav-container').on('click', '.remove-btn', function() {
+        const item = $(this).closest('.fav-item');
+        
+        // Add a simple fade-out effect for better UX
+        item.fadeOut(300, function() {
+            $(this).remove();
+            checkEmptyWishlist();
+        });
+    });
+
+    // 2. Move to Cart Logic
+    $('.fav-container').on('click', '.move-btn', function() {
+        const item = $(this).closest('.fav-item');
+        const itemName = item.find('h3').text();
+        
+        // Here you would typically trigger an AJAX call to your backend or update LocalStorage
+        console.log(`Moving ${itemName} to cart...`);
+        
+        alert(`${itemName} has been added to your cart!`);
+        
+        // Remove from wishlist after moving
+        item.fadeOut(300, function() {
+            $(this).remove();
+            checkEmptyWishlist();
+        });
+    });
+
+    // 3. Handle Empty State
+    function checkEmptyWishlist() {
+        if ($('.fav-item').length === 0) {
+            $('.fav-container').html(`
+                <div class="empty-msg" style="text-align:center; padding: 50px;">
+                    <i class="fa-regular fa-heart" style="font-size: 3rem; color: #ccc;"></i>
+                    <p style="margin-top: 20px;">Your wishlist is currently empty.</p>
+                    <a href="/collection.html" class="move-btn" style="display:inline-block; text-decoration:none; margin-top:10px;">Continue Shopping</a>
+                </div>
+            `);
+        }
+    }
+});
 
 
     </script>

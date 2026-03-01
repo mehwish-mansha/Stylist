@@ -186,3 +186,29 @@ textarea {
         flex-direction: column;
     }
 }
+
+
+.toast {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    background-color: #3b1d23;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 8px;
+    z-index: 99999 !important; /* Keep it above the Navbar and Map */
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.toast.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.toast.success {
+    border-left: 5px solid #4CAF50;
+}

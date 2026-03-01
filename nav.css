@@ -4,16 +4,61 @@
     box-sizing: border-box;
 }
 
+/* Ensure the main bar is ALWAYS on very top so buttons are clickable */
 .nav-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
-    background-color: rgba(255, 255, 255, 1);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10001; /* Highest possible */
+    background-color: white;
 }
+
+/* Sidebar should be just below the main container */
+.nav-links {
+    position: fixed;
+    top: 0;
+    left: -300px; /* Hidden off-screen */
+    height: 100vh;
+    width: 280px;
+    background: white;
+    z-index: 10000; 
+    transition: 0.4s ease-in-out;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.nav-links.active {
+    left: 0;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Overlay sits behind the sidebar */
+.nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    display: none; /* Controlled by active class */
+}
+
+.nav-overlay.active {
+    display: block;
+}
+
+/* Prevent clicking through to background when open */
+body.nav-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}
+
+
 
 
 
@@ -349,7 +394,7 @@
     flex-direction: column;
     transition: 0.4s ease;
     z-index: 9999;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .cart-sidebar.active {
@@ -482,5 +527,7 @@
 
 /* Prevent page scroll when cart open */
 body.cart-open {
-    overflow: hidden;
+    position: fixed;
+    overflow-y: scroll; /* keeps layout width stable */
+    width: 100%;
 }

@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>About Us | Stylist</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/assets/logo/dress.png" type="image/x-icon">
+
     
     <!-- Google Fonts -->
 
@@ -113,7 +115,7 @@
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-        <script src="../main.js"></script>
+        <script src="/main.js"></script>
 
 
 
@@ -127,6 +129,7 @@
 
             $("#nav-container").load("nav.html", function () {
                 initNavbar();
+                initNavFeatures();
             });
 
             $("#footer-container").load("footer.html");

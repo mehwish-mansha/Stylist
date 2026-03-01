@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Stylist</title>
+    <link rel="shortcut icon" href="/assets/logo/dress.png" type="image/x-icon">
+
     <!-- Google Fonts -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -109,6 +111,8 @@
     </section>
 
 
+    <div id="toast" class="toast"></div>
+
 
 
 
@@ -128,129 +132,124 @@
 
 
     <script>
+    // Navbar and Footer
+    $(function () {
+        $("#nav-container").load("nav.html", function () {
+            initNavbar();
+            initNavFeatures();
+        });
+        $("#footer-container").load("footer.html");
+    });
 
-        // Navbar and Footer
+    function switchForm() {
+        document.getElementById("login-form").classList.toggle("active");
+        document.getElementById("register-form").classList.toggle("active");
 
-        $(function () {
+        const title = document.getElementById("form-title");
+        title.textContent = title.textContent === "Login" ? "Register" : "Login";
+    }
 
-            $("#nav-container").load("nav.html", function () {
-                initNavbar();
-            });
+    // --- NEW: Toast Notification Function ---
+    function showToast(message, type = "success") {
+    const $toast = $("#toast");
+    
+    // Set message and type
+    $toast.text(message).addClass("show " + type);
+    
+    // Hide and cleanup after 3 seconds
+    setTimeout(function() {
+        $toast.removeClass("show success");
+    }, 3000);
+}
 
-            $("#footer-container").load("footer.html");
+    // Form Validation
+    $(document).ready(function () {
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
+        const nameRegex = /^[A-Z][a-zA-Z ]{1,49}$/;
 
+        // --- Floating label effect ---
+        $(".floating input").each(function () {
+            toggleFilled($(this));
         });
 
+        $(".floating input").on("input blur focus", function () {
+            toggleFilled($(this));
+            validateField($(this));
+        });
 
-
-
-        function switchForm() {
-            document.getElementById("login-form").classList.toggle("active");
-            document.getElementById("register-form").classList.toggle("active");
-
-            const title = document.getElementById("form-title");
-            title.textContent = title.textContent === "Login" ? "Register" : "Login";
+        function toggleFilled($input) {
+            if ($input.val().trim() !== "") {
+                $input.addClass("filled");
+            } else {
+                $input.removeClass("filled");
+            }
         }
 
+        // --- Toggle password visibility ---
+        $(document).on("click", ".login-toggle-password, .toggle-password", function () {
+            const $input = $(this).closest('.input-group').find('input');
+            const isPassword = $input.attr("type") === "password";
+            $input.attr("type", isPassword ? "text" : "password");
+            $(this).toggleClass("fa-eye fa-eye-slash");
+        });
 
-        // Form Validation
-        $(document).ready(function () {
+        // --- Inline validation ---
+        function validateField($input) {
+            const val = $input.val();
+            const id = $input.attr("id");
+            const $error = $input.siblings(".error-msg");
 
-            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
-            const nameRegex = /^[A-Z][a-zA-Z ]{1,49}$/;
+            if (id === "password" || $input.attr('type') === 'password' && !$input.attr('id')) {
+                // If it's a password field
+                if (val && !passwordRegex.test(val)) {
+                    $error.text("Password must be 8+ chars, include uppercase, lowercase, number & symbol.");
+                } else { $error.text(""); }
+            } else if (id === "confirm-password") {
+                const passwordVal = $("#password").val();
+                $error.text(val && val !== passwordVal ? "Passwords do not match." : "");
+            } else if (id === "fullname") {
+                $error.text(val && !nameRegex.test(val) ? "Name must start with capital letter." : "");
+            } else if (id === "email" || $input.attr('type') === 'email') {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                $error.text(val && !emailRegex.test(val) ? "Please enter a valid email." : "");
+            }
+        }
 
-            // --- Floating label effect ---
-            $(".floating input").each(function () {
-                toggleFilled($(this));
-            });
-
-            $(".floating input").on("input blur focus", function () {
-                toggleFilled($(this));
+        // --- Validate and Toast on Register ---
+        $("#register-form").submit(function (e) {
+            e.preventDefault(); // Prevent actual refresh for demo
+            
+            $(this).find("input").each(function () {
                 validateField($(this));
             });
 
-            function toggleFilled($input) {
-                if ($input.val().trim() !== "") {
-                    $input.addClass("filled");
-                } else {
-                    $input.removeClass("filled");
-                }
+            const hasErrors = $(this).find(".error-msg").filter(function() { 
+                return $(this).text() !== ""; 
+            }).length > 0;
+
+            if (!hasErrors) {
+                showToast("Account created successfully!");
+                // Here you would normally do your AJAX call
             }
-
-            // --- Toggle password visibility for register form ---
-            $(".toggle-password").click(function () {
-                const $input = $(this).prev("input");
-                if ($input.attr("type") === "password") {
-                    $input.attr("type", "text");
-                    $(this).removeClass("fa-eye").addClass("fa-eye-slash");
-                } else {
-                    $input.attr("type", "password");
-                    $(this).removeClass("fa-eye-slash").addClass("fa-eye");
-                }
-            });
-
-            // --- Toggle password visibility for login form ---
-            $(".login-toggle-password").click(function () {
-                const $input = $(this).next("input");
-                if ($input.attr("type") === "password") {
-                    $input.attr("type", "text");
-                    $(this).removeClass("fa-eye").addClass("fa-eye-slash");
-                } else {
-                    $input.attr("type", "password");
-                    $(this).removeClass("fa-eye-slash").addClass("fa-eye");
-                }
-            });
-
-            // --- Inline validation ---
-            function validateField($input) {
-                const val = $input.val();
-                const id = $input.attr("id");
-                const $error = $input.siblings(".error-msg");
-
-                if (id === "password") {
-                    $error.text(val && !passwordRegex.test(val)
-                        ? "Password must be 8+ chars, include uppercase, lowercase, number & symbol."
-                        : "");
-                } else if (id === "confirm-password") {
-                    const passwordVal = $("#password").val();
-                    $error.text(val && val !== passwordVal ? "Passwords do not match." : "");
-                } else if (id === "fullname") {
-                    $error.text(val && !nameRegex.test(val)
-                        ? "Name must be letters only, first letter capital."
-                        : "");
-                } else if (id === "email") {
-                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    $error.text(val && !emailRegex.test(val) ? "Please enter a valid email address." : "");
-                }
-            }
-
-            // --- Validate all fields on register submit ---
-            $("#register-form").submit(function (e) {
-                $(".floating input").each(function () {
-                    validateField($(this));
-                });
-
-                if ($(".error-msg").filter(function () { return $(this).text() !== ""; }).length > 0) {
-                    e.preventDefault();
-                }
-            });
-
-            // --- Validate all fields on login submit ---
-            $("#login-form").submit(function (e) {
-                $(this).find("input").each(function () {
-                    validateField($(this));
-                });
-
-                if ($(".error-msg").filter(function () { return $(this).text() !== ""; }).length > 0) {
-                    e.preventDefault();
-                }
-            });
-
         });
 
+        // --- Validate and Toast on Login ---
+        $("#login-form").submit(function (e) {
+            e.preventDefault(); // Prevent actual refresh for demo
+            
+            let allFilled = true;
+            $(this).find("input").each(function() {
+                if($(this).val() === "") allFilled = false;
+            });
 
-
-    </script>
+            if (allFilled) {
+                showToast("Welcome back! Logging in...");
+            } else {
+                showToast("Please fill in all fields.");
+            }
+        });
+    });
+</script>
 
 </body>
 

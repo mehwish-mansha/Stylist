@@ -145,7 +145,7 @@
             <!-- Left Section -->
             <div class="footer-left">
                 <div class="footer-logo"><a href="index.html">
-                    <img src="http://127.0.0.1:5500/assets/logo/dress.png" alt="Logo"></a>
+                        <img src="http://127.0.0.1:5500/assets/logo/dress.png" alt="Logo"></a>
                     <h3 class="footer-title">Stylist</h3>
                 </div>
 
@@ -205,19 +205,19 @@
                     <li>
                         <h4>Company</h4>
                     </li>
-                    <li><a href="About.html">About Us</a></li>
-                    <li><a href="stylists.html">Our Stylists</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Press</a></li>
+                    <li><a href="/About.html">About Us</a></li>
+                    <li><a href="/stylists.html">Our Stylists</a></li>
+                    <li><a href="/careers.html">Careers</a></li>
+                    <li><a href="/press.html">Press</a></li>
                 </ul>
                 <ul>
                     <li>
                         <h4>Support</h4>
                     </li>
-                    <li><a href="#">FAQ</a></li>
+                    <li><a href="/faq.html">FAQ</a></li>
                     <li><a href="/contact.html">Contact</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="/privacy.html">Privacy Policy</a></li>
+                    <li><a href="/terms.html">Terms of Service</a></li>
                 </ul>
             </div>
         </div>
@@ -225,17 +225,55 @@
         <!-- Socials & Copyright -->
         <div class="footer-socials">
             <ul class="social-icons">
-                <li><a href="https://www.instagram.com/mehwishh_m" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
-                <li><a href="https://www.facebook.com/people/Meh-Wish/pfbid0dqYHV2nweqRJ2JhrvAJZTwp574oLaqDqLnrxs3wFZiQeiCPYxBT9qqJ89XrsJtFul/?mibextid=ZbWKwL" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+                <li><a href="https://www.instagram.com/mehwishh_m" target="_blank"><i
+                            class="fa-brands fa-instagram"></i></a></li>
+                <li><a href="https://www.facebook.com/people/Meh-Wish/pfbid0dqYHV2nweqRJ2JhrvAJZTwp574oLaqDqLnrxs3wFZiQeiCPYxBT9qqJ89XrsJtFul/?mibextid=ZbWKwL"
+                        target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
                 <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-                <li><a href="https://www.linkedin.com/in/mehwish-mansha75/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a></li>
-                <li><a href="https://github.com/mehwish-mansha" target="_blank"><i class="fa-brands fa-github"></i></a></li>
+                <li><a href="https://www.linkedin.com/in/mehwish-mansha75/" target="_blank"><i
+                            class="fa-brands fa-linkedin-in"></i></a></li>
+                <li><a href="https://github.com/mehwish-mansha" target="_blank"><i class="fa-brands fa-github"></i></a>
+                </li>
             </ul>
             <p>© 2026 Stylist. All rights reserved |
                 Code by Mehwish Mansha & Group
             </p>
         </div>
     </footer>
+
+    <!-- Top Subscribe Notification -->
+<div class="top-notification" id="topNotification">
+    <div class="notification-content">
+        <i class="fa-solid fa-circle-check"></i>
+        <span>Successfully subscribed to our newsletter!</span>
+    </div>
+</div>
+
+
+
+
+    <script>
+const subscribeForm = document.querySelector(".footer-mail-area");
+const notification = document.getElementById("topNotification");
+
+subscribeForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    // Show notification
+    notification.classList.add("show");
+
+    // Clear input
+    this.reset();
+
+    // Auto hide after 3 seconds
+    setTimeout(() => {
+        notification.classList.remove("show");
+    }, 3000);
+});
+</script>
+
+
+    
 
 
 

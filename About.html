@@ -122,22 +122,62 @@
 
 
     <script>
-
-        // Navbar and Footer
-
-        $(function () {
-
-            $("#nav-container").load("nav.html", function () {
-                initNavbar();
-                initNavFeatures();
-            });
-
-            $("#footer-container").load("footer.html");
-
+    // Navbar and Footer
+    $(function () {
+        $("#nav-container").load("nav.html", function () {
+            initNavbar();
+            initNavFeatures();
         });
 
+        $("#footer-container").load("footer.html");
+    });
 
-    </script>
+    // Counter animation on scroll
+    $(document).ready(function () {
+        function initCounters() {
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const $this = $(entry.target);
+                        const target = parseInt($this.data("target"));
+                        
+                        // Clear any existing animation
+                        $this.stop();
+                        
+                        // Animate from 0 to target
+                        $({ count: 0 }).animate({ count: target }, {
+                            duration: 2000,
+                            easing: "swing",
+                            step: function () {
+                                $this.text(Math.floor(this.count));
+                            },
+                            complete: function () {
+                                // Format the final number
+                                if (target >= 1000) {
+                                    $this.text(Math.floor(target / 1000) + "K+");
+                                } else {
+                                    $this.text(target + "+");
+                                }
+                            }
+                        });
+                        
+                        // Stop observing after animation starts
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { 
+                threshold: 0.5,
+                rootMargin: "0px" 
+            });
+
+            // Observe all counter elements
+            document.querySelectorAll(".counter").forEach(c => observer.observe(c));
+        }
+
+        // Initialize counters
+        initCounters();
+    });
+</script>
 
 </body>
 </html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Stylist</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/nav.css">
+    <link rel="stylesheet" href="/footer.css">
+    <link rel="stylesheet" href="/checkout.css">
+    
+     <!-- Google Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inconsolata:wght@200..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Pixelify+Sans:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
+
+
+    <!-- Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div id="nav-container"></div>
+
+    <section class="checkout-page">
+
+        <!-- LEFT: Form -->
+        <div class="checkout-form-section">
+
+            <h2 class="section-title">Shipping Details</h2>
+
+            <form id="checkout-form">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" placeholder="Jane" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" placeholder="Doe" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="jane@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" placeholder="+92 300 0000000" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Shipping Address</label>
+                    <input type="text" placeholder="Street Address, Apartment, Suite" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>City</label>
+                        <input type="text" placeholder="Karachi" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Postal Code</label>
+                        <input type="text" placeholder="75500">
+                    </div>
+                </div>
+
+                <h2 class="section-title section-title--gap">Payment Method</h2>
+
+                <div class="payment-tabs">
+                    <button type="button" class="payment-tab active" data-tab="card">
+                        <i class="fa-regular fa-credit-card"></i> Card
+                    </button>
+                    <button type="button" class="payment-tab" data-tab="cod">
+                        <i class="fa-solid fa-money-bill-wave"></i> Cash on Delivery
+                    </button>
+                    <button type="button" class="payment-tab" data-tab="easypaisa">
+                        <i class="fa-solid fa-mobile-screen"></i> EasyPaisa
+                    </button>
+                </div>
+
+                <div class="payment-panel active" id="tab-card">
+                    <div class="form-group">
+                        <label>Card Number</label>
+                        <input type="text" placeholder="0000 0000 0000 0000" maxlength="19">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Expiry Date</label>
+                            <input type="text" placeholder="MM/YY" maxlength="5">
+                        </div>
+                        <div class="form-group">
+                            <label>CVV</label>
+                            <input type="password" placeholder="***" maxlength="4">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="payment-panel" id="tab-cod">
+                    <div class="cod-notice">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <p>You'll pay in cash when your order is delivered. No advance payment required.</p>
+                    </div>
+                </div>
+
+                <div class="payment-panel" id="tab-easypaisa">
+                    <div class="form-group">
+                        <label>EasyPaisa Number</label>
+                        <input type="tel" placeholder="+92 300 0000000">
+                    </div>
+                    <p class="payment-hint">A payment request will be sent to this number.</p>
+                </div>
+
+                <button type="submit" class="btn-primary btn-block">
+                    <i class="fa-solid fa-lock"></i> Complete Order
+                </button>
+
+            </form>
+        </div>
+
+        <!-- RIGHT: Order Summary -->
+        <div class="order-summary-section">
+            <h3 class="summary-title">Your Order</h3>
+
+            <div id="summary-items">
+                <!-- Populated by JS -->
+            </div>
+
+            <div class="summary-item summary-item--shipping">
+                <span>Shipping</span>
+                <span class="free-shipping">Free</span>
+            </div>
+
+            <div class="summary-item summary-item--total total-row">
+                <span>Total</span>
+                <span id="summary-total">Rs. 0</span>
+            </div>
+
+            <div class="empty-cart-msg" id="empty-cart-msg">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <p>Your cart is empty.</p>
+                <a href="index.html" class="btn-shop">Shop Now</a>
+            </div>
+
+            <p class="secure-badge">
+                <i class="fa-solid fa-shield-halved"></i> Secure Checkout Guaranteed
+            </p>
+        </div>
+
+    </section>
+
+    <div id="footer-container"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/main.js"></script>
+
+    <script>
+        // ── Nav & Footer ────────────────────────────────────────────
+        $(function () {
+            $("#nav-container").load("/nav.html", function () {
+                if (typeof initNavbar === "function") initNavbar();
+                if (typeof initNavFeatures === "function") initNavFeatures();
+            });
+            $("#footer-container").load("/footer.html");
+        });
+
+        // ── Populate Order Summary from localStorage ─────────────────
+        $(document).ready(function () {
+            loadOrderSummary();
+            initPaymentTabs();
+        });
+
+        function loadOrderSummary() {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const $container = $("#summary-items");
+            const $emptyMsg = $("#empty-cart-msg");
+            $container.empty();
+
+            if (cart.length === 0) {
+                $emptyMsg.show();
+                $("#summary-total").text("Rs. 0");
+                return;
+            }
+
+            $emptyMsg.hide();
+            let total = 0;
+
+            cart.forEach(item => {
+                const unitPrice = parseInt(String(item.price).replace(/Rs\.\s?|,/g, "")) || 0;
+                const lineTotal = unitPrice * item.qty;
+                total += lineTotal;
+
+                $container.append(`
+                    <div class="summary-item">
+                        <span class="summary-item__name">
+                            ${item.name}
+                            <span class="summary-item__qty">×${item.qty}</span>
+                        </span>
+                        <span class="summary-item__price">Rs. ${lineTotal.toLocaleString("en-PK")}</span>
+                    </div>
+                `);
+            });
+
+            $("#summary-total").text("Rs. " + total.toLocaleString("en-PK"));
+        }
+
+        // ── Payment Tabs ────────────────────────────────────────────
+        function initPaymentTabs() {
+            $(".payment-tab").on("click", function () {
+                const tab = $(this).data("tab");
+                $(".payment-tab").removeClass("active");
+                $(".payment-panel").removeClass("active");
+                $(this).addClass("active");
+                $("#tab-" + tab).addClass("active");
+            });
+        }
+
+        // ── Form Submit ─────────────────────────────────────────────
+        $("#checkout-form").on("submit", function (e) {
+            e.preventDefault();
+            // Clear cart after order
+            localStorage.removeItem("cart");
+            alert("✅ Order placed successfully! Thank you for shopping with Stylist.");
+            window.location.href = "/index.html";
+        });
+    </script>
+
+</body>
+</html>

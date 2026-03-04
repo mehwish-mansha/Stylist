@@ -45,7 +45,7 @@ const stylistData = {
             { title: "Luxury Line 12", img: "./assets/collection/luxury12.webp", price: "$700", fabric: "Lace" },
             { title: "Luxury Line 13", img: "./assets/collection/luxury13.jpg", price: "$750", fabric: "Raw Silk" },
             { title: "Luxury Line 14", img: "./assets/collection/luxury14.webp", price: "$800", fabric: "Velvet" }
-            
+
 
         ]
     },
@@ -103,13 +103,13 @@ const stylistData = {
             { title: "Ethereal Veil 3", img: "./assets/collection/amina3.webp", price: "$350", fabric: "Lace" },
             { title: "Ethereal Veil 4", img: "./assets/collection/amina4.jpg", price: "$400", fabric: "Silk" },
             { title: "Ethereal Veil 5", img: "./assets/collection/amina5.webp", price: "$450", fabric: "Organza" },
-                { title: "Ethereal Veil 6", img: "./assets/collection/amina6.webp", price: "$300", fabric: "Chiffon" },
-                { title: "Ethereal Veil 7", img: "./assets/collection/amina7.webp", price: "$250", fabric: "Georgette" },
-                { title: "Ethereal Veil 8", img: "./assets/collection/amina8.jpg", price: "$400", fabric: "Velvet" },
-                { title: "Ethereal Veil 9", img: "./assets/collection/amina9.jpg", price: "$350", fabric: "Satin" },
-                { title: "Ethereal Veil 10", img: "./assets/collection/amina10.jpg", price: "$450", fabric: "Tulle" },
-                { title: "Ethereal Veil 11", img: "./assets/collection/amina11.webp", price: "$500", fabric: "Lace" },
-                { title: "Ethereal Veil 12", img: "./assets/collection/amina12.jpg", price: "$300", fabric: "Silk" }
+            { title: "Ethereal Veil 6", img: "./assets/collection/amina6.webp", price: "$300", fabric: "Chiffon" },
+            { title: "Ethereal Veil 7", img: "./assets/collection/amina7.webp", price: "$250", fabric: "Georgette" },
+            { title: "Ethereal Veil 8", img: "./assets/collection/amina8.jpg", price: "$400", fabric: "Velvet" },
+            { title: "Ethereal Veil 9", img: "./assets/collection/amina9.jpg", price: "$350", fabric: "Satin" },
+            { title: "Ethereal Veil 10", img: "./assets/collection/amina10.jpg", price: "$450", fabric: "Tulle" },
+            { title: "Ethereal Veil 11", img: "./assets/collection/amina11.webp", price: "$500", fabric: "Lace" },
+            { title: "Ethereal Veil 12", img: "./assets/collection/amina12.jpg", price: "$300", fabric: "Silk" }
         ]
     },
     "karim": {
@@ -141,6 +141,7 @@ const stylistData = {
 };
 
 $(document).ready(function () {
+    renderCart();
     initNavbarScroll();
     initNavbarToggle();
     initNavFeatures();
@@ -151,20 +152,30 @@ $(document).ready(function () {
 });
 
 // ================= 1. Navigation Logic =================
-
 function initNavbarScroll() {
-    // Load the navbar only if the container exists
-    if ($("#nav-container").length) {
-        $("#nav-container").load("/nav.html", function () {
-            // Once loaded, we can check scroll behavior
-            $(window).on("scroll", function () {
-                let scroll = $(this).scrollTop();
-                let alpha = Math.max(1 - (scroll / 400) * 0.1, 0.9);
-                $(".nav-container").css("background-color", `rgba(255,255,255,${alpha})`);
-            });
+    const $navContainer = $("#nav-container");
+
+    // Only call .load() if the container exists AND is empty
+    if ($navContainer.length && $navContainer.is(':empty')) {
+        $navContainer.load("/nav.html", function () {
+            renderCart(); // Render cart AFTER the external file finishes loading
+            setupScrollEffect();
         });
+    } else {
+        // If navbar is already in the HTML (Product Page), just do the scroll
+        setupScrollEffect();
     }
 }
+
+// Helper to keep code clean
+function setupScrollEffect() {
+    $(window).on("scroll", function () {
+        let scroll = $(this).scrollTop();
+        let alpha = Math.max(1 - (scroll / 400) * 0.1, 0.9);
+        $(".nav-container").css("background-color", `rgba(255,255,255,${alpha})`);
+    });
+}
+
 
 function initNavbarToggle() {
     let scrollPosition = 0;
@@ -223,7 +234,20 @@ function initNavFeatures() {
             $(".page-content").removeClass("page-blur");
             $(".main-stylist-card").show(); // Reset visibility when closed
         }
+
+        // Add this inside the initNavFeatures function in main.js
+        $(document).on("click", "#cartBtn", function (e) {
+            e.preventDefault(); // Stop any default link behavior
+
+            // 1. Show the sidebar by calling your existing logic
+            toggleCart(true);
+
+            // 2. Optional: Add a small console log to confirm it's working
+            console.log("Cart opened from product page.");
+        });
     });
+
+
 
     // 2. REAL-TIME SEARCH FILTER
     // This looks at the text inside your Stylist cards and filters them as you type
@@ -258,59 +282,105 @@ function initNavFeatures() {
     $(document).on("click", ".close-cart, .cart-overlay", () => toggleCart(false));
 }
 
+// Define this at the VERY TOP of your main.js file, above everything else
+let cart = JSON.parse(localStorage.getItem("userCart")) || [];
 
 function initCartCalculations() {
-    // 1. Quantity Increase
-    $(document).on("click", ".qty-plus", function () {
-        let $qtySpan = $(this).siblings(".qty-value");
-        let currentQty = parseInt($qtySpan.text());
-        $qtySpan.text(currentQty + 1);
-        updateCartTotals($(this).closest(".cart-item"));
+    // 1. ADD TO CART (From Product Details Page)
+    $(document).on("click", "#cartBtn", function (e) {
+        e.preventDefault();
+
+        const product = {
+            id: Date.now(),
+            name: $(".product-title").text().trim(),
+            // Removes "Rs." or "$" and commas to get a clean number
+            price: parseFloat($(".price").text().replace(/[^0-9.]/g, '')),
+            img: $("#mainImg").attr("src"),
+            qty: parseInt($("#qtyValue").text()) || 1
+        };
+
+        const existing = cart.find(item => item.name === product.name);
+        if (existing) {
+            existing.qty += product.qty;
+        } else {
+            cart.push(product);
+        }
+
+        saveAndRender();
+        // Use the toggleCart from your initNavFeatures
+        $(".cart-sidebar, .cart-overlay").addClass("active");
+        $("body").addClass("cart-open");
     });
 
-    // 2. Quantity Decrease
-    $(document).on("click", ".qty-minus", function () {
-        let $qtySpan = $(this).siblings(".qty-value");
-        let currentQty = parseInt($qtySpan.text());
-        if (currentQty > 1) {
-            $qtySpan.text(currentQty - 1);
-            updateCartTotals($(this).closest(".cart-item"));
+    // 2. QUANTITY CONTROLS (Inside the sidebar)
+    $(document).on("click", ".cart-qty-plus", function () {
+        const idx = $(this).data("index");
+        cart[idx].qty++;
+        saveAndRender();
+    });
+
+    $(document).on("click", ".cart-qty-minus", function () {
+        const idx = $(this).data("index");
+        if (cart[idx].qty > 1) {
+            cart[idx].qty--;
+            saveAndRender();
         }
     });
 
-    // 3. Remove Item Logic (The "X" or closing icon you mentioned)
+    // 3. REMOVE ITEM
     $(document).on("click", ".remove-item", function () {
-        $(this).closest(".cart-item").fadeOut(300, function () {
-            $(this).remove();
-            calculateGrandTotal();
-        });
+        const idx = $(this).data("index");
+        cart.splice(idx, 1);
+        saveAndRender();
+    });
+}
+
+// 4. HELPER FUNCTIONS
+function saveAndRender() {
+    localStorage.setItem("userCart", JSON.stringify(cart));
+    renderCart();
+}
+
+function renderCart() {
+    const $container = $("#cart-items-container");
+    if (!$container.length) return;
+
+    $container.empty(); // This removes the "default" products automatically
+    let grandTotal = 0;
+
+    cart.forEach((item, index) => {
+        const itemTotal = item.price * item.qty;
+        grandTotal += itemTotal;
+
+        $container.append(`
+            <div class="cart-item">
+                <img src="${item.img}">
+                <div class="cart-item-details">
+                    <h4 class="dress-name">${item.name}</h4>
+                    <div class="cart-bottom">
+                        <div class="quantity-box">
+                            <button class="cart-qty-minus" data-index="${index}">−</button>
+                            <span class="qty-value">${item.qty}</span>
+                            <button class="cart-qty-plus" data-index="${index}">+</button>
+                        </div>
+                        <p class="price">Rs. ${itemTotal.toLocaleString()}</p>
+                        <i class="fa-solid fa-trash remove-item" data-index="${index}"></i>
+                    </div>
+                </div>
+            </div>
+        `);
     });
 
-    function updateCartTotals($item) {
-        let qty = parseInt($item.find(".qty-value").text());
-        let basePrice = parseFloat($item.find(".price").data("price"));
-        let newPrice = (qty * basePrice).toFixed(2);
-
-        $item.find(".price").text(`$${newPrice}`);
-        calculateGrandTotal();
-    }
-
-    function calculateGrandTotal() {
-        let total = 0;
-        $(".cart-item .price").each(function () {
-            let val = parseFloat($(this).text().replace('$', ''));
-            total += val;
-        });
-        $(".cart-total span:last-child").text(`$${total.toFixed(2)}`);
-    }
+    $(".cart-total span:last-child").text(`Rs. ${grandTotal.toLocaleString()}`);
 }
+
 
 // ================= 2. Stylist Profile System =================
 
 function initWishlistToCartLogic() {
-    $(document).on('click', '.move-btn', function() {
+    $(document).on('click', '.move-btn', function () {
         const $favItem = $(this).closest('.fav-item');
-        
+
         const itemData = {
             name: $favItem.find('h3').text(),
             price: $favItem.find('.price').text().replace('$', '').trim(),

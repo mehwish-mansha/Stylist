@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jewelry Collection</title>
+  <link rel="stylesheet" href="../MDB5-STANDARD-UI-KIT-Free-9.3.0/css/mdb.min.css" />
+  <link rel="stylesheet" href="jewelry.css" />
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/nav.css">
+  <link rel="stylesheet" href="/footer.css">
+
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inconsolata:wght@200..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Pixelify+Sans:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+    rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
+
+
+  <!-- Font Awesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+
+<body>
+
+
+
+  <div id="nav-container"></div>
+
+
+  <section class="jewelry-collection-section">
+    <div class="container py-5">
+      <h2 class="main-heading text-center">Jewelry Collection</h2>
+
+      <div class="row" id="cardlist">
+        <!-- CARD START -->
+
+      </div>
+    </div>
+  </section>
+
+
+  <div id="footer-container"></div>
+
+
+
+  <script src="../MDB5-STANDARD-UI-KIT-Free-9.3.0/js/mdb.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="/main.js"></script>
+
+
+
+  <script>
+    // Nav &Footer Load
+    $(function () {
+      $("#nav-container").load("/nav.html");
+      $("#footer-container").load("/footer.html");
+    });
+
+
+    $(document).ready(function () {
+      const jewelryCollection = [
+        {
+          title: "Elegant Gold Earrings",
+          price: "2999",
+          badge: "NEW",
+          frontImg: "jewery img/jimg1.webp",
+          hoverImg: "jewery img/jhover1.webp"
+        },
+        {
+          title: "Luxury Bridal Necklace",
+          price: "3499",
+          badge: "NEW",
+          frontImg: "jewery img/jimg2.webp",
+          hoverImg: "jewery img/jhover2.webp"
+        },
+        {
+          title: "Classic Pearl Set",
+          price: "2599",
+          badge: "NEW",
+          frontImg: "jewery img/jimg3.webp",
+          hoverImg: "jewery img/jhover3.webp"
+        },
+        {
+          title: "Modern Gold Pendant",
+          price: "2199",
+          badge: "NEW",
+          frontImg: "jewery img/jimg4.webp",
+          hoverImg: "jewery img/jhover4.webp"
+        },
+        {
+          title: "Royal Choker Set",
+          price: "3999",
+          badge: "NEW",
+          frontImg: "jewery img/jimg5.webp",
+          hoverImg: "jewery img/jhover5.webp"
+        },
+        {
+          title: "Traditional Jhumka",
+          price: "1899",
+          badge: "NEW",
+          frontImg: "jewery img/jimg6.webp",
+          hoverImg: "jewery img/jhover6.webp"
+        },
+        {
+          title: "Stylish Ring Design",
+          price: "1499",
+          badge: "NEW",
+          frontImg: "jewery img/jimg7.webp",
+          hoverImg: "jewery img/jhover7.webp"
+        },
+        {
+          title: "Bridal Hand Jewelry",
+          price: "4599",
+          badge: "NEW",
+          frontImg: "jewery img/jimg8.webp",
+          hoverImg: "jewery img/jhover8.webp"
+        },
+        {
+          title: "Premium Gold Set",
+          price: "4999",
+          badge: "NEW",
+          frontImg: "jewery img/jimg9.webp",
+          hoverImg: "jewery img/jhover9.webp"
+        },
+        {
+          title: "Elegant Necklace",
+          price: "2799",
+          badge: "NEW",
+          frontImg: "jewery img/jimg10.webp",
+          hoverImg: "jewery img/jhover10.webp"
+        },
+        {
+          title: "Designer Earrings",
+          price: "1999",
+          badge: "NEW",
+          frontImg: "jewery img/jimg11.webp",
+          hoverImg: "jewery img/jhover11.webp"
+        },
+        {
+          title: "Traditional Bridal Set",
+          price: "5999",
+          badge: "NEW",
+          frontImg: "jewery img/jimg12.webp",
+          hoverImg: "jewery img/jhover12.webp"
+        },
+        {
+          title: "Luxury Ring Collection",
+          price: "1699",
+          badge: "NEW",
+          frontImg: "jewery img/jimg13.webp",
+          hoverImg: "jewery img/jhover13.webp"
+        },
+        {
+          title: "Elegant Gold Bracelet",
+          price: "2399",
+          badge: "NEW",
+          frontImg: "jewery img/jimg14.webp",
+          hoverImg: "jewery img/jhover14.webp"
+        },
+        {
+          title: "Premium Pendant",
+          price: "2099",
+          badge: "NEW",
+          frontImg: "jewery img/jimg15.webp",
+          hoverImg: "jewery img/jhover15.webp"
+        },
+        {
+          title: "Classic Bridal Necklace",
+          price: "5299",
+          badge: "NEW",
+          frontImg: "jewery img/jimg16.webp",
+          hoverImg: "jewery img/jhover16.webp"
+        }
+      ];
+
+      jewelryCollection.map((el) => {
+        document.getElementById("cardlist").innerHTML += `
+  
+   <div class="col-6 col-md-4 col-lg-3 mb-4">
+            <div class="accessory-card">
+              <div class="image-wrapper">
+                <span class="badge-custom">${el.badge}</span>
+                <img src="${el.frontImg}" class="product-img active" />
+                <img src="${el.hoverImg}" class="product-img" />
+
+                <div class="view-overlay">
+                  <a href="jewelry-details.html" class="view-btn">
+                    <i class="fas fa-eye me-1"></i> View Details
+                  </a>
+                </div>
+
+                <div class="dots">
+                  <span class="dot active" data-index="0"></span>
+                  <span class="dot" data-index="1"></span>
+                </div>
+              </div>
+
+              <div class="card-body text-center">
+                <h6 class="fw-bold mb-1">
+                  ${el.title}
+                </h6>
+                <p class="price mb-2">Rs. ${el.price}</p>
+                <button class="cart-btn">
+                  <i class="fas fa-shopping-cart me-1"></i> Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>`
+      });
+
+
+
+
+
+      $(".accessory-card").each(function () {
+        var card = $(this);
+        var images = card.find(".product-img");
+        var dots = card.find(".dot");
+
+        dots.on("click", function () {
+          var index = $(this).data("index");
+
+          images.removeClass("active");
+          dots.removeClass("active");
+
+          images.eq(index).addClass("active");
+          $(this).addClass("active");
+        });
+      });
+
+
+
+
+
+
+
+
+
+
+    });
+  </script>
+</body>
+
+</html>

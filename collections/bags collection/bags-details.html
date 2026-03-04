@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bags Details</title>
+
+  <link rel="stylesheet" href="../MDB5-STANDARD-UI-KIT-Free-9.3.0/css/mdb.min.css" />
+
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/nav.css">
+  <link rel="stylesheet" href="/footer.css">
+
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inconsolata:wght@200..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Pixelify+Sans:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+    rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
+
+
+  <!-- Font Awesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+  <style>
+    :root {
+      --background-color: #fcfcfc;
+      --sec-bg-color: #3b1d23;
+      --text-color: #75555b;
+      --sec-text-color: #2f3e46;
+    }
+
+    body {
+      background: var(--background-color);
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    /* Title */
+    .product-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--text-color);
+      font-weight: 700;
+    }
+
+    /* Price */
+    .price {
+      color: var(--sec-bg-color);
+      font-weight: 600;
+    }
+
+    /* Description */
+    .description {
+      color: var(--sec-text-color);
+      line-height: 1.7;
+    }
+
+    /* Image */
+    .main-image {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    .thumbs img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      margin-right: 10px;
+      cursor: pointer;
+      border-radius: 8px;
+      border: 2px solid transparent;
+      transition: 0.3s;
+    }
+
+    .thumbs img.active {
+      border: 2px solid var(--sec-bg-color);
+    }
+
+    /* Buttons */
+
+    .btn-wishlist {
+      border: 2px solid var(--sec-bg-color);
+      color: var(--sec-bg-color);
+      font-weight: 700;
+      padding: 12px 20px;
+      border-radius: 12px;
+      background: transparent;
+      transition: 0.3s;
+    }
+
+    .btn-wishlist:hover {
+      background: var(--sec-bg-color);
+      color: white;
+    }
+
+    .btn-cart {
+      background: var(--sec-bg-color);
+      color: white;
+      font-weight: 700;
+      padding: 12px 20px;
+      border-radius: 12px;
+      transition: 0.3s;
+    }
+
+    .btn-cart:hover {
+      opacity: 0.9;
+    }
+
+    #plusBtn,
+    #minusBtn {
+      border: 1px solid var(--sec-bg-color);
+      border-radius: 8px;
+      font-size: 20px;
+    }
+
+    .product-info {
+      list-style: none;
+      padding: 0;
+      color: var(--sec-text-color);
+    }
+
+    .product-info li {
+      margin-bottom: 8px;
+    }
+
+    .qty-input {
+      width: 70px;
+      padding: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    /* Responsive */
+    @media(max-width:768px) {
+      .product-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="nav-container"></div>
+
+  <section class="details-section py-5">
+    <div class="container">
+      <div class="row g-5">
+
+        <!-- LEFT IMAGES -->
+        <div class="col-lg-6">
+
+          <div class="main-image">
+            <img id="mainImg" src="bags img/bimg1.webp" class="img-fluid">
+          </div>
+
+          <div class="thumbs d-flex mt-3">
+            <img src="bags img/bimg1.webp" class="thumb active">
+            <img src="bags img/bhover1.webp" class="thumb">
+          </div>
+
+        </div>
+
+        <!-- RIGHT CONTENT -->
+        <div class="col-lg-6">
+
+          <h2 class="product-title">Elegant Leather Handbag</h2>
+
+          <div class="rating mb-2">
+            ★★★★★ <span>(12 Reviews)</span>
+          </div>
+
+          <h3 class="price mb-3">Rs. 3,499</h3>
+
+          <p class="description">
+            High quality premium leather handbag with elegant finishing.
+            Perfect for daily use, office, and casual outings.
+            Spacious compartment design helps you carry your essentials comfortably.
+          </p>
+
+          <!-- Quantity -->
+          <div class="mt-4">
+            <p class="info-label">Quantity</p>
+
+            <div class="d-flex align-items-center gap-3">
+              <button class="btn btn-light" id="minusBtn"><strong>-</strong></button>
+              <span id="qtyValue" class="fw-bold fs-5">1</span>
+              <button class="btn btn-light" id="plusBtn"><strong>+</strong></button>
+            </div>
+
+          </div>
+
+          <!-- Buttons -->
+          <div class="mt-4 d-flex gap-3 flex-wrap">
+
+            <button class="btn-wishlist" id="wishlistBtn">
+              <i class="fa-regular fa-heart"></i> ADD TO WISHLIST
+            </button>
+            <button class="btn-cart" id="cartBtn">
+              <i class="fa-solid fa-cart-shopping"></i> ADD TO CART
+            </button>
+
+          </div>
+
+          <hr class="my-4">
+
+          <ul class="product-info">
+            <li>✔ Premium Quality Leather</li>
+            <li>✔ Multi-Compartment Storage</li>
+            <li>✔ Strong Durable Stitching</li>
+            <li>✔ Stylish Modern Design</li>
+            <li>✔ Free Shipping Available</li>
+            <li>✔ 7 Days Return Policy</li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-container"></div>
+
+  <script src="../MDB5-STANDARD-UI-KIT-Free-9.3.0/js/mdb.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="/main.js"></script>
+
+
+ <script>
+  $(function () {
+    // Load Nav and Footer
+    $("#nav-container").load("/nav.html");
+    $("#footer-container").load("/footer.html");
+
+    // 1. THE DATA
+    const bagsCollection = [
+      { title: "Elegant Black Shoulder Bag", price: "3500", frontImg: "bags img/bimg1.webp", hoverImg: "bags img/bhover1.webp" },
+      { title: "Stylish Brown Cross Bag", price: "3200", frontImg: "bags img/bimg2.webp", hoverImg: "bags img/bhover2.webp" },
+      { title: "Luxury Maroon Hand Bag", price: "3800", frontImg: "bags img/bimg3.webp", hoverImg: "bags img/bhover3.webp" },
+      { title: "Classic Grey Shoulder Bag", price: "3000", frontImg: "bags img/bimg4.webp", hoverImg: "bags img/bhover4.webp" },
+      { title: "Modern Black Mini Bag", price: "3600", frontImg: "bags img/bimg5.webp", hoverImg: "bags img/bhover5.webp" },
+      { title: "Premium Golden Chain Bag", price: "4200", frontImg: "bags img/bimg6.webp", hoverImg: "bags img/bhover6.webp" },
+      { title: "Green Fashion Hand Bag", price: "3900", frontImg: "bags img/bimg7.webp", hoverImg: "bags img/bhover7.webp" },
+      { title: "Designer Cream Bag", price: "3400", frontImg: "bags img/bimg8.webp", hoverImg: "bags img/bhover8.webp" },
+      { title: "Luxury Brown Leather Bag", price: "4500", frontImg: "bags img/bimg9.webp", hoverImg: "bags img/bhover9.webp" },
+      { title: "Elegant White Fashion Bag", price: "3700", frontImg: "bags img/bimg10.webp", hoverImg: "bags img/bhover10.webp" },
+      { title: "Stylish Party Hand Bag", price: "4100", frontImg: "bags img/bimg11.webp", hoverImg: "bags img/bhover11.webp" },
+      { title: "Royal Designer Bag", price: "4800", frontImg: "bags img/bimg12.webp", hoverImg: "bags img/bhover12.webp" },
+      { title: "Classic Ladies Shoulder Bag", price: "3300", frontImg: "bags img/bimg13.webp", hoverImg: "bags img/bhover13.webp" },
+      { title: "Premium Fashion Hand Bag", price: "4400", frontImg: "bags img/bimg14.webp", hoverImg: "bags img/bhover14.webp" },
+      { title: "Modern Stylish Bag", price: "3600", frontImg: "bags img/bimg15.webp", hoverImg: "bags img/bhover15.webp" },
+      { title: "Luxury Black Party Bag", price: "5000", frontImg: "bags img/bimg16.webp", hoverImg: "bags img/bhover16.webp" }
+    ];
+
+    // 2. GET ID FROM URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+
+    // 3. CHECK AND INJECT
+    if (productId !== null && bagsCollection[productId]) {
+      const product = bagsCollection[productId];
+      
+      $(".product-title").text(product.title);
+      $(".price").text("Rs. " + product.price);
+      $("#mainImg").attr("src", product.frontImg);
+      
+      $(".thumbs").html(`
+        <img src="${product.frontImg}" class="thumb active">
+        <img src="${product.hoverImg}" class="thumb">
+      `);
+    } else {
+        console.error("Product ID not found in URL or Array");
+    }
+
+    // 4. CLICK EVENTS (Thumbnails)
+    $(document).on("click", ".thumb", function () {
+      $("#mainImg").attr("src", $(this).attr("src"));
+      $(".thumb").removeClass("active");
+      $(this).addClass("active");
+    });
+
+    // 5. QUANTITY
+    let qty = 1;
+    $("#plusBtn").on("click", () => { qty++; $("#qtyValue").text(qty); });
+    $("#minusBtn").on("click", () => { if (qty > 1) { qty--; $("#qtyValue").text(qty); } });
+
+    // 6. WISHLIST
+    $("#wishlistBtn").on("click", () => {
+       const productToSave = {
+          id: productId,
+          name: $(".product-title").text(),
+          price: $(".price").text(),
+          image: $("#mainImg").attr("src"),
+          category: "Bags Collection"
+       };
+       let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+       if (!wishlist.some(item => item.name === productToSave.name)) {
+          wishlist.push(productToSave);
+          localStorage.setItem("wishlist", JSON.stringify(wishlist));
+          alert("Added to Wishlist ❤️");
+       } else {
+          alert("Already in wishlist!");
+       }
+    });
+  });
+</script>
+
+</body>
+
+</html>

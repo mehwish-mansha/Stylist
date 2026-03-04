@@ -1,73 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Google Fonts -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Winter Collection</title>
+  <link rel="stylesheet" href="winter.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inconsolata:wght@200..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Pixelify+Sans:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-        rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-
-    <!-- Font Awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    <title>Winter Collection | Stylist</title>
-    <link rel="stylesheet" href="../nav.css">
-    <link rel="stylesheet" href="../footer.css">
-
-    <style>
-        h1{
-            padding:4rem;
-        }
-    </style>
 </head>
 <body>
-    
 
-    <!--Navbar Section-->
+  <!-- ══ COLLECTION VIEW ══ -->
+  <section class="wedding-collection-section">
+    <h1 class="main-heading text-center">Winter collection</h1>
+    <div class="row g-4" id="cardlist"></div>
+  </section>
+  
+  <!-- ══ DETAIL VIEW ══ -->
+  <div id="detailView">
+    <button class="back-btn" id="backBtn">
+      <i class="fa-solid fa-arrow-left"></i> Back to Collection
+    </button>
 
-    <div id="nav-container"></div>
+    <div class="detail-grid">
+      <!-- Image -->
+      <div class="detail-img">
+        <img id="d-img" src="" alt="Product">
+      </div>
 
-    <h1>Winter Collection</h1>
+      <!-- Info -->
+      <div class="detail-info">
+        <p class="d-code" id="d-badge"></p>
+        <h2 class="d-title" id="d-title"></h2>
 
-        <!--Footer Section-->
-    <div id="footer-container"></div>
+        <div class="price-row">
+          <p class="label">Price</p>
+          <div class="d-price">
+            <span class="old" id="d-oldPrice"></span>
+            <span id="d-newPrice"></span>
+          </div>
+        </div>
 
+        <hr class="divider">
 
-    <!-- jquery-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!-- Size -->
+        <p class="size-label">Size</p>
+        <div class="size-btns">
+          <button class="size-btn active">S</button>
+          <button class="size-btn">M</button>
+          <button class="size-btn">L</button>
+          <button class="size-btn">XL</button>
+        </div>
 
+        <!-- Qty -->
+        <div class="qty-wrap">
+          <span class="qty-label">Quantity</span>
+          <div class="qty-ctrl">
+            <button class="qty-btn" id="minusBtn">−</button>
+            <span class="qty-num" id="qtyValue">1</span>
+            <button class="qty-btn" id="plusBtn">+</button>
+          </div>
+        </div>
 
-        <script src="../main.js"></script>
+        <!-- Buttons -->
+        <div class="action-btns">
+          <button class="btn-wish" id="wishBtn">
+            <i class="fa-regular fa-heart"></i> ADD TO WISHLIST
+          </button>
+          <button class="btn-cart" id="cartBtn">
+            <i class="fa-solid fa-cart-shopping"></i> ADD TO CART
+          </button>
+        </div>
 
+        <!-- Accordion -->
+        <div class="accordion" id="accordion">
+          <div class="acc-item">
+            <button class="acc-trigger">
+              Description <span class="icon">+</span>
+            </button>
+            <div class="acc-body">
+              <ol>
+                <li>Soft and stylish everyday outfit with relaxed fit.</li>
+                <li>Blush pink V-neck top for a modern minimal look.</li>
+                <li>Light-wash wide-leg denim for comfort and style.</li>
+                <li>Breathable fabric suitable for daily wear.</li>
+                <li>Perfect for brunch, weekends, and casual outings.</li>
+              </ol>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-trigger">
+              Product Care <span class="icon">+</span>
+            </button>
+            <div class="acc-body">
+              <ol>
+                <li>Machine wash cold with similar colors.</li>
+                <li>Use mild detergent and avoid bleach.</li>
+                <li>Tumble dry on low or hang to dry.</li>
+                <li>Warm iron if needed.</li>
+                <li>Do not dry clean unless specified on label.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
 
+  <script>
+    // ── DATA ──
+    const winterCollection = [
+      { title:"Basic V-Neck Sweater", oldPrice:"Rs. 7,000", newPrice:"Rs. 4,000", image:"winter img/women1.jpg", badge:"NEW" },
+      { title:"Biker Jacket With Pinstripe Detail", oldPrice:"Rs. 8,000", newPrice:"Rs. 4,000", image:"winter img/women2.jpg", badge:"NEW" },
+      { title:"Notched Collar Blazer", oldPrice:"Rs. 7,000", newPrice:"Rs. 4,000", image:"winter img/women3.jpg", badge:"NEW" },
+      { title:"Crew Neck Sweater", oldPrice:"Rs. 5,000", newPrice:"Rs. 2,000", image:"winter img/women4.jpg", badge:"NEW" },
+      { title:"Super Cropped Denim Jacket", oldPrice:"Rs. 6,000", newPrice:"Rs. 3,000", image:"winter img/women5.jpg", badge:"NEW" },
+      { title:"Soft Power Top", oldPrice:"Rs. 7,000", newPrice:"Rs. 5,000", image:"winter img/women12.jpg", badge:"NEW" },
+      { title:"Cropped Pointelle Detail Sweater", oldPrice:"Rs. 8,000", newPrice:"Rs. 6,500", image:"winter img/women18.jpg", badge:"NEW" },
+      { title:"Cocoa Calm Pullover", oldPrice:"Rs. 9,000", newPrice:"Rs. 7,500", image:"winter img/women19.jpg", badge:"NEW" },
+      { title:"Faux Leather Bomber Jacket", oldPrice:"Rs. 5,000", newPrice:"Rs. 2,000", image:"winter img/women17.jpg", badge:"HOT" },
+      { title:"Modern Ease Shirt", oldPrice:"Rs. 8,000", newPrice:"Rs. 5,000", image:"winter img/women20.jpg", badge:"HOT" },
+      { title:"Flannelette Cardigan", oldPrice:"Rs. 2,000", newPrice:"Rs. 1,500", image:"winter img/women6.jpg", badge:"HOT" },
+      { title:"Masoori / Chiffon", oldPrice:"Rs. 5,000", newPrice:"Rs. 3,900", image:"winter img/women7.jpg", badge:"HOT" },
+      { title:"Emerald Royal Grace", oldPrice:"Rs. 7,000", newPrice:"Rs. 4,000", image:"winter img/women8.jpg", badge:"SALE" },
+      { title:"Blush Velvet Dream", oldPrice:"Rs. 9,000", newPrice:"Rs. 5,000", image:"winter img/women9.jpg", badge:"SALE" },
+      { title:"Frosted Sky Elegance", oldPrice:"Rs. 4,000", newPrice:"Rs. 2,900", image:"winter img/women10.jpg", badge:"SALE" },
+      { title:"Midnight Modern Muse", oldPrice:"Rs. 5,000", newPrice:"Rs. 3,500", image:"winter img/women11.jpg", badge:"SALE" },
+      { title:"Silver Noor Ensemble", oldPrice:"Rs. 6,500", newPrice:"Rs. 5,000", image:"winter img/women13.jpg", badge:"NEW" },
+      { title:"Ivory Bloom Co-Ord", oldPrice:"Rs. 8,500", newPrice:"Rs. 6,500", image:"winter img/women14.jpg", badge:"NEW" },
+      { title:"Champagne Riwaayat Set", oldPrice:"Rs. 8,000", newPrice:"Rs. 5,000", image:"winter img/women15.jpg", badge:"NEW" },
+      { title:"Emerald Zehra Luxe", oldPrice:"Rs. 5,000", newPrice:"Rs. 3,000", image:"winter img/women16.jpg", badge:"NEW" },
+    ];
 
+    // ── RENDER CARDS ──
+    const grid = document.getElementById('cardGrid');
+    winterCollection.forEach((item, i) => {
+      const badgeClass = item.badge === 'SALE' ? 'sale' : item.badge === 'HOT' ? 'hot' : '';
+      grid.innerHTML += `
+        <div class="product-card" data-index="${i}">
+          <div class="card-img-wrap">
+            <span class="badge-label ${badgeClass}">
+              <i class="fa-solid fa-bolt"></i> ${item.badge}
+            </span>
+            <img src="${item.image}" alt="${item.title}" loading="lazy">
+            <div class="view-overlay"><span>VIEW DETAILS →</span></div>
+          </div>
+          <div class="card-body">
+            <p class="card-desc">${item.title}</p>
+            <div class="card-prices">
+              <span class="price-old">${item.oldPrice}</span>
+              <span class="price-new">${item.newPrice}</span>
+            </div>
+          </div>
+        </div>`;
+    });
 
-    <script>
+    // ── CARD CLICK → DETAIL ──
+    grid.addEventListener('click', e => {
+      const card = e.target.closest('.product-card');
+      if (!card) return;
+      const idx = card.dataset.index;
+      showDetail(winterCollection[idx]);
+    });
 
-        // Navbar and Footer
+    function showDetail(item) {
+      document.getElementById('d-img').src = item.image;
+      document.getElementById('d-title').textContent = item.title;
+      document.getElementById('d-badge').textContent = `Winter Collection · ${item.badge}`;
+      document.getElementById('d-oldPrice').textContent = item.oldPrice;
+      document.getElementById('d-newPrice').textContent = item.newPrice;
+      qty = 1;
+      document.getElementById('qtyValue').textContent = 1;
+      // reset sizes
+      document.querySelectorAll('.size-btn').forEach((b, i) => b.classList.toggle('active', i === 0));
 
-        $(function () {
+      document.getElementById('collectionView').style.display = 'none';
+      document.getElementById('detailView').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
-            $("#nav-container").load("../nav.html", function () {
-                initNavbar();
-            });
+    // ── BACK ──
+    document.getElementById('backBtn').addEventListener('click', () => {
+      document.getElementById('detailView').style.display = 'none';
+      document.getElementById('collectionView').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
-            $("#footer-container").load("../footer.html");
+    // ── SIZE BUTTONS ──
+    document.querySelectorAll('.size-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
 
-        });
-        </script>
+    // ── QUANTITY ──
+    let qty = 1;
+    document.getElementById('plusBtn').addEventListener('click', () => {
+      qty++;
+      document.getElementById('qtyValue').textContent = qty;
+    });
+    document.getElementById('minusBtn').addEventListener('click', () => {
+      if (qty > 1) { qty--; document.getElementById('qtyValue').textContent = qty; }
+    });
+
+    // ── TOAST ──
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    document.getElementById('wishBtn').addEventListener('click', () => showToast('Added to Wishlist ❤️'));
+    document.getElementById('cartBtn').addEventListener('click', () => showToast('Added to Cart 🛒'));
+
+    // ── ACCORDION ──
+    document.querySelectorAll('.acc-trigger').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const body = trigger.nextElementSibling;
+        const isOpen = body.classList.contains('open');
+        // close all
+        document.querySelectorAll('.acc-body').forEach(b => b.classList.remove('open'));
+        document.querySelectorAll('.acc-trigger').forEach(t => t.classList.remove('open'));
+        if (!isOpen) {
+          body.classList.add('open');
+          trigger.classList.add('open');
+        }
+      });
+    });
+  </script>
 </body>
 </html>

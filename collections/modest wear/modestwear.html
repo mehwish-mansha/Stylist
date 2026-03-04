@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modest wear page</title>
+  <link rel="stylesheet" href="../MDB5-STANDARD-UI-KIT-Free-9.3.0/css/mdb.min.css" />
+
+  <link rel="stylesheet" href="modest.css" />
+
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/nav.css">
+  <link rel="stylesheet" href="/footer.css">
+
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inconsolata:wght@200..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Pixelify+Sans:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+    rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
+
+
+  <!-- Font Awesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+
+<body>
+
+
+
+  <div id="nav-container"></div>
+
+  <section class="wedding-collection-section">
+    <h1 class="main-heading text-center">Modest Wear collection</h1>
+    <div class="row g-4" id="cardlist"></div>
+  </section>
+
+
+  <div id="footer-container"></div>
+
+  <script src="../MDB5-STANDARD-UI-KIT-Free-9.3.0/js/mdb.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="/main.js"></script>
+
+
+
+
+  <script>
+
+
+    // Nav &Footer Load
+    $(function () {
+      $("#nav-container").load("/nav.html");
+      $("#footer-container").load("/footer.html");
+    });
+
+
+    $(document).ready(() => {
+      const modestCollection = [
+        {
+          title: "Elegant Grey Abaya",
+          category: "Modest Wear",
+          description: "Soft grey long abaya with minimal design",
+          price: "4500",
+          image: "modest img/modestimg1.webp",
+          link: "modest-details.html",
+          badge: "NEW",
+        },
+        {
+          title: "Classic Black Abaya",
+          category: "Modest Wear",
+          description: "Premium black modest wear outfit",
+          price: "4800",
+          image: "modest img/modestimg2.webp",
+          link: "modest-details.html",
+          badge: "HOT",
+        },
+        {
+          title: "Luxury Black Open Abaya",
+          category: "Modest Wear",
+          description: "Elegant open style abaya for formal wear",
+          price: "5000",
+          image: "modest img/modestimg3.webp",
+          link: "modest-details.html",
+          badge: "HOT",
+        },
+        {
+          title: "Royal Blue Abaya",
+          category: "Modest Wear",
+          description: "Bright blue modest dress for special occasions",
+          price: "5200",
+          image: "modest img/modestimg4.webp",
+          link: "modest-details.html",
+          badge: "NEW",
+        },
+        {
+          title: "Beige Classic Abaya",
+          category: "Modest Wear",
+          description: "Simple and elegant beige abaya",
+          price: "4700",
+          image: "modest img/modestimg5.webp",
+          link: "modest-details.html",
+          badge: "SALE",
+        },
+        {
+          title: "Minimal Black Abaya",
+          category: "Modest Wear",
+          description: "Plain black modest outfit with clean cut",
+          price: "4600",
+          image: "modest img/modestimg6.webp",
+          link: "modest-details.html",
+          badge: "NEW",
+        },
+        {
+          title: "Soft Grey Modest Dress",
+          category: "Modest Wear",
+          description: "Comfortable long modest dress",
+          price: "4400",
+          image: "modest img/modestimg7.webp",
+          link: "modest-details.html",
+          badge: "NEW",
+        },
+        {
+          title: "Dusty Blue Abaya",
+          category: "Modest Wear",
+          description: "Modern dusty blue modest outfit",
+          price: "5100",
+          image: "modest img/modestimg8.webp",
+          link: "modest-details.html",
+          badge: "HOT",
+        },
+        {
+          title: "Emerald Green Abaya",
+          category: "Modest Wear",
+          description: "Luxury green modest formal wear",
+          price: "5500",
+          image: "modest img/modestimg9.webp",
+          link: "modest-details.html",
+          badge: "HOT",
+        },
+        {
+          title: "Soft Pink Abaya",
+          category: "Modest Wear",
+          description: "Elegant pastel pink modest dress",
+          price: "4900",
+          image: "modest img/modestimg10.webp",
+          link: "modest-details.html",
+          badge: "SALE",
+        },
+        {
+          title: "Maroon Modest Dress",
+          category: "Modest Wear",
+          description: "Deep maroon long modest outfit",
+          price: "5300",
+          image: "modest img/modestimg11.webp",
+          link: "modest-details.html",
+          badge: "NEW",
+        },
+        {
+          title: "Nude Beige Abaya",
+          category: "Modest Wear",
+          description: "Soft nude tone modest wear",
+          price: "4700",
+          image: "modest img/modestimg12.webp",
+          link: "modest-details.html",
+          badge: "NEW",
+        },
+        {
+          title: "Classic Taupe Dress",
+          category: "Modest Wear",
+          description: "Elegant taupe colored modest dress",
+          price: "5000",
+          image: "modest img/modestimg13.webp",
+          link: "modest-details.html",
+          badge: "HOT",
+        },
+        {
+          title: "Soft Brown Abaya",
+          category: "Modest Wear",
+          description: "Stylish brown modest outfit",
+          price: "5200",
+          image: "modest img/modestimg14.webp",
+          link: "modest-details.html",
+          badge: "HOT",
+        },
+        {
+          title: "Rose Pink Abaya",
+          category: "Modest Wear",
+          description: "Elegant rose pink long dress",
+          price: "5100",
+          image: "modest img/modestimg15.webp",
+          link: "modest-details.html",
+          badge: "SALE",
+        },
+        {
+          title: "White Elegant Abaya",
+          category: "Modest Wear",
+          description: "Pure white minimal modest dress",
+          price: "4800",
+          image: "modest img/modestimg16.webp",
+          link: "modest-details.html",
+          badge: "NEW",
+        },
+        {
+          title: "Black Premium Abaya",
+          category: "Modest Wear",
+          description: "Luxury black modest collection",
+          price: "5600",
+          image: "modest img/modestimg17.webp",
+          link: "modest-details.html",
+          badge: "HOT",
+        },
+        {
+          title: "Elegant Black Lace Abaya",
+          category: "Modest Wear",
+          description: "Formal Luxury modest wear",
+          price: "6000",
+          image: "modest img/modestimg18.webp",
+          link: "modest-details.html",
+          badge: "HOT",
+        },
+        {
+          title: "Grey Formal Abaya",
+          category: "Modest Wear",
+          description: "Formal grey modest outfit",
+          price: "5300",
+          image: "modest img/modestimg19.webp",
+          link: "modest-details.html",
+          badge: "SALE",
+        },
+        {
+          title: "Teal Green Modest Dress",
+          category: "Modest Wear",
+          description: "Modern teal green long dress",
+          price: "5400",
+          image: "modest img/modestimg20.webp",
+          link: "modest-details.html",
+          badge: "NEW",
+        },
+      ];
+
+      modestCollection.map((el) => {
+        document.getElementById("cardlist").innerHTML += `
+
+  <div class="col-6 col-md-4 col-lg-3">
+  <div class="product-card">
+    <div class="product-image position-relative">
+
+      <span class="badge-new">  <i class="fa-solid fa-bolt"></i>${el.badge}</span>
+
+  
+      <a href="modest-details.html">
+        <img src="${el.image}" alt="${el.title}">
+      </a>
+
+    
+      <a href="modest-details.html" class="view-details-btn">
+        View Details  <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+    <div class="product-content text-center">
+      <h3 class="product-title">${el.category}</h3>
+      <p class="product-description">${el.description}</p>
+     <h4 class="product-price">
+   <i class="fa-solid fa-tag"></i>Price:
+ 
+  <span class="new-price">${el.price}</span>
+</h4>
+
+
+
+    </div>
+  </div>
+</div>
+`;
+      });
+    });
+  </script>
+</body>
+
+</html>

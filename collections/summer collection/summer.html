@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>summer collection page</title>
+  <link rel="stylesheet" href="../MDB5-STANDARD-UI-KIT-Free-9.3.0/css/mdb.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="card.css" />
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/nav.css">
+  <link rel="stylesheet" href="/footer.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inconsolata:wght@200..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Pixelify+Sans:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
+
+
+    <!-- Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+
+  <div id="nav-container"></div>
+
+
+  <section class="wedding-collection-section">
+    <h1 class="main-heading text-center">Summer Collection</h1>
+    <div class="row g-4" id="cardlist"></div>
+  </section>
+
+  <div id="footer-container"></div>
+
+  <script src="../MDB5-STANDARD-UI-KIT-Free-9.3.0/js/mdb.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script src="/main.js"></script>
+
+  <script>
+
+
+    $(function () {
+      $("#nav-container").load("/nav.html");
+      $("#footer-container").load("/footer.html");
+    });
+    $(document).ready(() => {
+
+
+      const SummerCollection = [
+        // silk print (4)
+        {
+          title: "Silk Print Outfit 1",
+          category: "Summer Silk Edit",
+          description: "Lightweight silk print outfit perfect for warm summer days",
+
+          price: "5000k",
+          image: "summer img/simg1.webp",
+          link: "silk image 1.html",
+          badge: "NEW"
+        },
+        {
+          title: "Silk Print Outfit 2",
+          category: "Summer Silk Edit",
+          description: "Premium stitched silk design crafted for summer comfort",
+
+          price: "6000k",
+          image: "summer img/simg2.webp",
+          link: "product-details.html",
+          badge: "NEW"
+        },
+        {
+          title: "Silk Print Outfit 3",
+          category: "Summer Silk Edit",
+          description: "Soft fabric silk ensemble designed for everyday summer wear",
+
+          price: "7000k",
+          image: "summer img/simg3.webp",
+          link: "product-details.html",
+          badge: "NEW"
+        },
+        {
+          title: "Silk Print Outfit 4",
+          category: "Summer Silk Edit",
+          description: "Breathable silk print collection for a graceful summer look",
+
+          price: "8000k",
+          image: "summer img/simg4.webp",
+          link: "product-details.html",
+          badge: "NEW"
+        },
+
+        // modern archives (4)
+        {
+          title: "Modern Archives Outfit 1",
+          category: "Modern Summer Line",
+          description: "Contemporary summer outfit with elegant detailing",
+
+          price: "4500k",
+          image: "summer img/simg5.webp",
+          link: "product-details.html",
+          badge: "NEW"
+        },
+        {
+          title: "Modern Archives Outfit 2",
+          category: "Modern Summer Line",
+          description: "Timeless summer design tailored for comfort and style",
+
+          price: "5500k",
+          image: "summer img/simg6.webp",
+          link: "product-details.html",
+          badge: "NEW"
+        },
+        {
+          title: "Modern Archives Outfit 3",
+          category: "Modern Summer Line",
+          description: "Minimal yet classy summer wear with premium finish",
+
+          price: "6500k",
+          image: "summer img/simg7.webp",
+          link: "product-details.html",
+          badge: "NEW"
+        },
+        {
+          title: "Modern Archives Outfit 4",
+          category: "Modern Summer Line",
+          description: "Elegant summer collection featuring refined craftsmanship",
+
+          price: "7500k",
+          image: "summer img/simg8.webp",
+          link: "product-details.html",
+          badge: "NEW"
+        },
+
+        // glamorous (4)
+        {
+          title: "Glamorous Outfit 1",
+          category: "Luxury Glam Edit",
+          description: "Statement summer outfit designed for festive gatherings",
+
+          price: "12000k",
+          image: "summer img/simg9.webp",
+          link: "product-details.html",
+          badge: "HOT"
+        },
+        {
+          title: "Glamorous Outfit 2",
+          category: "Luxury Glam Edit",
+          description: "Luxury summer attire with premium embellishments",
+
+          price: "15000k",
+          image: "summer img/simg10.webp",
+          link: "product-details.html",
+          badge: "HOT"
+        },
+        {
+          title: "Glamorous Outfit 3",
+          category: "Luxury Glam Edit",
+          description: "Exclusive designer summer ensemble for special occasions",
+
+          price: "18000k",
+          image: "summer img/simg11.webp",
+          link: "product-details.html",
+          badge: "HOT"
+        },
+        {
+          title: "Glamorous Outfit 4",
+          category: "Luxury Glam Edit",
+          description: "Premium festive summer wear with elegant stitching",
+
+          price: "20000k",
+          image: "summer img/simg12.webp",
+          link: "product-details.html",
+          badge: "HOT"
+        },
+
+        // eid special (4)
+        {
+          title: "Eid Special Outfit 1",
+          category: "Festive Summer Collection",
+          description: "Specially designed festive outfit for summer celebrations",
+
+          price: "14000k",
+          image: "summer img/simg13.webp",
+          link: "product-details.html",
+          badge: "SALE"
+        },
+        {
+          title: "Eid Special Outfit 2",
+          category: "Festive Summer Collection",
+          description: "Premium eid collection crafted for summer festivities",
+
+          price: "16000k",
+          image: "summer img/simg14.webp",
+          link: "product-details.html",
+          badge: "SALE"
+        },
+        {
+          title: "Eid Special Outfit 3",
+          category: "Festive Summer Collection",
+          description: "Graceful embroidered outfit for elegant summer events",
+
+          price: "19000k",
+          image: "summer img/simg15.webp",
+          link: "product-details.html",
+          badge: "SALE"
+        },
+        {
+          title: "Eid Special Outfit 4",
+          category: "Festive Summer Collection",
+          description: "Luxury festive summer dress with premium detailing",
+
+          price: "22000k",
+          image: "summer img/simg16.webp",
+          link: "product-details.html",
+          badge: "SALE"
+        },
+
+        // M.Classic (4)
+        {
+          title: "M.Classic Outfit 1",
+          category: "Signature Classic Line",
+          description: "Signature summer outfit designed for everyday elegance",
+
+          price: "5000k",
+          image: "summer img/simg17.webp",
+          link: "product-details.html",
+          badge: "NEW"
+        },
+        {
+          title: "M.Classic Outfit 2",
+          category: "Signature Classic Line",
+          description: "Comfortable and stylish summer classic wear",
+
+          price: "6500k",
+          image: "summer img/simg18.webp",
+          link: "product-details.html",
+          badge: "NEW"
+        },
+        {
+          title: "M.Classic Outfit 3",
+          category: "Signature Classic Line",
+          description: "Traditional inspired summer collection with modern touch",
+
+          price: "8000k",
+          image: "summer img/simg19.webp",
+          link: "product-details.html",
+          badge: "NEW"
+        },
+        {
+          title: "M.Classic Outfit 4",
+          category: "Signature Classic Line",
+          description: "Premium quality classic summer outfit with fine stitching",
+
+          price: "1000k",
+          image: "summer img/simg20.webp",
+          link: "product-details.html",
+          badge: "NEW"
+        }
+      ];
+
+
+
+      SummerCollection.map((el) => {
+        document.getElementById("cardlist").innerHTML += `
+
+  <div class="col-6 col-md-4 col-lg-3">
+  <div class="product-card">
+    <div class="product-image position-relative">
+
+      <span class="badge-new">  <i class="fa-solid fa-bolt"></i>${el.badge}</span>
+
+  
+      <a href="summer-details.html">
+        <img src="${el.image}" alt="${el.title}">
+      </a>
+
+    
+      <a href="summer-details.html" class="view-details-btn">
+        View Details  <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+    <div class="product-content text-center">
+      <h3 class="product-title">${el.category}</h3>
+      <p class="product-description">${el.description}</p>
+     <h4 class="product-price">
+   <i class="fa-solid fa-tag"></i>Price:
+   <span class="new-price">${el.price}</span>
+</h4>
+
+
+
+    </div>
+  </div>
+</div>
+`;
+      })
+
+
+    })
+
+
+  </script>
+
+
+
+</body>
+
+</html>

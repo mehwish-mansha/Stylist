@@ -40,9 +40,22 @@
     </section>
 
     <!-- FAVOURITES SECTION -->
+<<<<<<< HEAD
     <section class="fav-section">
         <div class="fav-container" id="wishlist-items-container"></div>
     </section>
+=======
+   <section class="fav-section">
+    <div class="fav-container" id="wishlist-items-container"></div>
+</section>
+
+
+
+
+
+
+
+>>>>>>> 25475482ad60e8e87d0e6a7dc00bb80387d2416e
 
     <!--Footer Section-->
     <div id="footer-container"></div>
@@ -55,6 +68,7 @@
     <script src="/main.js"></script>
 
     <script>
+<<<<<<< HEAD
     $(function () {
         $("#nav-container").load("nav.html", function () {
             initNavbar();
@@ -78,11 +92,47 @@
                     <i class="fa-regular fa-heart"></i>
                     <p>Your favourites list is currently empty.</p>
                     <a href="/index.html" class="move-btn">Continue Shopping</a>
+=======
+
+        // Navbar and Footer
+
+        $(function () {
+
+            $("#nav-container").load("nav.html", function () {
+                initNavbar();
+                 initNavFeatures();
+            });
+
+            $("#footer-container").load("footer.html");
+
+        });
+        
+
+       $(document).ready(function() {
+    // Run the display function as soon as page loads
+    renderWishlist();
+
+    function renderWishlist() {
+        const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+        const container = $('#wishlist-items-container');
+        container.empty(); // Clear the "default" items
+
+        if (wishlist.length === 0) {
+            container.html(`
+                <div class="empty-msg" style="text-align:center; padding: 50px; width: 100%;">
+                    <i class="fa-regular fa-heart" style="font-size: 3rem; color: #ccc;"></i>
+                    <p style="margin-top: 20px;">Your wishlist is currently empty.</p>
+                    <a href="/index.html" class="move-btn" style="display:inline-block; text-decoration:none; margin-top:10px;">Continue Shopping</a>
+>>>>>>> 25475482ad60e8e87d0e6a7dc00bb80387d2416e
                 </div>
             `);
             return;
         }
 
+<<<<<<< HEAD
+=======
+        // Loop through LocalStorage and create the HTML for each item
+>>>>>>> 25475482ad60e8e87d0e6a7dc00bb80387d2416e
         wishlist.forEach(item => {
             container.append(`
                 <div class="fav-item" data-id="${item.id}">
@@ -92,18 +142,42 @@
                         <p class="category">${item.category}</p>
                         <p class="price">${item.price}</p>
                         <div class="fav-actions">
+<<<<<<< HEAD
                             <button class="move-btn" onclick="moveToCart('${item.id}')">
                                 <i class="fa-solid fa-bag-shopping"></i>Move to Cart
                             </button>
                             <button class="remove-btn" onclick="removeFromWishlist('${item.id}')">
                                 <i class="fa-regular fa-trash-can"></i>Remove
                             </button>
+=======
+                            <button class="move-btn">Move to Cart</button>
+                            <button class="remove-btn" onclick="removeFromWishlist(${item.id})">Remove</button>
+>>>>>>> 25475482ad60e8e87d0e6a7dc00bb80387d2416e
                         </div>
                     </div>
                 </div>
             `);
         });
     }
+<<<<<<< HEAD
+=======
+
+    // Function to handle the removal from LocalStorage
+    window.removeFromWishlist = function(id) {
+        let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+        // Filter out the item with the matching ID
+        wishlist = wishlist.filter(item => item.id !== id);
+        // Save the updated list back to LocalStorage
+        localStorage.setItem("wishlist", JSON.stringify(wishlist));
+        
+        // Refresh the display
+        $(`.fav-item[data-id="${id}"]`).fadeOut(300, function() {
+            renderWishlist();
+        });
+    };
+
+});
+>>>>>>> 25475482ad60e8e87d0e6a7dc00bb80387d2416e
 
     // ── Remove from wishlist ──────────────────────────────────────────
     window.removeFromWishlist = function (id) {

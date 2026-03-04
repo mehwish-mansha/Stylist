@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+<<<<<<< HEAD
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Product Details</title>
@@ -374,10 +375,27 @@
   </style>
 </head>
 
+=======
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+
+    <link rel="stylesheet" href="/collections/MDB5-STANDARD-UI-KIT-Free-9.3.0/css/mdb.min.css" />
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/nav.css">
+    <link rel="stylesheet" href="/footer.css">
+    <link rel="stylesheet" href="product-detail.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+</head>
+>>>>>>> 25475482ad60e8e87d0e6a7dc00bb80387d2416e
 <body>
 
   <div id="nav-container"></div>
 
+<<<<<<< HEAD
   <!-- Breadcrumb -->
   <div class="breadcrumb-bar">
     <div class="container">
@@ -449,10 +467,54 @@
               <button class="qty-btn" id="minusBtn">−</button>
               <span class="qty-display" id="qtyValue">1</span>
               <button class="qty-btn" id="plusBtn">+</button>
+=======
+  <section class="details-section py-5">
+    <div class="container">
+      <div class="row g-5">
+
+        <!-- LEFT IMAGES -->
+        <div class="col-lg-6" data-aos="fade-right">
+
+          <div class="main-image">
+            <img id="mainImg" src="jewery img/jimg1.webp" class="img-fluid">
+          </div>
+
+          <div class="thumbs d-flex mt-3">
+            <img src="jewery collection/jewery img/jhover1.webp" class="thumb active">
+            <img src="jewery collection/jewery img/jhover2.webp" class="thumb">
+          </div>
+
+        </div>
+
+        <!-- RIGHT CONTENT -->
+        <div class="col-lg-6" data-aos="fade-left">
+
+          <h2 class="product-title">Elegant Gold Earrings</h2>
+
+          <div class="rating mb-2">
+            ★★★★★ <span>(12 Reviews)</span>
+          </div>
+
+          <h3 class="price mb-3">Rs. 2,999</h3>
+
+          <p class="description">
+            Premium quality gold plated earrings with elegant finishing.
+            Perfect for weddings and formal occasions.
+          </p>
+
+          <!-- Quantity -->
+          <div class="mt-4">
+            <p class="info-label">Quantity</p>
+            <div class="d-flex align-items-center gap-3">
+              <button class="btn btn-light" id="minusBtn"><strong>-</strong></button>
+              <span id="qtyValue" class="fw-bold fs-5">1</span>
+              <button class="btn btn-light" id="plusBtn"><strong>+</strong></button>
+>>>>>>> 25475482ad60e8e87d0e6a7dc00bb80387d2416e
             </div>
           </div>
 
           <!-- Buttons -->
+<<<<<<< HEAD
           <div class="d-flex gap-3 flex-wrap mb-4">
             <button class="btn-wishlist" id="wishlistBtn">
               <i class="fa-regular fa-heart me-1"></i> ADD TO WISHLIST
@@ -520,20 +582,61 @@
   <div id="footer-container"></div>
 
   <!-- Scripts -->
+=======
+          <div class="mt-4 d-flex gap-3 flex-wrap">
+            <button class="btn-wishlist" id="wishlistBtn">
+              <i class="fa-regular fa-heart"></i> ADD TO WISHLIST
+            </button>
+
+            <button class="btn-cart" id="cartBtn">
+              <i class="fa-solid fa-cart-shopping"></i> ADD TO CART
+            </button>
+          </div>
+
+          <hr class="my-4">
+
+          <ul class="product-info">
+            <li>✔ Premium Quality</li>
+            <li>✔ 7 Days Return</li>
+            <li>✔ Cash on Delivery</li>
+            <li>✔ Free Shipping</li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-container"></div>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+>>>>>>> 25475482ad60e8e87d0e6a7dc00bb80387d2416e
   <script src="/collections/MDB5-STANDARD-UI-KIT-Free-9.3.0/js/mdb.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
     integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<<<<<<< HEAD
   <script src="/main.js"></script>
 
   <script>
 
      // Load Nav & Footer
+=======
+
+
+    <script src="/main.js"></script>
+
+  <script>
+
+    // Nav &Footer Load
+>>>>>>> 25475482ad60e8e87d0e6a7dc00bb80387d2416e
     $(function () {
       $("#nav-container").load("/nav.html");
       $("#footer-container").load("/footer.html");
     });
 
+<<<<<<< HEAD
     const collections = {
       bridal: {
         title: "Bridal Collection",
@@ -1010,6 +1113,43 @@ $("#cartBtn").on("click", function () {
       }
     });
 
+=======
+    AOS.init();
+
+    document.querySelectorAll(".thumb").forEach(img => {
+      img.addEventListener("click", function () {
+        document.getElementById("mainImg").src = this.src;
+        document.querySelectorAll(".thumb").forEach(t => t.classList.remove("active"));
+        this.classList.add("active");
+      });
+    });
+
+    // Quantity control
+    let qty = 1;
+    const qtyValue = document.getElementById("qtyValue");
+
+    document.getElementById("plusBtn").addEventListener("click", () => {
+      qty++;
+      qtyValue.innerText = qty;
+    });
+
+    document.getElementById("minusBtn").addEventListener("click", () => {
+      if (qty > 1) {
+        qty--;
+        qtyValue.innerText = qty;
+      }
+    });
+
+    // Wishlist button
+    document.getElementById("wishlistBtn").addEventListener("click", () => {
+      alert("Added to Wishlist ❤️");
+    });
+
+    // Cart button
+    document.getElementById("cartBtn").addEventListener("click", () => {
+      alert("Added to Cart 🛒");
+    });
+>>>>>>> 25475482ad60e8e87d0e6a7dc00bb80387d2416e
   </script>
 
 </body>

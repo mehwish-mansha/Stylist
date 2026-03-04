@@ -246,7 +246,19 @@
     transition: width 0.5s ease;
 }
 
+<<<<<<< HEAD
 .submenu a:hover::after { width: 100%; }
+=======
+.submenu a:hover::after {
+    width: 100%;
+}
+
+
+/* Active */
+.submenu.active {
+    max-height: 1000px;
+}
+>>>>>>> 25475482ad60e8e87d0e6a7dc00bb80387d2416e
 
 .dropdown-header i {
     transition: transform 0.3s ease;

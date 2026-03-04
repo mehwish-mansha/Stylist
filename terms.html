@@ -6,10 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms of Service | Stylist</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="footer.css">
+    <!-- Google Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inconsolata:wght@200..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Pixelify+Sans:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
+
+
+    <!-- Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         :root {
@@ -219,99 +232,103 @@
     <div id="footer-container"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-    $(function () {
-        /**
-         * 1. LOAD COMPONENTS & FIX LOGO
-         * If your Terms page is in a subfolder, change "nav.html" to "../nav.html"
-         */
-        $("#nav-container").load("nav.html", function() {
-            // Fix: If the logo image in nav.html has a relative path, 
-            // ensure it points to the correct root directory.
-            initNavbarToggle(); 
-            initNavFeatures();
-        });
-        $("#footer-container").load("footer.html");
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-        /**
-         * 2. NAVIGATION & CART TOGGLE LOGIC
-         */
-        function initNavbarToggle() {
-            let scrollPos = 0;
-            $(document).on("click", "#hamburger", function () {
-                scrollPos = window.scrollY;
-                $("body").addClass("nav-open").css("top", `-${scrollPos}px`);
-                $("#navLinks, #navOverlay").addClass("active");
+
+    <script src="/main.js"></script>
+
+    <script>
+        $(function () {
+            /**
+             * 1. LOAD COMPONENTS & FIX LOGO
+             * If your Terms page is in a subfolder, change "nav.html" to "../nav.html"
+             */
+            $("#nav-container").load("nav.html", function () {
+                // Fix: If the logo image in nav.html has a relative path, 
+                // ensure it points to the correct root directory.
+                initNavbarToggle();
+                initNavFeatures();
+            });
+            $("#footer-container").load("footer.html");
+
+            /**
+             * 2. NAVIGATION & CART TOGGLE LOGIC
+             */
+            function initNavbarToggle() {
+                let scrollPos = 0;
+                $(document).on("click", "#hamburger", function () {
+                    scrollPos = window.scrollY;
+                    $("body").addClass("nav-open").css("top", `-${scrollPos}px`);
+                    $("#navLinks, #navOverlay").addClass("active");
+                });
+
+                const closeNav = () => {
+                    $("body").removeClass("nav-open").css("top", "");
+                    window.scrollTo(0, scrollPos);
+                    $("#navLinks, #navOverlay").removeClass("active");
+                };
+                $(document).on("click", "#closeBtn, #navOverlay", closeNav);
+            }
+
+            function initNavFeatures() {
+                // Cart Sidebar Toggle
+                let cartScroll = 0;
+                const toggleCart = (open) => {
+                    if (open) {
+                        cartScroll = window.scrollY;
+                        $("body").addClass("cart-open").css("top", `-${cartScroll}px`);
+                        $(".cart-sidebar, .cart-overlay").addClass("active");
+                    } else {
+                        $("body").removeClass("cart-open").css("top", "");
+                        window.scrollTo(0, cartScroll);
+                        $(".cart-sidebar, .cart-overlay").removeClass("active");
+                    }
+                };
+                $(document).on("click", ".cart-icon", () => toggleCart(true));
+                $(document).on("click", ".close-cart, .cart-overlay", () => toggleCart(false));
+            }
+
+            /**
+             * 3. CART DATA & CALCULATIONS
+             */
+            $(document).on("click", ".qty-plus", function () {
+                let $qty = $(this).siblings(".qty-value");
+                $qty.text(parseInt($qty.text()) + 1);
+                updateCartTotals($(this).closest(".cart-item"));
             });
 
-            const closeNav = () => {
-                $("body").removeClass("nav-open").css("top", "");
-                window.scrollTo(0, scrollPos);
-                $("#navLinks, #navOverlay").removeClass("active");
-            };
-            $(document).on("click", "#closeBtn, #navOverlay", closeNav);
-        }
-
-        function initNavFeatures() {
-            // Cart Sidebar Toggle
-            let cartScroll = 0;
-            const toggleCart = (open) => {
-                if (open) {
-                    cartScroll = window.scrollY;
-                    $("body").addClass("cart-open").css("top", `-${cartScroll}px`);
-                    $(".cart-sidebar, .cart-overlay").addClass("active");
-                } else {
-                    $("body").removeClass("cart-open").css("top", "");
-                    window.scrollTo(0, cartScroll);
-                    $(".cart-sidebar, .cart-overlay").removeClass("active");
+            $(document).on("click", ".qty-minus", function () {
+                let $qty = $(this).siblings(".qty-value");
+                let val = parseInt($qty.text());
+                if (val > 1) {
+                    $qty.text(val - 1);
+                    updateCartTotals($(this).closest(".cart-item"));
                 }
-            };
-            $(document).on("click", ".cart-icon", () => toggleCart(true));
-            $(document).on("click", ".close-cart, .cart-overlay", () => toggleCart(false));
-        }
+            });
 
-        /**
-         * 3. CART DATA & CALCULATIONS
-         */
-        $(document).on("click", ".qty-plus", function () {
-            let $qty = $(this).siblings(".qty-value");
-            $qty.text(parseInt($qty.text()) + 1);
-            updateCartTotals($(this).closest(".cart-item"));
-        });
+            $(document).on("click", ".remove-item", function () {
+                $(this).closest(".cart-item").fadeOut(300, function () {
+                    $(this).remove();
+                    calculateGrandTotal();
+                });
+            });
 
-        $(document).on("click", ".qty-minus", function () {
-            let $qty = $(this).siblings(".qty-value");
-            let val = parseInt($qty.text());
-            if (val > 1) {
-                $qty.text(val - 1);
-                updateCartTotals($(this).closest(".cart-item"));
+            function updateCartTotals($item) {
+                let qty = parseInt($item.find(".qty-value").text());
+                let basePrice = parseFloat($item.find(".price").attr("data-price"));
+                $item.find(".price").text(`$${(qty * basePrice).toFixed(2)}`);
+                calculateGrandTotal();
+            }
+
+            function calculateGrandTotal() {
+                let total = 0;
+                $(".cart-item .price").each(function () {
+                    total += parseFloat($(this).text().replace('$', ''));
+                });
+                $(".cart-total span:last-child").text(`$${total.toFixed(2)}`);
             }
         });
-
-        $(document).on("click", ".remove-item", function () {
-            $(this).closest(".cart-item").fadeOut(300, function () {
-                $(this).remove();
-                calculateGrandTotal();
-            });
-        });
-
-        function updateCartTotals($item) {
-            let qty = parseInt($item.find(".qty-value").text());
-            let basePrice = parseFloat($item.find(".price").attr("data-price"));
-            $item.find(".price").text(`$${(qty * basePrice).toFixed(2)}`);
-            calculateGrandTotal();
-        }
-
-        function calculateGrandTotal() {
-            let total = 0;
-            $(".cart-item .price").each(function () {
-                total += parseFloat($(this).text().replace('$', ''));
-            });
-            $(".cart-total span:last-child").text(`$${total.toFixed(2)}`);
-        }
-    });
-</script>
+    </script>
 </body>
 
 </html>

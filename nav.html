@@ -79,7 +79,7 @@
                 </div>
 
                 <ul class="submenu">
-                    <li><a href="/stylists.html">Maria. B.</a></li>
+                    <li><a href="stylists.html?stylist=Maria.b">Maria. B.</a></li>
                     <li><a href="/stylists.html">Zara Shahid</a></li>
                     <li><a href="/stylists.html">Hassan Sheheyar Yasin </a></li>
                     <li><a href="/stylists.html">Hania Mirza Couture</a></li>
@@ -94,17 +94,25 @@
             <li class="dropdown">
 
                 <div class="dropdown-header" id="collectionToggle">
-                    <span id="collection"><a href="/collection.html">COLLECTIONS</a></span>
+                    <span id="collection">COLLECTIONS</span>
                     <i class="fa-solid fa-plus" id="collectionIcon"></i>
                 </div>
 
                 <ul class="submenu" id="collectionMenu">
-                    <li><a href="/collections/summer.html">Summer Wear</a></li>
-                    <li><a href="/collections/winter.html">Winter Collection</a></li>
-                    <li><a href="/collections/western.html">Western Attire</a></li>
-                    <li><a href="/collections/bridal.html">Bridal Couture</a></li>
-                    <li><a href="/collections/Ramadan.html">Modest Wear</a></li>
-                    <li><a href="/collections/Ramadan.html" id="Eid">Eid Exclusive</a></li>
+
+                    <li><a href="/All Collections/collection.html?type=eid">Eid Exclusive</a></li>
+                    <li><a href="/All Collections/collection.html?type=summer">Summer Wear</a></li>
+                    <li><a href="/All Collections/collection.html?type=winter">Winter Collection</a></li>
+                    <li><a href="/All Collections/collection.html?type=western">Western Attire</a></li>
+                    <li><a href="/All Collections/collection.html?type=bridal">Bridal Couture</a></li>
+                    <li><a href="/All Collections/collection.html?type=modest">Modest Wear</a></li>
+                    <li><a href="/All Collections/collection.html?type=men">Mens Wear</a></li>
+                    <li><a href="/All Collections/collection.html?type=kids">Kids Special</a></li>
+                    <li><a href="/All Collections/collection.html?type=luxury">Luxury Couture</a></li>
+                    <li><a href="/All Collections/collection.html?type=party">Party Wear</a></li>
+                    <li><a href="/All Collections/collection.html?type=shoes">Shoe Collection</a></li>
+                    <li><a href="/All Collections/collection.html?type=bags">Bags</a></li>
+                    <li><a href="/All Collections/collection.html?type=jewelry">Jewelry</a></li>
 
                 </ul>
 
@@ -141,97 +149,15 @@
             <span class="close-cart">&times;</span>
         </div>
 
-        <div class="cart-item">
-            <img src="./assets/carousel/pexels4.jpg" alt="Dress">
-
-            <div class="cart-item-details">
-                <h4 class="dress-name">Luxury Silk Gown</h4>
-                <p class="collection-name">Collection: Bridal Couture</p>
-                <p class="dress-code">Code: BR-2026-01</p>
-
-                <div class="cart-bottom">
-                    <div class="quantity-box">
-                        <button class="qty-minus">−</button>
-                        <span class="qty-value">1</span>
-                        <button class="qty-plus">+</button>
-                    </div>
-
-                    <p class="price" data-price="120">$120</p>
-
-                </div>
-            </div>
+        <div id="cart-items-container">
         </div>
-
-        <div class="cart-item">
-            <img src="./assets/carousel/slide2.jpg" alt="Dress">
-
-            <div class="cart-item-details">
-                <h4 class="dress-name">Elegant Summer Dress</h4>
-                <p class="collection-name">Collection: Summer Wear</p>
-                <p class="dress-code">Code: SM-2026-05</p>
-
-                <div class="cart-bottom">
-                    <div class="quantity-box">
-                        <button class="qty-minus">−</button>
-                        <span class="qty-value">1</span>
-                        <button class="qty-plus">+</button>
-                    </div>
-
-                    <p class="price" data-price="90">$90.00</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="cart-item">
-            <img src="./assets/carousel/pexels4.jpg" alt="Dress">
-
-            <div class="cart-item-details">
-                <h4 class="dress-name">Luxury Silk Gown</h4>
-                <p class="collection-name">Collection: Bridal Couture</p>
-                <p class="dress-code">Code: BR-2026-01</p>
-
-                <div class="cart-bottom">
-                    <div class="quantity-box">
-                        <button class="qty-minus">−</button>
-                        <span class="qty-value">1</span>
-                        <button class="qty-plus">+</button>
-                    </div>
-
-                    <p class="price" data-price="120">$120</p>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="cart-item">
-            <img src="./assets/carousel/pexels4.jpg" alt="Dress">
-
-            <div class="cart-item-details">
-                <h4 class="dress-name">Luxury Silk Gown</h4>
-                <p class="collection-name">Collection: Bridal Couture</p>
-                <p class="dress-code">Code: BR-2026-01</p>
-
-                <div class="cart-bottom">
-                    <div class="quantity-box">
-                        <button class="qty-minus">−</button>
-                        <span class="qty-value">1</span>
-                        <button class="qty-plus">+</button>
-                    </div>
-
-                    <p class="price" data-price="120">$120</p>
-
-                </div>
-            </div>
-        </div>
-
-
 
         <div class="cart-footer">
             <div class="cart-total">
                 <span>Total:</span>
-                <span>$120</span>
+                <span>$0.00</span>
             </div>
-            <a href="chechout.html"><button class="checkout-btn">Checkout</button></a>
+            <a href="checkout.html"><button class="checkout-btn">Checkout</button></a>
         </div>
     </div>
 
@@ -240,11 +166,11 @@
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
 
 
 
-    
+
+
 
 
 

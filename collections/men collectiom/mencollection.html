@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mens collection page</title>
+  <link rel="stylesheet" href="../MDB5-STANDARD-UI-KIT-Free-9.3.0/css/mdb.min.css" />
+  <link rel="stylesheet" href="mens.css" />
+
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/nav.css">
+  <link rel="stylesheet" href="/footer.css">
+
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inconsolata:wght@200..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Pixelify+Sans:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+    rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
+
+
+  <!-- Font Awesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+
+<body>
+
+
+  <div id="nav-container"></div>
+
+
+  <section class="wedding-collection-section">
+    <h1 class="main-heading text-center">Mens collection</h1>
+    <div class="row g-4" id="cardlist"></div>
+  </section>
+
+
+
+  <div id="footer-container"></div>
+
+  <script src="../MDB5-STANDARD-UI-KIT-Free-9.3.0/js/mdb.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
+  <script>
+
+    // Nav &Footer Load
+    $(function () {
+      $("#nav-container").load("/nav.html");
+      $("#footer-container").load("/footer.html");
+    });
+
+
+    $(document).ready(() => {
+      const menCollection = [
+        {
+          title: "Men Black Kurta",
+          category: "Men Collection",
+          description: "Elegant black traditional men's outfit",
+          price: "4500",
+          image: "men collection img/menimg1.webp",
+          link: "men-details.html",
+          badge: "NEW",
+        },
+        {
+          title: "Cream Formal Kurta",
+          category: "Men Collection",
+          description: "Classic cream formal wear for men",
+          price: "4800",
+          image: "men collection img/menimg2.webp",
+          link: "men-details.html",
+          badge: "HOT",
+        },
+        {
+          title: "Light Green Kurta",
+          category: "Men Collection",
+          description: "Modern light green traditional outfit",
+          price: "5000",
+          image: "men collection img/menimg3.webp",
+          link: "men-details.html",
+          badge: "NEW",
+        },
+        {
+          title: "Brown Formal Kurta",
+          category: "Men Collection",
+          description: "Stylish brown men's kurta design",
+          price: "5200",
+          image: "men collection img/menimg4.webp",
+          link: "men-details.html",
+          badge: "HOT",
+        },
+        {
+          title: "Grey Men Kurta",
+          category: "Men Collection",
+          description: "Simple grey traditional wear",
+          price: "4700",
+          image: "men collection img/menimg5.webp",
+          link: "men-details.html",
+          badge: "SALE",
+        },
+        {
+          title: "Beige Kurta Style",
+          category: "Men Collection",
+          description: "Elegant beige men's outfit",
+          price: "4600",
+          image: "men collection img/menimg6.webp",
+          link: "men-details.html",
+          badge: "NEW",
+        },
+        {
+          title: "Dark Brown Kurta",
+          category: "Men Collection",
+          description: "Formal dark brown traditional wear",
+          price: "4400",
+          image: "men collection img/menimg7.webp",
+          link: "men-details.html",
+          badge: "NEW",
+        },
+        {
+          title: "Black Waistcoat Style",
+          category: "Men Collection",
+          description: "Modern black waistcoat outfit",
+          price: "5100",
+          image: "men collection img/menimg8.webp",
+          link: "men-details.html",
+          badge: "HOT",
+        },
+        {
+          title: "Charcoal Formal Wear",
+          category: "Men Collection",
+          description: "Luxury charcoal men's outfit",
+          price: "5500",
+          image: "men collection img/menimg9.webp",
+          link: "men-details.html",
+          badge: "HOT",
+        },
+        {
+          title: "Navy Blue Kurta",
+          category: "Men Collection",
+          description: "Elegant navy blue traditional wear",
+          price: "4900",
+          image: "men collection img/menimg10.webp",
+          link: "men-details.html",
+          badge: "SALE",
+        },
+        {
+          title: "Maroon Formal Kurta",
+          category: "Men Collection",
+          description: "Deep maroon men's traditional outfit",
+          price: "5300",
+          image: "men collection img/menimg11.webp",
+          link: "men-details.html",
+          badge: "NEW",
+        },
+        {
+          title: "Off White Kurta",
+          category: "Men Collection",
+          description: "Soft off white traditional wear",
+          price: "4700",
+          image: "men collection img/menimg12.webp",
+          link: "men-details.html",
+          badge: "NEW",
+        },
+        {
+          title: "Taupe Formal Kurta",
+          category: "Men Collection",
+          description: "Elegant taupe men's dress",
+          price: "5000",
+          image: "men collection img/menimg13.webp",
+          link: "men-details.html",
+          badge: "HOT",
+        },
+        {
+          title: "Brown Classic Kurta",
+          category: "Men Collection",
+          description: "Stylish brown traditional wear",
+          price: "5200",
+          image: "men collection img/menimg14.webp",
+          link: "men-details.html",
+          badge: "HOT",
+        },
+        {
+          title: "Royal Blue Kurta",
+          category: "Men Collection",
+          description: "Elegant royal blue men's outfit",
+          price: "5100",
+          image: "men collection img/menimg15.webp",
+          link: "men-details.html",
+          badge: "SALE",
+        },
+        {
+          title: "White Formal Kurta",
+          category: "Men Collection",
+          description: "Elegant men's wear outfit",
+          price: "4800",
+          image: "men collection img/menimg16.webp",
+          link: "men-details.html",
+          badge: "NEW",
+        },
+        {
+          title: "Black Premium Waistcoat",
+          category: "Men Collection",
+          description: "Luxury black waistcoat style",
+          price: "5600",
+          image: "men collection img/menimg17.webp",
+          link: "men-details.html",
+          badge: "HOT",
+        },
+        {
+          title: "Black Lace Style Kurta",
+          category: "Men Collection",
+          description: "Formal black detailed wear",
+          price: "6000",
+          image: "men collection img/menimg18.webp",
+          link: "men-details.html",
+          badge: "HOT",
+        },
+        {
+          title: "Grey Formal Kurta",
+          category: "Men Collection",
+          description: "Formal white men's outfit",
+          price: "5300",
+          image: "men collection img/menimg19.webp",
+          link: "men-details.html",
+          badge: "SALE",
+        },
+        {
+          title: "Teal Green Kurta",
+          category: "Men Collection",
+          description: "Modern teal green men's dress",
+          price: "5400",
+          image: "men collection img/menimg20.webp",
+          link: "men-details.html",
+          badge: "NEW",
+        }
+      ];
+
+      menCollection.map((el) => {
+        document.getElementById("cardlist").innerHTML += `
+
+  <div class="col-6 col-md-4 col-lg-3">
+  <div class="product-card">
+    <div class="product-image position-relative">
+
+      <span class="badge-new">  <i class="fa-solid fa-bolt"></i>${el.badge}</span>
+
+  
+      <a href="mens-product-details.html">
+        <img src="${el.image}" alt="${el.title}">
+      </a>
+
+    
+      <a href="mens-product-details.html" class="view-details-btn">
+        View Details  <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+    <div class="product-content text-center">
+      <h3 class="product-title">${el.category}</h3>
+      <p class="product-description">${el.description}</p>
+     <h4 class="product-price">
+   <i class="fa-solid fa-tag"></i>Price:
+ 
+  <span class="new-price">${el.price}</span>
+</h4>
+
+
+
+    </div>
+  </div>
+</div>
+`;
+      });
+    });
+  </script>
+</body>
+
+</html>

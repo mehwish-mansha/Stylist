@@ -6,8 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Careers | Stylist</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="footer.css">
+    <!-- Google Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inconsolata:wght@200..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Pixelify+Sans:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
+
+
+    <!-- Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         :root {
@@ -70,9 +85,13 @@
             transition: background 0.4s ease;
         }
 
-        .value-card:last-child { border-right: none; }
+        .value-card:last-child {
+            border-right: none;
+        }
 
-        .value-card:hover { background: var(--bg-cream); }
+        .value-card:hover {
+            background: var(--bg-cream);
+        }
 
         .value-card i {
             font-size: 1.8rem;
@@ -123,13 +142,15 @@
             color: inherit;
         }
 
-        .job-card:first-child { border-top: 1px solid var(--border-color); }
+        .job-card:first-child {
+            border-top: 1px solid var(--border-color);
+        }
 
         .job-card:hover {
             background: #fff;
             padding-left: 50px;
             padding-right: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
             border-bottom-color: transparent;
             z-index: 2;
         }
@@ -197,16 +218,32 @@
         }
 
         .cta-button:hover {
-            background: rgb(59, 29, 35,0.9);
+            background: rgb(59, 29, 35, 0.9);
             transform: translateY(-3px);
             box-shadow: 0 15px 30px rgba(166, 82, 82, 0.2);
         }
 
         @media (max-width: 992px) {
-            .values-section { grid-template-columns: 1fr; border: none; }
-            .value-card { border-right: none; border-bottom: 1px solid var(--border-color); padding: 40px 20px; }
-            .job-card { flex-direction: column; align-items: flex-start; gap: 20px; }
-            .openings-header h2 { font-size: 2.2rem; }
+            .values-section {
+                grid-template-columns: 1fr;
+                border: none;
+            }
+
+            .value-card {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                padding: 40px 20px;
+            }
+
+            .job-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .openings-header h2 {
+                font-size: 2.2rem;
+            }
         }
     </style>
 </head>
@@ -219,7 +256,7 @@
         <span class="section-subtitle">The Atelier</span>
         <h1>We aren't just styling outfits.<br>We are curating identities.</h1>
         <p style="max-width: 600px; margin: 0 auto; color: var(--text-light); line-height: 1.8;">
-            Join a collective of artists, stylists, and innovators dedicated to the art of the perfect fit. 
+            Join a collective of artists, stylists, and innovators dedicated to the art of the perfect fit.
             Remote-first, luxury-focused, and creatively driven.
         </p>
     </header>
@@ -285,6 +322,8 @@
     <div id="footer-container"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/main.js"></script>
+
     <script>
         $(function () {
             $("#nav-container").load("nav.html");

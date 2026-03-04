@@ -43,46 +43,9 @@
     </section>
 
     <!-- FAVOURITES SECTION -->
-    <section class="fav-section">
-
-        <div class="fav-container">
-
-            <!-- ITEM 1 -->
-            <div class="fav-item">
-                <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38" alt="Dress">
-
-                <div class="fav-details">
-                    <h3>Silk Evening Dress</h3>
-                    <p class="category">Summer Collection</p>
-                    <p class="price">$249.00</p>
-
-                    <div class="fav-actions">
-                        <button class="move-btn">Move to Cart</button>
-                        <button class="remove-btn">Remove</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ITEM 2 -->
-            <div class="fav-item">
-                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d" alt="Jacket">
-
-                <div class="fav-details">
-                    <h3>Classic Blazer</h3>
-                    <p class="category">Winter Collection</p>
-                    <p class="price">$189.00</p>
-
-                    <div class="fav-actions">
-                        <button class="move-btn">Move to Cart</button>
-                        <button class="remove-btn">Remove</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </section>
-
+   <section class="fav-section">
+    <div class="fav-container" id="wishlist-items-container"></div>
+</section>
 
 
 
@@ -120,48 +83,61 @@
             $("#footer-container").load("footer.html");
 
         });
+        
 
-        $(document).ready(function() {
-    // 1. Remove Item Logic
-    $('.fav-container').on('click', '.remove-btn', function() {
-        const item = $(this).closest('.fav-item');
-        
-        // Add a simple fade-out effect for better UX
-        item.fadeOut(300, function() {
-            $(this).remove();
-            checkEmptyWishlist();
-        });
-    });
+       $(document).ready(function() {
+    // Run the display function as soon as page loads
+    renderWishlist();
 
-    // 2. Move to Cart Logic
-    $('.fav-container').on('click', '.move-btn', function() {
-        const item = $(this).closest('.fav-item');
-        const itemName = item.find('h3').text();
-        
-        // Here you would typically trigger an AJAX call to your backend or update LocalStorage
-        console.log(`Moving ${itemName} to cart...`);
-        
-        alert(`${itemName} has been added to your cart!`);
-        
-        // Remove from wishlist after moving
-        item.fadeOut(300, function() {
-            $(this).remove();
-            checkEmptyWishlist();
-        });
-    });
+    function renderWishlist() {
+        const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+        const container = $('#wishlist-items-container');
+        container.empty(); // Clear the "default" items
 
-    // 3. Handle Empty State
-    function checkEmptyWishlist() {
-        if ($('.fav-item').length === 0) {
-            $('.fav-container').html(`
-                <div class="empty-msg" style="text-align:center; padding: 50px;">
+        if (wishlist.length === 0) {
+            container.html(`
+                <div class="empty-msg" style="text-align:center; padding: 50px; width: 100%;">
                     <i class="fa-regular fa-heart" style="font-size: 3rem; color: #ccc;"></i>
                     <p style="margin-top: 20px;">Your wishlist is currently empty.</p>
-                    <a href="/collection.html" class="move-btn" style="display:inline-block; text-decoration:none; margin-top:10px;">Continue Shopping</a>
+                    <a href="/index.html" class="move-btn" style="display:inline-block; text-decoration:none; margin-top:10px;">Continue Shopping</a>
                 </div>
             `);
+            return;
         }
+
+        // Loop through LocalStorage and create the HTML for each item
+        wishlist.forEach(item => {
+            container.append(`
+                <div class="fav-item" data-id="${item.id}">
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="fav-details">
+                        <h3>${item.name}</h3>
+                        <p class="category">${item.category}</p>
+                        <p class="price">${item.price}</p>
+                        <div class="fav-actions">
+                            <button class="move-btn">Move to Cart</button>
+                            <button class="remove-btn" onclick="removeFromWishlist(${item.id})">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            `);
+        });
     }
+
+    // Function to handle the removal from LocalStorage
+    window.removeFromWishlist = function(id) {
+        let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+        // Filter out the item with the matching ID
+        wishlist = wishlist.filter(item => item.id !== id);
+        // Save the updated list back to LocalStorage
+        localStorage.setItem("wishlist", JSON.stringify(wishlist));
+        
+        // Refresh the display
+        $(`.fav-item[data-id="${id}"]`).fadeOut(300, function() {
+            renderWishlist();
+        });
+    };
+
 });
 
 

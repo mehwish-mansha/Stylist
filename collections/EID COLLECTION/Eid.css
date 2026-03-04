@@ -1,0 +1,183 @@
+
+:root{
+  --background-color: #fcfcfc;
+  --sec-bg-color: #3b1d23;      /* Dark Maroon (Premium Wedding) */
+  --text-color: #75555b;        /* Soft Brown */
+  --sec-text-color: #2f3e46;    /* Theme Pink (Main Highlight) */
+}
+
+
+body{
+  background: var(--background-color);
+  color: var(--text-color);
+}
+
+.wedding-collection-section{
+  padding: 20px 5%;
+}
+
+
+.card {
+  font-family: 'Montserrat', sans-serif; /* main card font */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card h2 {
+  font-family: 'Playfair Display', serif; /* dress name heading */
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.card p {
+  font-family: 'Roboto', sans-serif; /* details like occasion/price */
+  font-size: 0.9rem;
+  color: #555;
+}
+
+              /* card css */
+.main-heading{
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-color);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 40px 0;
+  position: relative;
+}
+
+/* Underline style like official websites */
+.main-heading::after{
+  content: "";
+  width: 90px;
+  height: 3px;
+  background: var(--sec-bg-color);
+  display: block;
+  margin: 12px auto 0 auto;
+  border-radius: 2px;
+}
+
+@media(max-width: 576px){
+  .main-heading{
+    font-size: 2rem;
+  }
+}
+
+
+
+/* Product Card */
+.product-card {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--background-color);
+  color: var(--text-color);
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* Product Image */
+.product-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.product-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+/* Zoom on Hover */
+.product-card:hover .product-image img {
+  transform: scale(1.05);
+}
+
+/* Badge */
+.badge-new {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: var(--sec-bg-color);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 5px 8px;
+  border-radius: 4px;
+  z-index: 2;
+  text-transform: uppercase;
+}
+
+/* View Details button */
+.view-details-btn {
+  position: absolute;
+  bottom: -40px; /* hidden initially */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--sec-bg-color);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: 2;
+}
+
+.product-card:hover .view-details-btn {
+  bottom: 15px; /* appear on hover */
+  opacity: 1;
+}
+
+/* Content Styling */
+.product-content {
+  padding: 15px;
+}
+
+.product-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: var(--sec-text-color);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.product-description {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  margin-bottom: 15px;
+}
+
+.product-price {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: var(--sec-text-color);
+  font-size: 1rem;
+}
+.new-price{
+  color: var(--sec-bg-color);
+  font-weight: 700;
+}
+
+

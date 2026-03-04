@@ -147,8 +147,7 @@ const stylistData = {
     }
 };
 
-<<<<<<< HEAD
-=======
+
 $(document).ready(function () {
     renderCart();
     initNavbarScroll();
@@ -383,8 +382,6 @@ function renderCart() {
     $(".cart-total span:last-child").text(`Rs. ${grandTotal.toLocaleString()}`);
 }
 
-
->>>>>>> 25475482ad60e8e87d0e6a7dc00bb80387d2416e
 // ================= 2. Stylist Profile System =================
 
 function initWishlistToCartLogic() {

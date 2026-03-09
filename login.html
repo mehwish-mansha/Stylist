@@ -8,249 +8,382 @@
     <link rel="shortcut icon" href="/assets/logo/dress.png" type="image/x-icon">
 
     <!-- Google Fonts -->
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inconsolata:wght@200..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Pixelify+Sans:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
-
-
-    <!-- Font Awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    <!-- Font Awesome 6 (stable public release) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="/nav.css">
     <link rel="stylesheet" href="/footer.css">
-    <link rel="stylesheet" href="login.css">
-
+    <link rel="stylesheet" href="/login.css">
 </head>
 
 <body>
-    <!-- Navbar -->
 
+    <!-- Navbar -->
     <div id="nav-container"></div>
 
-
-
     <section class="auth-section">
-        <div class="auth-container ">
+        <div class="auth-container">
 
             <div class="auth-header">
                 <h2 id="form-title">Login</h2>
-                <p>Access your personalized styling experience.</p>
+                <p id="form-subtitle">Access your personalized styling experience.</p>
             </div>
 
-            <!-- LOGIN FORM -->
-            <form id="login-form" class="auth-form active">
+            <!-- ══ LOGIN FORM ══ -->
+            <form id="login-form" class="auth-form active" novalidate>
 
-                <div class="input-group floating">
-                    <input type="email" required>
-                    <label>Email</label>
+                <div class="input-group">
+                    <input type="email" id="login-email" name="email"
+                           autocomplete="email" required aria-describedby="login-email-error">
+                    <label for="login-email">Email</label>
+                    <span class="error-msg" id="login-email-error" role="alert"></span>
                 </div>
 
-                <div class="input-group floating">
-                    <i class="fa-regular fa-eye login-toggle-password"></i>
-                    <input type="password" required>
-                    <label>Password</label>
+                <div class="input-group">
+                    <input type="password" id="login-password" name="password"
+                           autocomplete="current-password" required aria-describedby="login-password-error">
+                    <label for="login-password">Password</label>
+                    <i class="fa-regular fa-eye eye-icon" data-target="login-password" aria-label="Toggle password visibility"></i>
+                    <span class="error-msg" id="login-password-error" role="alert"></span>
+                </div>
+
+                <div class="form-extras">
+                    <label class="remember-me">
+                        <input type="checkbox" id="remember-me" name="remember">
+                        Remember me
+                    </label>
+                    <span class="forgot-link" id="forgot-link">Forgot password?</span>
                 </div>
 
                 <button type="submit" class="btn">Login</button>
 
                 <p class="switch-text">
-                    Don’t have an account?
-                    <span onclick="switchForm()">Register</span>
+                    Don't have an account?
+                    <span id="go-register">Register</span>
                 </p>
             </form>
 
-            <!-- REGISTER FORM -->
-            <form id="register-form" class="auth-form">
+            <!-- ══ REGISTER FORM ══ -->
+            <form id="register-form" class="auth-form" novalidate>
 
-                <div class="input-group floating">
-                    <input type="text" required id="fullname">
-                    <label>Full Name</label>
-                    <span class="error-msg"></span>
+                <!-- Role selector -->
+                <div class="role-group">
+                    <label class="role-label">I am a…</label>
+                    <div class="role-options">
+                        <input type="radio" name="role" id="role-user" value="user" checked>
+                        <label for="role-user"><i class="fa-regular fa-user"></i> User</label>
+                        <input type="radio" name="role" id="role-stylist" value="stylist">
+                        <label for="role-stylist"><i class="fa-solid fa-scissors"></i> Stylist</label>
+                    </div>
                 </div>
 
-                <div class="input-group floating">
-                    <input type="email" required id="email">
-                    <label>Email</label>
-                    <span class="error-msg"></span>
+                <div class="input-group">
+                    <input type="text" id="fullname" name="fullname"
+                           autocomplete="name" required aria-describedby="fullname-error">
+                    <label for="fullname">Full Name</label>
+                    <span class="error-msg" id="fullname-error" role="alert"></span>
                 </div>
 
-
-                <div class="input-group floating password-group">
-                    <input type="password" required id="password">
-                    <label>Password</label>
-                    <i class="fa-regular fa-eye toggle-password"></i>
-                    <span class="error-msg"></span>
+                <div class="input-group">
+                    <input type="email" id="email" name="email"
+                           autocomplete="email" required aria-describedby="email-error">
+                    <label for="email">Email</label>
+                    <span class="error-msg" id="email-error" role="alert"></span>
                 </div>
 
-                <div class="input-group floating password-group">
-                    <input type="password" required id="confirm-password">
-                    <label>Confirm Password</label>
-                    <i class="fa-regular fa-eye toggle-password"></i>
-                    <span class="error-msg"></span>
+                <div class="input-group">
+                    <input type="tel" id="phone" name="phone"
+                           autocomplete="tel" aria-describedby="phone-error">
+                    <label for="phone">Phone Number (optional)</label>
+                    <span class="error-msg" id="phone-error" role="alert"></span>
                 </div>
 
+                <div class="input-group">
+                    <input type="password" id="password" name="password"
+                           autocomplete="new-password" required aria-describedby="password-error">
+                    <label for="password">Password</label>
+                    <i class="fa-regular fa-eye eye-icon" data-target="password" aria-label="Toggle password visibility"></i>
+                    <span class="error-msg" id="password-error" role="alert"></span>
+                </div>
 
+                <div class="input-group">
+                    <input type="password" id="confirm-password" name="confirm-password"
+                           autocomplete="new-password" required aria-describedby="confirm-password-error">
+                    <label for="confirm-password">Confirm Password</label>
+                    <i class="fa-regular fa-eye eye-icon" data-target="confirm-password" aria-label="Toggle password visibility"></i>
+                    <span class="error-msg" id="confirm-password-error" role="alert"></span>
+                </div>
 
                 <button type="submit" class="btn">Create Account</button>
 
                 <p class="switch-text">
                     Already have an account?
-                    <span onclick="switchForm()">Login</span>
+                    <span id="go-login">Login</span>
                 </p>
             </form>
 
         </div>
-
     </section>
 
+    <!-- Toast -->
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-    <div id="toast" class="toast"></div>
-
-
-
-
-    <!--Footer Section-->
+    <!-- Footer -->
     <div id="footer-container"></div>
 
-
-    <!-- jquery-->
+    <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="/main.js"></script>
 
-
-
-
-
     <script>
-    // Navbar and Footer
+    // ── Nav / Footer injection ──
     $(function () {
         $("#nav-container").load("nav.html", function () {
-            initNavbar();
-            initNavFeatures();
+            if (typeof initNavbar === 'function') initNavbar();
+            if (typeof initNavFeatures === 'function') initNavFeatures();
         });
         $("#footer-container").load("footer.html");
     });
 
-    function switchForm() {
-        document.getElementById("login-form").classList.toggle("active");
-        document.getElementById("register-form").classList.toggle("active");
+    // ══════════════════════════════════════════
+    //  SIMPLE AUTH STORE  (localStorage-backed)
+    // ══════════════════════════════════════════
+    const AuthStore = {
+        _key: 'stylist_users',
 
-        const title = document.getElementById("form-title");
-        title.textContent = title.textContent === "Login" ? "Register" : "Login";
+        _load() {
+            try { return JSON.parse(localStorage.getItem(this._key)) || []; }
+            catch { return []; }
+        },
+
+        _save(users) {
+            localStorage.setItem(this._key, JSON.stringify(users));
+        },
+
+        register(name, email, password, role, phone) {
+            const users = this._load();
+            if (users.find(u => u.email.toLowerCase() === email.toLowerCase())) {
+                return { ok: false, msg: 'An account with this email already exists.' };
+            }
+            users.push({ name, email: email.toLowerCase(), password, role, phone });
+            this._save(users);
+            return { ok: true };
+        },
+
+        login(email, password) {
+            const users = this._load();
+            const user = users.find(
+                u => u.email === email.toLowerCase() && u.password === password
+            );
+            if (!user) return { ok: false, msg: 'Invalid email or password.' };
+            return { ok: true, user };
+        },
+
+        saveSession(user, remember) {
+            const storage = remember ? localStorage : sessionStorage;
+            storage.setItem('stylist_session', JSON.stringify(user));
+        }
+    };
+
+
+    let toastTimer;
+    function showToast(message, type = 'success') {
+        const $t = $('#toast');
+        clearTimeout(toastTimer);
+        $t.removeClass('success error info show').text('');
+
+        const icons = { success: '✔', error: '✖', info: 'ℹ' };
+        $t.html(`<span>${icons[type] || ''}</span> ${message}`).addClass(`${type} show`);
+
+        toastTimer = setTimeout(() => $t.removeClass('show'), 3500);
     }
 
-    // --- NEW: Toast Notification Function ---
-    function showToast(message, type = "success") {
-    const $toast = $("#toast");
-    
-    // Set message and type
-    $toast.text(message).addClass("show " + type);
-    
-    // Hide and cleanup after 3 seconds
-    setTimeout(function() {
-        $toast.removeClass("show success");
-    }, 3000);
-}
 
-    // Form Validation
-    $(document).ready(function () {
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
-        const nameRegex = /^[A-Z][a-zA-Z ]{1,49}$/;
+    function switchForm(target) {
+        const showLogin = target === 'login';
+        $('#login-form').toggleClass('active', showLogin);
+        $('#register-form').toggleClass('active', !showLogin);
+        $('#form-title').text(showLogin ? 'Login' : 'Register');
+        $('#form-subtitle').text(showLogin
+            ? 'Access your personalized styling experience.'
+            : 'Join our community of users & stylists.');
+        // Clear all errors on switch
+        $('.error-msg').text('');
+        $('input').removeClass('invalid valid filled');
+    }
 
-        // --- Floating label effect ---
-        $(".floating input").each(function () {
-            toggleFilled($(this));
-        });
+    $('#go-register').on('click', () => switchForm('register'));
+    $('#go-login').on('click', () => switchForm('login'));
 
-        $(".floating input").on("input blur focus", function () {
-            toggleFilled($(this));
-            validateField($(this));
-        });
 
-        function toggleFilled($input) {
-            if ($input.val().trim() !== "") {
-                $input.addClass("filled");
-            } else {
-                $input.removeClass("filled");
-            }
-        }
+    const REGEXES = {
+        name:     /^[A-Z][a-zA-Z ]{1,49}$/,
+        email:    /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+        password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/,
+        phone:    /^[+\d\s\-()]{7,15}$/
+    };
 
-        // --- Toggle password visibility ---
-        $(document).on("click", ".login-toggle-password, .toggle-password", function () {
-            const $input = $(this).closest('.input-group').find('input');
-            const isPassword = $input.attr("type") === "password";
-            $input.attr("type", isPassword ? "text" : "password");
-            $(this).toggleClass("fa-eye fa-eye-slash");
-        });
+    function checkFilled($input) {
+        $input.val().trim() ? $input.addClass('filled') : $input.removeClass('filled');
+    }
 
-        // --- Inline validation ---
-        function validateField($input) {
-            const val = $input.val();
-            const id = $input.attr("id");
-            const $error = $input.siblings(".error-msg");
-
-            if (id === "password" || $input.attr('type') === 'password' && !$input.attr('id')) {
-                // If it's a password field
-                if (val && !passwordRegex.test(val)) {
-                    $error.text("Password must be 8+ chars, include uppercase, lowercase, number & symbol.");
-                } else { $error.text(""); }
-            } else if (id === "confirm-password") {
-                const passwordVal = $("#password").val();
-                $error.text(val && val !== passwordVal ? "Passwords do not match." : "");
-            } else if (id === "fullname") {
-                $error.text(val && !nameRegex.test(val) ? "Name must start with capital letter." : "");
-            } else if (id === "email" || $input.attr('type') === 'email') {
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                $error.text(val && !emailRegex.test(val) ? "Please enter a valid email." : "");
-            }
-        }
-
-        // --- Validate and Toast on Register ---
-        $("#register-form").submit(function (e) {
-            e.preventDefault(); // Prevent actual refresh for demo
-            
-            $(this).find("input").each(function () {
-                validateField($(this));
-            });
-
-            const hasErrors = $(this).find(".error-msg").filter(function() { 
-                return $(this).text() !== ""; 
-            }).length > 0;
-
-            if (!hasErrors) {
-                showToast("Account created successfully!");
-                // Here you would normally do your AJAX call
-            }
-        });
-
-        // --- Validate and Toast on Login ---
-        $("#login-form").submit(function (e) {
-            e.preventDefault(); // Prevent actual refresh for demo
-            
-            let allFilled = true;
-            $(this).find("input").each(function() {
-                if($(this).val() === "") allFilled = false;
-            });
-
-            if (allFilled) {
-                showToast("Welcome back! Logging in...");
-            } else {
-                showToast("Please fill in all fields.");
-            }
-        });
+    $(document).on('input blur focus', '.auth-form input[type!="checkbox"][type!="radio"]', function () {
+        checkFilled($(this));
     });
-</script>
+
+
+    function setError($input, msg) {
+        const errId = $input.attr('aria-describedby');
+        if (errId) $('#' + errId).text(msg);
+        $input.toggleClass('invalid', !!msg).toggleClass('valid', !msg);
+    }
+
+    function clearError($input) { setError($input, ''); }
+
+    function validateField($input) {
+        const id  = $input.attr('id');
+        const val = $input.val().trim();
+
+        if (!val) {
+            if ($input.prop('required')) setError($input, 'This field is required.');
+            else clearError($input);
+            return;
+        }
+
+        switch (id) {
+            case 'fullname':
+                setError($input, REGEXES.name.test(val) ? '' : 'Name must start with a capital letter (letters & spaces only).');
+                break;
+            case 'email':
+            case 'login-email':
+                setError($input, REGEXES.email.test(val) ? '' : 'Please enter a valid email address.');
+                break;
+            case 'phone':
+                setError($input, REGEXES.phone.test(val) ? '' : 'Please enter a valid phone number.');
+                break;
+            case 'password':
+                setError($input, REGEXES.password.test(val) ? '' : 'Min 8 chars with uppercase, lowercase, number & symbol.');
+                break;
+            case 'confirm-password':
+                setError($input, val === $('#password').val() ? '' : 'Passwords do not match.');
+                break;
+            case 'login-password':
+                setError($input, val ? '' : 'Password is required.');
+                break;
+            default:
+                clearError($input);
+        }
+    }
+
+    // Live validation on blur
+    $(document).on('blur', '.auth-form input[type!="checkbox"][type!="radio"]', function () {
+        validateField($(this));
+    });
+
+    // ══════════════════════════════════════════
+    //  EYE ICON TOGGLE
+    // ══════════════════════════════════════════
+    $(document).on('click', '.eye-icon', function () {
+        const targetId = $(this).data('target');
+        const $input   = $('#' + targetId);
+        const isPass   = $input.attr('type') === 'password';
+        $input.attr('type', isPass ? 'text' : 'password');
+        $(this).toggleClass('fa-eye fa-eye-slash');
+    });
+
+    // ══════════════════════════════════════════
+    //  REGISTER SUBMIT
+    // ══════════════════════════════════════════
+    $('#register-form').on('submit', function (e) {
+        e.preventDefault();
+
+        // Validate all required fields
+        $(this).find('input[type!="radio"]').each(function () { validateField($(this)); });
+
+        const hasErrors = $(this).find('.error-msg').toArray().some(el => $(el).text() !== '');
+        if (hasErrors) {
+            showToast('Please fix the errors before continuing.', 'error');
+            return;
+        }
+
+        const name     = $('#fullname').val().trim();
+        const email    = $('#email').val().trim();
+        const password = $('#password').val();
+        const phone    = $('#phone').val().trim();
+        const role     = $('input[name="role"]:checked').val();
+
+        const result = AuthStore.register(name, email, password, role, phone);
+
+        if (result.ok) {
+            showToast(`Account created! Welcome, ${name}.`, 'success');
+            setTimeout(() => switchForm('login'), 1500);
+        } else {
+            showToast(result.msg, 'error');
+        }
+    });
+
+    // ══════════════════════════════════════════
+    //  LOGIN SUBMIT
+    // ══════════════════════════════════════════
+    $('#login-form').on('submit', function (e) {
+        e.preventDefault();
+
+        const $email    = $('#login-email');
+        const $password = $('#login-password');
+
+        validateField($email);
+        validateField($password);
+
+        const hasErrors = [$email, $password].some($i => {
+            const errId = $i.attr('aria-describedby');
+            return errId && $('#' + errId).text() !== '';
+        });
+
+        if (hasErrors) {
+            showToast('Please fix the errors before continuing.', 'error');
+            return;
+        }
+
+        const email    = $email.val().trim();
+        const password = $password.val();
+        const remember = $('#remember-me').is(':checked');
+
+        const result = AuthStore.login(email, password);
+
+        if (result.ok) {
+            AuthStore.saveSession(result.user, remember);
+            showToast(`Welcome back, ${result.user.name}!`, 'success');
+            // Redirect after short delay — update path as needed
+            setTimeout(() => { window.location.href = '/index.html'; }, 1500);
+        } else {
+            showToast(result.msg, 'error');
+            setError($email, ' ');
+            setError($password, result.msg);
+        }
+    });
+
+    // ══════════════════════════════════════════
+    //  FORGOT PASSWORD (placeholder)
+    // ══════════════════════════════════════════
+    $('#forgot-link').on('click', function () {
+        const email = $('#login-email').val().trim();
+        if (!email || !REGEXES.email.test(email)) {
+            showToast('Enter your email above, then click "Forgot password?".', 'info');
+        } else {
+            showToast(`Password reset link sent to ${email}`, 'info');
+        }
+    });
+
+    </script>
 
 </body>
-
 </html>

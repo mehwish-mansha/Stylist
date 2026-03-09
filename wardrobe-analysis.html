@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wardrobe Analysis | Stylist</title>
+    <link rel="shortcut icon" href="/assets/logo/dress.png" type="image/x-icon">
+
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inconsolata:wght@200..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Pixelify+Sans:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
+
+
+    <!-- Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="services.css">
+
+    <style>
+        
+        .ba-section {
+            padding: 90px 8%;
+            background: var(--dark);
+        }
+        .ba-header { text-align: center; margin-bottom: 60px; }
+        .ba-header .section-title { color: #fff; }
+        .ba-header .section-subtitle { color: var(--gold); }
+        .ba-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .ba-card {
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        .ba-card img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.7);
+        }
+        .ba-label {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-family: "Playfair Display", serif;
+            font-size: 20px;
+            font-style: italic;
+            color: #fff;
+        }
+        .ba-label span {
+            display: block;
+            font-family: "Inconsolata", monospace;
+            font-style: normal;
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: var(--gold);
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+        .ba-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Playfair Display", serif;
+            font-size: 28px;
+            font-style: italic;
+            color: var(--gold);
+            position: relative;
+        }
+        @media (max-width: 600px) {
+            .ba-grid { grid-template-columns: 1fr; }
+            .ba-divider { display: none; }
+        }
+
+        /* report preview */
+        .report-section {
+            padding: 90px 8%;
+            background: #fff;
+            border-top: 1px solid var(--border);
+        }
+        .report-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+        .report-mockup {
+            background: var(--light-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 32px;
+        }
+        .report-mockup-header {
+            background: var(--dark);
+            border-radius: 6px;
+            padding: 18px 22px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .report-mockup-header span {
+            font-family: "Playfair Display", serif;
+            font-size: 15px;
+            font-style: italic;
+            color: #fff;
+        }
+        .report-mockup-header i { color: var(--gold); }
+        .report-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            font-family: "Inconsolata", monospace;
+            font-size: 14px;
+            color: var(--muted);
+        }
+        .report-row:last-child { border-bottom: none; }
+        .report-dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .dot-keep { background: #4caf50; }
+        .dot-donate { background: #e53935; }
+        .dot-alter { background: var(--gold); }
+        .legend {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-family: "Inconsolata", monospace;
+            font-size: 12px;
+            color: #888;
+        }
+        @media (max-width: 900px) {
+            .report-inner { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="nav-container"></div>
+
+    <!-- HERO -->
+    <section class="service-hero">
+        <img class="hero-bg" src="https://images.unsplash.com/photo-1532453288672-3a17ac36f3ef?w=1400&auto=format&fit=crop" alt="Wardrobe Analysis">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-tag">Our Services</span>
+            <h1>Wardrobe Analysis</h1>
+            <p>A systematic, expert deep dive into everything you own — to reveal what you should keep, donate, and acquire.</p>
+            <div class="hero-cta-row">
+                <a href="/contact.html" class="btn-primary-dark"><i class="fa-solid fa-magnifying-glass"></i> Book Analysis</a>
+                <a href="#report" class="btn-outline-light">See the Report</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS BAR -->
+    <div class="stats-bar">
+        <div class="stat-item"><span class="num">3,200+</span><span class="label">Wardrobes Analysed</span></div>
+        <div class="stat-item"><span class="num">40%</span><span class="label">Avg. Clutter Removed</span></div>
+        <div class="stat-item"><span class="num">5★</span><span class="label">Average Rating</span></div>
+        <div class="stat-item"><span class="num">48h</span><span class="label">Report Delivery</span></div>
+    </div>
+
+    <!-- INTRO SPLIT -->
+    <section class="intro-split reverse">
+        <div class="intro-text">
+            <p class="section-subtitle">The Problem We Solve</p>
+            <h2 class="section-title">A Wardrobe Full of Nothing to Wear</h2>
+            <p class="section-body">
+                Most wardrobes are 80% unused. Our analysis service cuts through the clutter — identifying what works, what doesn't, and what's missing — so you can dress effortlessly every day.
+            </p>
+            <ul class="intro-checklist">
+                <li><i class="fa-solid fa-check"></i> Item-by-item Keep / Donate / Alter assessment</li>
+                <li><i class="fa-solid fa-check"></i> Gap identification — what you actually need</li>
+                <li><i class="fa-solid fa-check"></i> Outfit formula guide (capsule wardrobe)</li>
+                <li><i class="fa-solid fa-check"></i> Colour palette compatibility check</li>
+                <li><i class="fa-solid fa-check"></i> Fabric care & longevity recommendations</li>
+                <li><i class="fa-solid fa-check"></i> Printed PDF report delivered digitally</li>
+            </ul>
+            <a href="/contact.html" class="btn-primary-dark"><i class="fa-solid fa-arrow-right"></i> Start Analysis</a>
+        </div>
+        <div class="intro-image-wrap">
+            <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=800&auto=format&fit=crop" alt="Wardrobe">
+            <div class="intro-badge">Clarity in <strong>48 Hours</strong></div>
+        </div>
+    </section>
+
+    <!-- BEFORE / AFTER -->
+    <section class="ba-section">
+        <div class="ba-header">
+            <p class="section-subtitle">The Transformation</p>
+            <h2 class="section-title">Before & After</h2>
+        </div>
+        <div class="ba-grid">
+            <div class="ba-card">
+                <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=600&auto=format&fit=crop" alt="Before">
+                <div class="ba-label"><span>Before</span>Overwhelming & Unused</div>
+            </div>
+            <div class="ba-card">
+                <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=600&auto=format&fit=crop" alt="After">
+                <div class="ba-label"><span>After</span>Curated & Intentional</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REPORT PREVIEW -->
+    <section class="report-section" id="report">
+        <div class="report-inner">
+            <div>
+                <p class="section-subtitle">Your Deliverable</p>
+                <h2 class="section-title">The Wardrobe Report</h2>
+                <p class="section-body" style="margin-bottom: 24px;">
+                    Every analysis concludes with a comprehensive, beautifully formatted personal wardrobe report — a permanent reference guide for how to dress with intention.
+                </p>
+                <ul class="intro-checklist">
+                    <li><i class="fa-solid fa-file-pdf"></i> Full PDF report (printable & digital)</li>
+                    <li><i class="fa-solid fa-list-check"></i> Item-by-item action list</li>
+                    <li><i class="fa-solid fa-palette"></i> Colour palette card</li>
+                    <li><i class="fa-solid fa-shirt"></i> Capsule wardrobe formula</li>
+                    <li><i class="fa-solid fa-cart-shopping"></i> Priority shopping list</li>
+                </ul>
+            </div>
+            <div class="report-mockup">
+                <div class="report-mockup-header">
+                    <span>Wardrobe Analysis Report</span>
+                    <i class="fa-solid fa-file-pdf"></i>
+                </div>
+                <div class="report-row"><span class="report-dot dot-keep"></span> Black silk blouse — Keep · Works with 80% of your wardrobe</div>
+                <div class="report-row"><span class="report-dot dot-donate"></span> Beige blazer (2018) — Donate · Outdated silhouette, rarely worn</div>
+                <div class="report-row"><span class="report-dot dot-alter"></span> Navy wide-leg trousers — Alter · Hem to ankle length for better fit</div>
+                <div class="report-row"><span class="report-dot dot-keep"></span> White linen dress — Keep · Core summer piece, versatile</div>
+                <div class="report-row"><span class="report-dot dot-donate"></span> Fast fashion bodycon — Donate · Doesn't align with current style goal</div>
+                <div class="legend">
+                    <span class="legend-item"><span class="report-dot dot-keep"></span> Keep</span>
+                    <span class="legend-item"><span class="report-dot dot-donate"></span> Donate / Sell</span>
+                    <span class="legend-item"><span class="report-dot dot-alter"></span> Alter / Tailor</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="process-section">
+        <div class="process-header">
+            <p class="section-subtitle">The Method</p>
+            <h2 class="section-title">Our Analysis Process</h2>
+        </div>
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="step-num">1</div>
+                <i class="fa-solid fa-camera"></i>
+                <h3>Photo Inventory</h3>
+                <p>Share photos of every piece you own — or invite your stylist to your home for an in-person audit.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-num">2</div>
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <h3>Expert Review</h3>
+                <p>Your stylist analyses each item against your lifestyle, body type, colour palette, and stated goals.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-num">3</div>
+                <i class="fa-solid fa-file-contract"></i>
+                <h3>Report Creation</h3>
+                <p>A detailed written report is compiled with every item classified and clearly explained.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-num">4</div>
+                <i class="fa-solid fa-comments"></i>
+                <h3>Review Call</h3>
+                <p>A 30-minute follow-up call to walk through the report, answer questions, and plan next steps.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PACKAGES -->
+    <section class="packages-section">
+        <div class="packages-header">
+            <p class="section-subtitle">Investment</p>
+            <h2 class="section-title">Analysis Packages</h2>
+        </div>
+        <div class="packages-grid">
+
+            <div class="package-card">
+                <div class="pkg-header">
+                    <h3>Photo Analysis</h3>
+                    <p>Remote wardrobe review from photos</p>
+                </div>
+                <div class="pkg-price">
+                    <span class="currency">PKR</span>
+                    <span class="amount">7,000</span>
+                    <span class="period">/ service</span>
+                </div>
+                <ul class="pkg-features">
+                    <li><i class="fa-solid fa-check"></i> Up to 40 items reviewed</li>
+                    <li><i class="fa-solid fa-check"></i> Keep/Donate/Alter list</li>
+                    <li><i class="fa-solid fa-check"></i> Colour palette analysis</li>
+                    <li class="unavail"><i class="fa-solid fa-xmark"></i> In-home visit</li>
+                    <li class="unavail"><i class="fa-solid fa-xmark"></i> Shopping list</li>
+                </ul>
+                <div class="pkg-cta"><a href="/contact.html" class="pkg-btn">Book Now</a></div>
+            </div>
+
+            <div class="package-card featured">
+                <div class="pkg-badge">Recommended</div>
+                <div class="pkg-header">
+                    <h3>Full Edit</h3>
+                    <p>Complete wardrobe transformation</p>
+                </div>
+                <div class="pkg-price">
+                    <span class="currency">PKR</span>
+                    <span class="amount">22,000</span>
+                    <span class="period">/ service</span>
+                </div>
+                <ul class="pkg-features">
+                    <li><i class="fa-solid fa-check"></i> Unlimited items reviewed</li>
+                    <li><i class="fa-solid fa-check"></i> Full PDF report</li>
+                    <li><i class="fa-solid fa-check"></i> In-home visit (Karachi)</li>
+                    <li><i class="fa-solid fa-check"></i> Capsule wardrobe guide</li>
+                    <li><i class="fa-solid fa-check"></i> Priority shopping list</li>
+                </ul>
+                <div class="pkg-cta"><a href="/contact.html" class="pkg-btn">Book Now</a></div>
+            </div>
+
+            <div class="package-card">
+                <div class="pkg-header">
+                    <h3>Edit + Style</h3>
+                    <p>Analysis plus a personal styling session</p>
+                </div>
+                <div class="pkg-price">
+                    <span class="currency">PKR</span>
+                    <span class="amount">34,000</span>
+                    <span class="period">/ package</span>
+                </div>
+                <ul class="pkg-features">
+                    <li><i class="fa-solid fa-check"></i> Full wardrobe edit</li>
+                    <li><i class="fa-solid fa-check"></i> 1 personal styling session</li>
+                    <li><i class="fa-solid fa-check"></i> 25-look digital lookbook</li>
+                    <li><i class="fa-solid fa-check"></i> Tailoring referrals</li>
+                    <li><i class="fa-solid fa-check"></i> 30-day stylist support</li>
+                </ul>
+                <div class="pkg-cta"><a href="/contact.html" class="pkg-btn">Book Now</a></div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testi-strip">
+        <p class="section-subtitle">Client Stories</p>
+        <h2 class="section-title">Clarity Changes Everything</h2>
+        <div class="testi-strip-grid">
+            <div class="tstrip-card">
+                <div class="tstrip-stars">★★★★★</div>
+                <p class="tstrip-text">"I cried when we went through my wardrobe — not from sadness, but relief. I finally understood why nothing was working. The report was eye-opening."</p>
+                <div class="tstrip-author">
+                    <img src="https://ui-avatars.com/api/?name=Zainab+Q&background=3b1d23&color=d4a373" alt="">
+                    <div><h4>Zainab Qureshi</h4><span>Teacher & Mother</span></div>
+                </div>
+            </div>
+            <div class="tstrip-card">
+                <div class="tstrip-stars">★★★★★</div>
+                <p class="tstrip-text">"I donated 60% of my clothes and somehow have more to wear. The capsule formula they gave me changed how I think about fashion forever."</p>
+                <div class="tstrip-author">
+                    <img src="https://ui-avatars.com/api/?name=Maha+I&background=3b1d23&color=d4a373" alt="">
+                    <div><h4>Maha Irfan</h4><span>Graphic Designer</span></div>
+                </div>
+            </div>
+            <div class="tstrip-card">
+                <div class="tstrip-stars">★★★★★</div>
+                <p class="tstrip-text">"The in-home visit was well worth it. Having the stylist physically there made it real and actionable. Wouldn't have done it any other way."</p>
+                <div class="tstrip-author">
+                    <img src="https://ui-avatars.com/api/?name=Sana+T&background=3b1d23&color=d4a373" alt="">
+                    <div><h4>Sana Tariq</h4><span>Marketing Director</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="faq-inner">
+            <div class="faq-header">
+                <p class="section-subtitle">Common Questions</p>
+                <h2 class="section-title">Wardrobe Analysis FAQs</h2>
+            </div>
+            <div class="faq-item open">
+                <button class="faq-q"><span>How many items can you analyse?</span><i class="fa-solid fa-plus"></i></button>
+                <div class="faq-a"><p>The Photo Analysis covers up to 40 items. The Full Edit and Edit+Style packages have no item limit — bring everything you have.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q"><span>What if I feel embarrassed by my wardrobe?</span><i class="fa-solid fa-plus"></i></button>
+                <div class="faq-a"><p>Our stylists are non-judgmental professionals. We've seen it all. Our job is to help, never to critique. You'll feel supported throughout.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q"><span>Can you help me sell pieces I'm donating?</span><i class="fa-solid fa-plus"></i></button>
+                <div class="faq-a"><p>Yes! For the Full Edit and above, we provide a curated list of resale platforms and consignment options tailored to the Pakistani and global market.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q"><span>Is an in-home visit available outside Karachi?</span><i class="fa-solid fa-plus"></i></button>
+                <div class="faq-a"><p>In-home visits are currently available in Karachi only. Clients in other cities can opt for our virtual photo-based analysis which is equally thorough.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="service-cta">
+        <p class="section-subtitle">Take Action</p>
+        <h2 class="section-title">Ready to Clear the Clutter?</h2>
+        <p class="section-body">Your ideal wardrobe is already in there — buried under the things that don't serve you. Let us help you find it.</p>
+        <div class="cta-btn-row">
+            <a href="/contact.html" class="btn-cta-main"><i class="fa-solid fa-magnifying-glass"></i> Book Analysis</a>
+            <a href="/All Collections/collection.html" class="btn-cta-ghost">Pair with Styling</a>
+        </div>
+    </section>
+
+    <div id="footer-container"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            $("#nav-container").load("/nav.html", function () {
+                if (typeof initNavFeatures === "function") initNavFeatures();
+            });
+            $("#footer-container").load("/footer.html");
+        });
+
+        document.querySelectorAll('.faq-q').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.closest('.faq-item');
+                const isOpen = item.classList.contains('open');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+                if (!isOpen) item.classList.add('open');
+            });
+        });
+    </script>
+</body>
+</html>

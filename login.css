@@ -7,15 +7,14 @@
 body {
     font-family: 'DM Sans', sans-serif;
     background: #f5f5f5;
-    /* padding-top: 3.5rem; */
-
 }
 
 :root {
-    --background-color: #fcfcfc;
-    --sec-bg-color: #3b1d23;
-    --text-color: #75555b;
-    --sec-text-color: #2f3e46;
+    --brand: #3b1d23;
+    --brand-dark: #2a1217;
+    --brand-light: #eae9e7;
+    --error: #c0392b;
+    --success: #27ae60;
 }
 
 ::-webkit-scrollbar {
@@ -27,43 +26,48 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0, 0, 0, 0.3);
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
+/* ── AUTH SECTION ── */
 .auth-section {
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 2rem 50px;
+    padding: 2rem 1rem;
 }
 
-
 .auth-container {
-    width: 400px;
-    background: #eae9e7;
-    padding: 30px;
+    width: 100%;
+    max-width: 420px;
+    background: var(--brand-light);
+    padding: 36px 32px;
+    border-radius: 4px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
 }
 
 .auth-header h2 {
     font-family: 'Playfair Display', serif;
     font-size: 32px;
-    margin: 10px;
-    color: var(--sec-bg-color);
+    margin: 10px 0 6px;
+    color: var(--brand);
     text-align: center;
 }
 
 .auth-header p {
-    margin-bottom: 30px;
+    margin-bottom: 28px;
     color: #555;
     text-align: center;
+    font-size: 14px;
 }
 
+/* ── FORMS ── */
 .auth-form {
     display: none;
 }
@@ -72,23 +76,25 @@ body {
     display: block;
 }
 
-
+/* ── INPUT GROUPS ── */
 .input-group {
     position: relative;
-    margin-bottom: 20px;
-
+    margin-bottom: 28px;
 }
 
 .input-group input {
     width: 100%;
-    padding: 18px 12px 12px;
+    padding: 18px 40px 10px 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background: #fff;
     font-size: 15px;
+    font-family: 'DM Sans', sans-serif;
     outline: none;
     transition: border-color 0.3s;
 }
+
+
 
 .input-group label {
     position: absolute;
@@ -102,8 +108,8 @@ body {
     pointer-events: none
 }
 
-.input-group input:focus + label,
-.input-group input.filled + label {
+.input-group input:focus+label,
+.input-group input.filled+label {
     top: -8px;
     font-size: 14px;
     color: #3b1d23;
@@ -112,122 +118,176 @@ body {
     z-index: 10;
 }
 
-.password-group {
-    position: relative;
+
+.input-group input:focus {
+    border-color: var(--brand);
 }
 
-.toggle-password{
+.input-group input.invalid {
+    border-color: var(--error);
+}
+
+.input-group input.valid {
+    border-color: var(--success);
+}
+
+
+/* Eye icon */
+.eye-icon {
     position: absolute;
-    right: 10px;
-    top: 35%;
+    right: 12px;
+    top: 40%;
     transform: translateY(-50%);
     cursor: pointer;
-    color: #777;
+    color: #999;
+    font-size: 14px;
     transition: color 0.2s;
+    z-index: 10;
 }
 
-
-.login-toggle-password { 
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    color: #777;
-    transition: color 0.2s;
+.eye-icon:hover {
+    color: var(--brand);
 }
 
-.toggle-password:hover,
-.login-toggle-password:hover {
-    color: #3b1d23;
-}
-
+/* Error message */
 .error-msg {
     display: block;
-    color: red;
-    margin-top: 4px;
-    min-height: 16px;
-    position: absolute;
-    bottom: -20px; /* Sits below the input box */
-    left: 5px;
+    color: var(--error);
     font-size: 11px;
-    line-height: 1;
-    white-space: nowrap; /* Keeps it on one line if possible */
-    pointer-events: none;
+    margin-top: 4px;
+    min-height: 14px;
+    padding-left: 4px;
 }
 
+/* ── ROLE SELECTOR ── */
+.role-group {
+    margin-bottom: 24px;
+}
+
+.role-group label.role-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--brand);
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.role-options {
+    display: flex;
+    gap: 10px;
+}
+
+.role-options input[type="radio"] {
+    display: none;
+}
+
+.role-options label {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    border: 1.5px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+    background: #fff;
+    transition: all 0.2s;
+}
+
+.role-options input[type="radio"]:checked+label {
+    border-color: var(--brand);
+    background: var(--brand);
+    color: #fff;
+}
+
+/* ── EXTRAS ── */
+.form-extras {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    color: #555;
+}
+
+.remember-me input[type="checkbox"] {
+    accent-color: var(--brand);
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+}
+
+.forgot-link {
+    color: var(--brand);
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+/* ── BUTTON ── */
 .btn {
     width: 100%;
     padding: 14px;
-    background: #3b1d23;
+    background: var(--brand);
     color: white;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
-    margin-top: 10px;
-    transition: 0.3s;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    margin-top: 6px;
+    transition: background 0.3s;
 }
 
 .btn:hover {
-    background: #2a1217;
+    background: var(--brand-dark);
 }
 
 .switch-text {
     margin-top: 20px;
     font-size: 14px;
     text-align: center;
+    color: #555;
 }
 
 .switch-text span {
-    color: #3b1d23;
+    color: var(--brand);
     cursor: pointer;
-    font-weight: 500;
+    font-weight: 600;
     text-decoration: underline;
 }
 
-/* Ensure the input group is the reference point */
-.input-group.floating {
-    position: relative;
-    display: flex;
-    align-items: center;
-    margin-bottom: 25px;
-}
-
-/* Position the eye icon */
-.login-toggle-password, 
-.toggle-password {
-    position: absolute;
-    right: 12px;
-    top: 28px;
-    transform: translateY(-50%);
-    cursor: pointer;
-    z-index: 10;
-    color: #666;
-}
-
-/* Add padding to input so text doesn't overlap the icon */
-.input-group.floating input {
-    padding-right: 40px !important;
-}
-
-
+/* ── TOAST ── */
 .toast {
     position: fixed;
-    top: 30px; /* Slightly lower to clear any top padding */
+    top: 28px;
     left: 50%;
     transform: translateX(-50%) translateY(-20px);
-    background-color: #3b1d23;
-    color: white;
-    padding: 12px 30px;
+    padding: 13px 28px;
     border-radius: 8px;
     font-size: 14px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-    
-    /* Crucial changes here */
-    visibility: hidden; 
+    font-family: 'DM Sans', sans-serif;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    visibility: hidden;
     opacity: 0;
-    z-index: 99999 !important; /* Forces it to the very front */
-    transition: transform 0.4s ease, opacity 0.4s ease, visibility 0.4s;
+    z-index: 99999;
+    transition: transform 0.35s ease, opacity 0.35s ease, visibility 0.35s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 220px;
 }
 
 .toast.show {
@@ -237,5 +297,19 @@ body {
 }
 
 .toast.success {
-    border-left: 5px solid #4CAF50;
+    background: #1e3a2f;
+    color: #fff;
+    border-left: 5px solid var(--success);
+}
+
+.toast.error {
+    background: #3a1e1e;
+    color: #fff;
+    border-left: 5px solid var(--error);
+}
+
+.toast.info {
+    background: var(--brand);
+    color: #fff;
+    border-left: 5px solid #e8a87c;
 }

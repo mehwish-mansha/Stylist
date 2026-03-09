@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Consultation | Stylist</title>
+    <link rel="shortcut icon" href="/assets/logo/dress.png" type="image/x-icon">
+
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inconsolata:wght@200..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Pixelify+Sans:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
+
+
+    <!-- Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="services.css">
+
+    <style>
+        .platform-row {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+        .platform-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-family: "Inconsolata", monospace;
+            font-size: 13px;
+            color: var(--muted);
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+        .platform-pill i { color: var(--gold); font-size: 16px; }
+        .platform-pill:hover { border-color: var(--dark); color: var(--dark); transform: translateY(-2px); }
+
+        /* Feature grid */
+        .vc-features {
+            padding: 90px 8%;
+            background: var(--light-bg);
+            border-top: 1px solid var(--border);
+        }
+        .vc-features-header { text-align: center; margin-bottom: 60px; }
+        .vc-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 28px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .vc-feat-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 38px 32px;
+            transition: all 0.35s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .vc-feat-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 3px; height: 100%;
+            background: var(--gold);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+            transform-origin: bottom;
+        }
+        .vc-feat-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(59,29,35,0.08); }
+        .vc-feat-card:hover::before { transform: scaleY(1); }
+        .vc-feat-card i {
+            font-size: 28px;
+            color: var(--gold);
+            margin-bottom: 20px;
+            display: block;
+        }
+        .vc-feat-card h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 19px;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        .vc-feat-card p {
+            font-family: "Inconsolata", monospace;
+            font-size: 14px;
+            color: #888;
+            line-height: 1.7;
+        }
+
+        /* Time zone note */
+        .tz-note {
+            text-align: center;
+            margin-top: 50px;
+            font-family: "Inconsolata", monospace;
+            font-size: 13px;
+            color: #aaa;
+            letter-spacing: 1px;
+        }
+        .tz-note i { color: var(--gold); margin-right: 6px; }
+    </style>
+</head>
+<body>
+
+    <div id="nav-container"></div>
+
+    <!-- HERO -->
+    <section class="service-hero">
+        <img class="hero-bg" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1400&auto=format&fit=crop" alt="Virtual Consultation">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-tag">Our Services</span>
+            <h1>Virtual Consultation</h1>
+            <p>World-class styling expertise delivered directly to your screen — wherever you are, whenever you're ready.</p>
+            <div class="hero-cta-row">
+                <a href="/contact.html" class="btn-primary-dark"><i class="fa-solid fa-video"></i> Book a Call</a>
+                <a href="#platforms" class="btn-outline-light">See How It Works</a>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- STATS BAR -->
+    <div class="stats-bar">
+        <div class="stat-item"><span class="num">60+</span><span class="label">Cities Served</span></div>
+        <div class="stat-item"><span class="num">1,800+</span><span class="label">Virtual Sessions</span></div>
+        <div class="stat-item"><span class="num">4.8★</span><span class="label">Avg. Rating</span></div>
+        <div class="stat-item"><span class="num">24h</span><span class="label">Booking Turnaround</span></div>
+    </div>
+
+    <!-- INTRO SPLIT -->
+    <section class="intro-split" id="platforms">
+        <div class="intro-image-wrap">
+            <img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=800&auto=format&fit=crop" alt="Virtual session">
+            <div class="intro-badge">Available <strong>Worldwide</strong></div>
+        </div>
+        <div class="intro-text">
+            <p class="section-subtitle">Connect From Anywhere</p>
+            <h2 class="section-title">Styling Without Borders</h2>
+            <p class="section-body">
+                Distance is no longer a barrier to great style. Our virtual consultations are just as thorough, personal, and transformative as in-studio sessions — with the added comfort of your own space.
+            </p>
+            <ul class="intro-checklist">
+                <li><i class="fa-solid fa-check"></i> Available via Zoom, Google Meet, or WhatsApp</li>
+                <li><i class="fa-solid fa-check"></i> Full style & body analysis remotely</li>
+                <li><i class="fa-solid fa-check"></i> Live wardrobe walk-through with stylist</li>
+                <li><i class="fa-solid fa-check"></i> Digital lookbook sent within 48 hours</li>
+                <li><i class="fa-solid fa-check"></i> Flexible scheduling across time zones</li>
+                <li><i class="fa-solid fa-check"></i> Secure, private, recorded session option</li>
+            </ul>
+            <div class="platform-row">
+                <span class="platform-pill"><i class="fa-brands fa-zoom"></i> Zoom</span>
+                <span class="platform-pill"><i class="fa-brands fa-google"></i> Google Meet</span>
+                <span class="platform-pill"><i class="fa-brands fa-whatsapp"></i> WhatsApp</span>
+                <span class="platform-pill"><i class="fa-solid fa-phone-flip"></i> Phone Call</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES CARDS -->
+    <section class="vc-features">
+        <div class="vc-features-header">
+            <p class="section-subtitle">What's Included</p>
+            <h2 class="section-title">Everything in One Call</h2>
+        </div>
+        <div class="vc-features-grid">
+            <div class="vc-feat-card">
+                <i class="fa-solid fa-palette"></i>
+                <h3>Colour Analysis</h3>
+                <p>Share photos in natural light and we'll identify your seasonal palette — the colours that make your complexion glow.</p>
+            </div>
+            <div class="vc-feat-card">
+                <i class="fa-solid fa-ruler-vertical"></i>
+                <h3>Body Proportion Guide</h3>
+                <p>Walk through your wardrobe live. We identify silhouettes and cuts that flatter your unique body proportions.</p>
+            </div>
+            <div class="vc-feat-card">
+                <i class="fa-solid fa-book-open"></i>
+                <h3>Digital Lookbook</h3>
+                <p>A beautifully curated PDF lookbook with 15–30 outfits, shopping links, and styling notes — yours to keep forever.</p>
+            </div>
+            <div class="vc-feat-card">
+                <i class="fa-solid fa-comments"></i>
+                <h3>Post-Session Chat</h3>
+                <p>After your call, your stylist stays available for 14 days to answer outfit questions and help you shop with confidence.</p>
+            </div>
+            <div class="vc-feat-card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>Private & Secure</h3>
+                <p>All sessions are confidential. You control whether the call is recorded — your comfort is our priority.</p>
+            </div>
+            <div class="vc-feat-card">
+                <i class="fa-solid fa-rotate"></i>
+                <h3>Free Reschedule</h3>
+                <p>Life happens. Reschedule your session up to 24 hours before with no penalties — once per booking.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="process-section">
+        <div class="process-header">
+            <p class="section-subtitle">The Flow</p>
+            <h2 class="section-title">How a Virtual Session Works</h2>
+        </div>
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="step-num">1</div>
+                <i class="fa-solid fa-pen-to-square"></i>
+                <h3>Complete Profile</h3>
+                <p>Fill in our digital style questionnaire. Share photos of your current wardrobe and lifestyle references.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-num">2</div>
+                <i class="fa-solid fa-calendar-days"></i>
+                <h3>Pick a Slot</h3>
+                <p>Choose from available times across multiple time zones. Morning, evening, weekend — your schedule first.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-num">3</div>
+                <i class="fa-solid fa-video"></i>
+                <h3>Live Session</h3>
+                <p>Meet your stylist online for a focused, structured 60–90 minute video consultation.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-num">4</div>
+                <i class="fa-solid fa-file-image"></i>
+                <h3>Receive Your Lookbook</h3>
+                <p>Within 48 hours, your personalised digital lookbook lands in your inbox — ready to shop from.</p>
+            </div>
+        </div>
+        <p class="tz-note"><i class="fa-solid fa-globe"></i> Sessions available 7 days a week · PKT, GST, UAE, UK & US time zones</p>
+    </section>
+
+    <!-- PACKAGES -->
+    <section class="packages-section">
+        <div class="packages-header">
+            <p class="section-subtitle">Investment</p>
+            <h2 class="section-title">Virtual Session Packages</h2>
+        </div>
+        <div class="packages-grid">
+
+            <div class="package-card">
+                <div class="pkg-header">
+                    <h3>Quick Connect</h3>
+                    <p>A focused 45-min style burst</p>
+                </div>
+                <div class="pkg-price">
+                    <span class="currency">PKR</span>
+                    <span class="amount">5,500</span>
+                    <span class="period">/ session</span>
+                </div>
+                <ul class="pkg-features">
+                    <li><i class="fa-solid fa-check"></i> 45-min video call</li>
+                    <li><i class="fa-solid fa-check"></i> Style questionnaire</li>
+                    <li><i class="fa-solid fa-check"></i> 10-look digital PDF</li>
+                    <li class="unavail"><i class="fa-solid fa-xmark"></i> Wardrobe walk-through</li>
+                    <li class="unavail"><i class="fa-solid fa-xmark"></i> Post-session support</li>
+                </ul>
+                <div class="pkg-cta"><a href="/contact.html" class="pkg-btn">Book Now</a></div>
+            </div>
+
+            <div class="package-card featured">
+                <div class="pkg-badge">Best Value</div>
+                <div class="pkg-header">
+                    <h3>Full Virtual</h3>
+                    <p>The complete online experience</p>
+                </div>
+                <div class="pkg-price">
+                    <span class="currency">PKR</span>
+                    <span class="amount">12,000</span>
+                    <span class="period">/ session</span>
+                </div>
+                <ul class="pkg-features">
+                    <li><i class="fa-solid fa-check"></i> 90-min video call</li>
+                    <li><i class="fa-solid fa-check"></i> Live wardrobe review</li>
+                    <li><i class="fa-solid fa-check"></i> Colour & body analysis</li>
+                    <li><i class="fa-solid fa-check"></i> 25-look lookbook</li>
+                    <li><i class="fa-solid fa-check"></i> 14-day chat support</li>
+                </ul>
+                <div class="pkg-cta"><a href="/contact.html" class="pkg-btn">Book Now</a></div>
+            </div>
+
+            <div class="package-card">
+                <div class="pkg-header">
+                    <h3>Monthly Retainer</h3>
+                    <p>Your stylist on speed dial</p>
+                </div>
+                <div class="pkg-price">
+                    <span class="currency">PKR</span>
+                    <span class="amount">28,000</span>
+                    <span class="period">/ month</span>
+                </div>
+                <ul class="pkg-features">
+                    <li><i class="fa-solid fa-check"></i> 2 sessions per month</li>
+                    <li><i class="fa-solid fa-check"></i> Unlimited chat support</li>
+                    <li><i class="fa-solid fa-check"></i> Event outfit planning</li>
+                    <li><i class="fa-solid fa-check"></i> Shopping curation list</li>
+                    <li><i class="fa-solid fa-check"></i> Priority booking slot</li>
+                </ul>
+                <div class="pkg-cta"><a href="/contact.html" class="pkg-btn">Book Now</a></div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testi-strip">
+        <p class="section-subtitle">Client Stories</p>
+        <h2 class="section-title">From Our Global Clients</h2>
+        <div class="testi-strip-grid">
+            <div class="tstrip-card">
+                <div class="tstrip-stars">★★★★★</div>
+                <p class="tstrip-text">"I was skeptical about virtual styling, but it felt more intimate than I expected. My stylist noticed details about my wardrobe I'd ignored for years."</p>
+                <div class="tstrip-author">
+                    <img src="https://ui-avatars.com/api/?name=Layla+M&background=3b1d23&color=d4a373" alt="">
+                    <div><h4>Layla Mansoor</h4><span>Dubai, UAE</span></div>
+                </div>
+            </div>
+            <div class="tstrip-card">
+                <div class="tstrip-stars">★★★★★</div>
+                <p class="tstrip-text">"The lookbook arrived in my inbox the next morning. Every single piece was available to buy online. Incredibly practical and thoughtful."</p>
+                <div class="tstrip-author">
+                    <img src="https://ui-avatars.com/api/?name=Hira+B&background=3b1d23&color=d4a373" alt="">
+                    <div><h4>Hira Baig</h4><span>London, UK</span></div>
+                </div>
+            </div>
+            <div class="tstrip-card">
+                <div class="tstrip-stars">★★★★★</div>
+                <p class="tstrip-text">"As someone who travels constantly, having a stylist available virtually is a lifesaver. The monthly retainer is genuinely worth every rupee."</p>
+                <div class="tstrip-author">
+                    <img src="https://ui-avatars.com/api/?name=Omar+F&background=3b1d23&color=d4a373" alt="">
+                    <div><h4>Omar Farooq</h4><span>Lahore, PK</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="faq-inner">
+            <div class="faq-header">
+                <p class="section-subtitle">Questions</p>
+                <h2 class="section-title">Got Questions?</h2>
+            </div>
+            <div class="faq-item open">
+                <button class="faq-q"><span>What do I need for a virtual session?</span><i class="fa-solid fa-plus"></i></button>
+                <div class="faq-a"><p>A smartphone or laptop with a working camera, good lighting (natural light preferred), and access to your wardrobe during the call. That's it.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q"><span>Is the quality as good as an in-person session?</span><i class="fa-solid fa-plus"></i></button>
+                <div class="faq-a"><p>Our virtual clients rate it equally highly. The process is structured to work beautifully online — we've refined it over hundreds of sessions.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q"><span>Can I reschedule if something comes up?</span><i class="fa-solid fa-plus"></i></button>
+                <div class="faq-a"><p>Yes. One free reschedule is included per booking, as long as you notify us at least 24 hours before your session time.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q"><span>Do you offer sessions in Urdu?</span><i class="fa-solid fa-plus"></i></button>
+                <div class="faq-a"><p>Absolutely. All our Pakistan-based stylists are fluent in Urdu and English. Request your preferred language at the time of booking.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="service-cta">
+        <p class="section-subtitle">Let's Connect</p>
+        <h2 class="section-title">Your First Session Awaits</h2>
+        <p class="section-body">Style knows no borders. Book your virtual consultation today and meet the stylist who'll transform your wardrobe from wherever you are.</p>
+        <div class="cta-btn-row">
+            <a href="/contact.html" class="btn-cta-main"><i class="fa-solid fa-video"></i> Schedule Now</a>
+            <a href="/All Collections/collection.html" class="btn-cta-ghost">View In-Person Options</a>
+        </div>
+    </section>
+
+    <div id="footer-container"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            $("#nav-container").load("/nav.html", function () {
+                if (typeof initNavFeatures === "function") initNavFeatures();
+            });
+            $("#footer-container").load("/footer.html");
+        });
+
+        document.querySelectorAll('.faq-q').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.closest('.faq-item');
+                const isOpen = item.classList.contains('open');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+                if (!isOpen) item.classList.add('open');
+            });
+        });
+    </script>
+</body>
+</html>

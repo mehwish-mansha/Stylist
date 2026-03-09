@@ -1,0 +1,646 @@
+/* ===================================================
+   SERVICES.CSS — Shared styles for all service pages
+   Brand: Stylist | Refined Luxury Editorial Aesthetic
+   =================================================== */
+
+* { padding: 0; margin: 0; box-sizing: border-box; }
+
+:root {
+    --bg:        #fcfcfc;
+    --dark:      #3b1d23;
+    --gold:      #d4a373;
+    --muted:     #2f3e46;
+    --light-bg:  #f9f8f6;
+    --border:    rgba(59,29,35,0.1);
+}
+
+html, body { overflow-x: hidden; padding-top: 28px; scroll-behavior: smooth; }
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--dark); border-radius: 4px; }
+
+/* ── TYPOGRAPHY ─────────────────────────────────── */
+.section-subtitle {
+    font-family: "Inconsolata", monospace;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 10px;
+}
+.section-title {
+    font-family: "Playfair Display", serif;
+    font-size: 42px;
+    color: var(--dark);
+    line-height: 1.15;
+}
+.section-body {
+    font-family: "Inconsolata", monospace;
+    font-size: 16px;
+    color: #666;
+    line-height: 1.8;
+    max-width: 600px;
+}
+
+/* ── SERVICE HERO ────────────────────────────────── */
+.service-hero {
+    position: relative;
+    height: 72vh;
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+.service-hero img.hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    filter: brightness(0.45);
+    transform: scale(1.04);
+    animation: heroZoom 12s ease-out forwards;
+}
+@keyframes heroZoom {
+    from { transform: scale(1.1); }
+    to   { transform: scale(1.0); }
+}
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+        rgba(59,29,35,0.7) 0%,
+        rgba(0,0,0,0.15) 100%);
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 8%;
+    animation: heroFade 1s ease 0.3s both;
+}
+@keyframes heroFade {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.hero-tag {
+    display: inline-block;
+    font-family: "Inconsolata", monospace;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 5px 14px;
+    border-radius: 2px;
+    margin-bottom: 22px;
+}
+.hero-content h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(42px, 6vw, 80px);
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    max-width: 650px;
+}
+.hero-content p {
+    font-family: "Inconsolata", monospace;
+    font-size: 18px;
+    color: rgba(255,255,255,0.82);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 36px;
+}
+.hero-cta-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.btn-primary-dark {
+    padding: 14px 34px;
+    background: var(--dark);
+    color: #fff;
+    font-family: "Inconsolata", monospace;
+    font-size: 15px;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+.btn-primary-dark:hover { background: #5a2d34; transform: translateY(-2px); }
+
+.btn-outline-light {
+    padding: 14px 34px;
+    background: transparent;
+    color: #fff;
+    font-family: "Inconsolata", monospace;
+    font-size: 15px;
+    letter-spacing: 1px;
+    border: 1.5px solid rgba(255,255,255,0.6);
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+.btn-outline-light:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+
+/* ── BREADCRUMB ──────────────────────────────────── */
+.breadcrumb-bar {
+    padding: 14px 8%;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    font-family: "Inconsolata", monospace;
+    font-size: 13px;
+    color: #aaa;
+}
+.breadcrumb-bar a { color: var(--dark); text-decoration: none; }
+.breadcrumb-bar a:hover { text-decoration: underline; }
+.breadcrumb-bar span { color: #aaa; margin: 0 8px; }
+
+/* ── INTRO SPLIT ─────────────────────────────────── */
+.intro-split {
+    padding: 100px 8%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    background: var(--bg);
+}
+.intro-split.reverse { direction: rtl; }
+.intro-split.reverse > * { direction: ltr; }
+.intro-image-wrap {
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+}
+.intro-image-wrap img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+    border-radius: 6px;
+    transition: transform 0.7s ease;
+}
+.intro-image-wrap:hover img { transform: scale(1.04); }
+.intro-badge {
+    position: absolute;
+    bottom: 28px;
+    left: 28px;
+    background: var(--dark);
+    color: #fff;
+    padding: 14px 22px;
+    border-radius: 6px;
+    font-family: "Playfair Display", serif;
+    font-size: 14px;
+    font-style: italic;
+}
+.intro-badge strong {
+    display: block;
+    font-family: "Inconsolata", monospace;
+    font-style: normal;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold);
+}
+.intro-text .section-subtitle { margin-bottom: 8px; }
+.intro-text .section-title { margin-bottom: 20px; }
+.intro-text .section-body { margin-bottom: 30px; }
+.intro-checklist {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 36px;
+}
+.intro-checklist li {
+    font-family: "Inconsolata", monospace;
+    font-size: 15px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.intro-checklist li i {
+    color: var(--gold);
+    font-size: 14px;
+    width: 18px;
+}
+
+/* ── PROCESS STEPS ───────────────────────────────── */
+.process-section {
+    padding: 100px 8%;
+    background: var(--light-bg);
+    border-top: 1px solid var(--border);
+}
+.process-header {
+    text-align: center;
+    margin-bottom: 70px;
+}
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+.process-grid::before {
+    content: '';
+    position: absolute;
+    top: 38px;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+    pointer-events: none;
+}
+.process-step {
+    text-align: center;
+    padding: 36px 24px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    position: relative;
+    transition: all 0.35s ease;
+}
+.process-step:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(59,29,35,0.08);
+    border-color: var(--gold);
+}
+.step-num {
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 36px;
+    height: 36px;
+    background: var(--dark);
+    color: var(--gold);
+    border-radius: 50%;
+    font-family: "Playfair Display", serif;
+    font-size: 14px;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.process-step i {
+    font-size: 30px;
+    color: var(--gold);
+    margin-bottom: 18px;
+    display: block;
+}
+.process-step h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 19px;
+    color: var(--dark);
+    margin-bottom: 10px;
+}
+.process-step p {
+    font-family: "Inconsolata", monospace;
+    font-size: 14px;
+    color: #888;
+    line-height: 1.6;
+}
+
+/* ── PACKAGES / PRICING ──────────────────────────── */
+.packages-section {
+    padding: 100px 8%;
+    background: var(--bg);
+}
+.packages-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+.packages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.package-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    transition: all 0.35s ease;
+    position: relative;
+}
+.package-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 48px rgba(59,29,35,0.1);
+}
+.package-card.featured {
+    border-color: var(--dark);
+    box-shadow: 0 8px 32px rgba(59,29,35,0.12);
+}
+.pkg-badge {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    background: var(--gold);
+    color: #fff;
+    font-family: "Inconsolata", monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    padding: 4px 10px;
+    border-radius: 2px;
+    text-transform: uppercase;
+}
+.pkg-header {
+    padding: 36px 32px 24px;
+    background: var(--dark);
+    color: #fff;
+}
+.pkg-header h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 22px;
+    margin-bottom: 6px;
+}
+.pkg-header p {
+    font-family: "Inconsolata", monospace;
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+}
+.pkg-price {
+    padding: 20px 32px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+}
+.pkg-price .amount {
+    font-family: "Playfair Display", serif;
+    font-size: 38px;
+    color: var(--dark);
+    font-weight: 700;
+}
+.pkg-price .currency {
+    font-family: "Inconsolata", monospace;
+    font-size: 16px;
+    color: #999;
+}
+.pkg-price .period {
+    font-family: "Inconsolata", monospace;
+    font-size: 13px;
+    color: #999;
+}
+.pkg-features {
+    padding: 24px 32px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.pkg-features li {
+    font-family: "Inconsolata", monospace;
+    font-size: 14px;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.pkg-features li i { color: var(--gold); font-size: 12px; }
+.pkg-features li.unavail { color: #ccc; }
+.pkg-features li.unavail i { color: #ddd; }
+.pkg-cta {
+    padding: 0 32px 32px;
+}
+.pkg-btn {
+    width: 100%;
+    padding: 13px;
+    background: transparent;
+    color: var(--dark);
+    font-family: "Inconsolata", monospace;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border: 1.5px solid var(--dark);
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+.pkg-btn:hover, .package-card.featured .pkg-btn {
+    background: var(--dark);
+    color: #fff;
+}
+
+/* ── TESTIMONIAL STRIP ───────────────────────────── */
+.testi-strip {
+    padding: 80px 8%;
+    background: var(--dark);
+    text-align: center;
+}
+.testi-strip .section-subtitle { color: var(--gold); margin-bottom: 8px; }
+.testi-strip .section-title { color: #fff; margin-bottom: 50px; }
+.testi-strip-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.tstrip-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 36px 32px;
+    text-align: left;
+    transition: all 0.3s ease;
+}
+.tstrip-card:hover {
+    background: rgba(255,255,255,0.09);
+    border-color: rgba(212,163,115,0.4);
+}
+.tstrip-stars { color: var(--gold); font-size: 13px; margin-bottom: 16px; letter-spacing: 2px; }
+.tstrip-text {
+    font-family: "Merriweather", serif;
+    font-size: 15px;
+    font-style: italic;
+    color: rgba(255,255,255,0.82);
+    line-height: 1.8;
+    margin-bottom: 24px;
+}
+.tstrip-author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+.tstrip-author img {
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    object-fit: cover;
+}
+.tstrip-author h4 {
+    font-family: "Playfair Display", serif;
+    font-size: 15px;
+    color: #fff;
+    margin-bottom: 2px;
+}
+.tstrip-author span {
+    font-family: "Inconsolata", monospace;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* ── FAQ ACCORDION ───────────────────────────────── */
+.faq-section {
+    padding: 100px 8%;
+    background: var(--light-bg);
+    border-top: 1px solid var(--border);
+}
+.faq-inner {
+    max-width: 780px;
+    margin: 0 auto;
+}
+.faq-header { text-align: center; margin-bottom: 56px; }
+.faq-item {
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+}
+.faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 22px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    text-align: left;
+    gap: 16px;
+}
+.faq-q span {
+    font-family: "Merriweather", serif;
+    font-size: 16px;
+    color: var(--dark);
+    font-weight: 600;
+    line-height: 1.4;
+}
+.faq-q i {
+    color: var(--gold);
+    font-size: 14px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+.faq-item.open .faq-q i { transform: rotate(45deg); }
+.faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+}
+.faq-item.open .faq-a { max-height: 300px; }
+.faq-a p {
+    font-family: "Inconsolata", monospace;
+    font-size: 15px;
+    color: #666;
+    line-height: 1.8;
+    padding-bottom: 22px;
+}
+
+/* ── CTA FOOTER BAND ─────────────────────────────── */
+.service-cta {
+    padding: 90px 8%;
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    text-align: center;
+}
+.service-cta .section-title { margin-bottom: 16px; }
+.service-cta .section-body { margin: 0 auto 36px; text-align: center; }
+.cta-btn-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-cta-main {
+    padding: 15px 40px;
+    background: var(--dark);
+    color: #fff;
+    font-family: "Inconsolata", monospace;
+    font-size: 15px;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+.btn-cta-main:hover { background: #5a2d34; transform: translateY(-2px); }
+.btn-cta-ghost {
+    padding: 15px 40px;
+    background: transparent;
+    color: var(--dark);
+    font-family: "Inconsolata", monospace;
+    font-size: 15px;
+    letter-spacing: 1px;
+    border: 1.5px solid var(--dark);
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+.btn-cta-ghost:hover { background: var(--dark); color: #fff; }
+
+/* ── STATS BAR ───────────────────────────────────── */
+.stats-bar {
+    padding: 60px 8%;
+    background: var(--dark);
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+.stat-item { text-align: center; }
+.stat-item .num {
+    font-family: "Playfair Display", serif;
+    font-size: 48px;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+.stat-item .label {
+    font-family: "Inconsolata", monospace;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.55);
+    text-transform: uppercase;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────── */
+@media (max-width: 900px) {
+    .intro-split { grid-template-columns: 1fr; gap: 40px; padding: 70px 5%; }
+    .intro-split.reverse { direction: ltr; }
+    .intro-image-wrap img { height: 340px; }
+    .service-hero { height: 60vh; min-height: 420px; }
+    .hero-content h1 { font-size: 38px; }
+    .stats-bar { gap: 30px; padding: 50px 5%; }
+}
+@media (max-width: 600px) {
+    .section-title { font-size: 30px; }
+    .hero-content h1 { font-size: 30px; }
+    .hero-content p { font-size: 15px; }
+    .hero-cta-row { flex-direction: column; }
+    .packages-grid { grid-template-columns: 1fr; }
+    .process-section, .faq-section, .packages-section, .service-cta { padding: 60px 5%; }
+    .testi-strip { padding: 60px 5%; }
+}

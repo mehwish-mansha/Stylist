@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy | Stylist</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="nav.css">
-    <link rel="stylesheet" href="footer.css">
-   <!-- Google Fonts -->
-
+    <link rel="shortcut icon" href="/assets/logo/dress.png" type="image/x-icon">
+     
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inconsolata:wght@200..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Pixelify+Sans:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
@@ -23,241 +21,222 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <style>
-        :root {
-            --accent-color: #a65252;
-            --text-dark: #3b1d23;
-            --text-light: #666;
-            --border-color: #f0f0f0;
-            --bg-cream: #fdfaf9;
-        }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            margin: 0;
-            color: var(--text-dark);
-            background-color: #fff;
-        }
-
-        .privacy-section {
-            padding: 120px 10% 80px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        /* Header Styling */
-        .privacy-header {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        .section-subtitle {
-            font-size: 0.85rem;
-            letter-spacing: 4px;
-            color: var(--accent-color);
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            font-weight: 500;
-        }
-
-        .privacy-header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            color: var(--text-dark);
-            margin-bottom: 20px;
-        }
-
-        .last-updated {
-            color: #aaa;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Content Blocks */
-        .privacy-content {
-            line-height: 1.8;
-        }
-
-        .privacy-block {
-            margin-bottom: 60px;
-        }
-
-        .privacy-block h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            color: var(--text-dark);
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .privacy-block h2 span {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.9rem;
-            color: var(--accent-color);
-            border: 1px solid var(--accent-color);
-            padding: 2px 8px;
-            border-radius: 50%;
-        }
-
-        .privacy-block p {
-            color: var(--text-light);
-            font-size: 1.05rem;
-            margin-bottom: 20px;
-        }
-
-        /* Custom List Styling */
-        .privacy-list {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 20px;
-        }
-
-        .privacy-list li {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 15px;
-            color: var(--text-light);
-        }
-
-        .privacy-list li::before {
-            content: "\f054";
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            color: var(--accent-color);
-            font-size: 0.8rem;
-            top: 2px;
-        }
-
-        /* Premium CTA Box */
-        .faq-footer-cta {
-            text-align: center;
-            margin: 100px auto 40px;
-            padding: 80px 40px;
-            background: var(--bg-cream);
-            border: 1px solid #f0e6e3;
-            border-radius: 16px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .faq-footer-cta h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 18px 45px;
-            background: var(--text-dark);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(59, 29, 35, 0.1);
-        }
-
-        .cta-button:hover {
-            background: rgb(59, 29, 35, 0.9);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(166, 82, 82, 0.2);
-        }
-
-        @media (max-width: 768px) {
-            .privacy-header h1 {
-                font-size: 2.5rem;
-            }
-
-            .privacy-section {
-                padding: 80px 5% 40px;
-            }
-        }
-    </style>
+            <link rel="stylesheet" href="company.css">
 </head>
-
 <body>
 
-    <div id="nav-container"></div>
+<div id="nav-container"></div>
 
-    <section class="privacy-section">
-        <div class="privacy-header">
-            <p class="section-subtitle">Transparency & Trust</p>
-            <h1>Privacy Policy</h1>
-            <p class="last-updated">Effective Date: March 2026</p>
-        </div>
+<!-- HERO -->
+<section class="page-hero">
+    <div class="page-hero-inner">
+        <span class="page-tag">Legal</span>
+        <h1>Privacy Policy</h1>
+        <p>We believe your personal data is yours. Here's exactly how we handle it — transparently and respectfully.</p>
+    </div>
+</section>
 
-        <div class="privacy-content">
-            <div class="privacy-block">
-                <h2><span>01</span> Information We Collect</h2>
-                <p>To provide our bespoke styling services, we collect information that helps us understand your unique
-                    aesthetic and needs:</p>
-                <ul class="privacy-list">
-                    <li><strong>Personal Details:</strong> Name, contact information, and shipping address.</li>
-                    <li><strong>Style Profile:</strong> Body measurements, sizing, brand preferences, and lifestyle
-                        data.</li>
-                    <li><strong>Digital Footprint:</strong> Cookies and tracking technologies to improve your browsing
-                        experience.</li>
-                </ul>
+<!-- BREADCRUMB -->
+<div class="breadcrumb-bar">
+    <a href="/index.html">Home</a><span>›</span>Privacy Policy
+</div>
+
+<!-- LEGAL LAYOUT -->
+<div class="legal-layout">
+
+    <!-- SIDEBAR NAV -->
+    <aside class="legal-sidebar">
+        <nav>
+            <h4>Contents</h4>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#collection">Data We Collect</a>
+            <a href="#use">How We Use It</a>
+            <a href="#sharing">Sharing & Disclosure</a>
+            <a href="#cookies">Cookies</a>
+            <a href="#security">Security</a>
+            <a href="#rights">Your Rights</a>
+            <a href="#retention">Retention</a>
+            <a href="#children">Children</a>
+            <a href="#changes">Policy Changes</a>
+            <a href="#contact">Contact Us</a>
+        </nav>
+        <p class="legal-meta">Last updated:<br><strong>1 March 2026</strong><br><br>Effective from:<br><strong>1 January 2025</strong></p>
+    </aside>
+
+    <!-- CONTENT -->
+    <div class="legal-content">
+
+        <section id="overview">
+            <h2>1. Overview</h2>
+            <p>Stylist ("we", "us", or "our") is a personal styling platform operated from Karachi, Pakistan. This Privacy Policy describes how we collect, use, disclose, and safeguard your personal information when you visit our website <a href="/">stylist.pk</a>, use our services, or communicate with us.</p>
+            <div class="legal-highlight">
+                By using Stylist's website or services, you agree to the collection and use of your information as described in this policy. If you disagree with any part of this policy, please do not use our platform.
             </div>
+            <p>This policy applies to all users of our platform, including visitors, registered clients, and styling session participants. It does not apply to third-party websites or services that may be linked from our platform.</p>
+        </section>
 
-            <div class="privacy-block">
-                <h2><span>02</span> How Your Data Is Used</h2>
-                <p>Your privacy is our priority. We use your data exclusively to enhance your experience:</p>
-                <ul class="privacy-list">
-                    <li>Curating personalized digital lookbooks and shopping suggestions.</li>
-                    <li>Facilitating appointments with your chosen stylist.</li>
-                    <li>Analyzing trends to improve our selection of couture and bespoke pieces.</li>
-                </ul>
+        <section id="collection">
+            <h2>2. Data We Collect</h2>
+            <p>We collect information you provide directly to us, as well as information collected automatically when you use our platform.</p>
+            <h3>Information You Provide</h3>
+            <ul>
+                <li><strong>Account Information:</strong> Name, email address, phone number, and password when you create an account.</li>
+                <li><strong>Profile Data:</strong> Style preferences, body measurements, skin tone, wardrobe photos, and lifestyle information you share during styling consultations.</li>
+                <li><strong>Payment Information:</strong> Billing address and payment details processed securely through our payment partners. We do not store full card numbers.</li>
+                <li><strong>Communications:</strong> Messages, emails, and chat transcripts between you and our stylists or support team.</li>
+                <li><strong>Feedback:</strong> Reviews, ratings, and survey responses you submit.</li>
+            </ul>
+            <h3>Information Collected Automatically</h3>
+            <ul>
+                <li><strong>Usage Data:</strong> Pages visited, features used, time spent, and actions taken on our platform.</li>
+                <li><strong>Device Data:</strong> IP address, browser type, operating system, device identifiers, and screen resolution.</li>
+                <li><strong>Location Data:</strong> Approximate geographic location derived from your IP address.</li>
+                <li><strong>Cookies & Tracking:</strong> As described in Section 5 below.</li>
+            </ul>
+        </section>
+
+        <section id="use">
+            <h2>3. How We Use Your Information</h2>
+            <p>We use the personal information we collect for the following purposes:</p>
+            <ul>
+                <li>Providing and personalising our styling services to you</li>
+                <li>Processing bookings, payments, and service delivery</li>
+                <li>Communicating with you about your sessions, updates, and promotions (with your consent)</li>
+                <li>Improving our platform, services, and stylist matching algorithms</li>
+                <li>Detecting, preventing, and responding to fraud or security incidents</li>
+                <li>Complying with legal obligations under Pakistani law</li>
+                <li>Analysing usage trends to enhance the user experience</li>
+                <li>Sending administrative communications such as booking confirmations and receipts</li>
+            </ul>
+            <div class="legal-highlight">
+                We do not use your personal style data, photos, or body measurements for advertising targeting or sell them to third parties — ever.
             </div>
+        </section>
 
-            <div class="privacy-block">
-                <h2><span>03</span> Data Security</h2>
-                <p>We implement a variety of security measures to maintain the safety of your personal information. Your
-                    style profile is encrypted and only accessible by authorized stylists and concierge staff during
-                    your session periods.</p>
-            </div>
+        <section id="sharing">
+            <h2>4. Sharing & Disclosure</h2>
+            <p>We do not sell, rent, or trade your personal information. We may share your data with:</p>
+            <h3>Service Providers</h3>
+            <p>Trusted third-party vendors who assist us in operating the platform — including payment processors, cloud hosting providers, email delivery services, and analytics tools. All providers are bound by data processing agreements and are not permitted to use your data for their own purposes.</p>
+            <h3>Stylists</h3>
+            <p>When you book a session, your style profile and relevant consultation data is shared with your assigned stylist to enable them to serve you effectively.</p>
+            <h3>Legal Requirements</h3>
+            <p>We may disclose your information when required by law, court order, or governmental authority, or when we believe disclosure is necessary to protect our rights, your safety, or the safety of others.</p>
+            <h3>Business Transfers</h3>
+            <p>In the event of a merger, acquisition, or sale of assets, your information may be transferred. We will notify you before your data is transferred and becomes subject to a different privacy policy.</p>
+        </section>
 
-            <div class="privacy-block">
-                <h2><span>04</span> Your Rights</h2>
-                <p>You have full control over your data. At any time, you may request to view, edit, or permanently
-                    delete your style profile and account history from our database.</p>
-            </div>
-        </div>
+        <section id="cookies">
+            <h2>5. Cookies & Tracking Technologies</h2>
+            <p>We use cookies and similar tracking technologies to enhance your experience on our platform.</p>
+            <h3>Types of Cookies We Use</h3>
+            <ul>
+                <li><strong>Essential Cookies:</strong> Required for the website to function. These cannot be disabled.</li>
+                <li><strong>Functional Cookies:</strong> Remember your preferences such as language and login status.</li>
+                <li><strong>Analytics Cookies:</strong> Help us understand how visitors interact with our website (e.g., Google Analytics). Data is anonymised.</li>
+                <li><strong>Marketing Cookies:</strong> Used only with your explicit consent to deliver relevant content. You may opt out at any time.</li>
+            </ul>
+            <p>You can manage cookie preferences through your browser settings or our cookie consent manager. Note that disabling certain cookies may affect platform functionality.</p>
+        </section>
 
-        <div class="faq-footer-cta">
-            <h3>Privacy Questions?</h3>
-            <p>Our dedicated privacy team is here to help you understand how your data is protected.</p>
-            <br>
-            <a href="mailto:privacy@stylist.com" class="cta-button">
-                <i class="fa-regular fa-envelope" style="margin-right: 10px;"></i>
-                Contact Privacy Officer
-            </a>
-            <div
-                style="margin-top: 30px; font-size: 0.8rem; color: #aaa; text-transform: uppercase; letter-spacing: 2px;">
-                Secure Data Management <i class="fa-solid fa-shield-halved"></i>
-            </div>
-        </div>
-    </section>
+        <section id="security">
+            <h2>6. Data Security</h2>
+            <p>We implement appropriate technical and organisational measures to protect your personal information against unauthorised access, alteration, disclosure, or destruction. These include:</p>
+            <ul>
+                <li>SSL/TLS encryption for all data transmitted between your device and our servers</li>
+                <li>Encrypted storage of sensitive profile information</li>
+                <li>Access controls limiting staff access to personal data on a need-to-know basis</li>
+                <li>Regular security audits and vulnerability assessments</li>
+                <li>Incident response procedures for data breaches</li>
+            </ul>
+            <p>While we take security seriously, no system is 100% immune. We encourage you to use a strong, unique password and to contact us immediately if you suspect unauthorised access to your account.</p>
+        </section>
 
-    <div id="footer-container"></div>
+        <section id="rights">
+            <h2>7. Your Rights</h2>
+            <p>You have the following rights regarding your personal information:</p>
+            <ul>
+                <li><strong>Access:</strong> Request a copy of the personal data we hold about you.</li>
+                <li><strong>Correction:</strong> Ask us to correct inaccurate or incomplete data.</li>
+                <li><strong>Deletion:</strong> Request deletion of your account and associated data, subject to legal retention requirements.</li>
+                <li><strong>Portability:</strong> Receive your data in a structured, machine-readable format.</li>
+                <li><strong>Objection:</strong> Object to processing of your data for marketing purposes at any time.</li>
+                <li><strong>Withdrawal of Consent:</strong> Withdraw any consent you have previously given without affecting prior lawful processing.</li>
+            </ul>
+            <p>To exercise any of these rights, contact us at <a href="mailto:hello@stylist.pk">hello@stylist.pk</a>. We will respond within 30 days.</p>
+        </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <section id="retention">
+            <h2>8. Data Retention</h2>
+            <p>We retain your personal information for as long as your account is active or as needed to provide services. Specifically:</p>
+            <ul>
+                <li>Account and profile data: Retained until you delete your account, plus 90 days for backup purposes.</li>
+                <li>Session transcripts and lookbooks: Retained for 3 years to support service continuity.</li>
+                <li>Payment records: Retained for 7 years as required by Pakistani financial regulations.</li>
+                <li>Support communications: Retained for 2 years.</li>
+            </ul>
+            <p>After retention periods expire, data is securely deleted or anonymised.</p>
+        </section>
 
-            <script src="/main.js"></script>
+        <section id="children">
+            <h2>9. Children's Privacy</h2>
+            <p>Our platform is not directed to individuals under the age of 16. We do not knowingly collect personal information from children. If you believe we have inadvertently collected information from a minor, please contact us immediately at <a href="mailto:hello@stylist.pk">hello@stylist.pk</a> and we will delete it promptly.</p>
+        </section>
 
-    <script>
-        $(function () {
-            $("#nav-container").load("nav.html");
-            $("#footer-container").load("footer.html");
+        <section id="changes">
+            <h2>10. Changes to This Policy</h2>
+            <p>We may update this Privacy Policy from time to time. When we make material changes, we will notify you by email (if you have an account) or by posting a prominent notice on our website. The "Last Updated" date at the top of this page reflects the most recent revision.</p>
+            <p>Your continued use of our platform after the effective date of a revised policy constitutes your acceptance of the changes.</p>
+        </section>
+
+        <section id="contact">
+            <h2>11. Contact Us</h2>
+            <p>For any questions, concerns, or requests regarding this Privacy Policy or our data practices, please reach us at:</p>
+            <ul>
+                <li><strong>Email:</strong> <a href="mailto:hello@stylist.pk">hello@stylist.pk</a></li>
+                <li><strong>Address:</strong> 123 Fashion Street, Clifton Block 5, Karachi, Pakistan</li>
+                <li><strong>Phone:</strong> +92 21 1234 5678</li>
+            </ul>
+            <p>We aim to respond to all privacy-related enquiries within 30 days.</p>
+        </section>
+
+    </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-band">
+    <span class="sec-sub" style="color:var(--gold)">Questions?</span>
+    <h2 class="sec-title-light">We're Here to Help</h2>
+    <p>If anything in this policy is unclear or you'd like to exercise your rights, reach out — we respond personally.</p>
+    <div class="cta-row">
+        <a href="mailto:hello@stylist.pk" class="btn-cta-gold"><i class="fa-solid fa-envelope"></i> Email Us</a>
+        <a href="/contact.html" class="btn-cta-outline">Contact Page</a>
+    </div>
+</section>
+
+<div id="footer-container"></div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(function () {
+        $("#nav-container").load("/nav.html", function () {
+            if (typeof initNavFeatures === "function") initNavFeatures();
         });
-    </script>
-</body>
+        $("#footer-container").load("/footer.html");
+    });
 
+    // Highlight active sidebar link on scroll
+    const sections = document.querySelectorAll('.legal-content section[id]');
+    const sideLinks = document.querySelectorAll('.legal-sidebar nav a');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(s => {
+            if (window.scrollY >= s.offsetTop - 120) current = s.id;
+        });
+        sideLinks.forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+        });
+    });
+</script>
+</body>
 </html>

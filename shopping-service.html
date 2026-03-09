@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Service | Stylist</title>
+    <link rel="shortcut icon" href="/assets/logo/dress.png" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inconsolata:wght@200..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Pixelify+Sans:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
+
+
+    <!-- Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="services.css">
+
+    <style>
+        /* Destinations / brands strip */
+        .brands-section {
+            padding: 70px 8%;
+            background: #fff;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .brands-header { margin-bottom: 44px; }
+        .brands-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px;
+        }
+        .brand-tag {
+            padding: 10px 22px;
+            border: 1.5px solid var(--border);
+            border-radius: 50px;
+            font-family: "Inconsolata", monospace;
+            font-size: 14px;
+            letter-spacing: 1px;
+            color: var(--muted);
+            background: var(--light-bg);
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+        .brand-tag:hover {
+            border-color: var(--gold);
+            color: var(--dark);
+            background: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* Shopping types grid */
+        .shop-types {
+            padding: 90px 8%;
+            background: var(--light-bg);
+            border-top: 1px solid var(--border);
+        }
+        .shop-types-header { text-align: center; margin-bottom: 60px; }
+        .shop-types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .shop-type-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.35s ease;
+        }
+        .shop-type-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(59,29,35,0.1);
+        }
+        .shop-type-img {
+            height: 220px;
+            overflow: hidden;
+        }
+        .shop-type-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            display: block;
+        }
+        .shop-type-card:hover .shop-type-img img { transform: scale(1.06); }
+        .shop-type-body {
+            padding: 28px;
+        }
+        .shop-type-body h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 20px;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        .shop-type-body p {
+            font-family: "Inconsolata", monospace;
+            font-size: 14px;
+            color: #888;
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+        .shop-type-link {
+            font-family: "Inconsolata", monospace;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--dark);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            transition: gap 0.2s ease;
+            letter-spacing: 0.5px;
+        }
+        .shop-type-link:hover { gap: 12px; }
+
+        /* Budget tracker visual */
+        .budget-section {
+            padding: 90px 8%;
+            background: var(--dark);
+        }
+        .budget-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+        .budget-text .section-subtitle { color: var(--gold); }
+        .budget-text .section-title { color: #fff; margin-bottom: 20px; }
+        .budget-text .section-body { color: rgba(255,255,255,0.72); margin-bottom: 30px; }
+        .budget-bars { display: flex; flex-direction: column; gap: 18px; }
+        .bbar-label {
+            display: flex;
+            justify-content: space-between;
+            font-family: "Inconsolata", monospace;
+            font-size: 13px;
+            color: rgba(255,255,255,0.65);
+            margin-bottom: 7px;
+        }
+        .bbar-track {
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .bbar-fill {
+            height: 100%;
+            background: var(--gold);
+            border-radius: 3px;
+            animation: barFill 1.5s ease forwards;
+        }
+        @keyframes barFill { from { width: 0; } }
+        @media (max-width: 900px) {
+            .budget-inner { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="nav-container"></div>
+
+    <!-- HERO -->
+    <section class="service-hero">
+        <img class="hero-bg" src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1400&auto=format&fit=crop" alt="Shopping Service">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-tag">Our Services</span>
+            <h1>Shopping Service</h1>
+            <p>Your stylist accompanies you — in-store or online — turning every shopping trip into a confident, curated, zero-regret experience.</p>
+            <div class="hero-cta-row">
+                <a href="/contact.html" class="btn-primary-dark"><i class="fa-solid fa-bag-shopping"></i> Book a Trip</a>
+                <a href="#types" class="btn-outline-light">Explore Options</a>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- STATS BAR -->
+    <div class="stats-bar">
+        <div class="stat-item"><span class="num">1,500+</span><span class="label">Trips Completed</span></div>
+        <div class="stat-item"><span class="num">PKR 0</span><span class="label">Wasted Budget</span></div>
+        <div class="stat-item"><span class="num">30+</span><span class="label">Partner Boutiques</span></div>
+        <div class="stat-item"><span class="num">100%</span><span class="label">Client Satisfaction</span></div>
+    </div>
+
+    <!-- INTRO SPLIT -->
+    <section class="intro-split">
+        <div class="intro-image-wrap">
+            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&auto=format&fit=crop" alt="Shopping with stylist">
+            <div class="intro-badge">Save time & <strong>Money</strong></div>
+        </div>
+        <div class="intro-text">
+            <p class="section-subtitle">Shop with Purpose</p>
+            <h2 class="section-title">Never Buy the Wrong Thing Again</h2>
+            <p class="section-body">
+                Impulse buys and wardrobe regrets are things of the past. Our stylists shop alongside you — in boutiques, malls, and online — ensuring every purchase is intentional, on-budget, and perfectly suited to you.
+            </p>
+            <ul class="intro-checklist">
+                <li><i class="fa-solid fa-check"></i> Pre-trip planning & shopping list creation</li>
+                <li><i class="fa-solid fa-check"></i> In-store personal accompaniment</li>
+                <li><i class="fa-solid fa-check"></i> Online shopping curation & ordering</li>
+                <li><i class="fa-solid fa-check"></i> Budget tracking & value optimisation</li>
+                <li><i class="fa-solid fa-check"></i> Brand & boutique access through our network</li>
+                <li><i class="fa-solid fa-check"></i> Try-on guidance & honest feedback</li>
+            </ul>
+            <a href="/contact.html" class="btn-primary-dark"><i class="fa-solid fa-arrow-right"></i> Start Shopping</a>
+        </div>
+    </section>
+
+    <!-- SHOP TYPES -->
+    <section class="shop-types" id="types">
+        <div class="shop-types-header">
+            <p class="section-subtitle">Choose Your Style</p>
+            <h2 class="section-title">How Would You Like to Shop?</h2>
+        </div>
+        <div class="shop-types-grid">
+            <div class="shop-type-card">
+                <div class="shop-type-img">
+                    <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=600&auto=format&fit=crop" alt="In-Store">
+                </div>
+                <div class="shop-type-body">
+                    <h3>In-Store Accompaniment</h3>
+                    <p>Your stylist meets you at the mall or boutique, guiding you through every rail with expert eyes and honest feedback.</p>
+                    <a href="/contact.html" class="shop-type-link">Book a Trip <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="shop-type-card">
+                <div class="shop-type-img">
+                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&auto=format&fit=crop" alt="Online Shopping">
+                </div>
+                <div class="shop-type-body">
+                    <h3>Online Shopping Curation</h3>
+                    <p>We research, shortlist, and send you a curated link list — you just click and confirm. We handle the hunting.</p>
+                    <a href="/contact.html" class="shop-type-link">Start Online <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="shop-type-card">
+                <div class="shop-type-img">
+                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&auto=format&fit=crop" alt="Event Shopping">
+                </div>
+                <div class="shop-type-body">
+                    <h3>Event & Occasion Shopping</h3>
+                    <p>Wedding, corporate event, photoshoot — we source the perfect outfit for your most important moments.</p>
+                    <a href="/contact.html" class="shop-type-link">Shop for Event <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="shop-type-card">
+                <div class="shop-type-img">
+                    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&auto=format&fit=crop" alt="Seasonal Refresh">
+                </div>
+                <div class="shop-type-body">
+                    <h3>Seasonal Refresh</h3>
+                    <p>Each season brings new possibilities. We help you update your wardrobe strategically, season by season.</p>
+                    <a href="/contact.html" class="shop-type-link">Plan Refresh <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BRANDS -->
+    <section class="brands-section">
+        <div class="brands-header">
+            <p class="section-subtitle">Where We Shop</p>
+            <h2 class="section-title">Our Boutique & Brand Network</h2>
+        </div>
+        <div class="brands-row">
+            <span class="brand-tag">Maria. B.</span>
+            <span class="brand-tag">Sana Safinaz</span>
+            <span class="brand-tag">Khaadi</span>
+            <span class="brand-tag">Generation</span>
+            <span class="brand-tag">Alkaram Studio</span>
+            <span class="brand-tag">Nishat Linen</span>
+            <span class="brand-tag">Ego</span>
+            <span class="brand-tag">Zara</span>
+            <span class="brand-tag">H&M</span>
+            <span class="brand-tag">Sapphire</span>
+            <span class="brand-tag">Bonanza</span>
+            <span class="brand-tag">Limelight</span>
+            <span class="brand-tag">Gul Ahmed</span>
+            <span class="brand-tag">Outfitters</span>
+            <span class="brand-tag">Beechtree</span>
+            <span class="brand-tag">Asim Jofa</span>
+            <span class="brand-tag">HSY</span>
+            <span class="brand-tag">+ Custom Boutiques</span>
+        </div>
+    </section>
+
+    <!-- BUDGET SECTION -->
+    <section class="budget-section">
+        <div class="budget-inner">
+            <div class="budget-text">
+                <p class="section-subtitle">Smart Spending</p>
+                <h2 class="section-title">Your Budget, Maximised</h2>
+                <p class="section-body">We work within any budget — from PKR 10,000 to PKR 500,000+. Our priority is value, not volume. Every rupee you spend goes toward pieces that earn their place in your wardrobe.</p>
+                <a href="/contact.html" class="btn-outline-light" style="margin-top: 10px;">Discuss Your Budget</a>
+            </div>
+            <div class="budget-bars">
+                <div>
+                    <div class="bbar-label"><span>Wardrobe Essentials</span><span>85%</span></div>
+                    <div class="bbar-track"><div class="bbar-fill" style="width:85%"></div></div>
+                </div>
+                <div>
+                    <div class="bbar-label"><span>Statement Pieces</span><span>60%</span></div>
+                    <div class="bbar-track"><div class="bbar-fill" style="width:60%"></div></div>
+                </div>
+                <div>
+                    <div class="bbar-label"><span>Occasion Wear</span><span>45%</span></div>
+                    <div class="bbar-track"><div class="bbar-fill" style="width:45%"></div></div>
+                </div>
+                <div>
+                    <div class="bbar-label"><span>Accessories</span><span>30%</span></div>
+                    <div class="bbar-track"><div class="bbar-fill" style="width:30%"></div></div>
+                </div>
+                <p style="font-family:'Inconsolata',monospace; font-size:12px; color:rgba(255,255,255,0.4); margin-top:10px; letter-spacing:1px;">Sample budget allocation — customised to your needs</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="process-section">
+        <div class="process-header">
+            <p class="section-subtitle">The Experience</p>
+            <h2 class="section-title">Your Shopping Journey</h2>
+        </div>
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="step-num">1</div>
+                <i class="fa-solid fa-list"></i>
+                <h3>Pre-Trip Briefing</h3>
+                <p>Share your gaps list, budget, upcoming events, and style preferences with your stylist before we hit the shops.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-num">2</div>
+                <i class="fa-solid fa-route"></i>
+                <h3>Route Planning</h3>
+                <p>We map out the best stores, boutiques, and online platforms to visit — prioritised by value and your aesthetic.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-num">3</div>
+                <i class="fa-solid fa-bag-shopping"></i>
+                <h3>Shop Together</h3>
+                <p>Your stylist is by your side — filtering options, pulling pieces, and giving real-time honest opinions on fit.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-num">4</div>
+                <i class="fa-solid fa-receipt"></i>
+                <h3>Purchase Summary</h3>
+                <p>A post-trip summary of everything purchased, how it fits your wardrobe, and how to style each new piece.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PACKAGES -->
+    <section class="packages-section">
+        <div class="packages-header">
+            <p class="section-subtitle">Investment</p>
+            <h2 class="section-title">Shopping Packages</h2>
+        </div>
+        <div class="packages-grid">
+
+            <div class="package-card">
+                <div class="pkg-header">
+                    <h3>Online Curation</h3>
+                    <p>Curated links, zero effort for you</p>
+                </div>
+                <div class="pkg-price">
+                    <span class="currency">PKR</span>
+                    <span class="amount">6,000</span>
+                    <span class="period">/ service</span>
+                </div>
+                <ul class="pkg-features">
+                    <li><i class="fa-solid fa-check"></i> 20-item curated shopping list</li>
+                    <li><i class="fa-solid fa-check"></i> Budget-matched selections</li>
+                    <li><i class="fa-solid fa-check"></i> Purchase priority ranking</li>
+                    <li class="unavail"><i class="fa-solid fa-xmark"></i> In-store accompaniment</li>
+                    <li class="unavail"><i class="fa-solid fa-xmark"></i> Try-on guidance</li>
+                </ul>
+                <div class="pkg-cta"><a href="/contact.html" class="pkg-btn">Book Now</a></div>
+            </div>
+
+            <div class="package-card featured">
+                <div class="pkg-badge">Most Loved</div>
+                <div class="pkg-header">
+                    <h3>Full Shopping Trip</h3>
+                    <p>Your stylist shops with you in person</p>
+                </div>
+                <div class="pkg-price">
+                    <span class="currency">PKR</span>
+                    <span class="amount">20,000</span>
+                    <span class="period">/ day</span>
+                </div>
+                <ul class="pkg-features">
+                    <li><i class="fa-solid fa-check"></i> Full-day in-store accompaniment</li>
+                    <li><i class="fa-solid fa-check"></i> Pre-trip planning call</li>
+                    <li><i class="fa-solid fa-check"></i> Real-time try-on feedback</li>
+                    <li><i class="fa-solid fa-check"></i> Budget management</li>
+                    <li><i class="fa-solid fa-check"></i> Post-trip styling summary</li>
+                </ul>
+                <div class="pkg-cta"><a href="/contact.html" class="pkg-btn">Book Now</a></div>
+            </div>
+
+            <div class="package-card">
+                <div class="pkg-header">
+                    <h3>Occasion Package</h3>
+                    <p>Dress perfectly for your big moment</p>
+                </div>
+                <div class="pkg-price">
+                    <span class="currency">PKR</span>
+                    <span class="amount">30,000</span>
+                    <span class="period">/ event</span>
+                </div>
+                <ul class="pkg-features">
+                    <li><i class="fa-solid fa-check"></i> Event brief consultation</li>
+                    <li><i class="fa-solid fa-check"></i> Head-to-toe outfit sourcing</li>
+                    <li><i class="fa-solid fa-check"></i> Accessories curation</li>
+                    <li><i class="fa-solid fa-check"></i> Tailoring coordination</li>
+                    <li><i class="fa-solid fa-check"></i> Day-of styling support</li>
+                </ul>
+                <div class="pkg-cta"><a href="/contact.html" class="pkg-btn">Book Now</a></div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testi-strip">
+        <p class="section-subtitle">Client Stories</p>
+        <h2 class="section-title">Shopping, Transformed</h2>
+        <div class="testi-strip-grid">
+            <div class="tstrip-card">
+                <div class="tstrip-stars">★★★★★</div>
+                <p class="tstrip-text">"I used to dread shopping. My stylist turned it into the most enjoyable afternoon I've had in years. And everything I bought actually gets worn."</p>
+                <div class="tstrip-author">
+                    <img src="https://ui-avatars.com/api/?name=Amna+J&background=3b1d23&color=d4a373" alt="">
+                    <div><h4>Amna Jalil</h4><span>Homemaker & Blogger</span></div>
+                </div>
+            </div>
+            <div class="tstrip-card">
+                <div class="tstrip-stars">★★★★★</div>
+                <p class="tstrip-text">"For my brother's wedding, I needed a complete look in 2 days. They delivered everything — outfit, clutch, earrings — perfectly coordinated. Truly remarkable service."</p>
+                <div class="tstrip-author">
+                    <img src="https://ui-avatars.com/api/?name=Fatima+R&background=3b1d23&color=d4a373" alt="">
+                    <div><h4>Fatima Rana</h4><span>Event Client</span></div>
+                </div>
+            </div>
+            <div class="tstrip-card">
+                <div class="tstrip-stars">★★★★★</div>
+                <p class="tstrip-text">"The online curation service is brilliant for a busy person like me. I just approve the list, place the orders, and wait. My wardrobe is finally coherent."</p>
+                <div class="tstrip-author">
+                    <img src="https://ui-avatars.com/api/?name=Bilal+A&background=3b1d23&color=d4a373" alt="">
+                    <div><h4>Bilal Ashraf</h4><span>Tech Executive</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="faq-inner">
+            <div class="faq-header">
+                <p class="section-subtitle">Common Questions</p>
+                <h2 class="section-title">Shopping Service FAQs</h2>
+            </div>
+            <div class="faq-item open">
+                <button class="faq-q"><span>Where are in-store trips available?</span><i class="fa-solid fa-plus"></i></button>
+                <div class="faq-a"><p>In-store accompaniment is currently available in Karachi (Defence, Clifton, Dolmen, and Centrepoint areas). Trips to other cities can be arranged with travel costs covered by the client.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q"><span>Do I pay for the clothes separately from the service?</span><i class="fa-solid fa-plus"></i></button>
+                <div class="faq-a"><p>Yes. Our service fee covers the stylist's time and expertise. Your shopping budget is entirely separate and yours to control — we work within whatever limit you set.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q"><span>Can you shop for my husband/family member?</span><i class="fa-solid fa-plus"></i></button>
+                <div class="faq-a"><p>Absolutely. We offer personal shopping for all genders and ages. We just need measurements, style references, and the occasion to shop for.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q"><span>What if I don't like what the stylist picks?</span><i class="fa-solid fa-plus"></i></button>
+                <div class="faq-a"><p>You're never obligated to buy anything. Our role is to guide and suggest — final decisions are always yours. We refine picks based on your live feedback.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="service-cta">
+        <p class="section-subtitle">Let's Go Shopping</p>
+        <h2 class="section-title">Shop Smarter, Not Harder</h2>
+        <p class="section-body">Stop buying things you'll never wear. Our shopping service turns every trip into a purposeful investment in your best-dressed self.</p>
+        <div class="cta-btn-row">
+            <a href="/contact.html" class="btn-cta-main"><i class="fa-solid fa-bag-shopping"></i> Book a Trip</a>
+            <a href="/All Collections/collection.html" class="btn-cta-ghost">Start with Analysis</a>
+        </div>
+    </section>
+
+    <div id="footer-container"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            $("#nav-container").load("/nav.html", function () {
+                if (typeof initNavFeatures === "function") initNavFeatures();
+            });
+            $("#footer-container").load("/footer.html");
+        });
+
+        document.querySelectorAll('.faq-q').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.closest('.faq-item');
+                const isOpen = item.classList.contains('open');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+                if (!isOpen) item.classList.add('open');
+            });
+        });
+
+    </script>
+</body>
+</html>

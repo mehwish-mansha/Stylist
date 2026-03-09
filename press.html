@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Press | Stylist</title>
-    <link rel="stylesheet" href="style.css">
-
-
+    <link rel="shortcut icon" href="/assets/logo/dress.png" type="image/x-icon">
+ 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -22,276 +20,189 @@
     <!-- Font Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-        :root {
-            --accent-color: #a65252;
-            --text-dark: #3b1d23;
-            --text-light: #666;
-            --border-color: #f0f0f0;
-            --bg-cream: #fdfaf9;
-        }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            margin: 0;
-            background: #fff;
-            color: var(--text-dark);
-        }
-
-        /* Hero Section */
-        .press-hero {
-            padding: 160px 10% 80px;
-            text-align: center;
-        }
-
-        .section-subtitle {
-            font-size: 0.8rem;
-            letter-spacing: 5px;
-            color: var(--accent-color);
-            text-transform: uppercase;
-            font-weight: 500;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .press-hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            margin-bottom: 40px;
-        }
-
-        /* Logo Bar */
-        .press-logos {
-            padding: 40px 10%;
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            filter: grayscale(1);
-            opacity: 0.6;
-            flex-wrap: wrap;
-            gap: 40px;
-        }
-
-        .press-logos span {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        /* Press Grid */
-        .press-grid {
-            padding: 100px 10%;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 60px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .press-card {
-            text-decoration: none;
-            color: inherit;
-            transition: transform 0.3s ease;
-        }
-
-        .press-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .press-image {
-            width: 100%;
-            aspect-ratio: 4/5;
-            background: var(--bg-cream);
-            margin-bottom: 20px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .press-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .press-card .date {
-            font-size: 0.75rem;
-            color: var(--accent-color);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .press-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            line-height: 1.4;
-            margin-bottom: 10px;
-        }
-
-        .press-card .source {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            font-style: italic;
-        }
-
-        /* Media Kit Section */
-        .media-kit-section {
-            background: var(--bg-cream);
-            padding: 100px 10%;
-            text-align: center;
-        }
-
-        .media-kit-box {
-            max-width: 800px;
-            margin: 0 auto;
-            border: 1px solid #f0e6e3;
-            padding: 60px;
-            background: #fff;
-            border-radius: 4px;
-        }
-
-
-        /* Premium CTA Box */
-        .faq-footer-cta {
-            text-align: center;
-            margin: 100px auto 40px;
-            padding: 80px 40px;
-            background: var(--bg-cream);
-            border: 1px solid #f0e6e3;
-            border-radius: 16px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .faq-footer-cta h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .cta-button {
-            margin-top: 20px;
-            display: inline-block;
-            padding: 18px 45px;
-            background: var(--text-dark);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(59, 29, 35, 0.1);
-        }
-
-        .cta-button:hover {
-            background: rgb(59, 29, 35, 0.9);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(166, 82, 82, 0.2);
-        }
-
-
-        @media (max-width: 768px) {
-            .press-hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .media-kit-box {
-                padding: 40px 20px;
-            }
-        }
-    </style>
+        crossorigin="anonymous" referrerpolicy="no-referrer" />   
+    <link rel="stylesheet" href="company.css">
 </head>
-
 <body>
 
-    <div id="nav-container"></div>
+<div id="nav-container"></div>
 
-    <section class="press-hero">
-        <span class="section-subtitle">Stylist in the News</span>
-        <h1>Media & Press</h1>
-        <p style="max-width: 600px; margin: 0 auto; color: var(--text-light); line-height: 1.8;">
-            Discover our latest features, editorial mentions, and brand updates as we redefine the digital styling
-            landscape.
-        </p>
-    </section>
+<!-- HERO -->
+<section class="page-hero">
+    <div class="page-hero-inner">
+        <span class="page-tag">Newsroom</span>
+        <h1>Press & Media</h1>
+        <p>The latest coverage, announcements, and resources for journalists and media partners.</p>
+    </div>
+</section>
 
-    <div class="press-logos">
-        <span>VOGUE</span>
-        <span>Harper's BAZAAR</span>
-        <span>ELLE</span>
-        <span>Vanity Fair</span>
-        <span>WWD</span>
+<!-- BREADCRUMB -->
+<div class="breadcrumb-bar">
+    <a href="/index.html">Home</a><span>›</span>Press
+</div>
+
+<!-- STATS -->
+<div class="press-stats">
+    <div class="press-stat"><span class="num">40+</span><span class="lbl">Media Features</span></div>
+    <div class="press-stat"><span class="num">12</span><span class="lbl">Awards Won</span></div>
+    <div class="press-stat"><span class="num">8</span><span class="lbl">Years in Industry</span></div>
+    <div class="press-stat"><span class="num">6</span><span class="lbl">Countries Covered</span></div>
+</div>
+
+<!-- FEATURED COVERAGE -->
+<section class="press-featured">
+    <div class="press-featured-header">
+        <span class="sec-sub">As Seen In</span>
+        <h2 class="sec-title">Featured In</h2>
     </div>
 
-    <section class="press-grid">
-        <a href="#" class="press-card">
-            <div class="press-image">
-                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80"
-                    alt="Press 1">
-            </div>
-            <span class="date">Feb 2026</span>
-            <h3>The Future of Bespoke: How AI is Personalizing the Runway</h3>
-            <p class="source">Featured in Vogue Business</p>
-        </a>
+    <div class="press-logo-strip">
+        <span class="press-logo-pill">Dawn</span>
+        <span class="press-logo-pill">The News International</span>
+        <span class="press-logo-pill">Vogue Arabia</span>
+        <span class="press-logo-pill">Harper's Bazaar PK</span>
+        <span class="press-logo-pill">Images Magazine</span>
+        <span class="press-logo-pill">Geo News</span>
+        <span class="press-logo-pill">Tribune Pakistan</span>
+        <span class="press-logo-pill">Sunday Magazine</span>
+        <span class="press-logo-pill">Instep Today</span>
+    </div>
 
-        <a href="#" class="press-card">
-            <div class="press-image">
-                <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=800&q=80"
-                    alt="Press 2">
-            </div>
-            <span class="date">Jan 2026</span>
-            <h3>10 Styling Services That Are Actually Worth the Investment</h3>
-            <p class="source">Featured in Harper's Bazaar</p>
-        </a>
+    <div class="ornament-divider"><span>✦</span></div>
 
-        <a href="#" class="press-card">
-            <div class="press-image">
-                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80"
-                    alt="Press 3">
-            </div>
-            <span class="date">Dec 2025</span>
-            <h3>Meet the Concierge Redefining Luxury from a Laptop</h3>
-            <p class="source">Featured in Elle Magazine</p>
-        </a>
-    </section>
+    <div style="margin-bottom: 36px;">
+        <span class="sec-sub">Recent Coverage</span>
+        <h2 class="sec-title">Latest Press</h2>
+    </div>
 
-    <section class="media-kit-section">
-        <div class="media-kit-box">
-            <span class="section-subtitle">Press Assets</span>
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin: 15px 0;">Media Kit 2026</h2>
-            <p style="color: var(--text-light);">Download our high-resolution brand assets, executive bios, and company
-                backgrounder for your upcoming feature.</p>
-            <a href="#" class="cta-button">
-                <i class="fa-solid fa-download" style="margin-right: 10px;"></i>
-                Download Assets (42MB)
-            </a>
+    <div class="press-articles">
+
+        <div class="press-card">
+            <div class="press-card-img">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&auto=format&fit=crop" alt="Vogue Arabia">
+            </div>
+            <div class="press-card-body">
+                <span class="press-card-source">Vogue Arabia</span>
+                <h3>Pakistan's New Wave of Personal Stylists Reshaping Fashion Culture</h3>
+                <p>How Stylist is democratising access to professional fashion guidance across South Asia and the Gulf.</p>
+                <div class="press-card-footer">
+                    <span class="press-date">February 2026</span>
+                    <a href="https://fashionunited.com/news/fashion" target="_blank" class="press-read-link">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
         </div>
-    </section>
 
-    <div class="faq-footer-cta">
-        <h3>Media Inquiries</h3>
-        <p>For interview requests, exclusive quotes, or high-res imagery, please contact our PR department.</p>
-        <br>
-        <a href="mailto:press@stylist.com" class="cta-button">Email PR Team</a>
+        <div class="press-card">
+            <div class="press-card-img">
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&auto=format&fit=crop" alt="Harper's Bazaar">
+            </div>
+            <div class="press-card-body">
+                <span class="press-card-source">Harper's Bazaar PK</span>
+                <h3>The Digital Lookbook Revolution: Meet the Platform Changing How We Dress</h3>
+                <p>Inside Stylist's innovative approach to combining technology with traditional couture sensibility.</p>
+                <div class="press-card-footer">
+                    <span class="press-date">January 2026</span>
+                    <a href="https://fashionunited.com/news/fashion" target="_blank" class="press-read-link">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="press-card">
+            <div class="press-card-img">
+                <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=600&auto=format&fit=crop" alt="Dawn">
+            </div>
+            <div class="press-card-body">
+                <span class="press-card-source">Dawn Images</span>
+                <h3>Sustainable Style: How Wardrobe Edits Are Reducing Fashion Waste in Karachi</h3>
+                <p>A deep dive into Stylist's wardrobe analysis service and its unexpected environmental impact.</p>
+                <div class="press-card-footer">
+                    <span class="press-date">December 2025</span>
+                    <a href="https://fashionunited.com/news/fashion" target="_blank" class="press-read-link">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="press-card">
+            <div class="press-card-img">
+                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&auto=format&fit=crop" alt="Images Magazine">
+            </div>
+            <div class="press-card-body">
+                <span class="press-card-source">Images Magazine</span>
+                <h3>The 50 Most Influential Names in Pakistani Fashion Right Now</h3>
+                <p>Stylist founder Mehwish Mansha named among Pakistan's most forward-thinking fashion entrepreneurs.</p>
+                <div class="press-card-footer">
+                    <span class="press-date">November 2025</span>
+                    <a href="https://fashionunited.com/news/fashion" target="_blank" class="press-read-link">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="press-card">
+            <div class="press-card-img">
+                <div class="press-card-pub">Tribune</div>
+            </div>
+            <div class="press-card-body">
+                <span class="press-card-source">The Express Tribune</span>
+                <h3>Virtual Styling Takes Off: Pakistani Women Embrace Remote Fashion Consultations</h3>
+                <p>Post-pandemic shifts in consumer behaviour are driving record demand for online styling services.</p>
+                <div class="press-card-footer">
+                    <span class="press-date">October 2025</span>
+                    <a href="https://images.pexels.com/photos/4342126/pexels-photo-4342126.jpeg" target="_blank" class="press-read-link">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="press-card">
+            <div class="press-card-img">
+                <img src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg" alt="Instep">
+            </div>
+            <div class="press-card-body">
+                <span class="press-card-source">Instep Today</span>
+                <h3>Bridal Styling in Pakistan: How Stylist is Setting a New Standard for Couture Guidance</h3>
+                <p>An exclusive interview with Maria. B. on the evolution of bridal fashion consulting in the digital age.</p>
+                <div class="press-card-footer">
+                    <span class="press-date">September 2025</span>
+                    <a href="https://fashionunited.com/news/fashion" target="_blank" class="press-read-link">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <div id="footer-container"></div>
+    <!-- PRESS KIT -->
+    <div class="press-kit">
+        <div>
+            <h3>Press Kit & Media Resources</h3>
+            <p>Access our brand guidelines, high-resolution logos, founder bios, photography, and approved quotes for publication.</p>
+        </div>
+        <div class="press-kit-btns">
+            <a href="mailto:mehwishmansah65@gmail.com" class="btn-kit-primary"><i class="fa-solid fa-download"></i> Download Kit</a>
+            <a href="/contact.html" class="btn-kit-ghost"><i class="fa-solid fa-envelope"></i> Media Enquiry</a>
+        </div>
+    </div>
+</section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="/main.js"></script>
+<!-- CTA -->
+<section class="cta-band">
+    <span class="sec-sub" style="color:var(--gold)">Get in Touch</span>
+    <h2 class="sec-title-light">Media & Partnership Enquiries</h2>
+    <p>For interview requests, press features, brand collaborations, or speaking opportunities, our PR team is ready to assist.</p>
+    <div class="cta-row">
+        <a href="mailto:mehwishmansah65@gmail.com" class="btn-cta-gold"><i class="fa-solid fa-paper-plane"></i> mehwishmansha65@gmail.com</a>
+        <a href="/contact.html" class="btn-cta-outline">Contact Page</a>
+    </div>
+</section>
 
-    <script>
-        $(function () {
-            $("#nav-container").load("nav.html");
-            $("#footer-container").load("footer.html");
+<div id="footer-container"></div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(function () {
+        $("#nav-container").load("/nav.html", function () {
+            if (typeof initNavFeatures === "function") initNavFeatures();
         });
-    </script>
+        $("#footer-container").load("/footer.html");
+    });
+</script>
 </body>
-
 </html>

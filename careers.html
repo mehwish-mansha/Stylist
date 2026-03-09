@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Careers | Stylist</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="nav.css">
-    <link rel="stylesheet" href="footer.css">
+    <link rel="shortcut icon" href="/assets/logo/dress.png" type="image/x-icon">
+    
     <!-- Google Fonts -->
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inconsolata:wght@200..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Pixelify+Sans:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
@@ -23,313 +21,314 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+            <link rel="stylesheet" href="company.css">
     <style>
-        :root {
-            --accent-color: #a65252;
-            --text-dark: #3b1d23;
-            --text-light: #666;
-            --border-color: #f0f0f0;
-            --bg-cream: #fdfaf9;
-        }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            margin: 0;
-            background: #fff;
-            color: var(--text-dark);
-        }
-
-        /* Hero Section */
-        .careers-hero {
-            padding: 160px 10% 100px;
-            text-align: center;
-            background: linear-gradient(to bottom, var(--bg-cream) 0%, #fff 100%);
-        }
-
-        .section-subtitle {
-            font-size: 0.8rem;
-            letter-spacing: 5px;
-            color: var(--accent-color);
-            text-transform: uppercase;
-            font-weight: 500;
-            display: block;
-            margin-bottom: 20px;
-        }
-
-        .careers-hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            line-height: 1.1;
-            color: var(--text-dark);
-            margin: 0 auto 30px;
-            max-width: 900px;
-        }
-
-        /* Values Section - Refined Grid */
-        .values-section {
-            padding: 80px 10%;
+        .careers-photo-strip {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0;
-            max-width: 1200px;
-            margin: 0 auto;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
+            grid-template-columns: 2fr 1fr 1fr;
+            height: 360px;
+            gap: 4px;
+            margin-top: 4px;
         }
-
-        .value-card {
-            padding: 60px 40px;
-            text-align: center;
-            border-right: 1px solid var(--border-color);
-            transition: background 0.4s ease;
+        .careers-photo-strip img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
         }
-
-        .value-card:last-child {
-            border-right: none;
+        @media (max-width: 640px) {
+            .careers-photo-strip { grid-template-columns: 1fr 1fr; height: 240px; }
+            .careers-photo-strip img:last-child { display: none; }
         }
-
-        .value-card:hover {
-            background: var(--bg-cream);
-        }
-
-        .value-card i {
-            font-size: 1.8rem;
-            color: var(--accent-color);
-            margin-bottom: 25px;
-        }
-
-        .value-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-        }
-
-        .value-card p {
-            font-size: 0.95rem;
-            line-height: 1.7;
-            color: var(--text-light);
-        }
-
-        /* Job Openings Section */
-        .openings-section {
-            padding: 120px 10%;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .openings-header {
-            margin-bottom: 60px;
-            text-align: left;
-        }
-
-        .openings-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
-
-        /* Job Card - Glassmorphism & Elevation */
-        .job-card {
-            display: flex;
-            justify-content: space-between;
+        .open-role-count {
+            display: inline-flex;
             align-items: center;
-            padding: 40px;
-            background: #fff;
-            border-bottom: 1px solid var(--border-color);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .job-card:first-child {
-            border-top: 1px solid var(--border-color);
-        }
-
-        .job-card:hover {
-            background: #fff;
-            padding-left: 50px;
-            padding-right: 30px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
-            border-bottom-color: transparent;
-            z-index: 2;
-        }
-
-        .job-card:hover .apply-btn {
-            background: var(--text-dark);
-            color: #fff;
-            padding: 12px 25px;
+            gap: 8px;
+            background: var(--gold-soft);
+            border: 1px solid rgba(212,163,115,0.3);
+            padding: 6px 16px;
             border-radius: 50px;
+            font-family: "Inconsolata", monospace;
+            font-size: 13px;
+            color: #a07040;
+            margin-bottom: 30px;
         }
-
-        .job-info h3 {
-            font-size: 1.5rem;
-            font-family: 'Playfair Display', serif;
-            margin: 10px 0 0;
-        }
-
-        .job-tag {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent-color);
-            font-weight: 500;
-        }
-
-        .apply-btn {
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* Premium CTA Styling */
-        /* Premium CTA Box */
-        .faq-footer-cta {
-            text-align: center;
-            margin: 100px 40px;
-            padding: 80px 40px;
-            background: var(--bg-cream);
-            border: 1px solid #f0e6e3;
-            border-radius: 16px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .faq-footer-cta h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        .cta-button {
-            margin-top: 16px;
-            display: inline-block;
-            padding: 16px 40px;
-            background: var(--text-dark);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(59, 29, 35, 0.1);
-        }
-
-        .cta-button:hover {
-            background: rgb(59, 29, 35, 0.9);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(166, 82, 82, 0.2);
-        }
-
-        @media (max-width: 992px) {
-            .values-section {
-                grid-template-columns: 1fr;
-                border: none;
-            }
-
-            .value-card {
-                border-right: none;
-                border-bottom: 1px solid var(--border-color);
-                padding: 40px 20px;
-            }
-
-            .job-card {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 20px;
-            }
-
-            .openings-header h2 {
-                font-size: 2.2rem;
-            }
-        }
+        .open-role-count i { color: var(--gold); }
     </style>
 </head>
-
 <body>
 
-    <div id="nav-container"></div>
+<div id="nav-container"></div>
 
-    <header class="careers-hero">
-        <span class="section-subtitle">The Atelier</span>
-        <h1>We aren't just styling outfits.<br>We are curating identities.</h1>
-        <p style="max-width: 600px; margin: 0 auto; color: var(--text-light); line-height: 1.8;">
-            Join a collective of artists, stylists, and innovators dedicated to the art of the perfect fit.
-            Remote-first, luxury-focused, and creatively driven.
-        </p>
-    </header>
-
-    <section class="values-section">
-        <div class="value-card">
-            <i class="fa-solid fa-wand-sparkles"></i>
-            <h3>Artistic Integrity</h3>
-            <p>We choose quality over quantity, every single time. Our work is our signature.</p>
-        </div>
-        <div class="value-card">
-            <i class="fa-solid fa-fingerprint"></i>
-            <h3>Digital First</h3>
-            <p>Using technology to bring the bespoke experience to every corner of the globe.</p>
-        </div>
-        <div class="value-card">
-            <i class="fa-solid fa-earth-americas"></i>
-            <h3>Modern Heritage</h3>
-            <p>Respecting the history of couture while building the future of style.</p>
-        </div>
-    </section>
-
-    <section class="openings-section">
-        <div class="openings-header">
-            <p class="section-subtitle" style="margin-bottom: 5px;">Available Positions</p>
-            <h2>Current Openings</h2>
-        </div>
-
-        <div class="jobs-list">
-            <a href="#" class="job-card">
-                <div class="job-info">
-                    <span class="job-tag">Styling • Fully Remote</span>
-                    <h3>Senior Editorial Stylist</h3>
-                </div>
-                <div class="apply-btn">Explore Role <i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-
-            <a href="#" class="job-card">
-                <div class="job-info">
-                    <span class="job-tag">Product • London / New York</span>
-                    <h3>UX Designer (Luxury Experience)</h3>
-                </div>
-                <div class="apply-btn">Explore Role <i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-
-            <a href="#" class="job-card">
-                <div class="job-info">
-                    <span class="job-tag">Operations • Remote (EST Timezone)</span>
-                    <h3>Client Concierge Manager</h3>
-                </div>
-                <div class="apply-btn">Explore Role <i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-        </div>
-    </section>
-
-    <div class="faq-footer-cta">
-        <h3>Become part of the story.</h3>
-        <p>Don't see a role that fits? We are always looking for exceptional creative talent.</p>
-        <br>
-        <a href="mailto:careers@stylist.com" class="cta-button">General Application</a>
+<!-- HERO -->
+<section class="page-hero">
+    <div class="page-hero-inner">
+        <span class="page-tag">Join the Team</span>
+        <h1>Build the Future<br>of Fashion</h1>
+        <p>We're a small, passionate team on a mission to make expert styling accessible to everyone. If that resonates, we'd love to meet you.</p>
     </div>
+</section>
 
-    <div id="footer-container"></div>
+<!-- BREADCRUMB -->
+<div class="breadcrumb-bar">
+    <a href="/index.html">Home</a><span>›</span>Careers
+</div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="/main.js"></script>
+<!-- PHOTO STRIP -->
+<div class="careers-photo-strip">
+    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&auto=format&fit=crop" alt="Team">
+    <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=400&auto=format&fit=crop" alt="Office">
+    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400&auto=format&fit=crop" alt="Culture">
+</div>
 
-    <script>
-        $(function () {
-            $("#nav-container").load("nav.html");
-            $("#footer-container").load("footer.html");
+<!-- VALUES -->
+<section class="careers-values">
+    <div style="max-width:1200px; margin:0 auto;">
+        <span class="sec-sub">Who We Are</span>
+        <h2 class="sec-title">Our Culture & Values</h2>
+        <p class="sec-body" style="max-width:600px; margin-bottom:0;">We believe great style is rooted in confidence, and great work is rooted in trust. These values guide everything we do — from client sessions to internal decisions.</p>
+    </div>
+    <div class="values-grid">
+        <div class="value-card">
+            <i class="fa-solid fa-heart-pulse"></i>
+            <h3>Client First</h3>
+            <p>Every decision starts with "how does this serve our client?" If the answer isn't clear, we go back to basics.</p>
+        </div>
+        <div class="value-card">
+            <i class="fa-solid fa-lightbulb"></i>
+            <h3>Creative Courage</h3>
+            <p>We encourage bold ideas and protect the space for experimentation. Failure is part of building something worthwhile.</p>
+        </div>
+        <div class="value-card">
+            <i class="fa-solid fa-people-group"></i>
+            <h3>Radical Inclusion</h3>
+            <p>Fashion is for everyone. We hire, style, and think without prejudice — body type, background, or budget.</p>
+        </div>
+        <div class="value-card">
+            <i class="fa-solid fa-seedling"></i>
+            <h3>Grow Together</h3>
+            <p>We invest in our team's learning as seriously as we invest in our product. Your growth is our growth.</p>
+        </div>
+        <div class="value-card">
+            <i class="fa-solid fa-shield-halved"></i>
+            <h3>Integrity Always</h3>
+            <p>We say what we mean, deliver what we promise, and own our mistakes. No spin, no excuses.</p>
+        </div>
+        <div class="value-card">
+            <i class="fa-solid fa-leaf"></i>
+            <h3>Sustainable Thinking</h3>
+            <p>We build for longevity — in our wardrobes, in our code, and in the relationships we nurture.</p>
+        </div>
+    </div>
+</section>
+
+<!-- PERKS -->
+<section class="perks-section">
+    <div style="max-width:1100px; margin:0 auto;">
+        <span class="sec-sub">Why Stylist</span>
+        <h2 class="sec-title">Benefits & Perks</h2>
+    </div>
+    <div class="perks-grid">
+        <div class="perk-item"><i class="fa-solid fa-laptop-house"></i> Remote-first culture</div>
+        <div class="perk-item"><i class="fa-solid fa-clock"></i> Flexible working hours</div>
+        <div class="perk-item"><i class="fa-solid fa-book-open"></i> Learning & dev budget</div>
+        <div class="perk-item"><i class="fa-solid fa-shirt"></i> Annual styling allowance</div>
+        <div class="perk-item"><i class="fa-solid fa-umbrella"></i> Health insurance</div>
+        <div class="perk-item"><i class="fa-solid fa-plane"></i> Team retreats (annual)</div>
+        <div class="perk-item"><i class="fa-solid fa-sack-dollar"></i> Competitive salaries</div>
+        <div class="perk-item"><i class="fa-solid fa-baby"></i> Parental leave</div>
+        <div class="perk-item"><i class="fa-solid fa-calendar-check"></i> 25 days paid leave</div>
+        <div class="perk-item"><i class="fa-solid fa-chart-line"></i> Equity options</div>
+        <div class="perk-item"><i class="fa-solid fa-mug-hot"></i> Fully stocked studio</div>
+        <div class="perk-item"><i class="fa-solid fa-star"></i> Peer recognition program</div>
+    </div>
+</section>
+
+<!-- OPENINGS -->
+<section class="openings-section">
+    <div style="max-width:1200px; margin:0 auto;">
+        <div style="margin-bottom:10px;">
+            <span class="sec-sub">Opportunities</span>
+            <h2 class="sec-title">Open Positions</h2>
+        </div>
+        <div class="open-role-count"><i class="fa-solid fa-circle-dot"></i> 7 open roles</div>
+
+        <div class="dept-filter">
+            <button class="dept-btn active" data-dept="all">All Departments</button>
+            <button class="dept-btn" data-dept="styling">Styling</button>
+            <button class="dept-btn" data-dept="tech">Technology</button>
+            <button class="dept-btn" data-dept="design">Design</button>
+            <button class="dept-btn" data-dept="marketing">Marketing</button>
+            <button class="dept-btn" data-dept="ops">Operations</button>
+        </div>
+
+        <div class="job-list">
+
+            <div class="job-card" data-dept="styling">
+                <div>
+                    <div class="job-title">Senior Personal Stylist</div>
+                    <div class="job-meta">
+                        <span><i class="fa-solid fa-location-dot"></i> Karachi (Hybrid)</span>
+                        <span><i class="fa-solid fa-briefcase"></i> Full-time</span>
+                        <span><i class="fa-solid fa-tag"></i> PKR 120k–180k/mo</span>
+                    </div>
+                    <div class="job-tags">
+                        <span class="job-tag">Styling</span>
+                        <span class="job-tag">Senior</span>
+                    </div>
+                </div>
+                <a href="mailto:hello@stylist.pk?subject=Application: Senior Personal Stylist" class="job-apply-btn">Apply</a>
+            </div>
+
+            <div class="job-card" data-dept="styling">
+                <div>
+                    <div class="job-title">Bridal Styling Consultant</div>
+                    <div class="job-meta">
+                        <span><i class="fa-solid fa-location-dot"></i> Karachi (On-site)</span>
+                        <span><i class="fa-solid fa-briefcase"></i> Full-time</span>
+                        <span><i class="fa-solid fa-tag"></i> PKR 80k–120k/mo</span>
+                    </div>
+                    <div class="job-tags">
+                        <span class="job-tag">Styling</span>
+                        <span class="job-tag">Bridal</span>
+                        <span class="job-tag">Mid-level</span>
+                    </div>
+                </div>
+                <a href="mailto:hello@stylist.pk?subject=Application: Bridal Styling Consultant" class="job-apply-btn">Apply</a>
+            </div>
+
+            <div class="job-card" data-dept="tech">
+                <div>
+                    <div class="job-title">Frontend Developer (React)</div>
+                    <div class="job-meta">
+                        <span><i class="fa-solid fa-location-dot"></i> Remote (PK)</span>
+                        <span><i class="fa-solid fa-briefcase"></i> Full-time</span>
+                        <span><i class="fa-solid fa-tag"></i> PKR 150k–220k/mo</span>
+                    </div>
+                    <div class="job-tags">
+                        <span class="job-tag">Technology</span>
+                        <span class="job-tag">React</span>
+                        <span class="job-tag">Mid–Senior</span>
+                    </div>
+                </div>
+                <a href="mailto:hello@stylist.pk?subject=Application: Frontend Developer" class="job-apply-btn">Apply</a>
+            </div>
+
+            <div class="job-card" data-dept="design">
+                <div>
+                    <div class="job-title">UI/UX Designer</div>
+                    <div class="job-meta">
+                        <span><i class="fa-solid fa-location-dot"></i> Remote / Karachi</span>
+                        <span><i class="fa-solid fa-briefcase"></i> Full-time</span>
+                        <span><i class="fa-solid fa-tag"></i> PKR 100k–160k/mo</span>
+                    </div>
+                    <div class="job-tags">
+                        <span class="job-tag">Design</span>
+                        <span class="job-tag">Figma</span>
+                        <span class="job-tag">Mid-level</span>
+                    </div>
+                </div>
+                <a href="mailto:hello@stylist.pk?subject=Application: UI/UX Designer" class="job-apply-btn">Apply</a>
+            </div>
+
+            <div class="job-card" data-dept="marketing">
+                <div>
+                    <div class="job-title">Social Media & Content Lead</div>
+                    <div class="job-meta">
+                        <span><i class="fa-solid fa-location-dot"></i> Karachi (Hybrid)</span>
+                        <span><i class="fa-solid fa-briefcase"></i> Full-time</span>
+                        <span><i class="fa-solid fa-tag"></i> PKR 80k–130k/mo</span>
+                    </div>
+                    <div class="job-tags">
+                        <span class="job-tag">Marketing</span>
+                        <span class="job-tag">Content</span>
+                        <span class="job-tag">Mid-level</span>
+                    </div>
+                </div>
+                <a href="mailto:hello@stylist.pk?subject=Application: Social Media Content Lead" class="job-apply-btn">Apply</a>
+            </div>
+
+            <div class="job-card" data-dept="ops">
+                <div>
+                    <div class="job-title">Client Success Manager</div>
+                    <div class="job-meta">
+                        <span><i class="fa-solid fa-location-dot"></i> Karachi (On-site)</span>
+                        <span><i class="fa-solid fa-briefcase"></i> Full-time</span>
+                        <span><i class="fa-solid fa-tag"></i> PKR 70k–100k/mo</span>
+                    </div>
+                    <div class="job-tags">
+                        <span class="job-tag">Operations</span>
+                        <span class="job-tag">Client Relations</span>
+                    </div>
+                </div>
+                <a href="mailto:hello@stylist.pk?subject=Application: Client Success Manager" class="job-apply-btn">Apply</a>
+            </div>
+
+            <div class="job-card" data-dept="styling">
+                <div>
+                    <div class="job-title">Virtual Stylist (Part-time)</div>
+                    <div class="job-meta">
+                        <span><i class="fa-solid fa-location-dot"></i> Remote</span>
+                        <span><i class="fa-solid fa-briefcase"></i> Part-time / Contract</span>
+                        <span><i class="fa-solid fa-tag"></i> Per session rate</span>
+                    </div>
+                    <div class="job-tags">
+                        <span class="job-tag">Styling</span>
+                        <span class="job-tag">Remote</span>
+                        <span class="job-tag">Contract</span>
+                    </div>
+                </div>
+                <a href="mailto:hello@stylist.pk?subject=Application: Virtual Stylist" class="job-apply-btn">Apply</a>
+            </div>
+
+        </div>
+
+        <div class="no-opening" id="noOpening">
+            <p>No open roles in this department right now.<br>Send a speculative application to <a href="mailto:hello@stylist.pk">hello@stylist.pk</a> — we keep great CVs on file.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+    <span class="sec-sub" style="color:var(--gold)">Don't See a Fit?</span>
+    <h2 class="sec-title-light">We Always Want to Hear From You</h2>
+    <p>Send us your CV and a note on what you'd bring to Stylist. We read every application personally.</p>
+    <div class="cta-row">
+        <a href="mailto:hello@stylist.pk?subject=Speculative Application" class="btn-cta-gold"><i class="fa-solid fa-paper-plane"></i> Send Speculative CV</a>
+        <a href="/About.html" class="btn-cta-outline">About Stylist</a>
+    </div>
+</section>
+
+<div id="footer-container"></div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(function () {
+        $("#nav-container").load("/nav.html", function () {
+            if (typeof initNavFeatures === "function") initNavFeatures();
         });
-    </script>
-</body>
+        $("#footer-container").load("/footer.html");
+    });
 
+    // Department filter
+    const deptBtns = document.querySelectorAll('.dept-btn');
+    const jobCards = document.querySelectorAll('.job-card');
+    const noOpening = document.getElementById('noOpening');
+
+    deptBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            deptBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const dept = btn.dataset.dept;
+            let visible = 0;
+            jobCards.forEach(card => {
+                const show = dept === 'all' || card.dataset.dept === dept;
+                card.style.display = show ? '' : 'none';
+                if (show) visible++;
+            });
+            noOpening.classList.toggle('visible', visible === 0);
+        });
+    });
+</script>
+</body>
 </html>

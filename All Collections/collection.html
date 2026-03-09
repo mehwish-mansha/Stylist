@@ -18,21 +18,19 @@
   <link rel="stylesheet" href="collection.css">
 
   <!-- Google Fonts -->
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inconsolata:wght@200..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Pixelify+Sans:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
     rel="stylesheet">
-
   <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
 
-
-  <!-- Font Awesome-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+  
 </head>
 
 <body>
@@ -40,15 +38,72 @@
   <!-- NAV -->
   <div id="nav-container"></div>
 
+  <!-- FILTER PANEL OVERLAY -->
+  <div id="filter-overlay"></div>
+
+  <!-- FILTER PANEL -->
+  <div id="collection-panel">
+    <div class="panel-header">
+      <h4><i class="fa-solid fa-layer-group me-2" style="font-size:0.95rem;"></i>Collections</h4>
+      <button class="panel-close" id="close-panel-btn"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="panel-list" id="panel-list"></div>
+  </div>
+
   <!-- COLLECTION SECTION -->
   <section class="collection-section">
     <div class="container">
-      <h2 class="main-heading text-center mb-5">Collection</h2>
+      <div class="collection-toolbar">
+        <button id="open-filter-btn">
+          <i class="fa-solid fa-sliders"></i>
+          Filter
+        </button>
+        <span id="active-collection-label">
+          Showing: <strong id="active-label-text">All Collections</strong>
+          <button class="reset-btn" id="reset-filter-btn" style="display:none;">✕ Reset</button>
+        </span>
+      </div>
 
+      <h2 class="main-heading text-center mb-4" id="collectionHeading">All Collections</h2>
+      <div class="filter-bar" id="filterBar"></div>
       <div class="row" id="cardlist"></div>
     </div>
   </section>
 
+  <!-- COMPARE BAR  -->
+  <div id="compare-bar">
+    <span class="compare-label"><i class="fa-solid fa-code-compare me-1"></i> Compare:</span>
+    <div class="compare-items" id="compareChips"></div>
+    <button id="btn-compare-now">Compare Now</button>
+    <button id="btn-clear-compare">Clear</button>
+  </div>
+
+  <!-- COMPARE MODAL -->
+  <div id="compare-modal">
+    <div class="compare-modal-inner">
+      <div class="compare-modal-header">
+        <h3>Product Comparison</h3>
+        <button class="modal-close-btn" id="compareCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div style="overflow-x:auto;">
+        <table class="compare-table" id="compareTable"></table>
+      </div>
+    </div>
+  </div>
+
+  <!-- WISHLIST TOAST -->
+  <div id="wishlist-toast" style="
+    position:fixed; bottom:28px; right:24px;
+    background:#3b1d23; color:#fff;
+    padding:13px 20px; border-radius:12px;
+    display:flex; align-items:center; gap:12px;
+    font-family:'DM Sans',sans-serif; font-size:0.88rem; font-weight:500;
+    box-shadow:0 8px 24px rgba(59,29,35,0.22);
+    z-index:9999; opacity:0; transform:translateY(14px);
+    transition:opacity 0.3s, transform 0.3s; pointer-events:none;">
+    <i class="fa-solid fa-heart" style="color:#e8a0a8;"></i>
+    <span id="wishlist-toast-msg">Added to favourites!</span>
+  </div>
 
   <!-- FOOTER -->
   <div id="footer-container"></div>
@@ -56,2305 +111,554 @@
   <!-- Scripts -->
   <script src="/collections/MDB5-STANDARD-UI-KIT-Free-9.3.0/js/mdb.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <!-- Shared data -->
+  <script src="/data/collections-data.js"></script>
   <script src="/main.js"></script>
 
   <script>
-    // Load Nav & Footer
+
     $(function () {
       $("#nav-container").load("/nav.html");
       $("#footer-container").load("/footer.html");
     });
 
-    $(document).ready(function () {
+    let compareList = [];
 
-      // Get collection type from URL
-      const urlParams = new URLSearchParams(window.location.search);
-      const type = urlParams.get("type");
-
-      // ALL COLLECTIONS
-      const collections = {
-
-        bridal: {
-          title: "Bridal Collection",
-          detailsPage: "",
-          items: [
-            {
-              title: "Royal Nikha Bridal Outfit 1",
-              category: "Nikkah",
-              description: "Elegant Nikha dress for bride",
-              Price: "7000k",
-              newPrice: "5000k",
-              image: "./All Collection Images/bridal image/nikhaimg17.jpg",
-              link: "product-details.html",
-              badge: "NEW",
-            },
-            {
-              title: "Premium White Nikha Collection 2",
-              category: "Nikkah",
-              description: "Luxury white Nikha collection",
-              price: "8000k",
-              newPrice: "6000k",
-              image: "/All Collections/All Collection Images/bridal image/nikhaimg18.jpg",
-              link: "product-details.html",
-              badge: "NEW",
-            },
-            {
-              title: "Designer Embroidered Nikha Outfit 3",
-              category: "Nikkah",
-              description: "Modern Nikha dress with embroidery",
-              price: "9000k",
-              newPrice: "7000k",
-              image: "/All Collections/All Collection Images/bridal image/nikhaimg19.jpg",
-              link: "product-details.html",
-              badge: "NEW",
-            },
-            {
-              title: "Classic Gold Nikha Ensemble 4",
-              category: "Nikkah",
-              description: "Classic Nikha bridal outfit",
-              price: "10000k",
-              newPrice: "8000k",
-              image: "/All Collections/All Collection Images/bridal image/nikhaimg20.jpg",
-              link: "product-details.html",
-              badge: "NEW",
-            },
-            // Mayou  n (4)
-            {
-              title: "Mayoun Outfit 1",
-              category: "Mayoun",
-              description: "Yellow Mayoun dress with floral style",
-              price: "6000k",
-              newPrice: "4500k",
-              image: "/All Collections/All Collection Images/bridal image/mayoimg5.jpg",
-              link: "product-details.html",
-              badge: "NEW",
-            },
-            {
-              title: "Mayoun Outfit 2",
-              category: "Mayoun",
-              description: "Traditional Mayoun dress for bride",
-              price: "7000k",
-              newPrice: "5500k",
-              image: "/All Collections/All Collection Images/bridal image/mayoimg6.jpg",
-              link: "product-details.html",
-              badge: "NEW",
-            },
-            {
-              title: "Mayon Outfit 3",
-              category: "Mayoun",
-              description: "Simple & elegant Mayon outfit",
-              price: "8000k",
-              newPrice: "6500k",
-              image: "/All Collections/All Collection Images/bridal image/mayoimg7.jpg",
-              link: "product-details.html",
-              badge: "NEW",
-            },
-            {
-              title: "Mayon Outfit 4",
-              category: "Mayoun",
-              description: "Luxury Mayoun collection with jewelry",
-              price: "9000k",
-              newPrice: "7500k",
-              image: "/All Collections/All Collection Images/bridal image/mayoimg8.jpg",
-              link: "product-details.html",
-              badge: "NEW",
-            },
-
-            // Barat (4)
-            {
-              title: "Barat Outfit 1",
-              category: "Barat",
-              description: "Red bridal barat dress premium look",
-              price: "15000k",
-              newPrice: "12000k",
-              image: "/All Collections/All Collection Images/bridal image/baratimg1.jpg",
-              link: "product-details.html",
-              badge: "HOT",
-            },
-            {
-              title: "Barat Outfit 2",
-              category: "Barat",
-              description: "Heavy bridal barat dress design",
-              price: "18000k",
-              newPrice: "15000k",
-              image: "/All Collections/All Collection Images/bridal image/baratimg2.jpg",
-              link: "product-details.html",
-              badge: "HOT",
-            },
-            {
-              title: "Barat Outfit 3",
-              category: "Barat",
-              description: "Royal barat lehenga collection",
-              price: "22000k",
-              newPrice: "18000k",
-              image: "/All Collections/All Collection Images/bridal image/baratimg3.jpg",
-              link: "product-details.html",
-              badge: "HOT",
-            },
-            {
-              title: "Barat Outfit 4",
-              category: "Barat",
-              description: "Classic red barat outfit for bride",
-              price: "25000k",
-              newPrice: "20000k",
-              image: "/All Collections/All Collection Images/bridal image/baratimg4.jpg",
-              link: "product-details.html",
-              badge: "HOT",
-            },
-
-            // Valima (4)
-            {
-              title: "Valima Outfit 1",
-              category: "Valima",
-              description: "Elegant valima dress in silver theme",
-              price: "17000k",
-              newPrice: "14000k",
-              image: "/All Collections/All Collection Images/bridal image/valimaimg13.jpg",
-              link: "product-details.html",
-              badge: "Premium",
-            },
-            {
-              title: "Valima Outfit 2",
-              category: "Valima",
-              description: "White bridal valima collection",
-              price: "20000k",
-              newPrice: "16000k",
-              image: "/All Collections/All Collection Images/bridal image/valimaimg14.jpg",
-              link: "product-details.html",
-              badge: "Premium",
-            },
-            {
-              title: "Valima Outfit 3",
-              category: "Valima",
-              description: "Luxury valima dress with embroidery",
-              price: "24000k",
-              newPrice: "19000k",
-              image: "/All Collections/All Collection Images/bridal image/valimaimg15.jpg",
-              link: "product-details.html",
-              badge: "Premium",
-            },
-            {
-              title: "Valima Outfit 4",
-              category: "Valima",
-              description: "Modern valima dress premium look",
-              price: "28000k",
-              newPrice: "22000k",
-              image: "/All Collections/All Collection Images/bridal image/valimaimg16.jpg",
-              link: "product-details.html",
-              badge: "Premium",
-            },
-
-            // Mehendi (4)
-            {
-              title: "Mehendi Outfit 1",
-              category: "Mehendi",
-              description: "Mehendi dress with bright colors",
-              price: "6500k",
-              newPrice: "5000k",
-              image: "/All Collections/All Collection Images/bridal image/mehendiimg9.jpg",
-              link: "product-details.html",
-              badge: "NEW",
-            },
-            {
-              title: "Mehendi Outfit 2",
-              category: "Mehendi",
-              description: "Green & yellow mehendi outfit style",
-              price: "8500k",
-              newPrice: "6500k",
-              image: "/All Collections/All Collection Images/bridal image/mehendiimg10.jpg",
-              link: "product-details.html",
-              badge: "NEW",
-            },
-            {
-              title: "Mehendi Outfit 3",
-              category: "Mehendi",
-              description: "Traditional mehendi dress with dupatta",
-              price: "10000k",
-              newPrice: "8000k",
-              image: "/All Collections/All Collection Images/bridal image/mehendiimg11.jpg",
-              link: "product-details.html",
-              badge: "NEW",
-            },
-            {
-              title: "Mehendi Outfit 4",
-              category: "Mehendi",
-              description: "Luxury mehendi outfit with jewelry",
-              price: "1200k",
-              newPrice: "1000k",
-              image: "/All Collections/All Collection Images/bridal image/mehendiimg12.jpg",
-              link: "product-details.html",
-              badge: "NEW",
-            }
-          ]
-        },
-
-        jewelry: {
-          title: "Jewelry Collection",
-          detailsPage: "product-detail.html",
-          items: [
-            {
-              title: "Elegant Gold Earrings",
-              price: "2999",
-              badge: "NEW",
-              frontImg: "./All Collection Images/jewelry img/jimg1.webp",
-              hoverImg: "./All Collection Images/jewelry img/jhover1.webp"
-            },
-            {
-              title: "Luxury Bridal Necklace",
-              price: "3499",
-              badge: "NEW",
-              frontImg: "./All Collection Images/jewelry img/jimg2.webp",
-              hoverImg: "./All Collection Images/jewelry img/jhover2.webp"
-            },
-            {
-              title: "Classic Pearl Set",
-              price: "2599",
-              badge: "NEW",
-              frontImg: "./All Collection Images/jewelry img/jimg3.webp",
-              hoverImg: "./All Collection Images/jewelry img/jhover3.webp"
-            },
-            {
-              title: "Modern Gold Pendant",
-              price: "2199",
-              badge: "NEW",
-              frontImg: "./All Collection Images/jewelry img/jimg4.webp",
-              hoverImg: "./All Collection Images/jewelry img/jhover4.webp"
-            },
-            {
-              title: "Royal Choker Set",
-              price: "3999",
-              badge: "NEW",
-              frontImg: "./All Collection Images/jewelry img/jimg5.webp",
-              hoverImg: "./All Collection Images/jewelry img/jhover5.webp"
-            },
-            {
-              title: "Traditional Jhumka",
-              price: "1899",
-              badge: "NEW",
-              frontImg: "./All Collection Images/jewelry img/jimg6.webp",
-              hoverImg: "./All Collection Images/jewelry img/jhover6.webp"
-            },
-            {
-              title: "Stylish Ring Design",
-              price: "1499",
-              badge: "NEW",
-              frontImg: "./All Collection Images/jewelry img/jimg7.webp",
-              hoverImg: "./All Collection Images/jewelry img/jhover7.webp"
-            },
-            {
-              title: "Bridal Hand Jewelry",
-              price: "4599",
-              badge: "NEW",
-              frontImg: "./All Collection Images/jewelry img/jimg8.webp",
-              hoverImg: "./All Collection Images/jewelry img/jhover8.webp"
-            },
-            {
-              title: "Premium Gold Set",
-              price: "4999",
-              badge: "NEW",
-              frontImg: "./All Collection Images/jewelry img/jimg9.webp",
-              hoverImg: "./All Collection Images/jewelry img/jhover9.webp"
-            },
-            {
-              title: "Elegant Necklace",
-              price: "2799",
-              badge: "NEW",
-              frontImg: "./All Collection Images/jewelry img/jimg10.webp",
-              hoverImg: "./All Collection Images/jewelry img/jhover10.webp"
-            },
-            {
-              title: "Designer Earrings",
-              price: "1999",
-              badge: "NEW",
-              frontImg: "./All Collection Images/jewelry img/jimg11.webp",
-              hoverImg: "./All Collection Images/jewelry img/jhover11.webp"
-            },
-            {
-              title: "Traditional Bridal Set",
-              price: "5999",
-              badge: "NEW",
-              frontImg: "./All Collection Images/jewelry img/jimg12.webp",
-              hoverImg: "./All Collection Images/jewelry img/jhover12.webp"
-            },
-            {
-              title: "Luxury Ring Collection",
-              price: "1699",
-              badge: "NEW",
-              frontImg: "./All Collection Images/jewelry img/jimg13.webp",
-              hoverImg: "./All Collection Images/jewelry img/jhover13.webp"
-            },
-            {
-              title: "Elegant Gold Bracelet",
-              price: "2399",
-              badge: "NEW",
-              frontImg: "./All Collection Images/jewelry img/jimg14.webp",
-              hoverImg: "./All Collection Images/jewelry img/jhover14.webp"
-            },
-            {
-              title: "Premium Pendant",
-              price: "2099",
-              badge: "NEW",
-              frontImg: "./All Collection Images/jewelry img/jimg15.webp",
-              hoverImg: "./All Collection Images/jewelry img/jhover15.webp"
-            },
-            {
-              title: "Classic Bridal Necklace",
-              price: "5299",
-              badge: "NEW",
-              frontImg: "./All Collection Images/jewelry img/jimg16.webp",
-              hoverImg: "./All Collection Images/jewelry img/jhover16.webp"
-            }
-          ]
-        },
-
-        eid: {
-          title: "Eid Collection",
-          detailsPage: "product-detail.html",
-          items: [
-            {
-              title: "Premium Boys Kurta Pajama 1",
-              category: "Boys",
-              description: "Classic beige kurta pajama for Eid",
-              newPrice: "2500",
-              price: "3200",
-              image: "./All Collection Images/eid exclusive img/eimg1.webp",
-              link: "product-details.html",
-              badge: "NEW",
-            },
-            {
-              title: "Luxury Boys Kurta Pajama 2",
-              category: "Boys",
-              description: "Festive sky blue kurta pajama",
-              newPrice: "2600",
-              price: "3400",
-              image: "./All Collection Images/eid exclusive img/eimg2.webp",
-              link: "product-details.html",
-              badge: "NEW",
-            },
-            {
-              title: "Designer Boys Kurta Pajama 3",
-              category: "Boys",
-              description: "Elegant white kurta with embroidery",
-              newPrice: "2700",
-              price: "3500",
-              image: "./All Collection Images/eid exclusive img/eimg3.webp",
-              link: "product-details.html",
-              badge: "NEW",
-            },
-            {
-              title: "Royal Boys Kurta Pajama 4",
-              category: "Boys",
-              description: "Maroon festive kurta set",
-              newPrice: "2800",
-              price: "3800",
-              image: "./All Collection Images/eid exclusive img/eimg4.webp",
-              link: "product-details.html",
-              badge: "HOT",
-            },
-            {
-              title: "Premium Boys Kurta Pajama 5",
-              category: "Men",
-              description: "Navy blue kurta with waistcoat",
-              newPrice: "2900",
-              price: "3900",
-              image: "./All Collection Images/eid exclusive img/eimg5.webp",
-              link: "product-details.html",
-              badge: "HOT",
-            },
-            {
-              title: "Classic Men Kurta 1",
-              category: "Men",
-              description: "Elegant beige kurta for Eid",
-              newPrice: "3500",
-              price: "4500",
-              image: "./All Collection Images/eid exclusive img/eimg6.webp",
-              link: "product-details.html",
-              badge: "NEW",
-            },
-            {
-              title: "Premium Men Kurta 2",
-              category: "Men",
-              description: "White classic kurta",
-              newPrice: "3600",
-              price: "4600",
-              image: "./All Collection Images/eid exclusive img/eimg7.webp",
-              link: "product-details.html",
-              badge: "NEW",
-            },
-            {
-              title: "Designer Men Kurta 3",
-              category: "Men",
-              description: "Gray festive kurta",
-              newPrice: "3700",
-              price: "4800",
-              image: "./All Collection Images/eid exclusive img/eimg8.webp",
-              link: "product-details.html",
-              badge: "NEW",
-            },
-            {
-              title: "Elegant Girls Eid Dress 1",
-              category: "Girls",
-              description: "Pink chiffon dress with embroidery",
-              newPrice: "3000",
-              price: "4000",
-              image: "./All Collection Images/eid exclusive img/eimg9.webp",
-              link: "product-details.html",
-              badge: "NEW",
-            },
-            {
-              title: "Floral Girls Eid Dress 2",
-              category: "Girls",
-              description: "Floral printed festive frock",
-              newPrice: "3200",
-              price: "4200",
-              image: "./All Collection Images/eid exclusive img/eimg10.webp",
-              link: "product-details.html",
-              badge: "NEW",
-            },
-            {
-              title: "Premium Girls Eid Dress 3",
-              category: "Girls",
-              description: "Purple party dress for girls",
-              newPrice: "3300",
-              price: "4300",
-              image: "./All Collection Images/eid exclusive img/eimg11.webp",
-              link: "product-details.html",
-              badge: "NEW",
-            },
-            {
-              title: "Luxury Girls Eid Dress 4",
-              category: "Girls",
-              description: "Peach net dress with embroidery",
-              newPrice: "3400",
-              price: "4500",
-              image: "./All Collection Images/eid exclusive img/eimg12.webp",
-              link: "product-details.html",
-              badge: "NEW",
-            },
-            {
-              title: "Designer Girls Eid Dress 5",
-              category: "Girls",
-              description: "Pink formal frock",
-              newPrice: "3500",
-              price: "4600",
-              image: "./All Collection Images/eid exclusive img/eimg13.webp",
-              link: "product-details.html",
-              badge: "HOT",
-            },
-            {
-              title: "Festive Girls Eid Dress 6",
-              category: "Girls",
-              description: "Brown festive chiffon dress",
-              newPrice: "3600",
-              price: "4700",
-              image: "./All Collection Images/eid exclusive img/eimg14.webp",
-              link: "product-details.html",
-              badge: "HOT",
-            },
-            {
-              title: "Elegant Girls Eid Dress 7",
-              category: "Girls",
-              description: "Turquoise long festive dress",
-              newPrice: "3700",
-              price: "4800",
-              image: "./All Collection Images/eid exclusive img/eimg15.webp",
-              link: "product-details.html",
-              badge: "HOT",
-            },
-            {
-              title: "Premium Girls Eid Dress 8",
-              category: "Girls",
-              description: "Black formal dress",
-              newPrice: "3800",
-              price: "5000",
-              image: "./All Collection Images/eid exclusive img/eimg16.webp",
-              link: "product-details.html",
-              badge: "SALE",
-            },
-            {
-              title: "Luxury Women Eid Dress 1",
-              category: "Women",
-              description: "Maroon premium Eid dress",
-              newPrice: "4500",
-              price: "6000",
-              image: "./All Collection Images/eid exclusive img/eimg17.webp",
-              link: "product-details.html",
-              badge: "SALE",
-            },
-            {
-              title: "Designer Women Eid Dress 2",
-              category: "Women",
-              description: "Blue long formal dress",
-              newPrice: "4600",
-              price: "6200",
-              image: "./All Collection Images/eid exclusive img/eimg18.webp",
-              link: "product-details.html",
-              badge: "SALE",
-            },
-            {
-              title: "Premium Women Eid Dress 3",
-              category: "Women",
-              description: "Olive green festive outfit",
-              newPrice: "4700",
-              price: "6300",
-              image: "./All Collection Images/eid exclusive img/eimg19.webp",
-              link: "product-details.html",
-              badge: "SALE",
-            },
-            {
-              title: "Elegant Women Eid Dress 4",
-              category: "Women",
-              description: "Black designer Eid dress",
-              newPrice: "4800",
-              price: "6500",
-              image: "./All Collection Images/eid exclusive img/eimg20.webp",
-              link: "product-details.html",
-              badge: "SALE",
-            }
-          ]
-        },
-
-        bags: {
-          title: "Bags Collection",
-          detailsPage: "/All Collections/All Product Details/bags-details.html",
-          items: [
-            {
-              title: "Elegant Black Shoulder Bag",
-              price: "3500",
-              badge: "NEW",
-              frontImg: "./All Collection Images/bags img/bimg1.webp",
-              hoverImg: "./All Collection Images/bags img/bhover1.webp"
-            },
-            {
-              title: "Stylish Brown Cross Bag",
-              price: "3200",
-              badge: "NEW",
-              frontImg: "./All Collection Images/bags img/bimg2.webp",
-              hoverImg: "./All Collection Images/bags img/bhover2.webp"
-            },
-            {
-              title: "Luxury Maroon Hand Bag",
-              price: "3800",
-              badge: "NEW",
-              frontImg: "./All Collection Images/bags img/bimg3.webp",
-              hoverImg: "./All Collection Images/bags img/bhover3.webp"
-            },
-            {
-              title: "Classic Grey Shoulder Bag",
-              price: "3000",
-              badge: "NEW",
-              frontImg: "./All Collection Images/bags img/bimg4.webp",
-              hoverImg: "./All Collection Images/bags img/bhover4.webp"
-            },
-            {
-              title: "Modern Black Mini Bag",
-              price: "3600",
-              badge: "NEW",
-              frontImg: "./All Collection Images/bags img/bimg5.webp",
-              hoverImg: "./All Collection Images/bags img/bhover5.webp"
-            },
-            {
-              title: "Premium Golden Chain Bag",
-              price: "4200",
-              badge: "NEW",
-              frontImg: "./All Collection Images/bags img/bimg6.webp",
-              hoverImg: "./All Collection Images/bags img/bhover6.webp"
-            },
-            {
-              title: "Green Fashion Hand Bag",
-              price: "3900",
-              badge: "NEW",
-              frontImg: "./All Collection Images/bags img/bimg7.webp",
-              hoverImg: "./All Collection Images/bags img/bhover7.webp"
-            },
-            {
-              title: "Designer Cream Bag",
-              price: "3400",
-              badge: "NEW",
-              frontImg: "./All Collection Images/bags img/bimg8.webp",
-              hoverImg: "./All Collection Images/bags img/bhover8.webp"
-            },
-            {
-              title: "Luxury Brown Leather Bag",
-              price: "4500",
-              badge: "NEW",
-              frontImg: "./All Collection Images/bags img/bimg9.webp",
-              hoverImg: "./All Collection Images/bags img/bhover9.webp"
-            },
-            {
-              title: "Elegant White Fashion Bag",
-              price: "3700",
-              badge: "NEW",
-              frontImg: "./All Collection Images/bags img/bimg10.webp",
-              hoverImg: "./All Collection Images/bags img/bhover10.webp"
-            },
-            {
-              title: "Stylish Party Hand Bag",
-              price: "4100",
-              badge: "NEW",
-              frontImg: "./All Collection Images/bags img/bimg11.webp",
-              hoverImg: "./All Collection Images/bags img/bhover11.webp"
-            },
-            {
-              title: "Royal Designer Bag",
-              price: "4800",
-              badge: "NEW",
-              frontImg: "./All Collection Images/bags img/bimg12.webp",
-              hoverImg: "./All Collection Images/bags img/bhover12.webp"
-            },
-            {
-              title: "Classic Ladies Shoulder Bag",
-              price: "3300",
-              badge: "NEW",
-              frontImg: "./All Collection Images/bags img/bimg13.webp",
-              hoverImg: "./All Collection Images/bags img/bhover13.webp"
-            },
-            {
-              title: "Premium Fashion Hand Bag",
-              price: "4400",
-              badge: "NEW",
-              frontImg: "./All Collection Images/bags img/bimg14.webp",
-              hoverImg: "./All Collection Images/bags img/bhover14.webp"
-            },
-            {
-              title: "Modern Stylish Bag",
-              price: "3600",
-              badge: "NEW",
-              frontImg: "./All Collection Images/bags img/bimg15.webp",
-              hoverImg: "./All Collection Images/bags img/bhover15.webp"
-            },
-            {
-              title: "Luxury Black Party Bag",
-              price: "5000",
-              badge: "NEW",
-              frontImg: "./All Collection Images/bags img/bimg16.webp",
-              hoverImg: "./All Collection Images/bags img/bhover16.webp"
-            }
-          ]
-        },
-        // Winter Colection 
-        winter: {
-          title: "Winter Collection",
-          detailsPage: "product-detail.html",
-          items: [
-            {
-              title: "Winter Outfit 1",
-              category: "Winter",
-              description: "Basic V-Neck Sweater",
-              price: "7000k",
-              newPrice: "4000k",
-              image: "./All Collection Images/winter img/women1.jpg",
-              link: "product-details.html",
-              badge: "NEW"
-            },
-            {
-              title: "Winter Outfit 2",
-              category: "Winter",
-              description: "Biker Jacket With Pinstripe Detail",
-              price: "8000k",
-              newPrice: "4000k",
-              image: "./All Collection Images/winter img/women2.jpg",
-              link: "product-details.html",
-              badge: "NEW"
-            },
-            {
-              title: "Winter Outfit 3",
-              category: "Winter",
-              description: "Notched Collar Blazer",
-              price: "7000k",
-              newPrice: "4000k",
-              image: "./All Collection Images/winter img/women3.jpg",
-              link: "product-details.html",
-              badge: "NEW"
-            },
-            {
-              title: "Winter Outfit 4",
-              category: "Winter",
-              description: "Crew Neck Sweater",
-              price: "5000k",
-              newPrice: "2000k",
-              image: "./All Collection Images/winter img/women4.jpg",
-              link: "product-details.html",
-              badge: "NEW"
-            },
-
-            {
-              title: "Winter Outfit 1",
-              category: "Winter",
-              description: "Super Cropped Denim Jacket",
-              price: "6000k",
-              newPrice: "3000k",
-              image: "./All Collection Images/winter img/women5.jpg",
-              link: "product-details.html",
-              badge: "NEW"
-            },
-            {
-              title: "Winter Outfit 2",
-              category: "Winter",
-              description: "Soft Power Top",
-              price: "7000k",
-              newPrice: "5000k",
-              image: "./All Collection Images/winter img/women12.jpg",
-              link: "product-details.html",
-              badge: "NEW"
-            },
-            {
-              title: "Winter Outfit 3",
-              category: "Winter",
-              description: "Cropped Pointelle Detail Sweater",
-              price: "8000k",
-              newPrice: "6500k",
-              image: "./All Collection Images/winter img/women18.jpg",
-              link: "product-details.html",
-              badge: "NEW"
-            },
-            {
-              title: "Winter Outfit 4",
-              category: "Winter",
-              description: "Cocoa Calm Pullover",
-              price: "9000k",
-              newPrice: "7500k",
-              image: "./All Collection Images/winter img/women19.jpg",
-              link: "product-details.html",
-              badge: "NEW"
-            },
-
-            {
-              title: "Winter Outfit 1",
-              category: "Winter",
-              description: "Faux Leather Bomber Jacket",
-              price: "5000k",
-              newPrice: "2000k",
-              image: "./All Collection Images/winter img/women17.jpg",
-              link: "product-details.html",
-              badge: "HOT"
-            },
-            {
-              title: "Winter Outfit 2",
-              category: "Winter",
-              description: "Modern Ease Shirt",
-              price: "8000k",
-              newPrice: "5000k",
-              image: "./All Collection Images/winter img/women20.jpg",
-              link: "product-details.html",
-              badge: "HOT"
-            },
-            {
-              title: "Winter Outfit 3",
-              category: "Winter",
-              description: "flannelette cardigan",
-              price: "2000k",
-              newPrice: "1500k",
-              image: "./All Collection Images/winter img/women6.jpg",
-              link: "product-details.html",
-              badge: "HOT"
-            },
-            {
-              title: "Winter Outfit 4",
-              category: "Winter",
-              description: "Masoori/Chiffon",
-              price: "5000k",
-              newPrice: "3900k",
-              image: "./All Collection Images/winter img/women7.jpg",
-              link: "product-details.html",
-              badge: "HOT"
-            },
-
-            {
-              title: "Winter Outfit 1",
-              category: "Winter",
-              description: "Emerald Royal Grace",
-              price: "7000k",
-              newPrice: "4000k",
-              image: "./All Collection Images/winter img/women8.jpg",
-              link: "product-details.html",
-              badge: "SALE"
-            },
-            {
-              title: "Winter Outfit 2",
-              category: "Winter",
-              description: "Blush velvet Dream",
-              price: "9000k",
-              newPrice: "5000k",
-              image: "./All Collection Images/winter img/women9.jpg",
-              link: "product-details.html",
-              badge: "SALE"
-            },
-            {
-              title: "Winter Outfit 3",
-              category: "Winter",
-              description: "Froasted Sky Elegence",
-              price: "4000k",
-              newPrice: "2900k",
-              image: "./All Collection Images/winter img/women10.jpg",
-              link: "product-details.html",
-              badge: "SALE"
-            },
-            {
-              title: "Winter Outfit 4",
-              category: "Winter",
-              description: "Midnight Modren Muse",
-              price: "5000k",
-              newPrice: "3500k",
-              image: "./All Collection Images/winter img/women11.jpg",
-              link: "product-details.html",
-              badge: "SALE"
-            },
-
-            {
-              title: "Winter Outfit 1",
-              category: "Winter",
-              description: "Silver Noor Ensemble",
-              price: "6500k",
-              newPrice: "5000k",
-              image: "./All Collection Images/winter img/women13.jpg",
-              link: "product-details.html",
-              badge: "NEW"
-            },
-            {
-              title: "Winter Outfit 2",
-              category: "Winter",
-              description: "Ivory Bloom Co-Ord",
-              price: "8500k",
-              newPrice: "6500k",
-              image: "./All Collection Images/winter img/women14.jpg",
-              link: "product-details.html",
-              badge: "NEW"
-            },
-            {
-              title: "Winter Outfit 3",
-              category: "Winter",
-              description: "Champagne Riwaayat Set",
-              price: "8000k",
-              newPrice: "5000k",
-              image: "./All Collection Images/winter img/women15.jpg",
-              link: "product-details.html",
-              badge: "NEW"
-            },
-            {
-              title: "Winter Outfit 4",
-              category: "Winter",
-              description: "Emerald Zehra Luxe",
-              price: "5000k",
-              newPrice: "3000k",
-              image: "./All Collection Images/winter img/women16.jpg",
-              link: "product-details.html",
-              badge: "NEW"
-            }
-          ]
-        },
-        summer: {
-          title: "Summer Collection",
-          detailsPage: "product-detail.html",
-          items: [
-          // silk print (4)
-        {
-          title: "Silk Print Outfit 1",
-          category: "Summer Silk Edit",
-          description: "Lightweight silk print outfit perfect for warm summer days",
-
-          price: "5000k",
-          image: "./All Collection Images/summer img/simg1.webp",
-          link: "product-details.html",
-          badge: "NEW"
-        },
-        {
-          title: "Silk Print Outfit 2",
-          category: "Summer Silk Edit",
-          description: "Premium stitched silk design crafted for summer comfort",
-
-          price: "6000k",
-          image: "./All Collection Images/summer img/simg2.webp",
-          link: "product-details.html",
-          badge: "NEW"
-        },
-        {
-          title: "Silk Print Outfit 3",
-          category: "Summer Silk Edit",
-          description: "Soft fabric silk ensemble designed for everyday summer wear",
-
-          price: "7000k",
-          image: "./All Collection Images/summer img/simg3.webp",
-          link: "product-details.html",
-          badge: "NEW"
-        },
-        {
-          title: "Silk Print Outfit 4",
-          category: "Summer Silk Edit",
-          description: "Breathable silk print collection for a graceful summer look",
-
-          price: "8000k",
-          image: "./All Collection Images/summer img/simg4.webp",
-          link: "product-details.html",
-          badge: "NEW"
-        },
-
-        // modern archives (4)
-        {
-          title: "Modern Archives Outfit 1",
-          category: "Modern Summer Line",
-          description: "Contemporary summer outfit with elegant detailing",
-
-          price: "4500k",
-          image: "./All Collection Images/summer img/simg5.webp",
-          link: "product-details.html",
-          badge: "NEW"
-        },
-        {
-          title: "Modern Archives Outfit 2",
-          category: "Modern Summer Line",
-          description: "Timeless summer design tailored for comfort and style",
-
-          price: "5500k",
-          image: "./All Collection Images/summer img/simg6.webp",
-          link: "product-details.html",
-          badge: "NEW"
-        },
-        {
-          title: "Modern Archives Outfit 3",
-          category: "Modern Summer Line",
-          description: "Minimal yet classy summer wear with premium finish",
-
-          price: "6500k",
-          image: "./All Collection Images/summer img/simg7.webp",
-          link: "product-details.html",
-          badge: "NEW"
-        },
-        {
-          title: "Modern Archives Outfit 4",
-          category: "Modern Summer Line",
-          description: "Elegant summer collection featuring refined craftsmanship",
-
-          price: "7500k",
-          image: "./All Collection Images/summer img/simg8.webp",
-          link: "product-details.html",
-          badge: "NEW"
-        },
-
-        // glamorous (4)
-        {
-          title: "Glamorous Outfit 1",
-          category: "Luxury Glam Edit",
-          description: "Statement summer outfit designed for festive gatherings",
-
-          price: "12000k",
-          image: "./All Collection Images/summer img/simg9.webp",
-          link: "product-details.html",
-          badge: "HOT"
-        },
-        {
-          title: "Glamorous Outfit 2",
-          category: "Luxury Glam Edit",
-          description: "Luxury summer attire with premium embellishments",
-
-          price: "15000k",
-          image: "./All Collection Images/summer img/simg10.webp",
-          link: "product-details.html",
-          badge: "HOT"
-        },
-        {
-          title: "Glamorous Outfit 3",
-          category: "Luxury Glam Edit",
-          description: "Exclusive designer summer ensemble for special occasions",
-
-          price: "18000k",
-          image: "./All Collection Images/summer img/simg11.webp",
-          link: "product-details.html",
-          badge: "HOT"
-        },
-        {
-          title: "Glamorous Outfit 4",
-          category: "Luxury Glam Edit",
-          description: "Premium festive summer wear with elegant stitching",
-
-          price: "20000k",
-          image: "./All Collection Images/summer img/simg12.webp",
-          link: "product-details.html",
-          badge: "HOT"
-        },
-
-        // eid special (4)
-        {
-          title: "Eid Special Outfit 1",
-          category: "Festive Summer Collection",
-          description: "Specially designed festive outfit for summer celebrations",
-
-          price: "14000k",
-          image: "./All Collection Images/summer img/simg13.webp",
-          link: "product-details.html",
-          badge: "SALE"
-        },
-        {
-          title: "Eid Special Outfit 2",
-          category: "Festive Summer Collection",
-          description: "Premium eid collection crafted for summer festivities",
-
-          price: "16000k",
-          image: "./All Collection Images/summer img/simg14.webp",
-          link: "product-details.html",
-          badge: "SALE"
-        },
-        {
-          title: "Eid Special Outfit 3",
-          category: "Festive Summer Collection",
-          description: "Graceful embroidered outfit for elegant summer events",
-
-          price: "19000k",
-          image: "./All Collection Images/summer img/simg15.webp",
-          link: "product-details.html",
-          badge: "SALE"
-        },
-        {
-          title: "Eid Special Outfit 4",
-          category: "Festive Summer Collection",
-          description: "Luxury festive summer dress with premium detailing",
-
-          price: "22000k",
-          image: "./All Collection Images/summer img/simg16.webp",
-          link: "product-details.html",
-          badge: "SALE"
-        },
-
-        // M.Classic (4)
-        {
-          title: "M.Classic Outfit 1",
-          category: "Signature Classic Line",
-          description: "Signature summer outfit designed for everyday elegance",
-
-          price: "5000k",
-          image: "./All Collection Images/summer img/simg17.webp",
-          link: "product-details.html",
-          badge: "NEW"
-        },
-        {
-          title: "M.Classic Outfit 2",
-          category: "Signature Classic Line",
-          description: "Comfortable and stylish summer classic wear",
-          price: "6500k",
-          image: "./All Collection Images/summer img/simg18.webp",
-          link: "product-details.html",
-          badge: "NEW"
-        },
-        {
-          title: "M.Classic Outfit 3",
-          category: "Signature Classic Line",
-          description: "Traditional inspired summer collection with modern touch",
-
-          price: "8000k",
-          image: "./All Collection Images/summer img/simg19.webp",
-          link: "product-details.html",
-          badge: "NEW"
-        },
-        {
-          title: "M.Classic Outfit 4",
-          category: "Signature Classic Line",
-          description: "Premium quality classic summer outfit with fine stitching",
-
-          price: "1000k",
-          image: "./All Collection Images/summer img/simg20.webp",
-          link: "product-details.html",
-          badge: "NEW"
-        }
-      ]
-},
-      modest:{
-      title: "Modest Collection",
-      detailsPage: "product-detail.html",
-      items:[
-        {
-          title: "Elegant Grey Abaya",
-          category: "Modest Wear",
-          description: "Soft grey long abaya with minimal design",
-          price: "4500",
-          image: "./All Collection Images/modest img/modestimg1.webp",
-          link: "modest-details.html",
-          badge: "NEW",
-        },
-        {
-          title: "Classic Black Abaya",
-          category: "Modest Wear",
-          description: "Premium black modest wear outfit",
-          price: "4800",
-          image: "./All Collection Images/modest img/modestimg2.webp",
-          link: "modest-details.html",
-          badge: "HOT",
-        },
-        {
-          title: "Luxury Black Open Abaya",
-          category: "Modest Wear",
-          description: "Elegant open style abaya for formal wear",
-          price: "5000",
-          image: "./All Collection Images/modest img/modestimg3.webp",
-          link: "modest-details.html",
-          badge: "HOT",
-        },
-        {
-          title: "Royal Blue Abaya",
-          category: "Modest Wear",
-          description: "Bright blue modest dress for special occasions",
-          price: "5200",
-          image: "./All Collection Images/modest img/modestimg4.webp",
-          link: "modest-details.html",
-          badge: "NEW",
-        },
-        {
-          title: "Beige Classic Abaya",
-          category: "Modest Wear",
-          description: "Simple and elegant beige abaya",
-          price: "4700",
-          image: "./All Collection Images/modest img/modestimg5.webp",
-          link: "modest-details.html",
-          badge: "SALE",
-        },
-        {
-          title: "Minimal Black Abaya",
-          category: "Modest Wear",
-          description: "Plain black modest outfit with clean cut",
-          price: "4600",
-          image: "./All Collection Images/modest img/modestimg6.webp",
-          link: "modest-details.html",
-          badge: "NEW",
-        },
-        {
-          title: "Soft Grey Modest Dress",
-          category: "Modest Wear",
-          description: "Comfortable long modest dress",
-          price: "4400",
-          image: "./All Collection Images/modest img/modestimg7.webp",
-          link: "modest-details.html",
-          badge: "NEW",
-        },
-        {
-          title: "Dusty Blue Abaya",
-          category: "Modest Wear",
-          description: "Modern dusty blue modest outfit",
-          price: "5100",
-          image: "./All Collection Images/modest img/modestimg8.webp",
-          link: "modest-details.html",
-          badge: "HOT",
-        },
-        {
-          title: "Emerald Green Abaya",
-          category: "Modest Wear",
-          description: "Luxury green modest formal wear",
-          price: "5500",
-          image: "./All Collection Images/modest img/modestimg9.webp",
-          link: "modest-details.html",
-          badge: "HOT",
-        },
-        {
-          title: "Soft Pink Abaya",
-          category: "Modest Wear",
-          description: "Elegant pastel pink modest dress",
-          price: "4900",
-          image: "./All Collection Images/modest img/modestimg10.webp",
-          link: "modest-details.html",
-          badge: "SALE",
-        },
-        {
-          title: "Maroon Modest Dress",
-          category: "Modest Wear",
-          description: "Deep maroon long modest outfit",
-          price: "5300",
-          image: "./All Collection Images/modest img/modestimg11.webp",
-          link: "modest-details.html",
-          badge: "NEW",
-        },
-        {
-          title: "Nude Beige Abaya",
-          category: "Modest Wear",
-          description: "Soft nude tone modest wear",
-          price: "4700",
-          image: "./All Collection Images/modest img/modestimg12.webp",
-          link: "modest-details.html",
-          badge: "NEW",
-        },
-        {
-          title: "Classic Taupe Dress",
-          category: "Modest Wear",
-          description: "Elegant taupe colored modest dress",
-          price: "5000",
-          image: "./All Collection Images/modest img/modestimg13.webp",
-          link: "modest-details.html",
-          badge: "HOT",
-        },
-        {
-          title: "Soft Brown Abaya",
-          category: "Modest Wear",
-          description: "Stylish brown modest outfit",
-          price: "5200",
-          image: "./All Collection Images/modest img/modestimg14.webp",
-          link: "modest-details.html",
-          badge: "HOT",
-        },
-        {
-          title: "Rose Pink Abaya",
-          category: "Modest Wear",
-          description: "Elegant rose pink long dress",
-          price: "5100",
-          image: "./All Collection Images/modest img/modestimg15.webp",
-          link: "modest-details.html",
-          badge: "SALE",
-        },
-        {
-          title: "White Elegant Abaya",
-          category: "Modest Wear",
-          description: "Pure white minimal modest dress",
-          price: "4800",
-          image: "./All Collection Images/modest img/modestimg16.webp",
-          link: "modest-details.html",
-          badge: "NEW",
-        },
-        {
-          title: "Black Premium Abaya",
-          category: "Modest Wear",
-          description: "Luxury black modest collection",
-          price: "5600",
-          image: "./All Collection Images/modest img/modestimg17.webp",
-          link: "modest-details.html",
-          badge: "HOT",
-        },
-        {
-          title: "Elegant Black Lace Abaya",
-          category: "Modest Wear",
-          description: "Formal Luxury modest wear",
-          price: "6000",
-          image: "./All Collection Images/modest img/modestimg18.webp",
-          link: "modest-details.html",
-          badge: "HOT",
-        },
-        {
-          title: "Grey Formal Abaya",
-          category: "Modest Wear",
-          description: "Formal grey modest outfit",
-          price: "5300",
-          image: "./All Collection Images/modest img/modestimg19.webp",
-          link: "modest-details.html",
-          badge: "SALE",
-        },
-        {
-          title: "Teal Green Modest Dress",
-          category: "Modest Wear",
-          description: "Modern teal green long dress",
-          price: "5400",
-          image: "./All Collection Images/modest img/modestimg20.webp",
-          link: "modest-details.html",
-          badge: "NEW",
-        },
-      ]
-      
-      },
-      luxury: {
-        title: "Luxury Collection",
-        detailsPage: "product-detail.html",
-        items: [
-           {
-          title: "Royal Blue Luxury Gown",
-          category: "Luxury Girls",
-          description: "Premium light blue designer gown with elegant embroidery",
-          oldPrice: "90,000",
-          newPrice: "82,000",
-          image: "./All Collection Images/luxury img/limg1.webp",
-          link: "luxury-product-details.html",
-          badge: "PREMIUM",
-        },
-        {
-          title: "Soft Pink Luxury Dress",
-          category: "Luxury Girls",
-          description: "Elegant pastel pink luxury outfit with fine detailing",
-          oldPrice: "62,000",
-          newPrice: "55,000",
-          image: "./All Collection Images/luxury img/limg2.webp",
-          link: "luxury-product-details.html",
-          badge: "NEW",
-        },
-        {
-          title: "Red Designer Luxury Wear",
-          category: "Luxury Girls",
-          description: "Bold red premium dress for wedding & special events",
-          oldPrice: "60,000",
-          newPrice: "55,000",
-          image: "./All Collection Images/luxury img/limg3.webp",
-          link: "luxury-product-details.html",
-          badge: "HOT",
-        },
-        {
-          title: "Black Elegant Party Wear",
-          category: "Luxury Girls",
-          description: "Luxury black outfit with modern stylish cut",
-          oldPrice: "70,000",
-          newPrice: "65,000",
-          image: "./All Collection Images/luxury img/limg4.webp",
-          link: "luxury-product-details.html",
-          badge: "LIMITED",
-        },
-
-        // Luxury Set 2 (limg5–limg8)
-        {
-          title: "Peach Embroidered Luxury Suit",
-          category: "Luxury Girls",
-          description: "Premium peach outfit with detailed hand embroidery",
-          oldPrice: "90,000",
-          newPrice: "85,000",
-          image: "./All Collection Images/luxury img/limg5.webp",
-          link: "luxury-product-details.html",
-          badge: "PREMIUM",
-        },
-        {
-          title: "Classic Nude Formal Dress",
-          category: "Luxury Girls",
-          description: "Elegant nude formal luxury collection dress",
-          oldPrice: "95,000",
-          newPrice: "90,000",
-          image: "./All Collection Images/luxury img/limg6.webp",
-          link: "luxury-product-details.html",
-          badge: "NEW",
-        },
-        {
-          title: "Black Gold Royal Outfit",
-          category: "Luxury Girls",
-          description: "Black & gold heavily embroidered luxury outfit",
-          oldPrice: "85,000",
-          newPrice: "80,000",
-          image: "./All Collection Images/luxury img/limg7.webp",
-          link: "luxury-product-details.html",
-          badge: "HOT",
-        },
-        {
-          title: "Golden Beige Designer Wear",
-          category: "Luxury Girls",
-          description: "Premium golden beige wedding collection outfit",
-          oldPrice: "80,000",
-          newPrice: "75,000",
-          image: "./All Collection Images/luxury img/limg8.webp",
-          link: "luxury-product-details.html",
-          badge: "LIMITED",
-        },
-
-        // Luxury Set 3 (limg9–limg12)
-        {
-          title: "Rose Pink Luxury Gown",
-          category: "Luxury Girls",
-          description: "Soft rose pink luxury outfit with elegant finish",
-          oldPrice: "80,000",
-          newPrice: "75,000",
-          image: "./All Collection Images/luxury img/limg9.webp",
-          link: "luxury-product-details.html",
-          badge: "PREMIUM",
-        },
-        {
-          title: "Mint Green Designer Dress",
-          category: "Luxury Girls",
-          description: "Luxury mint green dress with modern design",
-          oldPrice: "92,000",
-          newPrice: "89,000",
-          image: "./All Collection Images/luxury img/limg10.webp",
-          link: "luxury-product-details.html",
-          badge: "NEW",
-        },
-        {
-          title: "Purple Royal Party Wear",
-          category: "Luxury Girls",
-          description: "Deep purple luxury outfit perfect for weddings",
-          oldPrice: "87,000",
-          newPrice: "81,000",
-          image: "./All Collection Images/luxury img/limg11.webp",
-          link: "luxury-product-details.html",
-          badge: "HOT",
-        },
-        {
-          title: "Silver Grey Premium Dress",
-          category: "Luxury Girls",
-          description: "Luxury silver grey outfit with classy embroidery",
-          oldPrice: "60,000",
-          newPrice: "57,000",
-          image: "./All Collection Images/luxury img/limg12.webp",
-          link: "luxury-product-details.html",
-          badge: "LIMITED",
-        },
-
-        // Luxury Set 4 (limg13–limg16)
-        {
-          title: "Ice Blue Wedding Wear",
-          category: "Luxury Girls",
-          description: "Premium ice blue designer wedding collection dress",
-          oldPrice: "65,000",
-          newPrice: "57,000",
-          image: "./All Collection Images/luxury img/limg13.webp",
-          link: "luxury-product-details.html",
-          badge: "PREMIUM",
-        },
-        {
-          title: "Emerald Green Royal Dress",
-          category: "Luxury Girls",
-          description: "Elegant emerald green heavy embroidered outfit",
-          oldPrice: "70,000",
-          newPrice: "62,000",
-          image: "./All Collection Images/luxury img/limg14.webp",
-          link: "luxury-product-details.html",
-          badge: "HOT",
-        },
-        {
-          title: "Soft Beige Luxury Wear",
-          category: "Luxury Girls",
-          description: "Premium white outfit with luxury finish",
-          oldPrice: "58,000",
-          newPrice: "50,000",
-          image: "./All Collection Images/luxury img/limg15.webp",
-          link: "luxury-product-details.html",
-          badge: "NEW",
-        },
-        {
-          title: "Deep Red Royal Collection",
-          category: "Luxury Girls",
-          description: "Heavy deep red luxury dress for bridal events",
-          oldPrice: "75,000",
-          newPrice: "68,000",
-          image: "./All Collection Images/luxury img/limg16.webp",
-          link: "luxury-product-details.html",
-          badge: "LIMITED",
-        },
-
-        // Luxury Set 5 (limg17–limg20)
-        {
-          title: "Maroon Premium Gown",
-          category: "Luxury Girls",
-          description: "Luxury maroon designer gown for wedding season",
-          oldPrice: "72,000",
-          newPrice: "68,000",
-          image: "./All Collection Images/luxury img/limg17.webp",
-          link: "luxury-product-details.html",
-          badge: "HOT",
-        },
-        {
-          title: "Dark Green Elite Dress",
-          category: "Luxury Girls",
-          description: "Premium dark green outfit with rich embroidery",
-          oldPrice: "68,000",
-          newPrice: "65,000",
-          image: "./All Collection Images/luxury img/limg18.webp",
-          link: "luxury-product-details.html",
-          badge: "PREMIUM",
-        },
-        {
-          title: "Red & Gold Bridal Luxury",
-          category: "Luxury Girls",
-          description: "Luxury red & gold wedding collection masterpiece",
-          oldPrice: "85000",
-          newPrice: "78,000",
-          image: "./All Collection Images/luxury img/limg19.webp",
-          link: "luxury-product-details.html",
-          badge: "EXCLUSIVE",
-        },
-        {
-          title: "Royal Velvet Signature Dress",
-          category: "Luxury Girls",
-          description: "Signature velvet luxury outfit with premium look",
-          oldPrice: "90,000",
-          newPrice: "82,000",
-          image: "./All Collection Images/luxury img/limg20.webp",
-          link: "luxury-product-details.html",
-          badge: "EXCLUSIVE",
-        }
-
-        ],
-        },
-
-        men:{
-          title: "Men's Collection",  
-          detailsPage: "product-detail.html",
-          items:[
-             {
-          title: "Men Black Kurta",
-          category: "Men Collection",
-          description: "Elegant black traditional men's outfit",
-          price: "4500",
-          image: "./All Collection Images/men collection img/menimg1.webp",
-          link: "men-details.html",
-          badge: "NEW",
-        },
-        {
-          title: "Cream Formal Kurta",
-          category: "Men Collection",
-          description: "Classic cream formal wear for men",
-          price: "4800",
-          image: "./All Collection Images/men collection img/menimg2.webp",
-          link: "men-details.html",
-          badge: "HOT",
-        },
-        {
-          title: "Light Green Kurta",
-          category: "Men Collection",
-          description: "Modern light green traditional outfit",
-          price: "5000",
-          image: "./All Collection Images/men collection img/menimg3.webp",
-          link: "men-details.html",
-          badge: "NEW",
-        },
-        {
-          title: "Brown Formal Kurta",
-          category: "Men Collection",
-          description: "Stylish brown men's kurta design",
-          price: "5200",
-          image: "./All Collection Images/men collection img/menimg4.webp",
-          link: "men-details.html",
-          badge: "HOT",
-        },
-        {
-          title: "Grey Men Kurta",
-          category: "Men Collection",
-          description: "Simple grey traditional wear",
-          price: "4700",
-          image: "./All Collection Images/men collection img/menimg5.webp",
-          link: "men-details.html",
-          badge: "SALE",
-        },
-        {
-          title: "Beige Kurta Style",
-          category: "Men Collection",
-          description: "Elegant beige men's outfit",
-          price: "4600",
-          image: "./All Collection Images/men collection img/menimg6.webp",
-          link: "men-details.html",
-          badge: "NEW",
-        },
-        {
-          title: "Dark Brown Kurta",
-          category: "Men Collection",
-          description: "Formal dark brown traditional wear",
-          price: "4400",
-          image: "./All Collection Images/men collection img/menimg7.webp",
-          link: "men-details.html",
-          badge: "NEW",
-        },
-        {
-          title: "Black Waistcoat Style",
-          category: "Men Collection",
-          description: "Modern black waistcoat outfit",
-          price: "5100",
-          image: "./All Collection Images/men collection img/menimg8.webp",
-          link: "men-details.html",
-          badge: "HOT",
-        },
-        {
-          title: "Charcoal Formal Wear",
-          category: "Men Collection",
-          description: "Luxury charcoal men's outfit",
-          price: "5500",
-          image: "./All Collection Images/men collection img/menimg9.webp",
-          link: "men-details.html",
-          badge: "HOT",
-        },
-        {
-          title: "Navy Blue Kurta",
-          category: "Men Collection",
-          description: "Elegant navy blue traditional wear",
-          price: "4900",
-          image: "./All Collection Images/men collection img/menimg10.webp",
-          link: "men-details.html",
-          badge: "SALE",
-        },
-        {
-          title: "Maroon Formal Kurta",
-          category: "Men Collection",
-          description: "Deep maroon men's traditional outfit",
-          price: "5300",
-          image: "./All Collection Images/men collection img/menimg11.webp",
-          link: "men-details.html",
-          badge: "NEW",
-        },
-        {
-          title: "Off White Kurta",
-          category: "Men Collection",
-          description: "Soft off white traditional wear",
-          price: "4700",
-          image: "./All Collection Images/men collection img/menimg12.webp",
-          link: "men-details.html",
-          badge: "NEW",
-        },
-        {
-          title: "Taupe Formal Kurta",
-          category: "Men Collection",
-          description: "Elegant taupe men's dress",
-          price: "5000",
-          image: "./All Collection Images/men collection img/menimg13.webp",
-          link: "men-details.html",
-          badge: "HOT",
-        },
-        {
-          title: "Brown Classic Kurta",
-          category: "Men Collection",
-          description: "Stylish brown traditional wear",
-          price: "5200",
-          image: "./All Collection Images/men collection img/menimg14.webp",
-          link: "men-details.html",
-          badge: "HOT",
-        },
-        {
-          title: "Royal Blue Kurta",
-          category: "Men Collection",
-          description: "Elegant royal blue men's outfit",
-          price: "5100",
-          image: "./All Collection Images/men collection img/menimg15.webp",
-          link: "men-details.html",
-          badge: "SALE",
-        },
-        {
-          title: "White Formal Kurta",
-          category: "Men Collection",
-          description: "Elegant men's wear outfit",
-          price: "4800",
-          image: "./All Collection Images/men collection img/menimg16.webp",
-          link: "men-details.html",
-          badge: "NEW",
-        },
-        {
-          title: "Black Premium Waistcoat",
-          category: "Men Collection",
-          description: "Luxury black waistcoat style",
-          price: "5600",
-          image: "./All Collection Images/men collection img/menimg17.webp",
-          link: "men-details.html",
-          badge: "HOT",
-        },
-        {
-          title: "Black Lace Style Kurta",
-          category: "Men Collection",
-          description: "Formal black detailed wear",
-          price: "6000",
-          image: "./All Collection Images/men collection img/menimg18.webp",
-          link: "men-details.html",
-          badge: "HOT",
-        },
-        {
-          title: "Grey Formal Kurta",
-          category: "Men Collection",
-          description: "Formal white men's outfit",
-          price: "5300",
-          image: "./All Collection Images/men collection img/menimg19.webp",
-          link: "men-details.html",
-          badge: "SALE",
-        },
-        {
-          title: "Teal Green Kurta",
-          category: "Men Collection",
-          description: "Modern teal green men's dress",
-          price: "5400",
-          image: "./All Collection Images/men collection img/menimg20.webp",
-          link: "men-details.html",
-          badge: "NEW",
-        }
-          ]
-        },
-
-        kids:{
-          title: "Kids Collection",  
-          detailsPage: "product-detail.html",
-          items:[
-             {
-          title: "Red Festive Frock",
-          category: "Girls Collection",
-          description: "Beautiful red traditional frock for festive wear",
-          price: "1500",
-          image: "./All Collection Images/kids image/kimg1.webp",
-          link: "product-details.html",
-          badge: "NEW",
-        },
-        {
-          title: "Orange Party Dress",
-          category: "Girls Collection",
-          description: "Stylish orange sleeveless party dress",
-          price: "1600",
-          image: "./All Collection Images/kids image/kimg2.webp",
-          link: "product-details.html",
-          badge: "NEW",
-        },
-        {
-          title: "Peach Embroidered Suit",
-          category: "Girls Collection",
-          description: "Soft peach traditional suit with embroidery",
-          price: "1700",
-          image: "./All Collection Images/kids image/kimg3.webp",
-          link: "product-details.html",
-          badge: "NEW",
-        },
-        {
-          title: "Light Green Gown",
-          category: "Girls Collection",
-          description: "Elegant light green maxi gown for girls",
-          price: "1800",
-          image: "./All Collection Images/kids image/kimg4.webp",
-          link: "product-details.html",
-          badge: "NEW",
-        },
-        {
-          title: "Yellow Casual Set",
-          category: "Girls Collection",
-          description: "Trendy yellow kurti set for casual wear",
-          price: "1900",
-          image: "./All Collection Images/kids image/kimg5.webp",
-          link: "product-details.html",
-          badge: "HOT",
-        },
-        {
-          title: "Maroon Fancy Dress",
-          category: "Girls Collection",
-          description: "Maroon embroidered festive outfit",
-          price: "2000",
-          image: "./All Collection Images/kids image/kimg6.webp",
-          link: "product-details.html",
-          badge: "HOT",
-        },
-        {
-          title: "Pink Casual Frock",
-          category: "Girls Collection",
-          description: "Soft pink casual frock for daily wear",
-          price: "2100",
-          image: "./All Collection Images/kids image/kimg7.webp",
-          link: "product-details.html",
-          badge: "NEW",
-        },
-        {
-          title: "Teal Traditional Suit",
-          category: "Girls Collection",
-          description: "Elegant teal shalwar kameez set",
-          price: "2200",
-          image: "./All Collection Images/kids image/kimg8.webp",
-          link: "product-details.html",
-          badge: "NEW",
-        },
-        {
-          title: "Sky Blue Party Dress",
-          category: "Girls Collection",
-          description: "Sky blue party wear dress with dupatta",
-          price: "2300",
-          image: "./All Collection Images/kids image/kimg9.webp",
-          link: "product-details.html",
-          badge: "NEW",
-        },
-        {
-          title: "Navy Blue Ethnic Set",
-          category: "Girls Collection",
-          description: "Traditional navy blue ethnic outfit",
-          price: "2400",
-          image: "./All Collection Images/kids image/kimg10.webp",
-          link: "product-details.html",
-          badge: "NEW",
-        },
-        {
-          title: "Cream Maxi Dress",
-          category: "Girls Collection",
-          description: "Long cream maxi for formal occasions",
-          price: "2500",
-          image: "./All Collection Images/kids image/kimg11.webp",
-          link: "product-details.html",
-          badge: "HOT",
-        },
-        {
-          title: "Black & Grey Lehenga",
-          category: "Girls Collection",
-          description: "Stylish black and grey lehenga set",
-          price: "2600",
-          image: "./All Collection Images/kids image/kimg12.webp",
-          link: "product-details.html",
-          badge: "HOT",
-        },
-        {
-          title: "Mint Green Suit",
-          category: "Girls Collection",
-          description: "Simple mint green traditional suit",
-          price: "2700",
-          image: "./All Collection Images/kids image/kimg13.webp",
-          link: "product-details.html",
-          badge: "NEW",
-        },
-        {
-          title: "Black Embroidered Dress",
-          category: "Girls Collection",
-          description: "Black dress with golden embroidery",
-          price: "2800",
-          image: "./All Collection Images/kids image/kimg14.webp",
-          link: "product-details.html",
-          badge: "NEW",
-        },
-        {
-          title: "Yellow Festive Gown",
-          category: "Girls Collection",
-          description: "Bright yellow festive gown for girls",
-          price: "2900",
-          image: "./All Collection Images/kids image/kimg15.webp",
-          link: "product-details.html",
-          badge: "HOT",
-        },
-        {
-          title: "Green Flared Maxi",
-          category: "Girls Collection",
-          description: "Flowy green maxi dress",
-          price: "3000",
-          image: "./All Collection Images/kids image/kimg16.webp",
-          link: "product-details.html",
-          badge: "HOT",
-        },
-        {
-          title: "Mustard Traditional Set",
-          category: "Girls Collection",
-          description: "Mustard color ethnic wear for girls",
-          price: "3100",
-          image: "./All Collection Images/kids image/kimg17.webp",
-          link: "product-details.html",
-          badge: "NEW",
-        },
-        {
-          title: "Pastel Blue Suit",
-          category: "Girls Collection",
-          description: "Soft pastel blue shalwar kameez",
-          price: "3200",
-          image: "./All Collection Images/kids image/kimg18.webp",
-          link: "product-details.html",
-          badge: "NEW",
-        },
-        {
-          title: "Turquoise Casual Set",
-          category: "Girls Collection",
-          description: "Comfortable turquoise 2-piece outfit",
-          price: "3300",
-          image: "./All Collection Images/kids image/kimg19.webp",
-          link: "product-details.html",
-          badge: "HOT",
-        },
-        {
-          title: "Beige Formal Gown",
-          category: "Girls Collection",
-          description: "Elegant beige formal gown",
-          price: "3400",
-          image: "./All Collection Images/kids image/kimg20.webp",
-          link: "product-details.html",
-          badge: "HOT",
-        }
-          ],
-      },
-      party:{
-        title: "Party Collection",  
-        detailsPage: "product-detail.html",
-        items:[
-           {
-          title: "Party Wear Outfit",
-          category: "Party Collection",
-          description: "Elegant party wear traditional dress",
-          price: "1500",
-          image: "./All Collection Images/party img/pimg1.webp",
-          link: "party-details.html",
-          badge: "NEW"
-        },
-
-        {
-          title: "Party Wear Outfit",
-          category: "Party Collection",
-          description: "Stylish party wear design",
-          price: "1600",
-          image: "./All Collection Images/party img/pimg2.webp",
-          link: "party-details.html",
-          badge: "NEW"
-        },
-
-        {
-          title: "Party Wear Outfit",
-          category: "Party Collection",
-          description: "Beautiful party outfit for girls",
-          price: "1700",
-          image: "./All Collection Images/party img/pimg3.webp",
-          link: "party-details.html",
-          badge: "HOT"
-        },
-
-        {
-          title: "Party Wear Outfit",
-          category: "Party Collection",
-          description: "Premium party dress design",
-          price: "1800",
-          image: "./All Collection Images/party img/pimg4.webp",
-          link: "party-details.html",
-          badge: "NEW"
-        },
-
-        {
-          title: "Party Wear Outfit",
-          category: "Party Collection",
-          description: "Modern party wear style",
-          price: "1900",
-          image: "./All Collection Images/party img/pimg5.webp",
-          link: "party-details.html",
-          badge: "HOT"
-        },
-
-        {
-          title: "Party Wear Outfit",
-          category: "Party Collection",
-          description: "Elegant party dress",
-          price: "2000",
-          image: "./All Collection Images/party img/pimg6.webp",
-          link: "party-details.html",
-          badge: "HOT"
-        },
-
-        {
-          title: "Party Wear Outfit",
-          category: "Party Collection",
-          description: "Stylish party outfit",
-          price: "2100",
-          image: "./All Collection Images/party img/pimg7.webp",
-          link: "party-details.html",
-          badge: "NEW"
-        },
-
-        {
-          title: "Party Wear Outfit",
-          category: "Party Collection",
-          description: "Beautiful party wear design",
-          price: "2200",
-          image: "./All Collection Images/party img/pimg8.webp",
-          link: "party-details.html",
-          badge: "NEW"
-        },
-
-        {
-          title: "Party Wear Outfit",
-          category: "Party Collection",
-          description: "Luxury party wear dress",
-          price: "2300",
-          image: "./All Collection Images/party img/pimg9.webp",
-          link: "party-details.html",
-          badge: "HOT"
-        },
-
-        {
-          title: "Party Wear Outfit",
-          category: "Party Collection",
-          description: "Party wear stylish outfit",
-          price: "2400",
-          image: "./All Collection Images/party img/pimg10.webp",
-          link: "party-details.html",
-          badge: "NEW"
-        },
-
-        {
-          title: "Party Wear Outfit",
-          category: "Party Collection",
-          description: "Elegant modern party dress",
-          price: "2500",
-          image: "./All Collection Images/party img/pimg11.webp",
-          link: "party-details.html",
-          badge: "HOT"
-        },
-
-        {
-          title: "Party Wear Outfit",
-          category: "Party Collection",
-          description: "Beautiful party outfit",
-          price: "2600",
-          image: "./All Collection Images/party img/pimg12.webp",
-          link: "party-details.html",
-          badge: "HOT"
-        },
-
-        {
-          title: "Party Wear Outfit",
-          category: "Party Collection",
-          description: "Stylish party wear",
-          price: "2700",
-          image: "./All Collection Images/party img/pimg13.webp",
-          link: "party-details.html",
-          badge: "NEW"
-        },
-
-        {
-          title: "Party Wear Outfit",
-          category: "Party Collection",
-          description: "Premium party dress",
-          price: "2800",
-          image: "./All Collection Images/party img/pimg14.webp",
-          link: "party-details.html",
-          badge: "NEW"
-        },
-
-        {
-          title: "Party Wear Outfit",
-          category: "Party Collection",
-          description: "Luxury party design",
-          price: "2900",
-          image: "./All Collection Images/party img/pimg15.webp",
-          link: "party-details.html",
-          badge: "HOT"
-        },
-
-        {
-          title: "Party Wear Outfit",
-          category: "Party Collection",
-          description: "Modern party outfit",
-          price: "3000",
-          image: "./All Collection Images/party img/pimg16.webp",
-          link: "party-details.html",
-          badge: "HOT"
-        },
-
-        {
-          title: "Party Wear Outfit",
-          category: "Party Collection",
-          description: "Elegant party wear",
-          price: "3100",
-          image: "./All Collection Images/party img/pimg17.webp",
-          link: "party-details.html",
-          badge: "NEW"
-        },
-
-        {
-          title: "Party Wear Outfit",
-          category: "Party Collection",
-          description: "Beautiful party dress",
-          price: "3200",
-          image: "./All Collection Images/party img/pimg18.webp",
-          link: "party-details.html",
-          badge: "NEW"
-        },
-
-        {
-          title: "Party Wear Outfit",
-          category: "Party Collection",
-          description: "Stylish party wear design",
-          price: "3300",
-          image: "./All Collection Images/party img/pimg19.webp",
-          link: "party-details.html",
-          badge: "HOT"
-        },
-
-        {
-          title: "Party Wear Outfit",
-          category: "Party Collection",
-          description: "Luxury party outfit",
-          price: "3400",
-          image: "./All Collection Images/party img/pimg20.webp",
-          link: "party-details.html",
-          badge: "HOT"
-        }
-
-        ]
-      },
-      shoes:{
-      title: "Shoes Collection",
-      detailsPage: "product-detail.html",
-      items:[
-         {
-          title: "Elegant Nude Heels",
-          price: "2999",
-          badge: "NEW",
-          frontImg: "./All Collection Images/shoes img/simg1.webp",
-          hoverImg: "./All Collection Images/shoes img/shover1.webp"
-        },
-        {
-          title: "Silver Party Sandals",
-          price: "3499",
-          badge: "NEW",
-          frontImg: "./All Collection Images/shoes img/simg2.webp",
-          hoverImg: "./All Collection Images/shoes img/shover2.webp"
-        },
-        {
-          title: "Golden Strap Heels",
-          price: "2599",
-          badge: "NEW",
-          frontImg: "./All Collection Images/shoes img/simg3.webp",
-          hoverImg: "./All Collection Images/shoes img/shover3.webp"
-        },
-        {
-          title: "Classic Black Heels",
-          price: "3199",
-          badge: "NEW",
-          frontImg: "./All Collection Images/shoes img/simg4.webp",
-          hoverImg: "./All Collection Images/shoes img/shover4.webp"
-        },
-        {
-          title: "Red Bridal Heels",
-          price: "3999",
-          badge: "NEW",
-          frontImg: "./All Collection Images/shoes img/simg5.webp",
-          hoverImg: "./All Collection Images/shoes img/shover5.webp"
-        },
-        {
-          title: "Casual Black Slides",
-          price: "1899",
-          badge: "NEW",
-          frontImg: "./All Collection Images/shoes img/simg6.webp",
-          hoverImg: "./All Collection Images/shoes img/shover6.webp"
-        },
-        {
-          title: "Designer Logo Slides",
-          price: "2299",
-          badge: "NEW",
-          frontImg: "./All Collection Images/shoes img/simg7.webp",
-          hoverImg: "./All Collection Images/shoes img/shover7.webp"
-        },
-        {
-          title: "Green Bow Sandals",
-          price: "2499",
-          badge: "NEW",
-          frontImg: "./All Collection Images/shoes img/simg8.webp",
-          hoverImg: "./All Collection Images/shoes img/shover8.webp"
-        },
-        {
-          title: "Tan Flat Sandals",
-          price: "1999",
-          badge: "NEW",
-          frontImg: "./All Collection Images/shoes img/simg9.webp",
-          hoverImg: "./All Collection Images/shoes img/shover9.webp"
-        },
-        {
-          title: "Elegant Beige Heels",
-          price: "2799",
-          badge: "NEW",
-          frontImg: "./All Collection Images/shoes img/simg10.webp",
-          hoverImg: "./All Collection Images/shoes img/shover10.webp"
-        },
-        {
-          title: "Stylish Black Pumps",
-          price: "2999",
-          badge: "NEW",
-          frontImg: "./All Collection Images/shoes img/simg11.webp",
-          hoverImg: "./All Collection Images/shoes img/shover11.webp"
-        },
-        {
-          title: "Crystal Strap Heels",
-          price: "3599",
-          badge: "NEW",
-          frontImg: "./All Collection Images/shoes img/simg12.webp",
-          hoverImg: "./All Collection Images/shoes img/shover12.webp"
-        },
-        {
-          title: "Glossy Maroon Slides",
-          price: "1899",
-          badge: "NEW",
-          frontImg: "./All Collection Images/shoes img/simg13.webp",
-          hoverImg: "./All Collection Images/shoes img/shover13.webp"
-        },
-        {
-          title: "Velvet Bow Loafers",
-          price: "3399",
-          badge: "NEW",
-          frontImg: "./All Collection Images/shoes img/simg14.webp",
-          hoverImg: "./All Collection Images/shoes img/shover14.webp"
-        },
-        {
-          title: "Golden Party Heels",
-          price: "4199",
-          badge: "NEW",
-          frontImg: "./All Collection Images/shoes img/simg15.webp",
-          hoverImg: "./All Collection Images/shoes img/shover15.webp"
-        },
-        {
-          title: "Premium Transparent Heels",
-          price: "4599",
-          badge: "NEW",
-          frontImg: "./All Collection Images/shoes img/simg16.webp",
-          hoverImg: "./All Collection Images/shoes img/shover16.webp"
-        }
-      ]
-      }
+    const collectionMeta = {
+      all:     { label: "All Collections", icon: "fa-th-large",          count: null },
+      bridal:  { label: "Bridal",           icon: "fa-ring",              count: null },
+      eid:     { label: "Eid",              icon: "fa-star-and-crescent", count: null },
+      western: { label: "Western",         icon: "fa-shirt",            count: null },
+      winter:  { label: "Winter",           icon: "fa-snowflake",         count: null },
+      summer:  { label: "Summer",           icon: "fa-sun",               count: null },
+      modest:  { label: "Modest",           icon: "fa-layer-group",       count: null },
+      luxury:  { label: "Luxury",           icon: "fa-gem",               count: null },
+      men:     { label: "Men's",            icon: "fa-person",            count: null },
+      kids:    { label: "Kids",             icon: "fa-child",             count: null },
+      party:   { label: "Party",            icon: "fa-champagne-glasses", count: null },
+      jewelry: { label: "Jewelry",          icon: "fa-crown",             count: null },
+      bags:    { label: "Bags",             icon: "fa-bag-shopping",      count: null },
+      shoes:   { label: "Shoes",            icon: "fa-shoe-prints",       count: null },
     };
 
-      // If no type provided → default jewelry
-      const currentCollection = collections[type] || collections.bridal;
+    let currentType = "all";
+    let currentCatFilter = null;
 
-      // Set heading
-      $(".main-heading").text(currentCollection.title);
+    // ─────────────────────────────────────────────────────────────────────
+    //  WISHLIST HELPERS
+    // ─────────────────────────────────────────────────────────────────────
+    function getWishlist() {
+      return JSON.parse(localStorage.getItem("wishlist")) || [];
+    }
 
-      // Render Cards
+    function saveWishlist(wl) {
+      localStorage.setItem("wishlist", JSON.stringify(wl));
+      // Update badge if nav is loaded
+      const total = wl.length;
+      const $badge = $("#wishlist-badge");
+      total > 0 ? $badge.text(total).css("display", "flex") : $badge.hide();
+    }
 
-      $(document).ready(function () {
-        const urlParams = new URLSearchParams(window.location.search);
-        const type = urlParams.get("type") || "jewelry"; // Default to jewelry
-        const currentCollection = collections[type];
+    function isWishlisted(type, index) {
+      return getWishlist().some(w => w.id === type + "_" + index);
+    }
 
-        if (!currentCollection) return;
+    function toggleWishlist(type, index) {
+      const col   = collections[type];
+      const item  = col.items[index];
+      const isAcc = col.type === "accessory";
+      const id    = type + "_" + index;
+      let wl = getWishlist();
 
-        $(".main-heading").text(currentCollection.title);
-        const $cardList = $("#cardlist");
-        $cardList.empty(); // Clear existing content
+      if (wl.some(w => w.id === id)) {
+        wl = wl.filter(w => w.id !== id);
+        saveWishlist(wl);
+        return false; // removed
+      } else {
+        wl.push({
+          id,
+          name:     item.title,
+          category: item.category || col.title,
+          price:    "Rs. " + item.price,
+          image:    isAcc ? item.frontImg : item.image
+        });
+        saveWishlist(wl);
+        return true; // added
+      }
+    }
 
-        currentCollection.items.forEach((el, index) => {
-          // TEMPLATE A: Clothing (Bridal, Winter)
-          if (type === 'bridal' || type === 'winter' || type === 'eid' || type === 'summer' || type === 'modest' || type === 'luxury' || type === 'men' || type === 'kids' || type === 'party') {
-            $cardList.append(`
-        <div class="col-6 col-md-4 col-lg-3 mb-4">
-          <div class="product-card">
-            <div class="product-image position-relative">
-              <span class="badge-new"><i class="fa-solid fa-bolt"></i> ${el.badge}</span>
-              <a href="product-detail.html?type=${type}&id=${index}">
-                <img src="${el.image}" alt="${el.title}" class="img-fluid">
-              </a>
-              <a href="product-detail.html?type=${type}&id=${index}" class="view-details-btn">
-                View Details <i class="fa-solid fa-arrow-right"></i>
-              </a>
-            </div>
-           <div class="product-content text-center">
-      <h3 class="product-title">${el.category}</h3>
-      <p class="product-description">${el.description}</p>
-     <h4 class="product-price">
-   <i class="fa-solid fa-tag"></i>Price:
- 
-  <span class="new-price">${el.price}</span>
-</h4>
-    </div>
-          </div>
-        </div>`);
+    function showWishlistToast(msg) {
+      const $t = $("#wishlist-toast");
+      $("#wishlist-toast-msg").text(msg);
+      $t.css({ opacity: 1, transform: "translateY(0)", pointerEvents: "auto" });
+      clearTimeout(window._wlToast);
+      window._wlToast = setTimeout(() => {
+        $t.css({ opacity: 0, transform: "translateY(14px)", pointerEvents: "none" });
+      }, 2400);
+    }
+
+    // ─────────────────────────────────────────────────────────────────────
+    //  DOCUMENT READY
+    // ─────────────────────────────────────────────────────────────────────
+    $(document).ready(function () {
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlType   = urlParams.get("type");
+
+      Object.keys(collections).forEach(key => {
+        if (collectionMeta[key]) collectionMeta[key].count = collections[key].items.length;
+      });
+
+      buildPanel();
+
+      if (urlType && collections[urlType]) {
+        switchCollection(urlType, false);
+      } else {
+        switchCollection("all", false);
+      }
+
+      $("#open-filter-btn").on("click", openPanel);
+      $("#close-panel-btn, #filter-overlay").on("click", closePanel);
+      $("#reset-filter-btn").on("click", () => switchCollection("all"));
+      $("#btn-compare-now").on("click", openCompareModal);
+      $("#btn-clear-compare").on("click", clearCompare);
+      $("#compareCloseBtn").on("click", () => $("#compare-modal").removeClass("open"));
+      $("#compare-modal").on("click", function (e) {
+        if ($(e.target).is("#compare-modal")) $(this).removeClass("open");
+      });
+
+      // ── Accessory dot switcher ────────────────────────────
+      $(document).on("click", ".acc-dot", function () {
+        const $card   = $(this).closest(".accessory-card");
+        const idx     = parseInt($(this).data("img-index"));
+        const $imgs   = $card.find(".product-img");
+        const $dots   = $card.find(".acc-dot");
+        $imgs.removeClass("active");
+        $dots.removeClass("active");
+        $imgs.eq(idx).addClass("active");
+        $(this).addClass("active");
+      });
+
+      // ── Clothing card: Favourite button ──────────────────
+      $(document).on("click", ".card-fav-btn", function (e) {
+        e.preventDefault();
+        const $btn  = $(this);
+        const type  = $btn.data("type");
+        const index = parseInt($btn.data("index"));
+        const added = toggleWishlist(type, index);
+
+        const $icon = $btn.find("i");
+        if (added) {
+          $icon.removeClass("fa-regular").addClass("fa-solid");
+          $btn.addClass("fav-active");
+          showWishlistToast("Added to favourites!");
+        } else {
+          $icon.removeClass("fa-solid").addClass("fa-regular");
+          $btn.removeClass("fav-active");
+          showWishlistToast("Removed from favourites.");
+        }
+      });
+
+      // ── Clothing card: Compare button ────────────────────
+      $(document).on("click", ".card-compare-btn", function (e) {
+        e.preventDefault();
+        const $btn  = $(this);
+        const type  = $btn.data("type");
+        const index = parseInt($btn.data("index"));
+        const col   = collections[type];
+        if (!col) return;
+        const item  = col.items[index];
+
+        const alreadyIn = compareList.findIndex(c => c.index === index && c.type === type);
+        if (alreadyIn !== -1) {
+          compareList.splice(alreadyIn, 1);
+          $btn.removeClass("compare-active");
+          $btn.attr("title", "Compare");
+        } else {
+          if (compareList.length >= 4) {
+            alert("You can compare up to 4 products at a time.");
+            return;
           }
-          // TEMPLATE B: Accessories (Jewelry, Bags)
-          else {
-            $cardList.append(`
-        <div class="col-6 col-md-4 col-lg-3 mb-4">
-          <div class="accessory-card">
-            <div class="image-wrapper">
-              <span class="badge-custom">${el.badge}</span>
-              <img src="${el.frontImg}" class="product-img active" />
-              <img src="${el.hoverImg}" class="product-img" />
-              <div class="view-overlay">
-                <a class="view-btn" href="product-detail.html?type=${type}&id=${index}">
-                  <i class="fas fa-eye me-1"></i> View Details
-                </a>
-              </div>
-              <div class="dots">
-                <span class="dot active" data-index="0"></span>
-                <span class="dot" data-index="1"></span>
-              </div>
-            </div>
-            <div class="card-body text-center">
-              <h6 class="fw-bold mb-1">${el.title}</h6>
-              <p class="price mb-2">Rs. ${el.price}</p>
-              <button class="cart-btn">
-                  <i class="fas fa-shopping-cart me-1"></i> Add to Cart
-                </button>
-            </div>
-          </div>
-        </div>`);
+          compareList.push({ index, item, type });
+          $btn.addClass("compare-active");
+          $btn.attr("title", "Remove from compare");
+        }
+        updateCompareBar();
+      });
+
+      // ── Accessory card: Favourite button ─────────────────
+      $(document).on("click", ".fav-btn", function (e) {
+        e.preventDefault();
+        const $btn  = $(this);
+        const type  = $btn.data("type");
+        const index = parseInt($btn.data("id"));
+        const added = toggleWishlist(type, index);
+        const $icon = $btn.find("i");
+
+        if (added) {
+          $icon.removeClass("fa-regular").addClass("fa-solid");
+          $btn.css("color", "#d63031").addClass("active");
+          showWishlistToast("Added to favourites!");
+        } else {
+          $icon.removeClass("fa-solid").addClass("fa-regular");
+          $btn.css("color", "").removeClass("active");
+          showWishlistToast("Removed from favourites.");
+        }
+      });
+
+      // ── Accessory card: Compare toggle via icon ───────────
+      $(document).on("click", ".acc-compare-btn", function (e) {
+        e.preventDefault();
+        const $btn  = $(this);
+        const type  = $btn.data("type");
+        const index = parseInt($btn.data("index"));
+        const col   = collections[type];
+        if (!col) return;
+        const item  = col.items[index];
+
+        const alreadyIn = compareList.findIndex(c => c.index === index && c.type === type);
+        if (alreadyIn !== -1) {
+          compareList.splice(alreadyIn, 1);
+          $btn.removeClass("compare-active");
+        } else {
+          if (compareList.length >= 4) {
+            alert("You can compare up to 4 products at a time.");
+            return;
           }
+          compareList.push({ index, item, type });
+          $btn.addClass("compare-active");
+        }
+        updateCompareBar();
+      });
+
+    }); // end document.ready
+
+
+    // ─────────────────────────────────────────────────────────────────────
+    //  BUILD PANEL
+    // ─────────────────────────────────────────────────────────────────────
+    function buildPanel() {
+      const $list = $("#panel-list");
+      $list.empty();
+      $list.append(buildPanelBtn("all"));
+      $list.append('<div style="height:1px;background:rgba(201,169,110,0.1);margin:8px 0;"></div>');
+      Object.keys(collectionMeta).forEach(key => {
+        if (key === "all" || !collections[key]) return;
+        $list.append(buildPanelBtn(key));
+      });
+    }
+
+    function buildPanelBtn(key) {
+      const meta  = collectionMeta[key] || { label: key, icon: "fa-circle" };
+      const count = meta.count !== null ? meta.count : (collections[key] ? collections[key].items.length : "");
+      const $btn  = $(`
+        <button class="panel-collection-btn" data-key="${key}">
+          <i class="fa-solid ${meta.icon} btn-icon"></i>
+          ${meta.label}
+          ${count ? `<span class="btn-count">${count}</span>` : ""}
+        </button>`);
+      $btn.on("click", function () { switchCollection(key); closePanel(); });
+      return $btn;
+    }
+
+
+    // ─────────────────────────────────────────────────────────────────────
+    //  SWITCH COLLECTION
+    // ─────────────────────────────────────────────────────────────────────
+    function switchCollection(key, updateUrl = true) {
+      currentType      = key;
+      currentCatFilter = null;
+      compareList      = [];
+      updateCompareBar();
+
+      $(".panel-collection-btn").removeClass("active");
+      $(`.panel-collection-btn[data-key="${key}"]`).addClass("active");
+
+      if (key === "all") {
+        $("#active-label-text").text("All Collections");
+        $("#reset-filter-btn").hide();
+        $("#open-filter-btn").removeClass("has-filter");
+        $("#collectionHeading").text("All Collections");
+        $("#filterBar").empty().hide();
+      } else {
+        const label = collectionMeta[key]?.label || key;
+        $("#active-label-text").text(label);
+        $("#reset-filter-btn").show();
+        $("#open-filter-btn").addClass("has-filter");
+        $("#collectionHeading").text(collections[key].title);
+        buildCategoryTabs(key);
+      }
+
+      key === "all" ? renderMixedCards() : renderCards(collections[key], key, null);
+
+      if (updateUrl) {
+        const newUrl = key === "all" ? window.location.pathname : `${window.location.pathname}?type=${key}`;
+        window.history.replaceState({}, "", newUrl);
+      }
+    }
+
+
+    // ─────────────────────────────────────────────────────────────────────
+    //  BUILD CATEGORY FILTER TABS
+    // ─────────────────────────────────────────────────────────────────────
+    function buildCategoryTabs(type) {
+      const collection = collections[type];
+      const $filterBar = $("#filterBar");
+      $filterBar.empty();
+
+      if (collection.type === "accessory") { $filterBar.hide(); return; }
+
+      const cats = ["All", ...new Set(collection.items.map(i => i.category))];
+      cats.forEach(cat => {
+        const $btn = $(`<button class="filter-btn">${cat}</button>`);
+        if (cat === "All") $btn.addClass("active");
+        $btn.on("click", function () {
+          $(".filter-btn").removeClass("active");
+          $(this).addClass("active");
+          currentCatFilter = cat === "All" ? null : cat;
+          renderCards(collection, type, currentCatFilter);
+        });
+        $filterBar.append($btn);
+      });
+      $filterBar.show();
+    }
+
+
+    // ─────────────────────────────────────────────────────────────────────
+    //  RENDER MIXED CARDS
+    // ─────────────────────────────────────────────────────────────────────
+    function renderMixedCards() {
+      const $cardList = $("#cardlist");
+      $cardList.empty();
+
+      let allItems = [];
+      Object.keys(collections).forEach(type => {
+        const col   = collections[type];
+        const items = col.items;
+        const shuffled = [...items].sort(() => Math.random() - 0.5).slice(0, 4);
+        shuffled.forEach(item => {
+          allItems.push({ item, type, originalIndex: items.indexOf(item) });
         });
       });
-      // Image Dot Switch
-      $(document).on("click", ".dot", function () {
+      allItems = allItems.sort(() => Math.random() - 0.5);
 
-        const card = $(this).closest(".accessory-card");
-        const images = card.find(".product-img");
-        const dots = card.find(".dot");
-        const index = $(this).data("index");
+      if (allItems.length === 0) {
+        $cardList.html('<p class="text-center py-5" style="color:#aaa;">No items found.</p>');
+        return;
+      }
 
-        images.removeClass("active");
-        dots.removeClass("active");
+      allItems.forEach(({ item, type, originalIndex }) => {
+        appendCard($cardList, item, type, originalIndex, !!item.frontImg);
+      });
+    }
 
-        images.eq(index).addClass("active");
-        $(this).addClass("active");
 
+    // ─────────────────────────────────────────────────────────────────────
+    //  RENDER CARDS (single collection)
+    // ─────────────────────────────────────────────────────────────────────
+    function renderCards(collection, type, filterCat) {
+      const $cardList = $("#cardlist");
+      $cardList.empty();
+
+      const items = filterCat
+        ? collection.items.filter(i => i.category === filterCat)
+        : collection.items;
+
+      items.forEach(el => {
+        const originalIndex = collection.items.indexOf(el);
+        appendCard($cardList, el, type, originalIndex, !!el.frontImg);
+      });
+    }
+
+
+    // ─────────────────────────────────────────────────────────────────────
+    //  APPEND CARD  —  clothing vs accessory
+    // ─────────────────────────────────────────────────────────────────────
+    function appendCard($container, el, type, originalIndex, isAccessory) {
+      const cmpId     = `cmp-${type}-${originalIndex}`;
+      const favActive = isWishlisted(type, originalIndex);
+      const inCompare = compareList.some(c => c.index === originalIndex && c.type === type);
+
+      if (!isAccessory) {
+        // ── CLOTHING CARD ─────────────────────────────────────
+        $container.append(`
+          <div class="col-6 col-md-4 col-lg-3 mb-4">
+            <div class="product-card">
+              <div class="product-image position-relative">
+                <span class="badge-new"><i class="fa-solid fa-bolt"></i> ${el.badge || "New"}</span>
+
+                
+                <input type="checkbox" id="${cmpId}" data-index="${originalIndex}" data-type="${type}" class="compare-cb" ${inCompare ? "checked" : ""}>
+
+                
+                <div class="card-actions">
+                  <button class="card-action-btn card-fav-btn ${favActive ? "fav-active" : ""}"
+                    data-type="${type}" data-index="${originalIndex}" title="Add to Favourites">
+                    <i class="fa-${favActive ? "solid" : "regular"} fa-heart"></i>
+                  </button>
+                  <button class="card-action-btn card-compare-btn ${inCompare ? "compare-active" : ""}"
+                    data-type="${type}" data-index="${originalIndex}" title="Compare">
+                    <i class="fa-solid fa-code-compare"></i>
+                  </button>
+                  <a href="/All Collections/product-detail.html?type=${type}&id=${originalIndex}"
+                    class="card-action-btn" title="View Details">
+                    <i class="fa-regular fa-eye"></i>
+                  </a>
+                </div>
+
+                <a href="/All Collections/product-detail.html?type=${type}&id=${originalIndex}">
+                  <img src="${el.image}" alt="${el.title}" class="img-fluid">
+                </a>
+                
+              </div>
+              <div class="product-content text-center">
+                <h3 class="product-title">${el.category || ""}</h3>
+                <p class="product-description">${el.description || ""}</p>
+                <h4 class="product-price">
+                  <i class="fa-solid fa-tag"></i> Price:
+                  ${el.oldPrice ? `<span class="old-price">Rs. ${el.oldPrice}</span>` : ""}
+                  <span class="new-price">Rs. ${el.price}</span>
+                </h4>
+              </div>
+            </div>
+          </div>`);
+
+      } else {
+        // ACCESSORY CARD 
+        $container.append(`
+          <div class="col-6 col-md-4 col-lg-3 mb-4">
+            <div class="accessory-card">
+              <div class="image-wrapper">
+                <span class="badge-custom">${el.badge || ""}</span>
+
+                <div class="card-actions">
+                  <button class="card-action-btn card-fav-btn ${favActive ? "fav-active" : ""}"
+                    data-type="${type}" data-index="${originalIndex}" title="Add to Favourites">
+                    <i class="fa-${favActive ? "solid" : "regular"} fa-heart"></i>
+                  </button>
+                  <button class="card-action-btn card-compare-btn ${inCompare ? "compare-active" : ""}"
+                    data-type="${type}" data-index="${originalIndex}" title="Compare">
+                    <i class="fa-solid fa-code-compare"></i>
+                  </button>
+                  <a href="/All Collections/product-detail.html?type=${type}&id=${originalIndex}"
+                    class="card-action-btn" title="View Details">
+                    <i class="fa-regular fa-eye"></i>
+                  </a>
+                </div>
+
+                
+                <img src="${el.frontImg}" class="product-img active" alt="${el.title}" />
+                <img src="${el.hoverImg}" class="product-img"        alt="${el.title} alternate" />
+
+                
+                <div class="acc-dots">
+                  <button class="acc-dot active" data-img-index="0" aria-label="Show front image"></button>
+                  <button class="acc-dot"        data-img-index="1" aria-label="Show alternate image"></button>
+                </div>
+              </div>
+
+              <!-- Optional text body — mirror your original structure -->
+              <div class="card-body p-3">
+                <h6 class="mb-1" style="font-family:'Playfair Display',serif;font-size:0.9rem;">${el.title || ""}</h6>
+                <p class="price mb-0" style="font-size:0.85rem;">
+                  ${el.oldPrice ? `<span class="old-price me-1">Rs. ${el.oldPrice}</span>` : ""}
+                  Rs. ${el.price}
+                </p>
+              </div>
+            </div>
+          </div>`);
+      }
+    }
+
+
+    function updateCompareBar() {
+      const $bar   = $("#compare-bar");
+      const $chips = $("#compareChips");
+      $chips.empty();
+
+      compareList.forEach(c => {
+        const $chip = $(`
+          <div class="compare-chip">
+            ${c.item.title}
+            <button data-index="${c.index}" data-type="${c.type}"><i class="fa-solid fa-xmark"></i></button>
+          </div>`);
+        $chip.find("button").on("click", function () {
+          const i = parseInt($(this).data("index"));
+          const t = $(this).data("type");
+          compareList = compareList.filter(c => !(c.index === i && c.type === t));
+          // Sync button states
+          $(`.card-compare-btn[data-index="${i}"][data-type="${t}"]`).removeClass("compare-active");
+          $(`.acc-compare-btn[data-index="${i}"][data-type="${t}"]`).removeClass("compare-active").css({ background: "", color: "" });
+          updateCompareBar();
+        });
+        $chips.append($chip);
       });
 
-    });
+      compareList.length >= 2 ? $bar.addClass("visible") : $bar.removeClass("visible");
+    }
+
+    function clearCompare() {
+      compareList = [];
+      $(".card-compare-btn, .acc-compare-btn").removeClass("compare-active").css({ background: "", color: "" });
+      updateCompareBar();
+    }
+
+    function openCompareModal() {
+      if (compareList.length < 2) return;
+      const $table = $("#compareTable");
+      $table.empty();
+
+      let headerRow = "<tr><th>Feature</th>";
+      compareList.forEach(c => { headerRow += `<th style="min-width:150px;">${c.item.title}</th>`; });
+      $table.append(headerRow + "</tr>");
+
+      let imgRow = "<tr><td>Product Preview</td>";
+      compareList.forEach(c => {
+        const src = c.item.frontImg || c.item.image || "";
+        imgRow += `
+          <td class="text-center">
+            <div style="width:100px;height:120px;margin:0 auto;overflow:hidden;border-radius:5px;">
+              <img src="${src}" alt="${c.item.title}" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+          </td>`;
+      });
+      $table.append(imgRow + "</tr>");
+
+      const rows = [
+        ["Collection", c => collectionMeta[c.type]?.label || c.type],
+        ["Category",   c => c.item.category || "—"],
+        ["Price",      c => {
+          let h = `<span style="color:#3b1d23;font-weight:bold;">Rs. ${c.item.price}</span>`;
+          if (c.item.oldPrice) h += `<br><small style="text-decoration:line-through;color:#999;">Rs. ${c.item.oldPrice}</small>`;
+          return h;
+        }],
+        ["Badge",  c => c.item.badge ? `<span class="badge bg-light text-dark border">${c.item.badge}</span>` : "—"],
+        ["Action", c => `<a href="/All Collections/product-detail.html?type=${c.type}&id=${c.index}" class="btn btn-sm btn-dark">View Item</a>`]
+      ];
+
+      rows.forEach(([label, fn]) => {
+        let row = `<tr><td style="font-weight:600;background:#f9f9f9;">${label}</td>`;
+        compareList.forEach(c => { row += `<td>${fn(c)}</td>`; });
+        $table.append(row + "</tr>");
+      });
+
+      $("#compare-modal").addClass("open");
+    }
+
+    // ─────────────────────────────────────────────────────────────────────
+    //  PANEL OPEN / CLOSE
+    // ─────────────────────────────────────────────────────────────────────
+    function openPanel() {
+      $("#collection-panel, #filter-overlay").addClass("open");
+      $("body").css("overflow", "hidden");
+    }
+    function closePanel() {
+      $("#collection-panel, #filter-overlay").removeClass("open");
+      $("body").css("overflow", "");
+    }
+
   </script>
 
 </body>
-
 </html>

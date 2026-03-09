@@ -94,10 +94,13 @@
             <li><a href="/contact.html"><button class="nav-btn">BOOK AN APPOINTMENT</button></a></li>
 
             <div class="sidebar-social">
-                <a href="https://www.instagram.com/mehwishh_m" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://www.facebook.com/people/Meh-Wish/pfbid0dqYHV2nweqRJ2JhrvAJZTwp574oLaqDqLnrxs3wFZiQeiCPYxBT9qqJ89XrsJtFul/?mibextid=ZbWKwL" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/mehwishh_m" target="_blank"><i
+                        class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.facebook.com/people/Meh-Wish/pfbid0dqYHV2nweqRJ2JhrvAJZTwp574oLaqDqLnrxs3wFZiQeiCPYxBT9qqJ89XrsJtFul/?mibextid=ZbWKwL"
+                    target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
                 <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                <a href="https://www.linkedin.com/in/mehwish-mansha75/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://www.linkedin.com/in/mehwish-mansha75/" target="_blank"><i
+                        class="fa-brands fa-linkedin-in"></i></a>
                 <a href="https://github.com/mehwish-mansha" target="_blank"><i class="fa-brands fa-github"></i></a>
             </div>
         </div>
@@ -120,7 +123,7 @@
                 <span id="cart-total-label">Total</span>
                 <span id="cart-total">Rs. 0</span>
             </div>
-            <a href="checkout.html" style="text-decoration:none;">
+            <a href="/checkout.html" style="text-decoration:none;">
                 <button class="checkout-btn">PROCEED TO CHECKOUT</button>
             </a>
             <button id="clearCartBtn">Clear Cart</button>
@@ -220,12 +223,12 @@
 
         $('#closeCartBtn, #cartOverlay').on('click', closeCart);
 
-        $('#clearCartBtn').on('click', function () {
+        $(document).on('click', '#clearCartBtn', function () {
             localStorage.removeItem('cart');
             renderCart();
             updateCartBadge();
         });
-
+        
         // ── RENDER CART ───────────────────────────────────────────────
         function renderCart() {
             const cart = getCart();
@@ -317,4 +320,5 @@
         };
     </script>
 </body>
+
 </html>

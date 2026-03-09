@@ -958,375 +958,6 @@ body {
 
 
 
-/* ====== Testimonial Section ====== */
-.stylist-testimonials {
-    padding: 70px 5%;
-    background-color: #fcfcfc;
-    border-top: 1px solid rgba(59, 29, 35, 0.2);
-}
-
-.stylist-testimonials .section-title {
-    text-align: center;
-    margin-bottom: 50px;
-    font-size: 38px;
-    font-family: "Playfair Display", serif;
-    color: var(--sec-bg-color);
-}
-
-.testimonial-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-    max-width: 1300px;
-    margin: auto;
-}
-
-.testimonial-card {
-    background: rgba(59, 29, 35, 0.05);
-    padding: 25px 20px;
-    border-radius: 10px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-}
-
-.testimonial-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.testimonial-card p {
-    font-size: 16px;
-    font-family: "Inconsolata", sans-serif;
-    color: var(--sec-text-color);
-    margin-bottom: 15px;
-    line-height: 1.6;
-}
-
-.testimonial-card span {
-    display: block;
-    font-weight: bold;
-    font-family: "Merriweather", serif;
-    color: var(--sec-bg-color);
-}
-
-.testimonial-card::before {
-    content: "\f10d";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    font-size: 16px;
-    color: var(--sec-bg-color);
-    position: absolute;
-    top: 15px;
-    left: 20px;
-}
-
-
-
-/* ====== Booking Section ====== */
-.booking-section {
-    padding: 70px 5%;
-    background-color: #fff;
-    border-top: 1px solid rgba(59, 29, 35, 0.2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.booking-container {
-    max-width: 900px;
-    margin: auto;
-    text-align: center;
-}
-
-.booking-header .section-title {
-    font-size: 38px;
-    font-family: "Playfair Display", serif;
-    color: var(--sec-bg-color);
-    margin-bottom: 10px;
-}
-
-.booking-header .section-subtitle {
-    font-size: 14px;
-    font-family: "Inconsolata", monospace;
-    color: var(--sec-text-color);
-    margin-bottom: 40px;
-}
-
-.booking-form {
-    display: grid;
-    gap: 20px;
-}
-
-.booking-form input,
-.booking-form select,
-.booking-form textarea {
-    width: 100%;
-    padding: 14px 16px;
-    border: 1px solid rgba(59, 29, 35, 0.3);
-    border-radius: 8px;
-    font-family: "Inconsolata", monospace;
-    font-size: 16px;
-    transition: all 0.3s ease;
-}
-
-.booking-form input:focus,
-.booking-form select:focus,
-.booking-form textarea:focus {
-    border-color: var(--sec-bg-color);
-    outline: none;
-}
-
-.booking-form textarea {
-    resize: none;
-    min-height: 120px;
-}
-
-.booking-form .btn-primary {
-    background-color: var(--sec-bg-color);
-    color: #fff;
-    font-family: "Inconsolata", monospace;
-    font-size: 18px;
-    padding: 14px 32px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.booking-form .btn-primary:hover {
-    background-color: #2f1518;
-}
-
-
-
-/* ================= STYLIST PROFILE ================= */
-#stylist-profile {
-    padding: 20px 5%;
-    padding-bottom: 4rem;
-    background: #f5f5f5;
-    font-family: 'Inconsolata', sans-serif;
-}
-
-.profile-container {
-    max-width: 1200px;
-    margin: auto;
-}
-
-.stylist-collection-heading {
-    font-family: "Playfair Display", sans-serif;
-    font-size: 38px;
-    color: var(--sec-bg-color);
-    border-top: 1px solid rgba(59, 29, 35, 0.1);
-    padding-top: 50px;
-}
-
-
-#back-to-stylists {
-    background: transparent;
-    border: none;
-    color: var(--sec-bg-color);
-    font-size: 16px;
-    cursor: pointer;
-    margin-bottom: 30px;
-    transition: all 0.3s ease;
-}
-
-#back-to-stylists:hover {
-    color: #75555b;
-    transform: translateX(-5px);
-}
-
-
-.profile-header {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    margin-bottom: 50px;
-    align-items: flex-start;
-}
-
-.profile-header img {
-    width: 300px;
-    height: 400px;
-    object-fit: cover;
-    border-radius: 6px;
-    transition: transform 0.6s ease;
-}
-
-.profile-header img:hover {
-    transform: scale(1.05);
-}
-
-.profile-info {
-    flex: 1;
-    min-width: 300px;
-}
-
-.profile-info h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 36px;
-    color: var(--sec-bg-color);
-    margin-bottom: 10px;
-}
-
-.profile-info p {
-    font-size: 16px;
-    margin-bottom: 12px;
-    color: #555;
-}
-
-.profile-info p span i {
-    color: #b3804d;
-}
-
-/* Collections inside profile */
-#profile-collections {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    margin-top: 30px;
-}
-
-.collection-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    background: #fff;
-    color: var(--sec-bg-color);
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    margin-bottom: 20px;
-    min-height: 320px;
-}
-
-.collection-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.3s ease;
-}
-
-.collection-item:hover img {
-    transform: scale(1.05);
-}
-
-.collection-overlay {
-    position: absolute;
-    background: rgba(88, 29, 29, 0.55);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 16px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    color: #fff;
-    font-family: 'Inconsolata', sans-serif;
-    font-size: 14px;
-}
-
-.collection-item:hover .collection-overlay {
-    opacity: 1;
-}
-
-.overlay-left {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.overlay-left i {
-    transform: rotate(0deg);
-    transition: transform 0.3s ease;
-}
-
-.overlay-left:hover i {
-    transform: translateX(5px);
-}
-
-.overlay-right {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.overlay-right i {
-    font-size: 16px;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.overlay-right i:hover {
-    color: #ffbb00;
-}
-
-/* Title & Price below image */
-.collection-details {
-    padding: 10px 5px;
-    text-align: center;
-    font-family: 'Merriweather', serif;
-    position: relative;
-    z-index: 1;
-}
-
-.collection-details h4 {
-    margin: 5px 0;
-    font-size: 16px;
-    color: var(--sec-bg-color);
-}
-
-.collection-details p {
-    margin: 0;
-    font-size: 14px;
-    color: #777;
-}
-
-/* Booking Section */
-#booking-section {
-    background: #eae9e7;
-    padding: 40px;
-    border-radius: 8px;
-}
-
-#booking-section h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    color: var(--sec-bg-color);
-    margin-bottom: 20px;
-}
-
-#booking-section form {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-#booking-section input,
-#booking-section select,
-#booking-section textarea,
-#booking-section button {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 6px;
-    font-family: inherit;
-    font-size: 16px;
-}
-
-#booking-section textarea {
-    height: 120px;
-    resize: none;
-}
-
-#booking-section button {
-    background: var(--sec-bg-color);
-    color: #fff;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-#booking-section button:hover {
-    background: #75555b;
-}
 
 
 /* Main Stylist Profile Page */
@@ -1467,6 +1098,420 @@ body {
     color: rgb(197, 197, 197)
 }
 
+
+.size-badge-row {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    padding: 6px 10px 0;
+    background: #fff;
+}
+
+.size-badge {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 2px 7px;
+    border: 1px solid #d4a96a;
+    border-radius: 3px;
+    color: #8b6340;
+    background: #fdf6ec;
+    text-transform: uppercase;
+}
+
+.size-badge-more {
+    background: #f0e6d6;
+    color: #5a3e2b;
+    border-color: #c89a5a;
+}
+
+
+/* ── 2. COLLECTION CARD UPDATES ── */
+
+.collection-details {
+    padding: 10px 12px 14px !important;
+    background: #fff;
+}
+
+.collection-details h4 {
+    margin: 0 0 4px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.item-price {
+    margin: 0 0 6px !important;
+    color: #8b6340;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+/* Brief one-line summary under the price (Req #5) */
+.item-desc-brief {
+    margin: 0 0 10px !important;
+    font-size: 0.78rem;
+    color: #888;
+    line-height: 1.4;
+}
+
+/* View Details button (Req #5) */
+.btn-view-details {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border: 1.5px solid #c9a96e;
+    border-radius: 4px;
+    background: transparent;
+    color: #8b6340;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-view-details:hover {
+    background: #c9a96e;
+    color: #fff;
+}
+
+
+/* ── 3. COMPARE CHECKBOX inside collection overlay ── */
+
+.compare-check-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #fff;
+    font-size: 0.9rem;
+    opacity: 0.85;
+    transition: opacity 0.2s;
+}
+
+.compare-check-label:hover {
+    opacity: 1;
+}
+
+/* hide the native checkbox, icon acts as visual */
+.compare-checkbox {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* when checked — icon turns gold */
+.compare-checkbox:checked + i {
+    color: #f5c842;
+}
+
+/* highlight the whole card when selected for compare */
+.collection-item.compare-selected {
+    outline: 2.5px solid #c9a96e;
+    outline-offset: -2px;
+    border-radius: 8px;
+}
+
+
+/* ── 4. COMPARE BAR (floating, below heading) ── */
+
+#compare-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #1a1a1a;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    font-size: 0.9rem;
+    flex-wrap: wrap;
+}
+
+#compare-count {
+    flex: 1;
+    font-weight: 500;
+}
+
+.btn-compare-open {
+    background: #c9a96e;
+    color: #fff;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    transition: background 0.2s;
+}
+
+.btn-compare-open:hover {
+    background: #a8863f;
+}
+
+.btn-compare-clear {
+    background: transparent;
+    color: #ccc;
+    border: 1px solid #555;
+    padding: 7px 14px;
+    border-radius: 5px;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.btn-compare-clear:hover {
+    border-color: #fff;
+    color: #fff;
+}
+
+
+/* ── 5. COMPARE MODAL (Req #6) ── */
+
+.compare-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.compare-modal {
+    background: #fff;
+    border-radius: 12px;
+    max-width: 960px;
+    width: 100%;
+    max-height: 88vh;
+    overflow-y: auto;
+    padding: 32px 28px;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.compare-close-btn {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    color: #555;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.compare-close-btn:hover {
+    color: #000;
+}
+
+.compare-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 0 24px;
+    color: #1a1a1a;
+    letter-spacing: 0.02em;
+}
+
+.compare-table-wrapper {
+    overflow-x: auto;
+}
+
+.compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+}
+
+.compare-table th,
+.compare-table td {
+    padding: 12px 14px;
+    border: 1px solid #e8e8e8;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.compare-table thead th {
+    background: #f7f0e6;
+    font-weight: 700;
+    color: #5a3e2b;
+    font-size: 0.92rem;
+}
+
+.compare-table tbody tr:nth-child(even) {
+    background: #fdf8f3;
+}
+
+.compare-table tbody td:first-child {
+    font-weight: 600;
+    color: #444;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.compare-img-row img {
+    width: 120px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.compare-desc {
+    font-size: 0.82rem;
+    color: #666;
+    text-align: left !important;
+    line-height: 1.5;
+    min-width: 160px;
+}
+
+
+/* ── 6. PRODUCT DETAIL MODAL (Req #5) ── */
+
+.detail-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 9998;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.detail-modal {
+    background: #fff;
+    border-radius: 12px;
+    max-width: 760px;
+    width: 100%;
+    max-height: 88vh;
+    overflow-y: auto;
+    padding: 32px 28px;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.detail-close-btn {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    color: #555;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.detail-close-btn:hover {
+    color: #000;
+}
+
+.detail-modal-inner {
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.detail-modal-inner img {
+    width: 260px;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.detail-modal-info {
+    flex: 1;
+    min-width: 200px;
+}
+
+.detail-modal-info h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0 0 18px;
+    color: #1a1a1a;
+}
+
+.detail-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #aaa;
+    margin: 14px 0 3px;
+}
+
+.detail-value {
+    font-size: 0.95rem;
+    color: #333;
+    margin: 0;
+}
+
+.detail-desc {
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Download button */
+.btn-download-detail {
+    margin-top: 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: background 0.2s;
+}
+
+.btn-download-detail:hover {
+    background: #c9a96e;
+}
+
+
+/* ── 7. PREVENT BODY SCROLL when modal is open ── */
+
+body.modal-open {
+    overflow: hidden;
+}
+
+
+/* ── 8. RESPONSIVE tweaks ── */
+
+@media (max-width: 600px) {
+    .detail-modal-inner {
+        flex-direction: column;
+    }
+
+    .detail-modal-inner img {
+        width: 100%;
+        height: 240px;
+    }
+
+    .compare-modal {
+        padding: 20px 14px;
+    }
+
+    #compare-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
 
 
 
@@ -1985,5 +2030,443 @@ body {
         margin-bottom: 30px;
         padding-bottom: 30px;
         border-bottom: 1px solid rgba(212, 163, 115, 0.1);
+    }
+}
+
+
+
+/* ===== FEATURED PRODUCTS SECTION ===== */
+.featured-products {
+    padding: 80px 5%;
+    background: #f9f8f6;
+    border-top: 1px solid rgba(59,29,35,0.08);
+}
+
+.fp-container {
+    max-width: 1300px;
+    margin: auto;
+}
+
+.fp-header {
+    margin-bottom: 50px;
+}
+
+.fp-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.fp-card {
+    position: relative;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(59,29,35,0.07);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.fp-card:hover {
+    box-shadow: 0 16px 40px rgba(59,29,35,0.1);
+    transform: translateY(-4px);
+}
+
+.fp-image-wrap {
+    position: relative;
+    overflow: hidden;
+    height: 280px;
+}
+
+.fp-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    display: block;
+}
+
+.fp-card:hover .fp-image-wrap img {
+    transform: scale(1.06);
+}
+
+.fp-badges {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    display: flex;
+    gap: 6px;
+    z-index: 2;
+}
+
+.fp-badges span {
+    padding: 4px 10px;
+    font-size: 11px;
+    font-family: "Inconsolata", monospace;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    font-weight: 700;
+}
+
+.badge-new  { background: var(--sec-bg-color); color: #fff; }
+.badge-hot  { background: #c0392b; color: #fff; }
+.badge-sale { background: var(--text-color); color: #fff; }
+
+.fp-actions {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.fp-card:hover .fp-actions {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.fp-action-btn {
+    width: 36px;
+    height: 36px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--sec-bg-color);
+    font-size: 14px;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    transition: all 0.2s ease;
+}
+
+.fp-action-btn:hover {
+    background: var(--sec-bg-color);
+    color: #fff;
+}
+
+.fp-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px;
+    background: linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0.95) 70%, rgba(255,255,255,0) 100%);
+    z-index: 3;
+    
+    /* Hide by default */
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+
+.fp-card:hover .fp-info {
+    transform: translateY(0);
+}
+
+.fp-image-wrap {
+    height: 400px; 
+}
+
+.fp-meta {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.fp-meta span {
+    color: #333; 
+}
+
+@media (max-width: 600px) {
+    .fp-info {
+        position: static;
+        transform: translateY(0);
+        background: #fff;
+        padding: 15px;
+    }
+    .fp-image-wrap {
+        height: 280px;
+    }
+}
+
+.fp-stylist {
+    font-family: "Inconsolata", monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #999;
+}
+
+.fp-name {
+    font-family: "Merriweather", serif;
+    font-size: 17px;
+    color: var(--sec-bg-color);
+    margin: 8px 0 14px;
+}
+
+.fp-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(59,29,35,0.07);
+}
+
+.fp-meta span {
+    font-family: "Inconsolata", monospace;
+    font-size: 13px;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.fp-meta span i {
+    color: var(--text-color);
+    width: 14px;
+}
+
+.fp-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fp-details-link {
+    font-family: "Inconsolata", monospace;
+    font-size: 13px;
+    color: var(--sec-bg-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: gap 0.2s ease;
+}
+
+.fp-details-link:hover { gap: 10px; }
+
+.fp-download-link {
+    font-family: "Inconsolata", monospace;
+    font-size: 12px;
+    color: #4a6fa5;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.2s ease;
+}
+
+.fp-download-link:hover { color: #2c4a7c; }
+
+.fp-bottom-btn {
+    margin-top: 50px;
+    text-align: center;
+}
+
+@media (max-width: 1024px) {
+    .fp-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+    .fp-grid { grid-template-columns: 1fr; }
+    .fp-image-wrap { height: 240px; }
+}
+
+
+
+
+/* ===== COMPARE BANNER ===== */
+.compare-banner {
+    padding: 80px 5%;
+    background: var(--sec-bg-color);
+    color: #fff;
+}
+
+.compare-banner-inner {
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.compare-banner-text {
+    flex: 1;
+}
+
+.compare-banner-text .section-subtitle {
+    color: var(--text-color);
+    letter-spacing: 3px;
+}
+
+.compare-banner-text .section-title {
+    color: #fff;
+    font-size: 38px;
+    margin-bottom: 20px;
+}
+
+.compare-desc {
+    font-family: "Inconsolata", monospace;
+    font-size: 16px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 35px;
+}
+
+.compare-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    background: var(--text-color);
+    color: #fff;
+    text-decoration: none;
+    font-family: "Inconsolata", monospace;
+    font-size: 16px;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.compare-cta-btn:hover {
+    background: #c8905a;
+    transform: translateY(-2px);
+}
+
+.compare-banner-visual {
+    flex: 0 0 auto;
+}
+
+.compare-preview {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.cp-card {
+    width: 160px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    text-align: center;
+}
+
+.cp-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    opacity: 0.85;
+}
+
+.cp-card span {
+    display: block;
+    padding: 10px 8px;
+    font-family: "Inconsolata", monospace;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.8);
+    text-transform: uppercase;
+}
+
+.cp-vs {
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    font-style: italic;
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+@media (max-width: 900px) {
+    .compare-banner-inner { flex-direction: column; text-align: center; }
+    .compare-banner-text .section-title { font-size: 28px; }
+    .compare-desc { margin: 0 auto 30px; }
+    .compare-banner-visual { display: none; }
+}
+
+
+/* ===== CONTACT PREVIEW SECTION ===== */
+.contact-preview {
+    padding: 80px 5%;
+    background: #fcfcfc;
+    border-top: 1px solid rgba(59,29,35,0.1);
+}
+
+.contact-preview-inner {
+    max-width: 1300px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.cp-map-side {
+    height: 420px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.cp-info-side .section-title {
+    margin-bottom: 35px;
+}
+
+.cp-details {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 30px;
+}
+
+.cp-detail-item {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+}
+
+.cp-detail-item > i {
+    font-size: 18px;
+    color: var(--text-color);
+    margin-top: 3px;
+    width: 20px;
+    flex-shrink: 0;
+}
+
+.cp-detail-item h4 {
+    font-family: "Merriweather", serif;
+    font-size: 15px;
+    color: var(--sec-bg-color);
+    margin-bottom: 4px;
+}
+
+.cp-detail-item p,
+.cp-detail-item a {
+    font-family: "Inconsolata", monospace;
+    font-size: 14px;
+    color: #666;
+    text-decoration: none;
+    line-height: 1.5;
+}
+
+.cp-detail-item a:hover {
+    color: var(--sec-bg-color);
+    text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+    .contact-preview-inner {
+        grid-template-columns: 1fr;
+    }
+    .cp-map-side {
+        height: 300px;
     }
 }

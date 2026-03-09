@@ -1,334 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms of Service | Stylist</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="nav.css">
-    <link rel="stylesheet" href="footer.css">
-    <!-- Google Fonts -->
-
+    <link rel="shortcut icon" href="/assets/logo/dress.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inconsolata:wght@200..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Pixelify+Sans:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-        rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
-
-
-    <!-- Font Awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <style>
-        :root {
-            --accent-color: #a65252;
-            --text-dark: #3b1d23;
-            --text-light: #666;
-            --border-color: #f0f0f0;
-            --bg-cream: #fdfaf9;
-        }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            margin: 0;
-            color: var(--text-dark);
-            background-color: #fff;
-        }
-
-        .terms-section {
-            padding: 120px 10% 80px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        /* Header Styling */
-        .terms-header {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        .section-subtitle {
-            font-size: 0.85rem;
-            letter-spacing: 4px;
-            color: var(--accent-color);
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            font-weight: 500;
-        }
-
-        .terms-header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            color: var(--text-dark);
-            margin-bottom: 20px;
-        }
-
-        .update-tag {
-            background: var(--bg-cream);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            color: var(--accent-color);
-            font-weight: 500;
-        }
-
-        /* Content Blocks */
-        .terms-content {
-            line-height: 1.8;
-        }
-
-        .terms-block {
-            margin-bottom: 60px;
-            padding-bottom: 40px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .terms-block:last-child {
-            border-bottom: none;
-        }
-
-        .terms-block h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            color: var(--text-dark);
-            margin-bottom: 20px;
-        }
-
-        .terms-block p {
-            color: var(--text-light);
-            font-size: 1.05rem;
-            margin-bottom: 20px;
-        }
-
-        .terms-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .grid-item h4 {
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            color: var(--accent-color);
-        }
-
-        /* Premium CTA Box */
-        /* Premium CTA Box */
-        .faq-footer-cta {
-            text-align: center;
-            margin: 100px auto 40px;
-            padding: 80px 40px;
-            background: var(--bg-cream);
-            border: 1px solid #f0e6e3;
-            border-radius: 16px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .faq-footer-cta h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 18px 45px;
-            background: var(--text-dark);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(59, 29, 35, 0.1);
-        }
-
-        .cta-button:hover {
-            background: rgb(59, 29, 35, 0.9);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(166, 82, 82, 0.2);
-        }
-
-        @media (max-width: 768px) {
-            .terms-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .terms-header h1 {
-                font-size: 2.5rem;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="company.css">
 </head>
-
 <body>
 
-    <div id="nav-container"></div>
+<div id="nav-container"></div>
 
-    <section class="terms-section">
-        <div class="terms-header">
-            <p class="section-subtitle">Legal Agreement</p>
-            <h1>Terms of Service</h1>
-            <span class="update-tag">Updated: March 2026</span>
-        </div>
+<!-- HERO -->
+<section class="page-hero">
+    <div class="page-hero-inner">
+        <span class="page-tag">Legal</span>
+        <h1>Terms of Service</h1>
+        <p>These terms govern your use of the Stylist platform and services. Please read them carefully.</p>
+    </div>
+</section>
 
-        <div class="terms-content">
-            <div class="terms-block">
-                <h2>01. Acceptance of Terms</h2>
-                <p>By accessing Stylist and utilizing our digital or in-person styling services, you agree to be bound
-                    by these Terms of Service. If you do not agree, please refrain from using our platform.</p>
+<!-- BREADCRUMB -->
+<div class="breadcrumb-bar">
+    <a href="/index.html">Home</a><span>›</span>Terms of Service
+</div>
+
+<!-- LEGAL LAYOUT -->
+<div class="legal-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="legal-sidebar">
+        <nav>
+            <h4>Contents</h4>
+            <a href="#acceptance" class="active">Acceptance</a>
+            <a href="#services">Our Services</a>
+            <a href="#accounts">Accounts</a>
+            <a href="#bookings">Bookings & Payments</a>
+            <a href="#cancellations">Cancellations</a>
+            <a href="#conduct">User Conduct</a>
+            <a href="#ip">Intellectual Property</a>
+            <a href="#content">User Content</a>
+            <a href="#disclaimer">Disclaimer</a>
+            <a href="#liability">Limitation of Liability</a>
+            <a href="#indemnity">Indemnification</a>
+            <a href="#termination">Termination</a>
+            <a href="#governing">Governing Law</a>
+            <a href="#contact-terms">Contact</a>
+        </nav>
+        <p class="legal-meta">Last updated:<br><strong>1 March 2026</strong><br><br>Effective from:<br><strong>1 January 2025</strong></p>
+    </aside>
+
+    <!-- CONTENT -->
+    <div class="legal-content">
+
+        <section id="acceptance">
+            <h2>1. Acceptance of Terms</h2>
+            <p>These Terms of Service ("Terms") constitute a legally binding agreement between you ("User", "Client") and Stylist ("Company", "we", "us", "our"), governing your access to and use of the Stylist website located at stylist.pk and all related services, features, content, and applications (collectively, the "Platform").</p>
+            <div class="legal-highlight">
+                By accessing or using our Platform, creating an account, or booking a session, you confirm that you have read, understood, and agree to be bound by these Terms. If you do not agree, please discontinue use immediately.
             </div>
+            <p>You must be at least 18 years old to use our Platform. By agreeing to these Terms, you represent that you meet this age requirement.</p>
+        </section>
 
-            <div class="terms-block">
-                <h2>02. Styling Services</h2>
-                <p>We provide curated fashion advice and shopping links. While we strive for perfection, we do not
-                    guarantee the availability of items linked in your lookbooks, as third-party retailers manage their
-                    own inventory.</p>
-                <div class="terms-grid">
-                    <div class="grid-item">
-                        <h4>Digital Lookbooks</h4>
-                        <p>Delivered within 5-7 business days of your style profile completion.</p>
-                    </div>
-                    <div class="grid-item">
-                        <h4>Consultations</h4>
-                        <p>Cancellations must be made 24 hours in advance to avoid a booking fee.</p>
-                    </div>
-                </div>
+        <section id="services">
+            <h2>2. Description of Services</h2>
+            <p>Stylist provides an online platform connecting clients with professional fashion stylists. Our services include:</p>
+            <ul>
+                <li>Personal styling consultations (in-person and virtual)</li>
+                <li>Wardrobe analysis and editing services</li>
+                <li>Digital lookbook creation and delivery</li>
+                <li>Personal shopping accompaniment</li>
+                <li>Stylist profile browsing and booking management</li>
+                <li>Access to curated fashion collections and product information</li>
+            </ul>
+            <p>Stylist acts as a platform facilitating the connection between clients and independent stylists. While we vet and onboard all stylists, individual session delivery is performed by the stylist. We are not responsible for the specific fashion choices or recommendations made during sessions.</p>
+        </section>
+
+        <section id="accounts">
+            <h2>3. User Accounts</h2>
+            <h3>Registration</h3>
+            <p>To access certain features of our Platform, you must create an account. You agree to provide accurate, current, and complete information during registration and to keep this information updated.</p>
+            <h3>Account Security</h3>
+            <p>You are responsible for maintaining the confidentiality of your account credentials. You agree to notify us immediately at <a href="mailto:hello@stylist.pk">hello@stylist.pk</a> if you suspect any unauthorised use of your account. Stylist shall not be liable for any loss resulting from unauthorised account access due to your failure to safeguard your credentials.</p>
+            <h3>Account Restrictions</h3>
+            <ul>
+                <li>You may not create more than one personal account</li>
+                <li>You may not transfer your account to another person</li>
+                <li>Accounts created using false identities will be terminated</li>
+            </ul>
+        </section>
+
+        <section id="bookings">
+            <h2>4. Bookings & Payments</h2>
+            <h3>Session Booking</h3>
+            <p>When you book a styling session, you enter into a service agreement with both Stylist and the assigned stylist. Confirmation is sent to your registered email address within 24 hours of booking.</p>
+            <h3>Pricing</h3>
+            <p>All prices are displayed in Pakistani Rupees (PKR) and are inclusive of applicable service fees. Prices are subject to change without notice; however, any changes will not affect bookings already confirmed.</p>
+            <h3>Payment Processing</h3>
+            <p>Payment is required in full at the time of booking. We accept major debit/credit cards and bank transfers via our secure payment partners. By providing payment information, you authorise us to charge the stated amount.</p>
+            <h3>Receipts</h3>
+            <p>A digital receipt will be sent to your registered email following successful payment. If you do not receive a receipt within 24 hours, please contact <a href="mailto:hello@stylist.pk">hello@stylist.pk</a>.</p>
+        </section>
+
+        <section id="cancellations">
+            <h2>5. Cancellations & Refunds</h2>
+            <h3>Client Cancellations</h3>
+            <ul>
+                <li><strong>More than 48 hours before session:</strong> Full refund issued within 5–7 business days.</li>
+                <li><strong>24–48 hours before session:</strong> 50% refund. Remaining 50% credited as platform credit.</li>
+                <li><strong>Less than 24 hours before session:</strong> No refund. Session may be rescheduled once at no additional charge.</li>
+                <li><strong>No-show:</strong> No refund and no rescheduling credit.</li>
+            </ul>
+            <h3>Stylist Cancellations</h3>
+            <p>If a stylist cancels your session, you will receive a full refund and will be offered a priority rebooking with the same or an equivalent stylist.</p>
+            <h3>Rescheduling</h3>
+            <p>You may reschedule a session once without charge, provided you notify us at least 24 hours in advance. Additional reschedules are subject to a PKR 500 administrative fee.</p>
+            <div class="legal-highlight">
+                To cancel or reschedule, contact us at hello@stylist.pk or via your account dashboard. Verbal cancellations are not accepted.
             </div>
+        </section>
 
-            <div class="terms-block">
-                <h2>03. Payments & Refunds</h2>
-                <p>Styling fees are charged at the time of booking. Due to the personalized nature of our creative work,
-                    styling fees are non-refundable once the curation process has begun.</p>
-            </div>
+        <section id="conduct">
+            <h2>6. User Conduct</h2>
+            <p>By using our Platform, you agree not to:</p>
+            <ul>
+                <li>Use the Platform for any unlawful purpose or in violation of any regulations</li>
+                <li>Harass, abuse, or harm our stylists or other users in any way</li>
+                <li>Share or publish private session content without the written consent of all parties</li>
+                <li>Attempt to circumvent the platform to arrange direct payments with stylists outside Stylist</li>
+                <li>Upload or share content that is offensive, discriminatory, or violates third-party rights</li>
+                <li>Introduce viruses, malware, or other malicious code to the Platform</li>
+                <li>Use automated tools, bots, or scrapers to access Platform data</li>
+                <li>Impersonate any person or entity on the Platform</li>
+            </ul>
+            <p>Violation of these conduct standards may result in immediate account suspension or termination at our sole discretion.</p>
+        </section>
 
-            <div class="terms-block">
-                <h2>04. Intellectual Property</h2>
-                <p>All lookbooks, custom illustrations, and digital content provided to you remain the intellectual
-                    property of Stylist. Content is provided for personal use only and may not be redistributed for
-                    commercial purposes.</p>
-            </div>
-        </div>
+        <section id="ip">
+            <h2>7. Intellectual Property</h2>
+            <p>All content on the Stylist Platform — including but not limited to text, graphics, logos, icons, images, audio, video, digital lookbooks, and software — is the exclusive property of Stylist or our licensors and is protected by applicable copyright, trademark, and intellectual property laws.</p>
+            <p>You may not reproduce, distribute, modify, create derivative works of, publicly display, or exploit any Platform content without our express written permission. Downloading lookbooks or materials provided as part of your paid service is permitted for personal, non-commercial use only.</p>
+        </section>
 
-        <div class="faq-footer-cta">
-            <h3>Clarifications?</h3>
-            <p>Our legal and support teams are available to discuss any specific clauses regarding your styling
-                contract.</p>
-            <br>
-            <a href="contact.html" class="cta-button">
-                Get in Touch
-            </a>
-        </div>
-    </section>
+        <section id="content">
+            <h2>8. User Content</h2>
+            <p>When you submit photos, messages, reviews, or other content to the Platform ("User Content"), you grant Stylist a non-exclusive, royalty-free, worldwide licence to use, store, and display such content solely for the purpose of providing our services to you.</p>
+            <p>We do not claim ownership of your User Content. You retain all rights to your wardrobe photos, style preferences, and personal information. We will never use your personal photos for marketing purposes without your explicit written consent.</p>
+        </section>
 
-    <div id="footer-container"></div>
+        <section id="disclaimer">
+            <h2>9. Disclaimer of Warranties</h2>
+            <p>The Platform and all services are provided on an "as is" and "as available" basis without warranties of any kind, either express or implied. To the fullest extent permitted by law, Stylist disclaims all warranties including implied warranties of merchantability, fitness for a particular purpose, and non-infringement.</p>
+            <p>We do not warrant that the Platform will be uninterrupted, error-free, or free from viruses or other harmful components. Fashion advice and styling recommendations are professional opinions and results may vary based on individual circumstances.</p>
+        </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <section id="liability">
+            <h2>10. Limitation of Liability</h2>
+            <p>To the maximum extent permitted by applicable law, Stylist and its officers, directors, employees, and agents shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the Platform or services.</p>
+            <p>Our total cumulative liability to you for any claim arising from these Terms or your use of the Platform shall not exceed the amount you paid to Stylist in the 3 months preceding the claim.</p>
+        </section>
 
+        <section id="indemnity">
+            <h2>11. Indemnification</h2>
+            <p>You agree to defend, indemnify, and hold harmless Stylist and its affiliates, officers, directors, employees, and agents from any claims, damages, losses, and expenses (including reasonable legal fees) arising from your use of the Platform, violation of these Terms, or infringement of any third-party rights.</p>
+        </section>
 
-    <script src="/main.js"></script>
+        <section id="termination">
+            <h2>12. Termination</h2>
+            <p>We reserve the right to suspend or terminate your account and access to the Platform at any time, with or without notice, for conduct that we believe violates these Terms, is harmful to other users, stylists, or third parties, or for any other reason at our sole discretion.</p>
+            <p>You may delete your account at any time through your account settings. Upon termination, your right to use the Platform ceases immediately. Provisions of these Terms that by their nature should survive termination will remain in effect.</p>
+        </section>
 
-    <script>
-        $(function () {
-            /**
-             * 1. LOAD COMPONENTS & FIX LOGO
-             * If your Terms page is in a subfolder, change "nav.html" to "../nav.html"
-             */
-            $("#nav-container").load("nav.html", function () {
-                // Fix: If the logo image in nav.html has a relative path, 
-                // ensure it points to the correct root directory.
-                initNavbarToggle();
-                initNavFeatures();
-            });
-            $("#footer-container").load("footer.html");
+        <section id="governing">
+            <h2>13. Governing Law & Disputes</h2>
+            <p>These Terms are governed by and construed in accordance with the laws of the Islamic Republic of Pakistan. Any disputes arising from or relating to these Terms or the Platform shall be subject to the exclusive jurisdiction of the courts of Karachi, Pakistan.</p>
+            <p>We encourage you to contact us before pursuing formal legal action. Many issues can be resolved quickly and informally through our support team at <a href="mailto:hello@stylist.pk">hello@stylist.pk</a>.</p>
+        </section>
 
-            /**
-             * 2. NAVIGATION & CART TOGGLE LOGIC
-             */
-            function initNavbarToggle() {
-                let scrollPos = 0;
-                $(document).on("click", "#hamburger", function () {
-                    scrollPos = window.scrollY;
-                    $("body").addClass("nav-open").css("top", `-${scrollPos}px`);
-                    $("#navLinks, #navOverlay").addClass("active");
-                });
+        <section id="contact-terms">
+            <h2>14. Contact</h2>
+            <p>For questions about these Terms, please contact:</p>
+            <ul>
+                <li><strong>Email:</strong> <a href="mailto:mehwishmansha65~@gmail.com">mehwishmansah65@gmail.com</a></li>
+                <li><strong>Address:</strong> 123 Fashion Street, Clifton Block 5, Karachi, Pakistan</li>
+                <li><strong>Phone:</strong> +92 300 9262944</li>
+            </ul>
+        </section>
 
-                const closeNav = () => {
-                    $("body").removeClass("nav-open").css("top", "");
-                    window.scrollTo(0, scrollPos);
-                    $("#navLinks, #navOverlay").removeClass("active");
-                };
-                $(document).on("click", "#closeBtn, #navOverlay", closeNav);
-            }
+    </div>
+</div>
 
-            function initNavFeatures() {
-                // Cart Sidebar Toggle
-                let cartScroll = 0;
-                const toggleCart = (open) => {
-                    if (open) {
-                        cartScroll = window.scrollY;
-                        $("body").addClass("cart-open").css("top", `-${cartScroll}px`);
-                        $(".cart-sidebar, .cart-overlay").addClass("active");
-                    } else {
-                        $("body").removeClass("cart-open").css("top", "");
-                        window.scrollTo(0, cartScroll);
-                        $(".cart-sidebar, .cart-overlay").removeClass("active");
-                    }
-                };
-                $(document).on("click", ".cart-icon", () => toggleCart(true));
-                $(document).on("click", ".close-cart, .cart-overlay", () => toggleCart(false));
-            }
+<!-- CTA -->
+<section class="cta-band">
+    <span class="sec-sub" style="color:var(--gold)">Legal Questions?</span>
+    <h2 class="sec-title-light">We're Transparent by Design</h2>
+    <p>These terms are written to be read. If anything is unclear, email us and a human will respond.</p>
+    <div class="cta-row">
+        <a href="mailto:hello@stylist.pk" class="btn-cta-gold"><i class="fa-solid fa-envelope"></i> Email Us</a>
+        <a href="/privacy.html" class="btn-cta-outline">Privacy Policy</a>
+    </div>
+</section>
 
-            /**
-             * 3. CART DATA & CALCULATIONS
-             */
-            $(document).on("click", ".qty-plus", function () {
-                let $qty = $(this).siblings(".qty-value");
-                $qty.text(parseInt($qty.text()) + 1);
-                updateCartTotals($(this).closest(".cart-item"));
-            });
+<div id="footer-container"></div>
 
-            $(document).on("click", ".qty-minus", function () {
-                let $qty = $(this).siblings(".qty-value");
-                let val = parseInt($qty.text());
-                if (val > 1) {
-                    $qty.text(val - 1);
-                    updateCartTotals($(this).closest(".cart-item"));
-                }
-            });
-
-            $(document).on("click", ".remove-item", function () {
-                $(this).closest(".cart-item").fadeOut(300, function () {
-                    $(this).remove();
-                    calculateGrandTotal();
-                });
-            });
-
-            function updateCartTotals($item) {
-                let qty = parseInt($item.find(".qty-value").text());
-                let basePrice = parseFloat($item.find(".price").attr("data-price"));
-                $item.find(".price").text(`$${(qty * basePrice).toFixed(2)}`);
-                calculateGrandTotal();
-            }
-
-            function calculateGrandTotal() {
-                let total = 0;
-                $(".cart-item .price").each(function () {
-                    total += parseFloat($(this).text().replace('$', ''));
-                });
-                $(".cart-total span:last-child").text(`$${total.toFixed(2)}`);
-            }
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(function () {
+        $("#nav-container").load("/nav.html", function () {
+            if (typeof initNavFeatures === "function") initNavFeatures();
         });
-    </script>
-</body>
+        $("#footer-container").load("/footer.html");
+    });
 
+    const sections = document.querySelectorAll('.legal-content section[id]');
+    const sideLinks = document.querySelectorAll('.legal-sidebar nav a');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(s => {
+            if (window.scrollY >= s.offsetTop - 120) current = s.id;
+        });
+        sideLinks.forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+        });
+    });
+</script>
+</body>
 </html>

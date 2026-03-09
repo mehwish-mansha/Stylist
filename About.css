@@ -50,7 +50,7 @@ body {
 
 .about-hero {
     height: 70vh;
-    background: url("/assets/carousel/pexels4.jpg") center/cover no-repeat;
+    background: url("/assets/carousel/about-us-header.jpg") center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -6,40 +6,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/assets/logo/dress.png" type="image/x-icon">
 
-
     <!-- Google Fonts -->
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inconsolata:wght@200..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Pixelify+Sans:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inconsolata:wght@200..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Pixelify+Sans:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
 
-
-    <!-- Font Awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>Stylists | Stylist</title>
     <link rel="stylesheet" href="/nav.css">
     <link rel="stylesheet" href="/footer.css">
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/stylists.css">
+
 </head>
 
 <body>
 
+    <!-- Navbar -->
+    <div id="nav-container"></div>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb-bar" id="breadcrumbBar" style="display: none;">
+        <div class="container">
+            <a href="/">Home</a>
+            <span>›</span>
+            <a href="/stylists.html">Stylists</a>
+            <span>›</span>
+            <a href="#" id="breadcrumbStylist">Maria B.</a>
+            <span>›</span>
+            <span id="breadcrumbCurrent">Collection</span>
+        </div>
+    </div>
+
+    <!-- <section class="slider-section">
+        <div class="slider-track" id="sliderTrack">
+            <div class="slide">
+                <img src="./assets/Stylists/stylist 1.webp" alt="Maria B.">
+                <div class="slide-caption"><span>Bridal & Wedding</span><h2>Maria B.</h2></div>
+            </div>
+            <div class="slide">
+                <img src="./assets/Stylists/stylist2.jfif" alt="Zara Shahid">
+                <div class="slide-caption"><span>Luxury Pret</span><h2>Zara Shahid</h2></div>
+            </div>
+            <div class="slide">
+                <img src="./assets/Stylists/stylist3.jfif" alt="Hania Mirza">
+                <div class="slide-caption"><span>Couture & Formal</span><h2>Hania Mirza Couture</h2></div>
+            </div>
+            <div class="slide">
+                <img src="./assets/Stylists/stylist4.jfif" alt="Sofia Laurent">
+                <div class="slide-caption"><span>Contemporary Western</span><h2>Sofia Laurent</h2></div>
+            </div>
+            <div class="slide">
+                <img src="./assets/Stylists/stylist8.jpg" alt="Leila Noor">
+                <div class="slide-caption"><span>Evening Wear</span><h2>Leila Noor</h2></div>
+            </div>
+        </div>
+        <button class="slider-btn" id="slider-prev"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="slider-btn" id="slider-next"><i class="fa-solid fa-chevron-right"></i></button>
+        <div class="slider-dots" id="sliderDots"></div>
+    </section> -->
+
+
     <section class="stylist">
         <div class="stylist-container">
             <div class="stylist-header">
-                <p class="section-subtitle">OUR STYLISTS</p>
-                <h2 class="section-title">Meet Our Experts</h2>
+                <div>
+                    <p class="section-subtitle">OUR STYLISTS</p>
+                    <h2 class="section-title">Meet Our Experts</h2>
+                </div>
             </div>
 
             <div class="main-stylist-grid">
-                <!-- Card 1 -->
                 <div class="main-stylist-card" data-stylist="Maria.b">
                     <img src="./assets/Stylists/stylist 1.webp" alt="Maria.B.">
                     <div class="main-stylist-overlay">
@@ -48,8 +87,6 @@
                         <p class="rating"><span><i class="fa-solid fa-star"></i></span> 4.9 · 27 yrs</p>
                     </div>
                 </div>
-
-                <!-- Card 2 -->
                 <div class="main-stylist-card" data-stylist="Zara Shahid">
                     <img src="./assets/Stylists/stylist2.jfif" alt="Zara Shahid">
                     <div class="main-stylist-overlay">
@@ -58,8 +95,6 @@
                         <p class="rating"><span><i class="fa-solid fa-star"></i></span> 4.7 · 8 yrs</p>
                     </div>
                 </div>
-
-                <!-- Card 3 -->
                 <div class="main-stylist-card" data-stylist="hania">
                     <img src="./assets/Stylists/stylist3.jfif" alt="Hania Mirza">
                     <div class="main-stylist-overlay">
@@ -68,8 +103,6 @@
                         <p class="rating"><span><i class="fa-solid fa-star"></i></span> 4.8 · 15 yrs</p>
                     </div>
                 </div>
-
-                <!-- Card 4 -->
                 <div class="main-stylist-card" data-stylist="sofia">
                     <img src="./assets/Stylists/stylist4.jfif" alt="Sofia Laurent">
                     <div class="main-stylist-overlay">
@@ -78,8 +111,6 @@
                         <p class="rating"><span><i class="fa-solid fa-star"></i></span> 4.6 · 10 yrs</p>
                     </div>
                 </div>
-
-                <!-- Card 5 -->
                 <div class="main-stylist-card" data-stylist="ali">
                     <img src="./assets/Stylists/stylist4.webp" alt="Ali Khan">
                     <div class="main-stylist-overlay">
@@ -88,8 +119,6 @@
                         <p class="rating"><span><i class="fa-solid fa-star"></i></span> 4.5 · 12 yrs</p>
                     </div>
                 </div>
-
-                <!-- Card 6 -->
                 <div class="main-stylist-card" data-stylist="amina">
                     <img src="./assets/Stylists/stylist6.jpg" alt="Amina Qureshi">
                     <div class="main-stylist-overlay">
@@ -98,8 +127,6 @@
                         <p class="rating"><span><i class="fa-solid fa-star"></i></span> 4.8 · 9 yrs</p>
                     </div>
                 </div>
-
-                <!-- Card 7 -->
                 <div class="main-stylist-card" data-stylist="karim">
                     <img src="./assets/Stylists/stylist7.webp" alt="Karim Ali">
                     <div class="main-stylist-overlay">
@@ -108,8 +135,6 @@
                         <p class="rating"><span><i class="fa-solid fa-star"></i></span> 4.6 · 7 yrs</p>
                     </div>
                 </div>
-
-                <!-- Card 8 -->
                 <div class="main-stylist-card" data-stylist="leila">
                     <img src="./assets/Stylists/stylist8.jpg" alt="Leila Noor">
                     <div class="main-stylist-overlay">
@@ -118,15 +143,9 @@
                         <p class="rating"><span><i class="fa-solid fa-star"></i></span> 4.9 · 11 yrs</p>
                     </div>
                 </div>
-
-
-
-
             </div>
         </div>
     </section>
-
-    <!--Stylist Profiles-->
 
     <section id="stylist-profile" style="display:none;">
         <div class="profile-container">
@@ -140,31 +159,62 @@
                     <p id="profile-bio"></p>
                 </div>
             </div>
-            <h3 class="stylist-collection-heading"> Maria B.'s Collections</h3>
-            <div id="profile-collections" class="collection-grid">
-                <div class="collection-item">
-                    <img src="assets/collection/Bridal.jpg" alt="Collection Image">
-                    <div class="collection-overlay">
-                        <div class="overlay-left">
-                            <span>View Details</span>
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </div>
-                        <div class="overlay-right">
-                            <i class="fa-regular fa-eye"></i>
-                            <i class="fa-regular fa-heart"></i>
-                        </div>
-                    </div>
-                    <!-- <div class="collection-details">
-                        <h4>Bridal Elegance</h4>
-                        <p>$350</p>
-                    </div> -->
-                </div>
-            </div>
-
-
+            <h3 class="stylist-collection-heading" id="collection-heading">Collections</h3>
+            <div id="profile-collections" class="collection-grid"></div>
         </div>
     </section>
 
+    <div id="productDetailModal" class="product-detail-modal">
+        <div class="product-detail-content">
+            <button class="close-detail-modal" id="closeDetailModal"><i class="fa-solid fa-xmark"></i></button>
+            <div class="product-detail-grid">
+                <div class="detail-gallery">
+                    <div class="detail-main-image">
+                        <img id="detailMainImage" src="" alt="">
+                    </div>
+                    <div class="detail-thumbnails" id="detailThumbnails"></div>
+                </div>
+                <div class="detail-info">
+                    <div class="detail-category" id="detailCategory"></div>
+                    <h2 class="detail-title" id="detailTitle"></h2>
+                    <div class="detail-price">
+                        <span id="detailPrice"></span>
+                        <span class="detail-old-price" id="detailOldPrice"></span>
+                    </div>
+                    <div class="detail-fabric" id="detailFabric"></div>
+                    <div class="detail-description" id="detailDescription"></div>
+                    <div class="detail-actions">
+                        <button class="detail-btn detail-btn-primary" id="detailWishlistBtn">
+                            <i class="fa-regular fa-heart"></i> Add to Wishlist
+                        </button>
+                        <button class="detail-btn detail-btn-secondary" id="detailCompareBtn">
+                            <i class="fa-solid fa-code-compare"></i> Compare
+                        </button>
+                        <button class="detail-btn detail-btn-success" id="detailAddToCartBtn">
+                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                        </button>
+                    </div>
+                    <div class="detail-meta">
+                        <div class="detail-meta-item">
+                            <span class="detail-meta-label">Stylist:</span>
+                            <span class="detail-meta-value" id="detailStylist"></span>
+                        </div>
+                        <div class="detail-meta-item">
+                            <span class="detail-meta-label">Size:</span>
+                            <span class="detail-meta-value" id="detailSize"></span>
+                        </div>
+                        <div class="detail-meta-item">
+                            <span class="detail-meta-label">Fabric:</span>
+                            <span class="detail-meta-value" id="detailFabricMeta"></span>
+                        </div>
+                    </div>
+                    <a class="download-btn" id="detailDownloadBtn" href="#" download style="margin-top: 20px; width: 100%; justify-content: center;">
+                        <i class="fa-solid fa-download"></i> Download Full Details
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <section class="stylist-testimonials">
@@ -176,14 +226,13 @@
                     <span>- Ayesha K.</span>
                 </div>
                 <div class="testimonial-card">
-                    <p>"Zara Shahid’s luxury pret collection is stunning."</p>
+                    <p>"Zara Shahid's luxury pret collection is stunning."</p>
                     <span>- Sana R.</span>
                 </div>
                 <div class="testimonial-card">
                     <p>"Amina Qureshi's bridal accessories added the perfect sparkle to my big day!"</p>
                     <span>- Hiba W.</span>
                 </div>
-
                 <div class="testimonial-card">
                     <p>"Karim Ali has the best street style aesthetic. Super comfortable and trendy."</p>
                     <span>- Omar J.</span>
@@ -199,330 +248,783 @@
                 <h2 class="section-title">Book a Stylist</h2>
                 <p class="section-subtitle">Schedule a session with your favorite stylist</p>
             </div>
-
-            <form class="booking-form">
-                <input type="text" placeholder="Full Name" required>
-                <input type="email" placeholder="Email Address" required>
-                <input type="tel" placeholder="Phone Number" required>
-                <select required>
+            <form class="booking-form" id="bookingForm">
+                <input type="text" id="b-name" placeholder="Full Name" required>
+                <input type="email" id="b-email" placeholder="Email Address" required>
+                <input type="tel" id="b-phone" placeholder="Phone Number" required>
+                <select id="b-stylist" required>
                     <option value="">Select Stylist</option>
                     <option value="Maria.b">Maria B.</option>
                     <option value="Zara Shahid">Zara Shahid</option>
-                    <option value="Hania">Hania Mirza</option>
-                    <option value="Sofia">Sofia Laurent</option>
-                    <option value="Ali">Ali Khan</option>
-                    <option value="Amina">Amina Qureshi</option>
-                    <option value="Karim">Karim Ali</option>
-                    <option value="Leila">Leila Noor</option>
-                    <option value="Omar">Omar Siddiqui</option>
-                    <option value="Nisha">Nisha Farooqi</option>
-                    <option value="Yusuf">Yusuf Khan</option>
-                    <!-- <option value="Sara">Sara Malik</option>
-                <option value="Amina2">Amina Farah</option>
-                <option value="Rehan">Rehan Ali</option> -->
+                    <option value="hania">Hania Mirza</option>
+                    <option value="sofia">Sofia Laurent</option>
+                    <option value="ali">Ali Khan</option>
+                    <option value="amina">Amina Qureshi</option>
+                    <option value="karim">Karim Ali</option>
+                    <option value="leila">Leila Noor</option>
                 </select>
-                <textarea placeholder="Additional Notes"></textarea>
+                <textarea id="b-notes" placeholder="Additional Notes"></textarea>
                 <button type="submit" class="btn-primary">Book Now</button>
             </form>
+            <div id="booking-success">
+                <i class="fa-solid fa-circle-check"></i>&nbsp; Your booking request has been sent! We'll get back to you shortly.
+            </div>
         </div>
     </section>
 
 
+    <div id="compare-bar">
+        <h4><i class="fa-solid fa-scale-balanced"></i>&nbsp; Compare</h4>
+        <div class="compare-slots" id="compareSlots"></div>
+        <button id="compare-now-btn">Compare Now</button>
+        <button id="clear-compare-btn">Clear All</button>
+    </div>
 
 
+    <div id="compare-modal">
+        <div class="compare-modal-inner">
+            <button id="close-compare-modal"><i class="fa-solid fa-xmark"></i></button>
+            <h2>Product Comparison</h2>
+            <div id="compare-table-wrapper"></div>
+        </div>
+    </div>
 
-
-    <!--Navbar Section-->
-
-    <div id="nav-container"></div>
-
-    <!--Footer Section-->
+    <!-- Footer -->
     <div id="footer-container"></div>
 
+    <!-- Wishlist Toast -->
+    <div id="wishlist-toast" style="
+        position:fixed; bottom:28px; right:24px;
+        background:#3b1d23; color:#fff;
+        padding:13px 20px; border-radius:12px;
+        display:flex; align-items:center; gap:12px;
+        font-family:'DM Sans',sans-serif; font-size:0.88rem; font-weight:500;
+        box-shadow:0 8px 24px rgba(59,29,35,0.22);
+        z-index:9999; opacity:0; transform:translateY(14px);
+        transition:opacity 0.3s, transform 0.3s; pointer-events:none;">
+        <i class="fa-solid fa-heart" style="color:#e8a0a8;"></i>
+        <span id="wishlist-toast-msg">Added to favourites!</span>
+    </div>
 
-    <!-- jquery-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Cart Toast -->
+    <div id="cart-toast" style="
+        position:fixed; bottom:28px; left:24px;
+        background: #3b1d23; color:#fff;
+        padding:13px 20px; border-radius:12px;
+        display:flex; align-items:center; gap:12px;
+        font-family:'DM Sans',sans-serif; font-size:0.88rem; font-weight:500;
+        box-shadow:0 8px 24px rgba(40,167,69,0.22);
+        z-index:9999; opacity:0; transform:translateY(14px);
+        transition:opacity 0.3s, transform 0.3s; pointer-events:none;">
+        <i class="fa-solid fa-check-circle" style="color:#fff;"></i>
+        <span id="cart-toast-msg">Added to cart!</span>
+    </div>
 
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="/main.js"></script>
 
-
-
     <script>
-
-        // Navbar and Footer
-
         $(function () {
-
-            $("#nav-container").load("/nav.html", function () {
-                initNavbar();
-                initNavFeatures();
-            });
-
+            $("#nav-container").load("/nav.html");
             $("#footer-container").load("/footer.html");
-
         });
 
-        
-const stylistData = {
-    "Maria.b": {
-        name: "Maria B.",
-        category: "Bridal and Wedding",
-        rating: "4.9 · 27 yrs",
-        photo: "./assets/Stylists/stylist 1.webp",
-        bio: "Expert in bridal elegance and wedding couture. 27 years of experience styling brides.",
-        collections: [
-            { title: "Bridal Elegance 1", img: "./assets/collection/Bridal1.jpg", price: "$2,800", fabric: "French Lace" },
-            { title: "Bridal Elegance 2", img: "./assets/collection/Bridal2.jpg", price: "$3,200", fabric: "Silk" },
-            { title: "Bridal Elegance 3", img: "./assets/collection/Bridal3.jpg", price: "$2,500", fabric: "Chiffon" },
-            { title: "Bridal Elegance 4", img: "./assets/collection/Bridal4.webp", price: "$4,000", fabric: "Organza" },
-            { title: "Bridal Elegance 5", img: "./assets/collection/Bridal5.jpg", price: "$3,500", fabric: "Tulle" },
-            { title: "Bridal Elegance 6", img: "./assets/collection/Bridal6.webp", price: "$3,800", fabric: "Satin" },
-            { title: "Bridal Elegance 7", img: "./assets/collection/Bridal7.jpg", price: "$4,500", fabric: "Georgette" },
-            { title: "Bridal Elegance 8", img: "./assets/collection/Bridal8.jpg", price: "$5,000", fabric: "Velvet" },
-            { title: "Bridal Elegance 9", img: "./assets/collection/Bridal9.jpg", price: "$4,200", fabric: "Crepe" },
-            { title: "Bridal Elegance 10", img: "./assets/collection/Bridal10.webp", price: "$3,900", fabric: "Lace" }
-
-        ]
-    },
-    "Zara Shahid": {
-        name: "Zara Shahid",
-        category: "Luxury Pret",
-        rating: "4.7 · 8 yrs",
-        photo: "./assets/Stylists/stylist4.webp",
-        bio: "Luxury pret designer with 8 years of experience creating elegant ready-to-wear pieces.",
-        collections: [
-            { title: "Luxury Line 1", img: "./assets/collection/luxury1.webp", price: "$450", fabric: "Raw Silk" },
-            { title: "Luxury Line 2", img: "./assets/collection/luxury2.webp", price: "$600", fabric: "Velvet" },
-            { title: "Luxury Line 3", img: "./assets/collection/luxury3.webp", price: "$350", fabric: "Cotton" },
-            { title: "Luxury Line 4", img: "./assets/collection/luxury4.jpg", price: "$500", fabric: "Linen" },
-            { title: "Luxury Line 5", img: "./assets/collection/luxury5.webp", price: "$550", fabric: "Silk" },
-            { title: "Luxury Line 6", img: "./assets/collection/luxury6.jpg", price: "$400", fabric: "Chiffon" },
-            { title: "Luxury Line 7", img: "./assets/collection/luxury7.jpg", price: "$450", fabric: "Georgette" },
-            { title: "Luxury Line 8", img: "./assets/collection/luxury8.webp", price: "$500", fabric: "Organza" },
-            { title: "Luxury Line 9", img: "./assets/collection/luxury9.webp", price: "$550", fabric: "Satin" },
-            { title: "Luxury Line 10", img: "./assets/collection/luxury10.webp", price: "$600", fabric: "Crepe" },
-            { title: "Luxury Line 11", img: "./assets/collection/luxury11.jpg", price: "$650", fabric: "Tulle" },
-            { title: "Luxury Line 12", img: "./assets/collection/luxury12.webp", price: "$700", fabric: "Lace" },
-            { title: "Luxury Line 13", img: "./assets/collection/luxury13.jpg", price: "$750", fabric: "Raw Silk" },
-            { title: "Luxury Line 14", img: "./assets/collection/luxury14.webp", price: "$800", fabric: "Velvet" }
-
-
-        ]
-    },
-    "hania": {
-        name: "Hania Mirza Couture",
-        category: "Couture & Formal",
-        rating: "4.8 · 15 yrs",
-        photo: "./assets/Stylists/stylist3.jfif",
-        bio: "Specializing in high-end couture and intricate formal wear for over 15 years.",
-        collections: [
-            { title: "Couture Gold 1", img: "./assets/collection/hania1.jpg", price: "$1,200", fabric: "Net" },
-            { title: "Couture Gold 2", img: "./assets/collection/hania2.jpg", price: "$1,500", fabric: "Mysuri" },
-            { title: "Couture Gold 3", img: "./assets/collection/hania3.jpg", price: "$900", fabric: "Organza" },
-            { title: "Couture Gold 4", img: "./assets/collection/hania4.jpg", price: "$2,000", fabric: "Handwoven Silk" },
-            { title: "Couture Gold 5", img: "./assets/collection/hania5.jpg", price: "$1,800", fabric: "Chiffon" },
-            { title: "Couture Gold 6", img: "./assets/collection/hania6.jpg", price: "$1,600", fabric: "Georgette" }
-        ]
-    },
-    "sofia": {
-        name: "Sofia Laurent",
-        category: "Contemporary Western",
-        rating: "4.6 · 10 yrs",
-        photo: "./assets/Stylists/stylist4.jfif",
-        bio: "Modern aesthetics meeting western silhouettes for the contemporary woman.",
-        collections: [
-            { title: "Modernist 1", img: "./assets/collection/sofia1.jpg", price: "$300", fabric: "Crepe" },
-            { title: "Modernist 2", img: "./assets/collection/sofia2.webp", price: "$450", fabric: "Tweed" },
-            { title: "Modernist 3", img: "./assets/collection/sofia3.webp", price: "$280", fabric: "Cotton Poplin" },
-            { title: "Modernist 4", img: "./assets/collection/sofia4.webp", price: "$350", fabric: "Linen" },
-            { title: "Modernist 5", img: "./assets/collection/sofia5.webp", price: "$400", fabric: "Silk Blend" },
-            { title: "Modernist 6", img: "./assets/collection/sodia6.webp", price: "$320", fabric: "Denim" }
-        ]
-    },
-    "ali": {
-        name: "Ali Khan",
-        category: "Men's Formal",
-        rating: "4.5 · 12 yrs",
-        photo: "./assets/Stylists/stylist4.webp",
-        bio: "Master tailor and designer focusing on sharp, bespoke men's formal attire.",
-        collections: [
-            { title: "Heritage Suit 1", img: "./assets/collection/ali1.webp", price: "$800", fabric: "Italian Wool" },
-            { title: "Heritage Suit 2", img: "./assets/collection/ali2.webp", price: "$1,100", fabric: "Cashmere Blend" },
-            { title: "Heritage Suit 3", img: "./assets/collection/ali3.webp", price: "$650", fabric: "Linen" }
-        ]
-    },
-    "amina": {
-        name: "Amina Qureshi",
-        category: "Bridal Accessories",
-        rating: "4.8 · 9 yrs",
-        photo: "./assets/Stylists/stylist6.jpg",
-        bio: "Crafting the final touches that complete every bride's dream look.",
-        collections: [
-            { title: "Ethereal Veil 1", img: "./assets/collection/amina1.jpg", price: "$200", fabric: "Soft Tulle" },
-            { title: "Ethereal Veil 2", img: "./assets/collection/amina2.webp", price: "$500", fabric: "Embroidered Net" },
-            { title: "Ethereal Veil 3", img: "./assets/collection/amina3.webp", price: "$350", fabric: "Lace" },
-            { title: "Ethereal Veil 4", img: "./assets/collection/amina4.jpg", price: "$400", fabric: "Silk" },
-            { title: "Ethereal Veil 5", img: "./assets/collection/amina5.webp", price: "$450", fabric: "Organza" },
-            { title: "Ethereal Veil 6", img: "./assets/collection/amina6.webp", price: "$300", fabric: "Chiffon" },
-            { title: "Ethereal Veil 7", img: "./assets/collection/amina7.webp", price: "$250", fabric: "Georgette" },
-            { title: "Ethereal Veil 8", img: "./assets/collection/amina8.jpg", price: "$400", fabric: "Velvet" },
-            { title: "Ethereal Veil 9", img: "./assets/collection/amina9.jpg", price: "$350", fabric: "Satin" },
-            { title: "Ethereal Veil 10", img: "./assets/collection/amina10.jpg", price: "$450", fabric: "Tulle" },
-            { title: "Ethereal Veil 11", img: "./assets/collection/amina11.webp", price: "$500", fabric: "Lace" },
-            { title: "Ethereal Veil 12", img: "./assets/collection/amina12.jpg", price: "$300", fabric: "Silk" }
-        ]
-    },
-    "karim": {
-        name: "Karim Ali",
-        category: "Street Style",
-        rating: "4.6 · 7 yrs",
-        photo: "./assets/Stylists/stylist7.webp",
-        bio: "Innovative urban fashion that blends comfort with high-street trends.",
-        collections: [
-            { title: "Urban Pulse 1", img: "./assets/collection/karim1.webp", price: "$150", fabric: "Denim" },
-            { title: "Urban Pulse 2", img: "./assets/collection/karim2.webp", price: "$120", fabric: "Heavy Jersey" },
-            { title: "Urban Pulse 3", img: "./assets/collection/karim3.webp", price: "$100", fabric: "Canvas" },
-            { title: "Urban Pulse 4", img: "./assets/collection/karim4.webp", price: "$130", fabric: "Corduroy" }
-        ]
-    },
-    "leila": {
-        name: "Leila Noor",
-        category: "Evening Wear",
-        rating: "4.9 · 11 yrs",
-        photo: "./assets/Stylists/stylist8.jpg",
-        bio: "Creating breathtaking evening gowns for red carpets and gala events.",
-        collections: [
-            { title: "Midnight Glow 1", img: "./assets/collection/leila1.webp", price: "$1,800", fabric: "Sequined Satin" },
-            { title: "Midnight Glow 2", img: "./assets/collection/leila2.webp", price: "$2,200", fabric: "Velvet" },
-            { title: "Midnight Glow 3", img: "./assets/collection/leila3.webp", price: "$1,600", fabric: "Chiffon Overlay" },
-            { title: "Midnight Glow 4", img: "./assets/collection/leila4.webp", price: "$2,500", fabric: "Silk" },
-        ]
-    }
-};
-
-// ================= 2. Stylist Profile System =================
-
-function initWishlistToCartLogic() {
-    $(document).on('click', '.move-btn', function () {
-        const $favItem = $(this).closest('.fav-item');
-
-        const itemData = {
-            name: $favItem.find('h3').text(),
-            price: $favItem.find('.price').text().replace('$', '').trim(),
-            img: $favItem.find('img').attr('src')
+        $(document).ready(function () {
+           const stylistData = {
+            "Maria.b": {
+                name: "Maria B.", category: "Bridal and Wedding", rating: "4.9 · 27 yrs",
+                photo: "./assets/Stylists/stylist 1.webp",
+                bio: "Expert in bridal elegance and wedding couture. 27 years of experience styling brides.",
+                collections: [
+                    { title: "Bridal Elegance 1", img: "./assets/collection/Bridal1.jpg", price: "Rs. 280,000", fabric: "French Lace", size: "S, M, L, XL", stylist: "Maria B.", badge: "New", category: "Bridal", oldPrice: "Rs. 320,000", description: "Elegant bridal gown with intricate French lace details." },
+                    { title: "Bridal Elegance 2", img: "./assets/collection/Bridal2.jpg", price: "Rs. 320,000", fabric: "Silk", size: "XS, S, M", stylist: "Maria B.", badge: "Premium", category: "Bridal", description: "Luxurious silk bridal gown with a classic silhouette." },
+                    { title: "Bridal Elegance 3", img: "./assets/collection/Bridal3.jpg", price: "Rs. 250,000", fabric: "Chiffon", size: "S, M, L", stylist: "Maria B.", badge: "Limited", category: "Bridal", description: "Lightweight chiffon gown with flowing train." },
+                    { title: "Bridal Elegance 4", img: "./assets/collection/Bridal4.webp", price: "Rs. 400,000", fabric: "Organza", size: "M, L, XL", stylist: "Maria B.", category: "Bridal", description: "Structured organza gown with architectural details." },
+                    { title: "Bridal Elegance 5", img: "./assets/collection/Bridal5.jpg", price: "Rs. 350,000", fabric: "Tulle", size: "S, M, L, XL", stylist: "Maria B.", badge: "Best Seller", category: "Bridal", description: "Romantic tulle gown with layered skirt." },
+                    { title: "Bridal Elegance 6", img: "./assets/collection/Bridal6.webp", price: "Rs. 380,000", fabric: "Satin", size: "XS, S, M", stylist: "Maria B.", category: "Bridal", description: "Classic satin gown with clean lines." },
+                    { title: "Bridal Elegance 7", img: "./assets/collection/Bridal7.jpg", price: "Rs. 380,000", fabric: "Satin", size: "XS, S, M", stylist: "Maria B.", category: "Bridal", description: "Timeless elegance for your special day." },
+                    { title: "Bridal Elegance 8", img: "./assets/collection/Bridal8.jpg", price: "Rs. 390,000", fabric: "Satin", size: "XS, S, M", stylist: "Maria B.", category: "Bridal", description: "Intricate embroidery on premium satin." },
+                    { title: "Bridal Elegance 9", img: "./assets/collection/Bridal9.jpg", price: "Rs. 410,000", fabric: "Net", size: "S, M", stylist: "Maria B.", category: "Bridal", description: "High-glamour bridal net piece." },
+                    { title: "Bridal Elegance 10", img: "./assets/collection/Bridal10.webp", price: "Rs. 450,000", fabric: "Silk", size: "S, M, L", stylist: "Maria B.", category: "Bridal", description: "Masterpiece silk ensemble." }
+                ]
+            },
+            "Zara Shahid": {
+                name: "Zara Shahid", category: "Luxury Pret", rating: "4.7 · 8 yrs",
+                photo: "./assets/Stylists/stylist2.jfif",
+                bio: "Luxury pret designer creating elegant ready-to-wear pieces.",
+                collections: [
+                    { title: "Luxury Line 1", img: "./assets/collection/luxury1.webp", price: "Rs. 45,000", fabric: "Raw Silk", size: "XS–XL", stylist: "Zara Shahid", category: "Luxury" },
+                    { title: "Luxury Line 2", img: "./assets/collection/luxury2.webp", price: "Rs. 60,000", fabric: "Velvet", size: "S–XL", stylist: "Zara Shahid", category: "Luxury" },
+                    { title: "Luxury Line 3", img: "./assets/collection/luxury3.webp", price: "Rs. 35,000", fabric: "Cotton", size: "XS–L", stylist: "Zara Shahid", category: "Luxury" },
+                    { title: "Luxury Line 4", img: "./assets/collection/luxury4.jpg", price: "Rs. 50,000", fabric: "Linen", size: "S–XL", stylist: "Zara Shahid", category: "Luxury" },
+                    { title: "Luxury Line 5", img: "./assets/collection/luxury5.webp", price: "Rs. 55,000", fabric: "Silk", size: "S–XL", stylist: "Zara Shahid", category: "Luxury" },
+                    { title: "Luxury Line 6", img: "./assets/collection/luxury6.jpg", price: "Rs. 52,000", fabric: "Chiffon", size: "S–XL", stylist: "Zara Shahid", category: "Luxury" },
+                    { title: "Luxury Line 7", img: "./assets/collection/luxury7.jpg", price: "Rs. 48,000", fabric: "Organza", size: "S–XL", stylist: "Zara Shahid", category: "Luxury" },
+                    { title: "Luxury Line 8", img: "./assets/collection/luxury8.webp", price: "Rs. 49,000", fabric: "Cotton Silk", size: "S–XL", stylist: "Zara Shahid", category: "Luxury" },
+                    { title: "Luxury Line 9", img: "./assets/collection/luxury9.webp", price: "Rs. 51,000", fabric: "Silk", size: "S–XL", stylist: "Zara Shahid", category: "Luxury" },
+                    { title: "Luxury Line 10", img: "./assets/collection/luxury10.webp", price: "Rs. 53,000", fabric: "Net", size: "S–XL", stylist: "Zara Shahid", category: "Luxury" },
+                    { title: "Luxury Line 11", img: "./assets/collection/luxury11.jpg", price: "Rs. 54,000", fabric: "Raw Silk", size: "S–XL", stylist: "Zara Shahid", category: "Luxury" },
+                    { title: "Luxury Line 12", img: "./assets/collection/luxury12.webp", price: "Rs. 56,000", fabric: "Linen", size: "S–XL", stylist: "Zara Shahid", category: "Luxury" },
+                    { title: "Luxury Line 13", img: "./assets/collection/luxury13.jpg", price: "Rs. 58,000", fabric: "Velvet", size: "S–XL", stylist: "Zara Shahid", category: "Luxury" },
+                    { title: "Luxury Line 14", img: "./assets/collection/luxury14.webp", price: "Rs. 60,000", fabric: "Satin", size: "S–XL", stylist: "Zara Shahid", category: "Luxury" }
+                ]
+            },
+            "hania": {
+                name: "Hania Mirza Couture", category: "Couture & Formal", rating: "4.8 · 15 yrs",
+                photo: "./assets/Stylists/stylist3.jfif",
+                bio: "Specializing in high-end couture for over 15 years.",
+                collections: [
+                    { title: "Couture Gold 1", img: "./assets/collection/hania1.jpg", price: "Rs. 120,000", fabric: "Net", size: "S, M, L", stylist: "Hania Mirza Couture", category: "Couture" },
+                    { title: "Couture Gold 2", img: "./assets/collection/hania2.jpg", price: "Rs. 150,000", fabric: "Mysuri", size: "M, L, XL", stylist: "Hania Mirza Couture", category: "Couture" },
+                    { title: "Couture Gold 3", img: "./assets/collection/hania3.jpg", price: "Rs. 90,000", fabric: "Organza", size: "S, M", stylist: "Hania Mirza Couture", category: "Couture" },
+                    { title: "Couture Gold 4", img: "./assets/collection/hania4.jpg", price: "Rs. 200,000", fabric: "Handwoven Silk", size: "S–XL", stylist: "Hania Mirza Couture", category: "Couture" },
+                    { title: "Couture Gold 5", img: "./assets/collection/hania5.jpg", price: "Rs. 180,000", fabric: "Silk", size: "S, M, L", stylist: "Hania Mirza Couture", category: "Couture" },
+                    { title: "Couture Gold 6", img: "./assets/collection/hania6.jpg", price: "Rs. 220,000", fabric: "Net", size: "S, M, L", stylist: "Hania Mirza Couture", category: "Couture" }
+                ]
+            },
+            "sofia": {
+                name: "Sofia Laurent", category: "Contemporary Western", rating: "4.6 · 10 yrs",
+                photo: "./assets/Stylists/stylist4.jfif",
+                bio: "Modern aesthetics meeting western silhouettes.",
+                collections: [
+                    { title: "Modernist 1", img: "./assets/collection/sofia1.jpg", price: "Rs. 30,000", fabric: "Crepe", size: "XS–XL", stylist: "Sofia Laurent", category: "Western" },
+                    { title: "Modernist 2", img: "./assets/collection/sofia2.webp", price: "Rs. 45,000", fabric: "Tweed", size: "S–XL", stylist: "Sofia Laurent", category: "Western" },
+                    { title: "Modernist 3", img: "./assets/collection/sofia3.webp", price: "Rs. 28,000", fabric: "Cotton Poplin", size: "XS–L", stylist: "Sofia Laurent", category: "Western" },
+                    { title: "Modernist 4", img: "./assets/collection/sofia4.webp", price: "Rs. 35,000", fabric: "Linen", size: "S–XL", stylist: "Sofia Laurent", category: "Western" },
+                    { title: "Modernist 5", img: "./assets/collection/sofia5.webp", price: "Rs. 32,000", fabric: "Cotton", size: "S–XL", stylist: "Sofia Laurent", category: "Western" },
+                    { title: "Modernist 6", img: "./assets/collection/sodia6.webp", price: "Rs. 38,000", fabric: "Silk", size: "S–XL", stylist: "Sofia Laurent", category: "Western" }
+                ]
+            },
+            "ali": {
+                name: "Ali Khan", category: "Men's Formal", rating: "4.5 · 12 yrs",
+                photo: "./assets/Stylists/stylist4.webp",
+                bio: "Master tailor focusing on bespoke men's formal attire.",
+                collections: [
+                    { title: "Heritage Suit 1", img: "./assets/collection/ali1.webp", price: "Rs. 80,000", fabric: "Italian Wool", size: "S–XL", stylist: "Ali Khan", category: "Men's" },
+                    { title: "Heritage Suit 2", img: "./assets/collection/ali2.webp", price: "Rs. 110,000", fabric: "Cashmere Blend", size: "M–XXL", stylist: "Ali Khan", category: "Men's" },
+                    { title: "Heritage Suit 3", img: "./assets/collection/ali3.webp", price: "Rs. 65,000", fabric: "Linen", size: "S–XL", stylist: "Ali Khan", category: "Men's" },
+                    { title: "Classic Formal 4", img: "./assets/collection/men1.jfif", price: "Rs. 70,000", fabric: "Wool", size: "M, L", stylist: "Ali Khan", category: "Men's" },
+                    { title: "Classic Formal 5", img: "./assets/collection/mens.jfif", price: "Rs. 75,000", fabric: "Cotton Blend", size: "L, XL", stylist: "Ali Khan", category: "Men's" }
+                ]
+            },
+            "amina": {
+                name: "Amina Qureshi", category: "Bridal Accessories", rating: "4.8 · 9 yrs",
+                photo: "./assets/Stylists/stylist6.jpg",
+                bio: "Crafting the final touches for every bride's dream look.",
+                collections: [
+                    { title: "Ethereal Veil 1", img: "./assets/collection/amina1.jpg", price: "Rs. 20,000", category: "Accessories" },
+                    { title: "Ethereal Veil 2", img: "./assets/collection/amina2.webp", price: "Rs. 50,000", category: "Accessories" },
+                    { title: "Ethereal Veil 3", img: "./assets/collection/amina3.webp", price: "Rs. 35,000", category: "Accessories" },
+                    { title: "Bridal Clutch", img: "./assets/collection/amina4.jpg", price: "Rs. 15,000", category: "Accessories" },
+                    { title: "Lace Headpiece", img: "./assets/collection/amina5.webp", price: "Rs. 18,000", category: "Accessories" },
+                    { title: "Jeweled Anklet 1", img: "./assets/collection/amina6.webp", price: "Rs. 9,000", category: "Accessories" },
+                    { title: "Silver Necklace", img: "./assets/collection/amina7.webp", price: "Rs. 22,000", category: "Accessories" },
+                    { title: "Traditional Anklet 2", img: "./assets/collection/amina8.jpg", price: "Rs. 11,000", category: "Accessories" },
+                    { title: "Floral Anklet 3", img: "./assets/collection/amina9.jpg", price: "Rs. 10,000", category: "Accessories" },
+                    { title: "Gold Anklet 4", img: "./assets/collection/amina10.jpg", price: "Rs. 13,000", category: "Accessories" },
+                    { title: "Pearl Bracelet 1", img: "./assets/collection/amina11.webp", price: "Rs. 14,000", category: "Accessories" },
+                    { title: "Pearl Bracelet 2", img: "./assets/collection/amina12.jpg", price: "Rs. 16,000", category: "Accessories" },
+                    { title: "Hand Harness", img: "./assets/collection/amina13.webp", price: "Rs. 12,000", category: "Accessories" }
+                ]
+            },
+            "karim": {
+                name: "Karim Ali", category: "Street Style", rating: "4.6 · 7 yrs",
+                photo: "./assets/Stylists/stylist7.webp",
+                bio: "Innovative urban fashion that blends comfort with high-street trends.",
+                collections: [
+                    { title: "Urban Pulse 1", img: "./assets/collection/karim1.webp", price: "Rs. 15,000", fabric: "Denim", size: "S, M, L, XL", stylist: "Karim Ali", badge: "Trending", category: "Street", description: "Oversized denim jacket with distressed details." },
+                    { title: "Urban Pulse 2", img: "./assets/collection/karim2.webp", price: "Rs. 12,000", fabric: "Heavy Jersey", size: "XS–XL", stylist: "Karim Ali", category: "Street", description: "Graphic hoodie with street art prints." },
+                    { title: "Urban Pulse 3", img: "./assets/collection/karim3.webp", price: "Rs. 10,000", fabric: "Canvas", size: "S–XL", stylist: "Karim Ali", category: "Street", description: "Cargo pants with multiple pockets. Utilitarian style." },
+                    { title: "Urban Pulse 4", img: "./assets/collection/karim4.webp", price: "Rs. 13,000", fabric: "Corduroy", size: "S, M, L", stylist: "Karim Ali", category: "Street", description: "Corduroy overshirt. Perfect layering piece." }
+                ]
+            },
+            "leila": {
+                name: "Leila Noor", category: "Evening Wear", rating: "4.9 · 11 yrs",
+                photo: "./assets/Stylists/stylist8.jpg",
+                bio: "Creating breathtaking evening gowns for red carpets and gala events.",
+                collections: [
+                    { title: "Midnight Glow 1", img: "./assets/collection/leila1.webp", price: "Rs. 180,000", fabric: "Sequined Satin", size: "XS–XL", stylist: "Leila Noor", badge: "Exclusive", category: "Evening", description: "Sequin-embellished gown that catches every light." },
+                    { title: "Midnight Glow 2", img: "./assets/collection/leila2.webp", price: "Rs. 220,000", fabric: "Velvet", size: "S–XL", stylist: "Leila Noor", category: "Evening", description: "Rich velvet gown with dramatic train." },
+                    { title: "Midnight Glow 3", img: "./assets/collection/leila3.webp", price: "Rs. 160,000", fabric: "Chiffon Overlay", size: "XS–L", stylist: "Leila Noor", category: "Evening", description: "Layered chiffon gown. Ethereal and romantic." },
+                    { title: "Midnight Glow 4", img: "./assets/collection/leila4.webp", price: "Rs. 250,000", fabric: "Silk", size: "S–XL", stylist: "Leila Noor", badge: "Limited", category: "Evening", description: "Silk column gown with crystal details. Red carpet ready." }
+                ]
+            }        
         };
 
-        const cartItemHTML = `
-            <div class="cart-item">
-                <img src="${itemData.img}">
-                <div class="cart-item-details">
-                    <h4 class="dress-name">${itemData.name}</h4>
-                    <div class="cart-bottom">
-                        <div class="quantity-box">
-                            <button class="qty-minus">−</button>
-                            <span class="qty-value">1</span>
-                            <button class="qty-plus">+</button>
-                        </div>
-                        <p class="price" data-price="${itemData.price}">$${itemData.price}</p>
-                        <i class="fa-solid fa-trash remove-item"></i>
-                    </div>
-                </div>
-            </div>`;
+        // Cart Functions
+        function getCart() {
+            return JSON.parse(localStorage.getItem('cart')) || [];
+        }
 
-        $('.cart-sidebar .cart-items-container').append(cartItemHTML);
-        $favItem.fadeOut();
-        calculateGrandTotal(); // Updates the bottom total immediately
+        function saveCart(cart) {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
 
-        // Toggle Sections
-        $(".stylist, .stylist-testimonials, .booking-section, .slider-section").fadeOut(300, () => {
-            $("#stylist-profile").fadeIn();
-            $("html, body").animate({ scrollTop: 0 }, 500);
-        });
+        function parsePrice(priceStr) {
+            return parseInt(String(priceStr).replace(/Rs\.\s?|,/g, '')) || 0;
+        }
 
-        // Update URL
-        const cleanUrl = `${window.location.pathname}?stylist=${encodeURIComponent(key)}`;
-        window.history.pushState({ path: cleanUrl }, "", cleanUrl);
-    });
+        function updateCartBadge() {
+            const cart = getCart();
+            const totalQty = cart.reduce((sum, i) => sum + i.qty, 0);
+            const $badge = $('#cart-badge');
+            if ($badge.length) {
+                totalQty > 0 ? $badge.text(totalQty).css('display', 'flex') : $badge.hide();
+            }
+        }
 
-    // Back Button
-    $("#back-to-stylists").on("click", function () {
-        $("#stylist-profile").fadeOut(300, () => {
-            $(".stylist, .stylist-testimonials, .booking-section, .slider-section").fadeIn();
-            window.history.pushState({}, "", window.location.pathname);
-        });
-    });
-}
+        function showCartToast(msg) {
+            const $t = $("#cart-toast");
+            $("#cart-toast-msg").text(msg);
+            $t.css({ opacity: 1, transform: "translateY(0)", pointerEvents: "auto" });
+            clearTimeout(window._cartToast);
+            window._cartToast = setTimeout(() => {
+                $t.css({ opacity: 0, transform: "translateY(14px)", pointerEvents: "none" });
+            }, 2400);
+        }
 
+        function addToCart(item, stylistKey, index, qty = 1) {
+            const stylist = stylistData[stylistKey];
+            const cart = getCart();
+            
+            const cartItem = {
+                id: stylistKey + "_" + index,
+                name: item.title,
+                category: item.category || stylist.category,
+                price: item.price,
+                image: item.img,
+                qty: qty,
+                stylist: stylist.name,
+                fabric: item.fabric,
+                size: item.size
+            };
 
+            const existingIndex = cart.findIndex(c => c.id === cartItem.id);
+            
+            if (existingIndex > -1) {
+                cart[existingIndex].qty += qty;
+            } else {
+                cart.push(cartItem);
+            }
 
-        function initStylistProfileSystem() {
-            // 1. CLICK ON STYLIST CARD
-            $(document).on("click", ".main-stylist-card", function () {
-                const key = $(this).data("stylist");
-                const data = stylistData[key];
+            saveCart(cart);
+            updateCartBadge();
+            showCartToast('Added to cart!');
+            
+            // Open cart sidebar if function exists
+            if (typeof window.openCart === 'function') {
+                window.openCart();
+            }
+        }
 
-                if (!data) {
-                    console.error("Stylist data not found for:", key);
-                    return;
-                }
+        // Wishlist Functions
+        function getWishlist() {
+            return JSON.parse(localStorage.getItem("wishlist")) || [];
+        }
 
-                // Fill Profile Header
-                $("#profile-photo").attr("src", data.photo);
-                $("#profile-name").text(data.name);
-                $("#profile-category").text(data.category);
-                $("#profile-rating").html(`<i class="fa-solid fa-star"></i> ${data.rating}`);
-                $("#profile-bio").text(data.bio);
-                $(".stylist-collection-heading").text(`${data.name}'s Collections`);
+        function saveWishlist(wl) {
+            localStorage.setItem("wishlist", JSON.stringify(wl));
+            const total = wl.length;
+            const $badge = $("#wishlist-badge");
+            if ($badge.length) {
+                total > 0 ? $badge.text(total).css("display", "flex") : $badge.hide();
+            }
+        }
 
-                // Fill Collections Grid
-                let collectionHtml = "";
-                data.collections.forEach((item) => {
-                    collectionHtml += `
-                <div class="collection-item">
-                    <img src="${item.img}" alt="${item.title}">
-                    <div class="collection-overlay">
-                        <div class="overlay-left">
-                            <span>${item.fabric}</span>
-                        </div>
-                        <div class="overlay-right">
-                            <i class="fa-regular fa-heart"></i>
-                        </div>
-                    </div>
-                    <div class="collection-details" style="padding: 10px; background: #fff;">
-                        <h4 style="margin:0; font-size: 1rem;">${item.title}</h4>
-                        <p style="margin:5px 0 0; color: #888;">${item.price}</p>
-                    </div>
-                </div>`;
+        function isWishlisted(stylistKey, index) {
+            return getWishlist().some(w => w.id === stylistKey + "_" + index);
+        }
+
+        function toggleWishlist(stylistKey, index) {
+            const item = stylistData[stylistKey].collections[index];
+            const id = stylistKey + "_" + index;
+            let wl = getWishlist();
+
+            if (wl.some(w => w.id === id)) {
+                wl = wl.filter(w => w.id !== id);
+                saveWishlist(wl);
+                return false; 
+            } else {
+                wl.push({
+                    id,
+                    name: item.title,
+                    category: stylistData[stylistKey].category,
+                    price: item.price,
+                    image: item.img
                 });
-                $("#profile-collections").html(collectionHtml);
+                saveWishlist(wl);
+                return true; 
+            }
+        }
 
-                // UI Transition
-                $(".stylist, .stylist-testimonials, .booking-section").fadeOut(300, () => {
-                    $("#stylist-profile").fadeIn();
-                    $("html, body").animate({ scrollTop: 0 }, 500);
-                });
+        function showWishlistToast(msg) {
+            const $t = $("#wishlist-toast");
+            $("#wishlist-toast-msg").text(msg);
+            $t.css({ opacity: 1, transform: "translateY(0)", pointerEvents: "auto" });
+            clearTimeout(window._wlToast);
+            window._wlToast = setTimeout(() => {
+                $t.css({ opacity: 0, transform: "translateY(14px)", pointerEvents: "none" });
+            }, 2400);
+        }
 
-                // Update URL (Optional: allows bookmarking the profile)
-                const cleanUrl = `${window.location.pathname}?stylist=${encodeURIComponent(key)}`;
-                window.history.pushState({ path: cleanUrl }, "", cleanUrl);
+        // Compare Functions
+        const MAX_COMPARE = 4;
+        let compareList = []; 
+
+        function updateCompareBar() {
+            const $bar   = $('#compare-bar');
+            const $slots = $('#compareSlots');
+            $slots.empty();
+
+            if (compareList.length === 0) {
+                $bar.removeClass('active');
+                return;
+            }
+            $bar.addClass('active');
+
+            compareList.forEach((item, idx) => {
+                $slots.append(`
+                    <div class="compare-slot">
+                        <img src="${item.img}" alt="${item.title}">
+                        <span>${item.title}</span>
+                        <i class="fa-solid fa-xmark remove-compare" data-idx="${idx}"></i>
+                    </div>`);
             });
 
-            // 2. BACK BUTTON LOGIC
-            $("#back-to-stylists").on("click", function () {
-                $("#stylist-profile").fadeOut(300, () => {
-                    $(".stylist, .stylist-testimonials, .booking-section").fadeIn();
-                    window.history.pushState({}, "", window.location.pathname);
-                });
+            $('.remove-compare').on('click', function () {
+                const idx = parseInt($(this).data('idx'));
+                const removed = compareList.splice(idx, 1)[0];
+                $(`.card-compare-btn[data-title="${removed.title}"]`).removeClass('compare-active');
+                updateCompareBar();
             });
         }
 
-        // Call the function once the document is ready
+        function toggleCompare(item, $btn) {
+            const existing = compareList.findIndex(c => c.title === item.title);
+            if (existing > -1) {
+                compareList.splice(existing, 1);
+                $btn.removeClass('compare-active');
+            } else {
+                if (compareList.length >= MAX_COMPARE) {
+                    alert(`You can compare up to ${MAX_COMPARE} items at a time.`);
+                    return;
+                }
+                compareList.push(item);
+                $btn.addClass('compare-active');
+            }
+            updateCompareBar();
+        }
+
+        function buildCompareModal() {
+            if (compareList.length < 2) {
+                alert('Please select at least 2 items to compare.');
+                return;
+            }
+
+            const rows = ['image', 'stylist', 'price', 'fabric', 'size'];
+            const labels = { image: 'Photo', stylist: 'Stylist', price: 'Price', fabric: 'Fabric', size: 'Available Sizes' };
+
+            let thead = '<tr><th>Detail</th>' + compareList.map(i => `<th>${i.title}</th>`).join('') + '</tr>';
+            let tbody = rows.map(row => {
+                let cells = compareList.map(item => {
+                    if (row === 'image') return `<td><img src="${item.img}" alt="${item.title}"></td>`;
+                    return `<td>${item[row]}</td>`;
+                }).join('');
+                return `<tr><td class="row-label">${labels[row]}</td>${cells}</tr>`;
+            }).join('');
+
+            $('#compare-table-wrapper').html(`<table class="compare-table"><thead>${thead}</thead><tbody>${tbody}</tbody></table>`);
+            $('#compare-modal').addClass('active');
+        }
+
+        // Build Collection HTML
+        function buildCollectionHtml(collections, stylistKey) {
+            return collections.map((item, index) => {
+                const favActive = isWishlisted(stylistKey, index);
+                const inCompare = compareList.some(c => c.title === item.title);
+                
+                return `
+                    <div class="collection-item">
+                        <div class="product-image">
+                            ${item.badge ? `<span class="badge-new">${item.badge}</span>` : ''}
+                            
+                            <div class="card-actions">
+                                <button class="card-action-btn card-fav-btn ${favActive ? 'fav-active' : ''}"
+                                    data-type="${stylistKey}" data-index="${index}" title="Add to Favourites">
+                                    <i class="fa-${favActive ? 'solid' : 'regular'} fa-heart"></i>
+                                </button>
+                                <button class="card-action-btn card-compare-btn ${inCompare ? 'compare-active' : ''}"
+                                    data-type="${stylistKey}" data-index="${index}" data-title="${item.title}" title="Compare">
+                                    <i class="fa-solid fa-code-compare"></i>
+                                </button>
+                                <button class="card-action-btn add-to-cart-btn"
+                                    data-type="${stylistKey}" data-index="${index}" title="Add to Cart">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                </button>
+                                <button class="card-action-btn view-detail-btn"
+                                    data-type="${stylistKey}" data-index="${index}" title="Quick View">
+                                    <i class="fa-regular fa-eye"></i>
+                                </button>
+                            </div>
+                            
+                            <img src="${item.img}" alt="${item.title}">
+                        </div>
+                        
+                        <div class="product-content">
+                            <div class="product-category">${item.category || stylistData[stylistKey].category}</div>
+                            <h3 class="product-title">${item.title}</h3>
+                            <div class="product-price">
+                                ${item.oldPrice ? `<span class="old-price">${item.oldPrice}</span>` : ''}
+                                <span class="new-price">${item.price}</span>
+                            </div>
+                            <div class="fabric-badge">
+                                <i class="fa-solid fa-vest"></i> ${item.fabric}
+                            </div>
+                        </div>
+                    </div>`;
+            }).join('');
+        }
+
+        // Show Product Detail Modal
+        let currentDetailItem = null;
+        let currentDetailStylist = null;
+        let currentDetailIndex = null;
+
+        function showProductDetail(stylistKey, index) {
+            const stylist = stylistData[stylistKey];
+            const item = stylist.collections[index];
+            
+            currentDetailItem = item;
+            currentDetailStylist = stylistKey;
+            currentDetailIndex = index;
+
+            // Set modal content
+            $('#detailMainImage').attr('src', item.img);
+            $('#detailCategory').text(item.category || stylist.category);
+            $('#detailTitle').text(item.title);
+            $('#detailPrice').text(item.price);
+            if (item.oldPrice) {
+                $('#detailOldPrice').text(item.oldPrice).show();
+            } else {
+                $('#detailOldPrice').hide();
+            }
+            $('#detailFabric').html(`<i class="fa-solid fa-vest"></i> Fabric: ${item.fabric}`);
+            $('#detailDescription').text(item.description || `A beautiful ${item.title} from ${stylist.name}'s collection.`);
+            $('#detailStylist').text(stylist.name);
+            $('#detailSize').text(item.size);
+            $('#detailFabricMeta').text(item.fabric);
+            $('#detailDownloadBtn').attr('href', `./assets/details/${item.title.replace(/\s+/g,'-')}.pdf`);
+
+            // Set thumbnails (if multiple images available)
+            const thumbnails = $('#detailThumbnails');
+            thumbnails.empty();
+            
+            // Main image as thumbnail
+            thumbnails.append(`
+                <div class="detail-thumb active">
+                    <img src="${item.img}" alt="">
+                </div>
+            `);
+            
+            // Add alternate image if available (for accessories)
+            if (item.hoverImg) {
+                thumbnails.append(`
+                    <div class="detail-thumb">
+                        <img src="${item.hoverImg}" alt="">
+                    </div>
+                `);
+            }
+
+            // Thumbnail click handler
+            $('.detail-thumb').on('click', function() {
+                $('.detail-thumb').removeClass('active');
+                $(this).addClass('active');
+                $('#detailMainImage').attr('src', $(this).find('img').attr('src'));
+            });
+
+            // Wishlist button state
+            const isFav = isWishlisted(stylistKey, index);
+            const $wishlistBtn = $('#detailWishlistBtn');
+            if (isFav) {
+                $wishlistBtn.html('<i class="fa-solid fa-heart"></i> Remove from Wishlist');
+            } else {
+                $wishlistBtn.html('<i class="fa-regular fa-heart"></i> Add to Wishlist');
+            }
+
+            // Show modal
+            $('#productDetailModal').addClass('active');
+            $('body').css('overflow', 'hidden');
+        }
+
+        // Show Profile
+        function showProfile(key) {
+            const data = stylistData[key];
+            if (!data) return;
+
+            // Update breadcrumb
+            $('#breadcrumbStylist').text(data.name);
+            $('#breadcrumbCurrent').text('Collection');
+            $('#breadcrumbBar').show();
+
+            $('#profile-photo').attr('src', data.photo);
+            $('#profile-name').text(data.name);
+            $('#profile-category').text(data.category);
+            $('#profile-rating').html(`<i class="fa-solid fa-star" style="color:#b3804d"></i> ${data.rating}`);
+            $('#profile-bio').text(data.bio);
+            $('#collection-heading').text(`${data.name}'s Collections`);
+            $('#profile-collections').html(buildCollectionHtml(data.collections, key));
+
+            // Favourite button handler
+            $('#profile-collections').find('.card-fav-btn').on('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const $btn = $(this);
+                const type = $btn.data('type');
+                const index = parseInt($btn.data('index'));
+                const added = toggleWishlist(type, index);
+
+                const $icon = $btn.find('i');
+                if (added) {
+                    $icon.removeClass('fa-regular').addClass('fa-solid');
+                    $btn.addClass('fav-active');
+                    showWishlistToast('Added to favourites!');
+                } else {
+                    $icon.removeClass('fa-solid').addClass('fa-regular');
+                    $btn.removeClass('fav-active');
+                    showWishlistToast('Removed from favourites.');
+                }
+            });
+
+            // Compare button handler
+            $('#profile-collections').find('.card-compare-btn').on('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const $btn = $(this);
+                const type = $btn.data('type');
+                const index = parseInt($btn.data('index'));
+                const item = data.collections[index];
+                toggleCompare(item, $btn);
+            });
+
+            // Add to Cart button handler for card actions
+            $('#profile-collections').find('.add-to-cart-btn, .add-to-cart-card-btn').on('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const $btn = $(this);
+                const type = $btn.data('type');
+                const index = parseInt($btn.data('index'));
+                const item = data.collections[index];
+                
+                // Add to cart with quantity 1
+                addToCart(item, type, index, 1);
+                
+                // Visual feedback
+                const originalHtml = $btn.html();
+                const originalBg = $btn.css('background');
+                $btn.html('<i class="fa-solid fa-check"></i>').css('background', '#28a745').addClass('added-to-cart');
+                setTimeout(() => {
+                    $btn.html(originalHtml).css('background', originalBg).removeClass('added-to-cart');
+                }, 1500);
+            });
+
+            // Quick View button handler
+            $('#profile-collections').find('.view-detail-btn, .quick-view-btn').on('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const $btn = $(this);
+                const type = $btn.data('type');
+                const index = parseInt($btn.data('index'));
+                showProductDetail(type, index);
+            });
+
+            $(".stylist, .stylist-testimonials, .booking-section, .slider-section").fadeOut(300, () => {
+                $("#stylist-profile").fadeIn();
+                $("html, body").animate({ scrollTop: 0 }, 500);
+            });
+
+            const cleanUrl = `${window.location.pathname}?stylist=${encodeURIComponent(key)}`;
+            window.history.pushState({ stylist: key }, "", cleanUrl);
+        }
+
+        // Hero Slider
+        function initSlider() {
+            const $track  = $('#sliderTrack');
+            const $dots   = $('#sliderDots');
+            const total   = $track.children('.slide').length;
+            let current   = 0;
+            let timer;
+
+            for (let i = 0; i < total; i++) {
+                $dots.append(`<button class="slider-dot${i === 0 ? ' active' : ''}" data-i="${i}"></button>`);
+            }
+
+            function goTo(idx) {
+                current = (idx + total) % total;
+                $track.css('transform', `translateX(-${current * 100}%)`);
+                $('.slider-dot').removeClass('active').eq(current).addClass('active');
+            }
+
+            function autoPlay() { timer = setInterval(() => goTo(current + 1), 4500); }
+
+            $('#slider-next').on('click', () => { clearInterval(timer); goTo(current + 1); autoPlay(); });
+            $('#slider-prev').on('click', () => { clearInterval(timer); goTo(current - 1); autoPlay(); });
+            $(document).on('click', '.slider-dot', function () {
+                clearInterval(timer);
+                goTo(parseInt($(this).data('i')));
+                autoPlay();
+            });
+
+            autoPlay();
+        }
+
+        // Document Ready
         $(document).ready(function () {
-            initStylistProfileSystem();
+            // Load nav & footer
+            $("#nav-container").load("/nav.html", function () {
+                if (typeof initNavbar === 'function') initNavbar();
+                if (typeof initNavFeatures === 'function') initNavFeatures();
+                updateCartBadge(); // Update cart badge after nav loads
+            });
+            $("#footer-container").load("/footer.html");
+
+            // Hero slider
+            initSlider();
+
+            // Stylist card click
+            $(document).on("click", ".main-stylist-card", function () {
+                showProfile($(this).data("stylist"));
+            });
+
+            // Back button
+            $("#back-to-stylists").on("click", function () {
+                $("#stylist-profile").fadeOut(300, () => {
+                    $(".stylist, .stylist-testimonials, .booking-section, .slider-section").fadeIn();
+                    $('#breadcrumbBar').hide();
+                    window.history.pushState({}, "", window.location.pathname);
+                });
+            });
+
+            // Load profile from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlStylist = urlParams.get('stylist');
+            if (urlStylist && stylistData[urlStylist]) {
+                showProfile(urlStylist);
+            }
+
+            // Compare bar buttons
+            $('#compare-now-btn').on('click', buildCompareModal);
+            $('#clear-compare-btn').on('click', function () {
+                compareList = [];
+                $('.card-compare-btn').removeClass('compare-active');
+                updateCompareBar();
+            });
+
+            // Compare modal close
+            $('#close-compare-modal').on('click', () => $('#compare-modal').removeClass('active'));
+            $('#compare-modal').on('click', function (e) {
+                if ($(e.target).is('#compare-modal')) $(this).removeClass('active');
+            });
+
+            // Product detail modal close
+            $('#closeDetailModal').on('click', function() {
+                $('#productDetailModal').removeClass('active');
+                $('body').css('overflow', 'auto');
+            });
+
+            $('#productDetailModal').on('click', function(e) {
+                if ($(e.target).is('#productDetailModal')) {
+                    $('#productDetailModal').removeClass('active');
+                    $('body').css('overflow', 'auto');
+                }
+            });
+
+            // Detail wishlist button
+            $('#detailWishlistBtn').on('click', function() {
+                if (currentDetailStylist && currentDetailIndex !== null) {
+                    const added = toggleWishlist(currentDetailStylist, currentDetailIndex);
+                    if (added) {
+                        $(this).html('<i class="fa-solid fa-heart"></i> Remove from Wishlist');
+                        showWishlistToast('Added to favourites!');
+                        
+                        // Update card button if visible
+                        $(`.card-fav-btn[data-type="${currentDetailStylist}"][data-index="${currentDetailIndex}"]`)
+                            .addClass('fav-active')
+                            .find('i')
+                            .removeClass('fa-regular')
+                            .addClass('fa-solid');
+                    } else {
+                        $(this).html('<i class="fa-regular fa-heart"></i> Add to Wishlist');
+                        showWishlistToast('Removed from favourites.');
+                        
+                        // Update card button if visible
+                        $(`.card-fav-btn[data-type="${currentDetailStylist}"][data-index="${currentDetailIndex}"]`)
+                            .removeClass('fav-active')
+                            .find('i')
+                            .removeClass('fa-solid')
+                            .addClass('fa-regular');
+                    }
+                }
+            });
+
+            // Detail compare button
+            $('#detailCompareBtn').on('click', function() {
+                if (currentDetailItem && currentDetailStylist && currentDetailIndex !== null) {
+                    const $cardBtn = $(`.card-compare-btn[data-type="${currentDetailStylist}"][data-index="${currentDetailIndex}"]`);
+                    toggleCompare(currentDetailItem, $cardBtn);
+                    
+                    if ($cardBtn.hasClass('compare-active')) {
+                        $(this).html('<i class="fa-solid fa-code-compare"></i> Remove from Compare');
+                    } else {
+                        $(this).html('<i class="fa-solid fa-code-compare"></i> Compare');
+                    }
+                }
+            });
+
+            // Detail add to cart button
+            $('#detailAddToCartBtn').on('click', function() {
+                if (currentDetailItem && currentDetailStylist && currentDetailIndex !== null) {
+                    addToCart(currentDetailItem, currentDetailStylist, currentDetailIndex, 1);
+                    
+                    // Visual feedback
+                    const originalHtml = $(this).html();
+                    $(this).html('<i class="fa-solid fa-check"></i> Added to Cart!');
+                    setTimeout(() => {
+                        $(this).html(originalHtml);
+                    }, 1500);
+                }
+            });
+
+            // Booking form
+            $('#bookingForm').on('submit', function (e) {
+                e.preventDefault();
+                $(this)[0].reset();
+                $('#booking-success').addClass('show');
+                setTimeout(() => $('#booking-success').removeClass('show'), 5000);
+            });
+
+            // Browser back/forward
+            window.addEventListener('popstate', function (e) {
+                if (e.state && e.state.stylist) {
+                    showProfile(e.state.stylist);
+                } else {
+                    $("#stylist-profile").hide();
+                    $(".stylist, .stylist-testimonials, .booking-section, .slider-section").show();
+                    $('#breadcrumbBar').hide();
+                }
+            });
+
+            // Initialize wishlist and cart badges
+            setTimeout(() => {
+                const wishlistTotal = getWishlist().length;
+                const $wishlistBadge = $("#wishlist-badge");
+                if ($wishlistBadge.length) {
+                    wishlistTotal > 0 ? $wishlistBadge.text(wishlistTotal).css("display", "flex") : $wishlistBadge.hide();
+                }
+                updateCartBadge();
+            }, 500);
         });
+        })
     </script>
 </body>
-
 </html>

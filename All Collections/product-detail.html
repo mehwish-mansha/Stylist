@@ -330,10 +330,6 @@
         $("#sizeSection").show();
       }
 
-      // ── Download doc link (Requirement 5)
-      // Points to /product-docs/<type>-<id>.docx
-      // If the file doesn't exist yet, the download simply won't find it —
-      // place your Word docs at that path whenever they're ready.
       const docPath = "/product-docs/" + type + "-" + id + ".docx";
       $("#downloadDocBtn").attr("href", docPath);
 
@@ -356,18 +352,18 @@
 
     }); // end document.ready
 
-    // ── SIZE BUTTONS ──────────────────────────────────────
+    // ── SIZE BUTTON
     $(document).on("click", ".size-btn", function () {
       $(".size-btn").removeClass("active");
       $(this).addClass("active");
     });
 
-    // ── QUANTITY ──────────────────────────────────────────
+    // ── QUANTITY
     let qty = 1;
     $("#plusBtn").on("click", function () { qty++; $("#qtyValue").text(qty); });
     $("#minusBtn").on("click", function () { if (qty > 1) { qty--; $("#qtyValue").text(qty); } });
 
-    // ── WISHLIST ──────────────────────────────────────────
+    // ── WISHLIST
     $("#wishlistBtn").on("click", function () {
       const params = new URLSearchParams(window.location.search);
       const type = params.get("type") || "bridal";

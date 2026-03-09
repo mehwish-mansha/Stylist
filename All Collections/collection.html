@@ -30,7 +30,7 @@
     integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  
+
 </head>
 
 <body>
@@ -126,28 +126,26 @@
     let compareList = [];
 
     const collectionMeta = {
-      all:     { label: "All Collections", icon: "fa-th-large",          count: null },
-      bridal:  { label: "Bridal",           icon: "fa-ring",              count: null },
-      eid:     { label: "Eid",              icon: "fa-star-and-crescent", count: null },
-      western: { label: "Western",         icon: "fa-shirt",            count: null },
-      winter:  { label: "Winter",           icon: "fa-snowflake",         count: null },
-      summer:  { label: "Summer",           icon: "fa-sun",               count: null },
-      modest:  { label: "Modest",           icon: "fa-layer-group",       count: null },
-      luxury:  { label: "Luxury",           icon: "fa-gem",               count: null },
-      men:     { label: "Men's",            icon: "fa-person",            count: null },
-      kids:    { label: "Kids",             icon: "fa-child",             count: null },
-      party:   { label: "Party",            icon: "fa-champagne-glasses", count: null },
-      jewelry: { label: "Jewelry",          icon: "fa-crown",             count: null },
-      bags:    { label: "Bags",             icon: "fa-bag-shopping",      count: null },
-      shoes:   { label: "Shoes",            icon: "fa-shoe-prints",       count: null },
+      all: { label: "All Collections", icon: "fa-th-large", count: null },
+      bridal: { label: "Bridal", icon: "fa-ring", count: null },
+      eid: { label: "Eid", icon: "fa-star-and-crescent", count: null },
+      western: { label: "Western", icon: "fa-shirt", count: null },
+      winter: { label: "Winter", icon: "fa-snowflake", count: null },
+      summer: { label: "Summer", icon: "fa-sun", count: null },
+      modest: { label: "Modest", icon: "fa-layer-group", count: null },
+      luxury: { label: "Luxury", icon: "fa-gem", count: null },
+      men: { label: "Men's", icon: "fa-person", count: null },
+      kids: { label: "Kids", icon: "fa-child", count: null },
+      party: { label: "Party", icon: "fa-champagne-glasses", count: null },
+      jewelry: { label: "Jewelry", icon: "fa-crown", count: null },
+      bags: { label: "Bags", icon: "fa-bag-shopping", count: null },
+      shoes: { label: "Shoes", icon: "fa-shoe-prints", count: null },
     };
 
     let currentType = "all";
     let currentCatFilter = null;
 
-    // ─────────────────────────────────────────────────────────────────────
     //  WISHLIST HELPERS
-    // ─────────────────────────────────────────────────────────────────────
     function getWishlist() {
       return JSON.parse(localStorage.getItem("wishlist")) || [];
     }
@@ -165,10 +163,10 @@
     }
 
     function toggleWishlist(type, index) {
-      const col   = collections[type];
-      const item  = col.items[index];
+      const col = collections[type];
+      const item = col.items[index];
       const isAcc = col.type === "accessory";
-      const id    = type + "_" + index;
+      const id = type + "_" + index;
       let wl = getWishlist();
 
       if (wl.some(w => w.id === id)) {
@@ -178,10 +176,10 @@
       } else {
         wl.push({
           id,
-          name:     item.title,
+          name: item.title,
           category: item.category || col.title,
-          price:    "Rs. " + item.price,
-          image:    isAcc ? item.frontImg : item.image
+          price: "Rs. " + item.price,
+          image: isAcc ? item.frontImg : item.image
         });
         saveWishlist(wl);
         return true; // added
@@ -198,13 +196,11 @@
       }, 2400);
     }
 
-    // ─────────────────────────────────────────────────────────────────────
-    //  DOCUMENT READY
-    // ─────────────────────────────────────────────────────────────────────
+    
     $(document).ready(function () {
 
       const urlParams = new URLSearchParams(window.location.search);
-      const urlType   = urlParams.get("type");
+      const urlType = urlParams.get("type");
 
       Object.keys(collections).forEach(key => {
         if (collectionMeta[key]) collectionMeta[key].count = collections[key].items.length;
@@ -230,10 +226,10 @@
 
       // ── Accessory dot switcher ────────────────────────────
       $(document).on("click", ".acc-dot", function () {
-        const $card   = $(this).closest(".accessory-card");
-        const idx     = parseInt($(this).data("img-index"));
-        const $imgs   = $card.find(".product-img");
-        const $dots   = $card.find(".acc-dot");
+        const $card = $(this).closest(".accessory-card");
+        const idx = parseInt($(this).data("img-index"));
+        const $imgs = $card.find(".product-img");
+        const $dots = $card.find(".acc-dot");
         $imgs.removeClass("active");
         $dots.removeClass("active");
         $imgs.eq(idx).addClass("active");
@@ -243,8 +239,8 @@
       // ── Clothing card: Favourite button ──────────────────
       $(document).on("click", ".card-fav-btn", function (e) {
         e.preventDefault();
-        const $btn  = $(this);
-        const type  = $btn.data("type");
+        const $btn = $(this);
+        const type = $btn.data("type");
         const index = parseInt($btn.data("index"));
         const added = toggleWishlist(type, index);
 
@@ -263,12 +259,12 @@
       // ── Clothing card: Compare button ────────────────────
       $(document).on("click", ".card-compare-btn", function (e) {
         e.preventDefault();
-        const $btn  = $(this);
-        const type  = $btn.data("type");
+        const $btn = $(this);
+        const type = $btn.data("type");
         const index = parseInt($btn.data("index"));
-        const col   = collections[type];
+        const col = collections[type];
         if (!col) return;
-        const item  = col.items[index];
+        const item = col.items[index];
 
         const alreadyIn = compareList.findIndex(c => c.index === index && c.type === type);
         if (alreadyIn !== -1) {
@@ -290,8 +286,8 @@
       // ── Accessory card: Favourite button ─────────────────
       $(document).on("click", ".fav-btn", function (e) {
         e.preventDefault();
-        const $btn  = $(this);
-        const type  = $btn.data("type");
+        const $btn = $(this);
+        const type = $btn.data("type");
         const index = parseInt($btn.data("id"));
         const added = toggleWishlist(type, index);
         const $icon = $btn.find("i");
@@ -310,12 +306,12 @@
       // ── Accessory card: Compare toggle via icon ───────────
       $(document).on("click", ".acc-compare-btn", function (e) {
         e.preventDefault();
-        const $btn  = $(this);
-        const type  = $btn.data("type");
+        const $btn = $(this);
+        const type = $btn.data("type");
         const index = parseInt($btn.data("index"));
-        const col   = collections[type];
+        const col = collections[type];
         if (!col) return;
-        const item  = col.items[index];
+        const item = col.items[index];
 
         const alreadyIn = compareList.findIndex(c => c.index === index && c.type === type);
         if (alreadyIn !== -1) {
@@ -335,9 +331,7 @@
     }); // end document.ready
 
 
-    // ─────────────────────────────────────────────────────────────────────
     //  BUILD PANEL
-    // ─────────────────────────────────────────────────────────────────────
     function buildPanel() {
       const $list = $("#panel-list");
       $list.empty();
@@ -350,9 +344,9 @@
     }
 
     function buildPanelBtn(key) {
-      const meta  = collectionMeta[key] || { label: key, icon: "fa-circle" };
+      const meta = collectionMeta[key] || { label: key, icon: "fa-circle" };
       const count = meta.count !== null ? meta.count : (collections[key] ? collections[key].items.length : "");
-      const $btn  = $(`
+      const $btn = $(`
         <button class="panel-collection-btn" data-key="${key}">
           <i class="fa-solid ${meta.icon} btn-icon"></i>
           ${meta.label}
@@ -363,13 +357,10 @@
     }
 
 
-    // ─────────────────────────────────────────────────────────────────────
-    //  SWITCH COLLECTION
-    // ─────────────────────────────────────────────────────────────────────
     function switchCollection(key, updateUrl = true) {
-      currentType      = key;
+      currentType = key;
       currentCatFilter = null;
-      compareList      = [];
+      compareList = [];
       updateCompareBar();
 
       $(".panel-collection-btn").removeClass("active");
@@ -399,9 +390,7 @@
     }
 
 
-    // ─────────────────────────────────────────────────────────────────────
-    //  BUILD CATEGORY FILTER TABS
-    // ─────────────────────────────────────────────────────────────────────
+
     function buildCategoryTabs(type) {
       const collection = collections[type];
       const $filterBar = $("#filterBar");
@@ -425,22 +414,29 @@
     }
 
 
-    // ─────────────────────────────────────────────────────────────────────
     //  RENDER MIXED CARDS
-    // ─────────────────────────────────────────────────────────────────────
     function renderMixedCards() {
       const $cardList = $("#cardlist");
       $cardList.empty();
 
       let allItems = [];
       Object.keys(collections).forEach(type => {
-        const col   = collections[type];
+        const col = collections[type];
+
+        // --- ADD THIS CHECK HERE ---
+        // If the collection type is 'accessory', skip this iteration
+        if (col.type === "accessory") return;
+
         const items = col.items;
+        // Shuffling a few items from each clothing collection to show on 'All'
         const shuffled = [...items].sort(() => Math.random() - 0.5).slice(0, 4);
+
         shuffled.forEach(item => {
           allItems.push({ item, type, originalIndex: items.indexOf(item) });
         });
       });
+
+      // Final shuffle of the combined clothing list
       allItems = allItems.sort(() => Math.random() - 0.5);
 
       if (allItems.length === 0) {
@@ -449,14 +445,13 @@
       }
 
       allItems.forEach(({ item, type, originalIndex }) => {
-        appendCard($cardList, item, type, originalIndex, !!item.frontImg);
+        // Since we filtered out accessories above, isAccessory (5th param) is always false
+        appendCard($cardList, item, type, originalIndex, false);
       });
     }
 
 
-    // ─────────────────────────────────────────────────────────────────────
     //  RENDER CARDS (single collection)
-    // ─────────────────────────────────────────────────────────────────────
     function renderCards(collection, type, filterCat) {
       const $cardList = $("#cardlist");
       $cardList.empty();
@@ -472,11 +467,9 @@
     }
 
 
-    // ─────────────────────────────────────────────────────────────────────
     //  APPEND CARD  —  clothing vs accessory
-    // ─────────────────────────────────────────────────────────────────────
     function appendCard($container, el, type, originalIndex, isAccessory) {
-      const cmpId     = `cmp-${type}-${originalIndex}`;
+      const cmpId = `cmp-${type}-${originalIndex}`;
       const favActive = isWishlisted(type, originalIndex);
       const inCompare = compareList.some(c => c.index === originalIndex && c.type === type);
 
@@ -573,7 +566,7 @@
 
 
     function updateCompareBar() {
-      const $bar   = $("#compare-bar");
+      const $bar = $("#compare-bar");
       const $chips = $("#compareChips");
       $chips.empty();
 
@@ -627,13 +620,13 @@
 
       const rows = [
         ["Collection", c => collectionMeta[c.type]?.label || c.type],
-        ["Category",   c => c.item.category || "—"],
-        ["Price",      c => {
+        ["Category", c => c.item.category || "—"],
+        ["Price", c => {
           let h = `<span style="color:#3b1d23;font-weight:bold;">Rs. ${c.item.price}</span>`;
           if (c.item.oldPrice) h += `<br><small style="text-decoration:line-through;color:#999;">Rs. ${c.item.oldPrice}</small>`;
           return h;
         }],
-        ["Badge",  c => c.item.badge ? `<span class="badge bg-light text-dark border">${c.item.badge}</span>` : "—"],
+        ["Badge", c => c.item.badge ? `<span class="badge bg-light text-dark border">${c.item.badge}</span>` : "—"],
         ["Action", c => `<a href="/All Collections/product-detail.html?type=${c.type}&id=${c.index}" class="btn btn-sm btn-dark">View Item</a>`]
       ];
 
@@ -646,9 +639,7 @@
       $("#compare-modal").addClass("open");
     }
 
-    // ─────────────────────────────────────────────────────────────────────
     //  PANEL OPEN / CLOSE
-    // ─────────────────────────────────────────────────────────────────────
     function openPanel() {
       $("#collection-panel, #filter-overlay").addClass("open");
       $("body").css("overflow", "hidden");
@@ -661,4 +652,5 @@
   </script>
 
 </body>
+
 </html>

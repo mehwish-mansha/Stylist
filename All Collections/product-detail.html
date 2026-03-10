@@ -87,6 +87,11 @@
               <span id="productNewPrice"></span>
               <span class="old-price" id="productOldPrice"></span>
             </div>
+            <!-- Total Price for selected quantity -->
+            <div class="total-price mt-2" id="totalPriceContainer" style="display: none;">
+              <span class="total-label">Total Price:</span>
+              <span class="total-amount" id="totalPrice"></span>
+            </div>
           </div>
 
           <!-- Size (only for clothing) -->
@@ -268,6 +273,20 @@
       $("#footer-container").load("/footer.html");
     });
 
+    // ── Global variables ───────────────────────────────────
+    let currentQty = 1;
+    let currentBasePrice = 0;
+    let currentItem = null;
+
+    // ── Function to update total price ─────────────────────
+    function updateTotalPrice() {
+      if (currentBasePrice > 0 && currentQty > 0) {
+        const total = currentBasePrice * currentQty;
+        $("#totalPrice").text("Rs. " + total.toLocaleString());
+        $("#totalPriceContainer").show();
+      }
+    }
+
     // ── INIT ──────────────────────────────────────────────
     $(document).ready(function () {
 
@@ -281,26 +300,33 @@
         return;
       }
 
-      const item = col.items[id];
+      currentItem = col.items[id];
       const isAccessory = col.type === "accessory";
 
+      // Extract numeric price value (remove "Rs." and commas)
+      let priceString = currentItem.price || "0";
+      if (typeof priceString === "string") {
+        priceString = priceString.replace(/[^0-9.-]+/g, "");
+      }
+      currentBasePrice = parseFloat(priceString) || 0;
+
       // ── Page title
-      document.title = item.title + " | Product Details";
+      document.title = currentItem.title + " | Product Details";
 
       // ── Breadcrumb
       $("#breadcrumbCollection")
         .text(col.title)
         .attr("href", "/All Collections/collection.html?type=" + type);
-      $("#breadcrumbProduct").text(item.title);
+      $("#breadcrumbProduct").text(currentItem.title);
 
       // ── Main image
-      const mainSrc = isAccessory ? item.frontImg : item.image;
-      $("#mainImg").attr("src", mainSrc).attr("alt", item.title);
+      const mainSrc = isAccessory ? currentItem.frontImg : currentItem.image;
+      $("#mainImg").attr("src", mainSrc).attr("alt", currentItem.title);
 
       // ── Thumbnails (accessories have front + hover)
       if (isAccessory) {
         const $thumbs = $("#thumbsContainer");
-        [item.frontImg, item.hoverImg].forEach((src, i) => {
+        [currentItem.frontImg, currentItem.hoverImg].forEach((src, i) => {
           const $t = $('<img class="thumb" />')
             .attr("src", src)
             .toggleClass("active", i === 0);
@@ -314,20 +340,27 @@
       }
 
       // ── Content
-      $("#productBadge").text(item.badge || "");
-      $("#productCategory").text(item.category || col.title);
-      $("#productTitle").text(item.title);
-      $("#productDescription").text(item.description || "");
+      $("#productBadge").text(currentItem.badge || "");
+      $("#productCategory").text(currentItem.category || col.title);
+      $("#productTitle").text(currentItem.title);
+      $("#productDescription").text(currentItem.description || "");
 
       // ── Price
-      $("#productNewPrice").text("Rs. " + (item.price || "—"));
-      if (item.oldPrice) {
-        $("#productOldPrice").text("Rs. " + item.oldPrice);
+      $("#productNewPrice").text("Rs. " + currentItem.price);
+      if (currentItem.oldPrice) {
+        $("#productOldPrice").text("Rs. " + currentItem.oldPrice);
       }
+      
+      // Initialize total price
+      currentQty = 1;
+      $("#qtyValue").text(currentQty);
+      updateTotalPrice();
 
       // ── Show size only for clothing
       if (!isAccessory) {
         $("#sizeSection").show();
+      } else {
+        $("#sizeSection").hide();
       }
 
       const docPath = "/product-docs/" + type + "-" + id + ".docx";
@@ -336,7 +369,7 @@
       // ── Description accordion list
       const descPoints = [
         "This is a premium " + col.title.toLowerCase() + " piece.",
-        item.description,
+        currentItem.description,
         "Crafted with high-quality fabric and elegant detailing.",
         "Designed to give a royal and luxurious look.",
         "Perfect for special occasions and memorable events.",
@@ -358,12 +391,22 @@
       $(this).addClass("active");
     });
 
-    // ── QUANTITY
-    let qty = 1;
-    $("#plusBtn").on("click", function () { qty++; $("#qtyValue").text(qty); });
-    $("#minusBtn").on("click", function () { if (qty > 1) { qty--; $("#qtyValue").text(qty); } });
+    // ── QUANTITY with price update ────────────────────────
+    $("#plusBtn").on("click", function() {
+      currentQty++;
+      $("#qtyValue").text(currentQty);
+      updateTotalPrice();
+    });
 
-    // ── WISHLIST
+    $("#minusBtn").on("click", function() {
+      if (currentQty > 1) {
+        currentQty--;
+        $("#qtyValue").text(currentQty);
+        updateTotalPrice();
+      }
+    });
+
+    // ── WISHLIST ───────────────────────────────────────────
     $("#wishlistBtn").on("click", function () {
       const params = new URLSearchParams(window.location.search);
       const type = params.get("type") || "bridal";
@@ -412,7 +455,7 @@
       const existing = cart.find(c => c.id === itemId);
 
       if (existing) {
-        existing.qty += qty;
+        existing.qty += currentQty;
       } else {
         cart.push({
           id: itemId,
@@ -420,7 +463,7 @@
           category: item.category || col.title,
           price: "Rs. " + item.price,
           image: isAcc ? item.frontImg : item.image,
-          qty: qty
+          qty: currentQty
         });
       }
 
@@ -446,18 +489,17 @@
     });
 
     // ── SIZE CHART MODAL LOGIC ─────────────────────────────
-$("#openSizeChart").on("click", function() {
-    $("#sizeChartModal").css("display", "flex");
-    $("body").css("overflow", "hidden"); // Prevent scrolling background
-});
+    $("#openSizeChart").on("click", function() {
+      $("#sizeChartModal").css("display", "flex");
+      $("body").css("overflow", "hidden");
+    });
 
-$("#closeSizeChart, #sizeChartModal").on("click", function(e) {
-    // Close if clicking the 'X' or the dark overlay
-    if (e.target === this) {
+    $("#closeSizeChart, #sizeChartModal").on("click", function(e) {
+      if (e.target === this) {
         $("#sizeChartModal").hide();
         $("body").css("overflow", "auto");
-    }
-});
+      }
+    });
 
   </script>
 

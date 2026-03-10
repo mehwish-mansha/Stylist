@@ -105,41 +105,56 @@
         });
     }
 
-    // ── Remove from wishlist ──────────────────────────────────────────
-    window.removeFromWishlist = function (id) {
-        let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-        wishlist = wishlist.filter(item => item.id !== id);
-        localStorage.setItem("wishlist", JSON.stringify(wishlist));
+   // ── Remove from wishlist ──────────────────────────────────────────
+window.removeFromWishlist = function (id) {
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    wishlist = wishlist.filter(item => item.id !== id);
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
 
-        $(`.fav-item[data-id="${id}"]`).fadeOut(300, function () {
-            renderWishlist();
-        });
-
-        showToast("Removed from favourites.", "fa-heart-crack");
-    };
-
-    // ── Move to cart ──────────────────────────────────────────────────
-    window.moveToCart = function (id) {
-        const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-        const item = wishlist.find(w => w.id === id);
-        if (!item) return;
-
-        // Add to cart in localStorage
-        let cart = JSON.parse(localStorage.getItem("cart")) || [];
-        const inCart = cart.some(c => c.id === id);
-        if (!inCart) {
-            cart.push({ ...item, qty: 1 });
-            localStorage.setItem("cart", JSON.stringify(cart));
+    // Update the UI immediately
+    $(`.fav-item[data-id="${id}"]`).fadeOut(300, function () {
+        renderWishlist();
+        
+        // CRITICAL: Update the navbar badge
+        if (typeof updateWishlistBadge === "function") {
+            updateWishlistBadge();
         }
+    });
 
-        // Remove from wishlist
-        removeFromWishlist(id);
-        showToast("Moved to cart!", "fa-bag-shopping");
-    };
+    showToast("Removed from favourites.", "fa-heart-crack");
+};
 
-    // ── Toast notification ────────────────────────────────────────────
+// ── Move to cart ──
+window.moveToCart = function (id) {
+    const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    const item = wishlist.find(w => w.id === id);
+    if (!item) return;
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const existingItem = cart.find(c => c.id === id);
+    
+    if (existingItem) {
+        existingItem.qty += 1; 
+    } else {
+        cart.push({ ...item, qty: 1 });
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    // 2. Remove from wishlist
+    removeFromWishlist(id);
+
+    if (typeof renderCart === "function") {
+        renderCart(); 
+    }
+    if (typeof updateCartBadge === "function") {
+        updateCartBadge();
+    }
+
+    showToast("Moved to cart!", "fa-bag-shopping");
+};
+
+    // ── Toast notification ─
     function showToast(message, icon) {
-        // Remove existing toast
         $('#favToast').remove();
 
         const toast = $(`

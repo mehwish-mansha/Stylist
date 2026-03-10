@@ -4,7 +4,9 @@
     box-sizing: border-box;
 }
 
-/* ── NAVBAR ────────────────────────────────────────────────── */
+
+
+/* ── NAVBAR ── */
 .nav-container {
     position: fixed;
     top: 0;
@@ -44,7 +46,7 @@
     cursor: pointer;
 }
 
-/* ── NAV ICONS ─────────────────────────────────────────────── */
+/* ── NAV ICONS ─── */
 .nav-icons {
     display: flex;
     gap: 1.5rem;
@@ -67,7 +69,7 @@
     transform: translateY(-2px);
 }
 
-/* ── BADGES ────────────────────────────────────────────────── */
+/* ── BADGES ─── */
 #wishlist-badge,
 #cart-badge {
     display: none;
@@ -87,7 +89,7 @@
     line-height: 1;
 }
 
-/* ── SHARED OVERLAY (nav + cart) ───────────────────────────── */
+/* ── SHARED OVERLAY (nav + cart) ─ */
 .nav-overlay,
 .cart-overlay {
     position: fixed;
@@ -109,7 +111,7 @@
     pointer-events: auto;
 }
 
-/* ── NAV SIDEBAR ───────────────────────────────────────────── */
+/* ── NAV SIDEBAR ── */
 .nav-links {
     position: fixed;
     top: 0;
@@ -133,7 +135,7 @@
 
 /* ── CLOSE BUTTON — sticky at top, always visible ─────────── */
 .close-btn {
-    flex-shrink: 0;              /* never compress */
+    flex-shrink: 0;            
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -153,7 +155,7 @@
     transform: rotate(90deg);
 }
 
-/* ── SCROLLABLE BODY BELOW CLOSE BTN ───────────────────────── */
+/* ── SCROLLABLE BODY BELOW CLOSE BTN ──── */
 .nav-links-body {
     flex: 1;
     overflow-y: auto;
@@ -185,7 +187,7 @@
     font-family: "Inconsolata", sans-serif;
 }
 
-/* ── NAV BUTTON ────────────────────────────────────────────── */
+/* ── NAV BUTTON─── */
 .nav-btn {
     padding: 8px 15px;
     border: 2px solid black;
@@ -246,19 +248,7 @@
     transition: width 0.5s ease;
 }
 
-<<<<<<< HEAD
 .submenu a:hover::after { width: 100%; }
-=======
-.submenu a:hover::after {
-    width: 100%;
-}
-
-
-/* Active */
-.submenu.active {
-    max-height: 1000px;
-}
->>>>>>> 25475482ad60e8e87d0e6a7dc00bb80387d2416e
 
 .dropdown-header i {
     transition: transform 0.3s ease;
@@ -527,4 +517,87 @@ body.cart-open {
 .btn-shop-now:hover {
     opacity: 0.9;
     color: #fff;
+}
+
+/* --- Adjustments for Tablets and Mobile (768px and below) --- */
+@media (max-width: 768px) {
+    /* Navbar height and padding */
+    .nav-wrapper {
+        padding: 0.8rem 1rem;
+    }
+
+    .logo span {
+        font-size: 26px; /* Slightly smaller logo */
+    }
+
+    /* Sidebars: Ensure they don't exceed screen width */
+    .nav-links {
+        width: 85%; /* Responsive width */
+        max-width: 300px;
+        left: -100%; /* Hide completely off-screen */
+    }
+
+    .cart-sidebar {
+        width: 100%; /* Full screen width on mobile for better focus */
+        right: -100%;
+    }
+
+    .cart-sidebar.active {
+        right: 0;
+    }
+
+    /* Adjust cart item layout for narrow screens */
+    .cart-item {
+        gap: 10px;
+    }
+
+    .cart-item img {
+        width: 70px;
+        height: 90px;
+    }
+
+    .dress-name {
+        font-size: 0.85rem;
+    }
+}
+
+/* --- Adjustments for Small Phones (480px and below) --- */
+@media (max-width: 480px) {
+    .nav-icons {
+        gap: 1rem; /* Tighten icons for small screens */
+    }
+
+    .nav-icons a, 
+    .cart-icon {
+        font-size: 18px;
+    }
+
+    .logo span {
+        font-size: 22px;
+    }
+
+    /* Cart Footer adjustments */
+    .cart-footer {
+        padding: 15px;
+    }
+
+    #cart-total {
+        font-size: 1.1rem;
+    }
+
+    .checkout-btn {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+}
+
+/* --- Fix for Landscape Orientation on Mobile --- */
+@media (max-height: 450px) {
+    .nav-links-body {
+        padding-bottom: 80px; 
+    }
+    
+    .sidebar-social {
+        padding-bottom: 20px;
+    }
 }

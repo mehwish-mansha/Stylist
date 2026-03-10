@@ -1219,3 +1219,113 @@ body {
                 grid-template-columns: 1fr;
             }
         }
+
+
+        /* ================= RESPONSIVE STYLES ================= */
+
+/* --- Tablet & Small Desktop (1024px and below) --- */
+@media (max-width: 1024px) {
+    .main-stylist-grid, 
+    #profile-collections {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .section-title {
+        font-size: 36px;
+    }
+
+    .profile-header img {
+        width: 260px;
+        height: 350px;
+    }
+}
+
+/* --- Mobile Landscape & Tablets (768px and below) --- */
+@media (max-width: 768px) {
+    /* Header Adjustments */
+    .stylist-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile-header img {
+        width: 100%; /* Full width on mobile */
+        max-width: 400px;
+        height: auto;
+    }
+
+    /* Grid Adjustments */
+    .main-stylist-grid, 
+    #profile-collections {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Modal Adjustments */
+    .product-detail-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .compare-modal-inner {
+        padding: 20px;
+    }
+
+    .compare-table {
+        display: block;
+        overflow-x: auto; /* Allow horizontal scroll for comparison table */
+    }
+    
+    .booking-container {
+        padding: 0 10px;
+    }
+}
+
+/* --- Small Mobile (480px and below) --- */
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 28px;
+    }
+
+    .main-stylist-grid, 
+    #profile-collections {
+        grid-template-columns: 1fr; /* Single column for better visibility */
+    }
+
+    .profile-info h2 {
+        font-size: 28px;
+    }
+
+    .view-all-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Adjust the sticky compare bar for small screens */
+    #compare-bar {
+        padding: 10px;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .compare-slots {
+        justify-content: center;
+    }
+
+    .compare-slot {
+        min-width: 140px;
+        font-size: 11px;
+    }
+}

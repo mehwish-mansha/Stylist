@@ -132,6 +132,16 @@
     font-size: 16px;
 }
 
+.contact-info a {
+    color: var(--background-color);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.contact-info a:hover {
+    /* color: var(--text-color); */
+    text-decoration: underline;
+}
 
 /* Footer Right Links */
 .footer-right ul {
